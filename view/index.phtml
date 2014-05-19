@@ -1,0 +1,385 @@
+<?php
+	include_once 'core/App.php';
+?>
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Eventos - UTFPR - Campus Guarapuava</title>
+
+<?php
+	Page::addStyleElement('css', 'bootstrap.css');
+	Page::addStyleElement('css', 'slider.css');
+	Page::addStyleElement('css', 'style.css');
+	Page::addStyleElement('css', 'custom.css');
+?>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600,300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<?php
+	Page::addStyleElement('js', 'jquery.min.js');
+	Page::addStyleElement('css', 'css/slider.css');
+	Page::addStyleElement('js', 'modernizr.custom.28468.js');
+	Page::addStyleElement('js', 'jquery.cslider.js');
+	Page::addStyleElement('js', 'efeitos.js');
+
+?>
+<script type="text/javascript">
+	$(function() {
+	
+		$('#da-slider').cslider({
+			autoplay	: true,
+			bgincrement	: 450
+		});
+	
+	});
+</script>
+<script type="text/javascript">
+	$(document).ready(function() {	
+		var defaults = {
+  			containerID: 'toTop', 
+			containerHoverID: 'toTopHover',
+			scrollSpeed: 1200,
+			easingType: 'linear' 
+ 		};
+		$().UItoTop({ easingType: 'easeOutQuart' });
+	});
+</script>
+
+</head>
+<body>
+	<div class="slider_bg">
+		<div class="h_right">
+			<ul class="menu">		
+				<li class="active" id="li1"><a href="#home" id="a1">Home</a></li>
+				<li id="li2"><a href="#ultimos" class="scroll" id="a2">Últimos Eventos</a></li>
+				<li id="li3"><a href="#proximos" class="scroll" id="a3">Próximos Eventos</a></li>
+				<li id="li4"><a href="#contact" class="scroll" id="a4">Contato</a></li>
+				<li id="li5"><a href="view/area_admin.phtml" id="a5">Login</a></li>
+			</ul>			
+	        <nav class="nav">
+	            <ul class="nav-list">
+	                <li class="nav-item"><a  href="#home">Home</a></li>
+	                <li class="nav-item"><a href="#services" class="scroll">Últimos Eventos</a></li>
+	                <li class="nav-item"><a href="#portfolio" class="scroll">Proximos Eventos</a></li>
+	                <li class="nav-item"><a href="#about" class="scroll">Sobre</a></li>
+	                <li class="nav-item"><a href="#contact"  class="scroll">Contato</a></li>
+	            </ul>
+	        </nav>
+			<?php
+				Page::addStyleElement('js', 'responsive.menu.js');
+			?>
+		</div>
+		<div class="wrap">
+			<div class="header">
+				<div class="fundo-logo">
+					<div class="logo">
+						<a href="index.html"><?php Page::addImage('logo.png', '');?></a>
+					</div>
+				</div>
+				<div class="clear"></div>
+
+			</div>
+		</div>
+
+		<div id="da-slider" class="da-slider">
+			<div class="da-slide">
+				<p>O melhor sistema de eventos!</p>
+				<h2>Eventos UTFPR</h2>
+				<p class="a"><a href="#">Quer ter este sistema no seu site?</a></p>
+			</div>
+			<div class="da-slide">
+				<p>Veja fotos dos</p>
+				<h2>Últimos eventos</h2>
+				<p class="a"><a href="#">Veja mais!</a></p>
+			</div>
+			<div class="da-slide">
+				<p>Fique por dentro dos</p>
+				<h2>Próximos eventos</h2>
+				<p class="a"><a href="#">Veja mais</a></p>
+			</div>
+			<div class="da-slide">
+				<p>Gostou do sistema?</p>
+				<h2>CONTRATE-NOS</h2>
+				<p class="a"><a href="#">Saber mais</a></p>
+			</div>	
+		
+			<nav class="da-arrows">
+				<span class="da-arrows-prev"></span>
+				<span class="da-arrows-next"></span>
+			</nav>
+		</div>
+	</div>
+
+		<div class="services" id="ultimos">
+		  	<div class="wrap">
+		  		<h3>Últimos eventos</h3>
+		  		<p>Veja as fotos dos últimos eventos realizados na UTFPR.</p>
+				<div class="col_1_of_3 span_1_of_3">
+					<div class="title-event"><h4><a href="#">Mostra de talentos</a></h4></div>
+					<?php Page::addImage('baner-250X200.png', '') ?>
+					<p>Veja o que rolou na 3ª mostra de talentos da UTFPR.</p>
+					<a href="//www.youtube.com/embed/D3W1nXeFe_Q" target="_black">veja o video</a>
+					<!-- <iframe width="360" height="215" src="//www.youtube.com/embed/D3W1nXeFe_Q" frameborder="0" allowfullscreen></iframe> --> 
+				</div>
+
+				<div class="col_1_of_3 span_1_of_3">
+					<div class="title-event"><h4><a href="#">Semana Academica de TSI</a></h4></div>
+					<?php Page::addImage('baner-250X200.png', '') ?>
+					<p>Veja como foi a segunda semana academica de TSI.</p>
+					<a href="//www.youtube.com/embed/r5XzCZKD8J8" target="_black">veja o video</a>
+					<!-- <iframe width="360" height="215" src="//www.youtube.com/embed/r5XzCZKD8J8" frameborder="0" allowfullscreen></iframe> -->
+				</div>
+
+				<div class="col_1_of_3 span_1_of_3">
+					<div class="title-event"><h4><a href="#">Semana academica de Engenharia Mecanica</a></h4></div>
+					<?php Page::addImage('baner-250X200.png', '') ?>
+					<p>Veja o que rolou na 3ª Semana Mecanica</p>
+					<a href="//www.youtube.com/embed/KlX2FPN5hjM" target="_black">veja o video</a>
+					<!-- <iframe width="360" height="215" src="//www.youtube.com/embed/KlX2FPN5hjM" frameborder="0" allowfullscreen></iframe> -->
+				</div>
+			<!-- 	<div class="col_1_of_3 span_1_of_3">
+					<div class="title-event"><h4><a href="#">Mostra de talentos</a></h4></div>
+					<?php Page::addImage('baner-250X200.png', '') ?>
+					<p>Veja o que rolou na 3ª mostra de talentos da UTFPR.</p>
+					<a href="//www.youtube.com/embed/D3W1nXeFe_Q" target="_black">veja o video</a>
+					<iframe width="360" height="215" src="//www.youtube.com/embed/D3W1nXeFe_Q" frameborder="0" allowfullscreen></iframe> 
+				</div>
+
+				<div class="col_1_of_3 span_1_of_3">
+					<div class="title-event"><h4><a href="#">Semana Academica de TSI</a></h4></div>
+					<?php Page::addImage('baner-250X200.png', '') ?>
+					<p>Veja como foi a segunda semana academica de TSI.</p>
+					<a href="//www.youtube.com/embed/r5XzCZKD8J8" target="_black">veja o video</a>
+					<iframe width="360" height="215" src="//www.youtube.com/embed/r5XzCZKD8J8" frameborder="0" allowfullscreen></iframe>
+				</div>
+
+				<div class="col_1_of_3 span_1_of_3">
+					<div class="title-event"><h4><a href="#">Semana academica de Engenharia Mecanica</a></h4></div>
+					<?php Page::addImage('baner-250X200.png', '') ?>
+					<p>Veja o que rolou na 3ª Semana Mecanica</p>
+					<a href="//www.youtube.com/embed/KlX2FPN5hjM" target="_black">veja o video</a>
+					<iframe width="360" height="215" src="//www.youtube.com/embed/KlX2FPN5hjM" frameborder="0" allowfullscreen></iframe>
+				</div>
+				 -->
+				<div class="clear"></div>
+   		    </div>
+   	    </div>
+<!-- Proximos Eventos  -->
+ 	<div class="portfolio" id="proximos">
+		<div class="wrap">
+	  		<h3>Próximos eventos</h3>
+	  		<p>Vai ficar de fora dos próximos super eventos da UTFPR?</p>
+			<div class="col_1_of_3 span_1_of_3">
+				<div class="view view-fourth">
+					<?php Page::addImage('mascote_tsi.png', '') ?>
+                    <div class="mask">
+                        <h2>Semana acadêmica 2014</h2>
+                        <p>A melhor semana acadêmica de TI da cidade de Guarapuava!</p>
+  
+                    </div>
+            	</div>
+				<h4><a href="#">Semana acadêmica 2014</a></h4>
+				<button class="bt_info" type="">Informações&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+				<button class="bt_insc" type="">Inscrição&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
+			</div>
+			<div class="col_1_of_3 span_1_of_3">
+				<div class="view view-fourth">
+                    <?php Page::addImage('mascote_tsi.png', '') ?>
+                    <div class="mask">
+                        <h2>Semana acadêmica 2014</h2>
+                        <p>A melhor semana acadêmica de TI da cidade de Guarapuava!</p>
+  
+                    </div>
+            	</div>
+				<h4><a href="#">Semana acadêmica 2014</a></h4>
+				<button class="bt_info" type="">Informações&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+				<button class="bt_insc" type="">Inscrição&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
+			</div>
+			<div class="col_1_of_3 span_1_of_3">
+			    <div class="view view-fourth">
+                    <?php Page::addImage('mascote_tsi.png', '') ?>
+	                <div class="mask">
+	                    <h2>Semana acadêmica 2014</h2>
+	                    <p>A melhor semana acadêmica de TI da cidade de Guarapuava!</p>
+	                </div>
+               	</div>
+				<h4><a href="#">Semana acadêmica 2014</a></h4>
+				<button class="bt_info" type="">Informações&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+				<button class="bt_insc" type="">Inscrição&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
+			</div>
+			<div class="col_1_of_3 span_1_of_3">
+			    <div class="view view-fourth">
+                    <?php Page::addImage('mascote_tsi.png', '') ?>
+	                <div class="mask">
+	                    <h2>Semana acadêmica 2014</h2>
+	                    <p>A melhor semana acadêmica de TI da cidade de Guarapuava!</p>
+	                </div>
+                </div>
+				<h4><a href="#">Semana acadêmica 2014</a></h4>
+				<button class="bt_info" type="">Informações&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+				<button class="bt_insc" type="">Inscrição&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
+			</div>
+			<div class="col_1_of_3 span_1_of_3">
+			    <div class="view view-fourth">
+                    <?php Page::addImage('mascote_tsi.png', '') ?>
+	                <div class="mask">
+	                    <h2>Semana acadêmica 2014</h2>
+	                    <p>A melhor semana acadêmica de TI da cidade de Guarapuava!</p>
+	                </div>
+              	</div>
+				<h4><a href="#">Semana acadêmica 2014</a></h4>
+				<button class="bt_info" type="">Informações&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+				<button class="bt_insc" type="">Inscrição&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
+			</div>
+			<div class="col_1_of_3 span_1_of_3">
+			    <div class="view view-fourth">
+                    <?php Page::addImage('mascote_tsi.png', '') ?>
+	                <div class="mask">
+	                    <h2>Semana acadêmica 2014</h2>
+	                    <p>A melhor semana acadêmica de TI da cidade de Guarapuava!</p>
+	                </div>
+                </div>
+				<h4><a href="#">Semana acadêmica 2014</a></h4>
+				<button class="bt_info" type="">Informações&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+				<button class="bt_insc" type="">Inscrição&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
+			</div>
+			<div class="clear"></div>								  						
+		</div>   		 
+   	</div>
+   	<div class="about" id="about">
+	  	<div class="wrap">
+	  		<h3>SOBRE O "EVENTOS UTFPR"</h3>
+	  		<p class="a">O que é o Eventos UTFPR?</p>
+			<div class="about-time-line">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+		   	</div>
+   		</div>    
+   	</div>
+ 	<div class="team-members">
+		<div class="wrap"> 
+			<div class="tm-head">
+				<h3>Quem criou o "Eventos UTFPR?</h3>
+				<p>Quem você acha que criou este sistema?</p>
+			</div>
+			<div class="tm-head-grids">
+				<div class="tm-head-grid">
+					<?php Page::addImage('erico.jpg', '') ?>
+					<h4>Érico Dias</h4>
+					<h5>Programador</h5>
+					<ul class="top-social-icons">
+						<li><a class="twitter simptip-position-bottom simptip-movable" data-tooltip="twitter" href="#"> </a></li>
+						<li><a class="facebook simptip-position-bottom simptip-movable" data-tooltip="Facebook" href="#"> </a></li>
+						<li><a class="pin simptip-position-bottom simptip-movable" data-tooltip="pintrest" href="#"> </a></li>
+						<div class="clear"> </div>
+					</ul>
+				</div>
+				<div class="tm-head-grid">
+					<?php Page::addImage('Andre.jpg', '') ?>
+					<h4>André Felipe Silveira</h4>
+					<h5>Programador</h5>
+					<ul class="top-social-icons">
+						<li><a class="twitter simptip-position-bottom simptip-movable" data-tooltip="twitter" href="#"> </a></li>
+						<li><a class="facebook simptip-position-bottom simptip-movable" data-tooltip="Facebook" href="#"> </a></li>
+						<li><a class="pin simptip-position-bottom simptip-movable" data-tooltip="pintrest" href="#"> </a></li>
+						<div class="clear"> </div>
+					</ul>
+				</div>
+				<div class="clear"> </div>
+			</div>
+			<p class="team-info">Estes alunos criaram o site e o sistema para o Projeto integrador das disciplinas de Projeto e Banco de dados, e Programação para internet 2.</p>
+		</div>
+	</div>
+	<div class="t-clients">
+     	<div class="wrap"> 				
+    		<div class="nbs-flexisel-container">
+    			<div class="nbs-flexisel-inner">
+    				<ul class="flexiselDemo3 nbs-flexisel-ul" style="left: -253.6px; display: block;">			<li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;">
+    						<?php Page::addImage('facebook.png', '') ?>
+    					</li>
+    					<li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;">
+    						<?php Page::addImage('java.jpeg', '') ?>
+    					</li>
+    					<li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;">
+    						<?php Page::addImage('microsoft.gif', '') ?>
+    					</li>
+    					<li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;">
+    						<?php Page::addImage('php.png', '') ?>
+    					</li>
+    					<li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;">
+    						<?php Page::addImage('yahoo.png', '') ?>
+    					</li>
+    				</ul>
+    				<div class="nbs-flexisel-nav-left" style="top: 21.5px;"></div>
+    				<div class="nbs-flexisel-nav-right" style="top: 21.5px;"></div>
+    			</div>
+    		</div> 
+			<div class="clear"> </div> 
+			<?php
+				Page::addStyleElement('js', 'jquery.flexisel.js');
+			?>     
+			<script type="text/javascript">
+				$(window).load(function() {$(".flexiselDemo3").flexisel({visibleItems: 5,        animationSpeed: 1000, autoPlay: true,autoPlaySpeed: 3000,pauseOnHover: true,
+				    enableResponsiveBreakpoints: true,responsiveBreakpoints: {portrait: { 
+				    changePoint:480,visibleItems: 1},landscape: { changePoint:640,visibleItems: 2
+				    },tablet: {changePoint:768,visibleItems: 3}}});});
+			</script>
+		</div>				
+	</div>
+    <div class="contact" id="contact">
+		<div class="wrap">
+	  		<h3>CONTATE-NOS</h3>
+	  		<p class="a">Envie um e-mail para os organizadores dos eventos da UTFPR.</p>
+			<div class="form">
+			    <div class="form-text">
+	                <input type="text" class="textbox" value="Seu nome*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Nome';}">
+					<input type="text" class="textbox" value="Seu E-mail*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail';}">
+					<select name="evento" class="select-box">
+						<option value="">Evento1</option>
+						<option value="">Evento 2</option>
+					</select>
+				</div>
+			    <textarea placeholder="Sua mensagem*"></textarea>
+				<div class="clear"> </div>
+				<input type="submit" value="ENVIAR MENSAGEM">					 
+			</div>
+   		</div>
+   	</div>
+    <div class="bottom-footer">
+		<div class="wrap"> 
+			<div class="bottom-footer-left">
+				<p>&#169; Copyright 2014 Criado por&nbsp;<a href="#">PontoEdu.br</a></p>
+			</div>
+			<div class="bottom-footer-center">
+				<ul class="bottom-social-icons">
+					<li><a class="bottom-twitter" href="#"> </a></li>
+					<li><a class="bottom-facebook" href="#"> </a></li>
+					<li><a class="bottom-pin" href="#"> </a></li>
+					<li><a class="bottom-google" href="#"> </a></li>
+				</ul>
+			</div>			  
+			<div class="clear"> </div>
+		</div>
+	</div>
+	<?php
+		Page::addStyleElement('js', 'move-top.js');
+		Page::addStyleElement('js', 'easing.js');
+	?>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+			});
+		});
+	</script>
+	<a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+
+</body>
+</html>
