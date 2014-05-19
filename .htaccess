@@ -1,0 +1,8 @@
+#necessário ativar o modrewrite do apache
+#http://askubuntu.com/questions/48362/how-to-enable-mod-rewrite-in-apache
+
+#Ativando url amigável
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?r=$1 [L,QSA]
