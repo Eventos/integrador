@@ -1,5 +1,5 @@
 <?php
-  include_once '../core/App.php';
+  include_once '../core/App.class.php';
   $app = new App();
 ?>
 <!DOCTYPE html>
@@ -184,9 +184,7 @@
 				</div>
 		</div>	
 	</div> 
-  <div class="footer">
-    <p>© Copyright 2014 Criado por&nbsp;<a href="#">PontoEdu.br</a></p>
-  </div>  
+  <div class="footer"><p>© Copyright 2014 &nbsp;&nbsp;<a href="#"><?php Page::addImage('Ponto.png', 'style="width:10%"');?></a></p></div> 
 <script type="text/javascript">
   $(document).ready(function() {
     $(".accordion .accord-header").click(function() {
