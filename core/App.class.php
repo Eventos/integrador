@@ -6,8 +6,8 @@ class App
 {
 	function __construct(){
 		spl_autoload_register(array($this, 'autoloader'));	
-		define('SITE_ROOT', '/var/www/integrador/');
-		define('URL_BASE', 'http://localhost/integrador/');
+		define('SITE_ROOT', '/var/www/projetoIntegrador/');
+		define('URL_BASE', 'http://localhost/projetoIntegrador/');
 		header('Content-Type: text/html; charset=utf-8');
 	}
 
@@ -17,6 +17,8 @@ class App
 			$file = SITE_ROOT.'model/'.$class.'.class.php';
 		}elseif(strpos($class,'Controller')){
 			$file = SITE_ROOT.'controller/'.$class.'.class.php';
+		}elseif(strpos($class, 'Abstract')){
+			$file = SITE_ROOT.'core/'.$class.'.class.php';
 		}else{
 			$file = SITE_ROOT.'helpers/'.$class.'.class.php';
 		}
