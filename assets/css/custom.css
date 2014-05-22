@@ -55,19 +55,7 @@ img{
 .da-slide .a{
 	text-shadow: 1px 1px black;
 }
-.bt_info, .bt_insc{
-	width: 150px;
-	height: 45px;
-	border: none !important;
-	border-radius: 7px;
-	margin: 0 8px 0 8px;
-	font-weight: bold;
-	-webkit-transition: all 1.7s ease-in-out;
-   -moz-transition: all 1.7s ease-in-out;
-   -o-transition: all 1.7s ease-in-out;
-   -ms-transition: all 1.7s ease-in-out;
-   transition: all 1.7s ease-in-out;
-}
+.bt_info, .bt_insc{width: 150px;height: 45px;border: none !important;border-radius: 7px;	margin: 0 8px 0 8px;font-weight: bold;-webkit-transition: all 0.5s ease-in-out;-moz-transition: all 0.5s ease-in-out;-o-transition: all 0.5s ease-in-out;-ms-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out;}
 .bt_info{ background-color: rgba(224, 151, 145, 0.27) ; color: black; border:solid 1px red!important;}
 .bt_insc{ background-color: rgba(45, 199, 64, 0.5) ; color: black; border:solid 1px green!important;}
 .bt_info:hover{ background-color: rgba(241, 47, 47, 0.78); color: white;}
@@ -79,7 +67,7 @@ img{
 .info{
 	border-radius: 7px;
 }
-.h_right{ width: 100%; background-color: rgba(27, 22, 22, 0.72); margin: 0 auto;height: 45px; text-align: center;}
+.h_right{ width: 100%; background-color: rgba(255, 245, 0, 1); margin: 0 auto;height: 45px; text-align: center;}
 .menu{padding: 0 50px}
 .wrap{width: 95%;}
 
@@ -130,3 +118,11 @@ html, body{height: auto}
 }
 /****************FIM***********************/
 .tm-head-grid{margin: 0 8%}
+.menu{width: 45px;height: 35px;margin:5px 0 0 80px;padding: 1px 0px 0px 6px;}
+.listar-menu{background:black;width:33px;height:4px;margin-top:5px;}
+.h_right>span{margin: 10px 10px 10px -80px ; color: white; font-size: 25px;text-shadow: 2px 2px 2px black ;font-weight: bold;}
+#menu_oculto{display: none; background-color: rgb(95, 95, 95);opacity: 1;position: absolute; width: 100%;}
+#menu_oculto>ul{padding:50px;}
+#menu_oculto>ul>li{display: inline;margin-left: 20px}
+#menu_oculto>ul>li>a{color: white; text-decoration: none; font-size: 21px;}
+#menu_oculto>ul>li>a:hover{clear: both!important;color: yellow;}
