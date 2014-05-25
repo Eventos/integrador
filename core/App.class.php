@@ -8,6 +8,7 @@ class App
 		spl_autoload_register(array($this, 'autoloader'));	
 		define('SITE_ROOT', '/var/www/projetoIntegrador/');
 		define('URL_BASE', 'http://localhost/projetoIntegrador/');
+		define('FOLDER', '/projetoIntegrador/');
 		header('Content-Type: text/html; charset=utf-8');
 	}
 
