@@ -13,8 +13,9 @@ class RouterAbstract
 	{
 		$params = explode('/', $url) ? explode('/', $url) : null;
 		unset($params[0]); unset($params[1]);
-		if($params != null){
-			$this->calcRoutes($params);	
+		
+		if($params != null && !empty($params[2]) && $params[2] != ''){
+			$this->calcRoutes($params);
 		}else{
 			$this->controller = 'index';
 			$this->action = 'index';

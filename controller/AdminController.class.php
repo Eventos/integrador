@@ -5,6 +5,8 @@
 class AdminController extends ControllerAbstract
 {
 	function testeAction($params){
-		var_dump($params);
+		if(!count($params)){
+			$this->render('area_admin');
+		}
 	}
 }
