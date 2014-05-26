@@ -4,11 +4,11 @@
 */
 class IndexController extends ControllerAbstract
 {	
-	public function indexAction(){
-		echo 'teste';
+	public function indexAction($params){
+		$this->render('index');
 	}
 
-	public function testeAction(){
-		echo 'teste action';
+	public function testeAction($params){
+		var_dump($params);
 	}
 }

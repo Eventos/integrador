@@ -47,8 +47,21 @@ class RouterAbstract
 
 	private function call($controller, $action, $params){
 		$controller = ucwords($controller).'Controller';
-		$call = new $controller;
-		$action .= 'Action';
-		$call->$action($this->params);
+		if(file_exists(SITE_ROOT.'controller/'.ucwords($controller).'.class.php')){
+			$call = new $controller;	
+			$action .= 'Action';
+			if(method_exists($call, $action)){
+				$call->$action($this->params);
+			}else{
+				$this->errorPage();	
+			}
+		}else{
+			$this->errorPage();
+		}
+	}
+
+	private function errorPage(){
+		//RENDERIZAR PAGINA NAO ENCONTRADA
+		die("Ops, página não encontrada");
 	}
 }
