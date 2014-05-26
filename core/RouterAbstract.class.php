@@ -26,12 +26,12 @@ class RouterAbstract
 	private function calcRoutes($params){
 		switch (count($params)) {
 			case 1:
-				$this->controller = $params[0];
+				$this->controller = $params[2];
 				$this->action = 'index';
 				break;
 			case 2:
-				$this->controller = $params[0];
-				$this->action = $params[1];
+				$this->controller = $params[2];
+				$this->action = $params[3];
 				break;
 			default:
 				$this->controller = $params[2];
@@ -49,6 +49,6 @@ class RouterAbstract
 		$controller = ucwords($controller).'Controller';
 		$call = new $controller;
 		$action .= 'Action';
-		$call->$action();
+		$call->$action($this->params);
 	}
 }
