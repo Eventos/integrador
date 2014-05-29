@@ -58,7 +58,7 @@ class App
 	}
 
 	static function redirect($url){
-		if(!strpos('http://', $url)){
+		if(strpos($url, 'http://') === false){
 			$router = new RouterAbstract(FOLDER.$url);
 		}else{
 			header("Location: $url");
