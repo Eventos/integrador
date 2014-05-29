@@ -99,7 +99,7 @@ body {
     display:block;
 }
 .nav {
-	margin-top:44px;
+   margin-top:15px;
    width:100%;
 }
 .nav-list {
@@ -286,7 +286,7 @@ body {
 .view p {
    	font-family: 'Droid Serif', serif;
 	font-style: italic;
-	font-size: 0.82355em;
+	font-size: 1.2em;
 	position: relative;
 	color: #fff;
 	padding: 10px 20px 7px;
@@ -677,7 +677,7 @@ body {
 }
 [data-tooltip]:after {
 	height: 22px;
-	padding: 11px 11px 0;
+	padding: 5px 11px 0;
 	font-size: 13px;
 	line-height: 11px;
 	content: attr(data-tooltip);

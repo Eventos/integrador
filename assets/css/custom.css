@@ -55,7 +55,7 @@ img{
 .da-slide .a{
 	text-shadow: 1px 1px black;
 }
-.bt_info, .bt_insc{width: 150px;height: 45px;border: none !important;border-radius: 7px;	margin: 0 8px 0 8px;font-weight: bold;-webkit-transition: all 0.5s ease-in-out;-moz-transition: all 0.5s ease-in-out;-o-transition: all 0.5s ease-in-out;-ms-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out;}
+.bt_info, .bt_insc{width: 130px;height: 45px;border: none !important;border-radius: 7px; margin: 0 15px 0 15px;font-weight: bold;-webkit-transition: all 0.5s ease-in-out;-moz-transition: all 0.5s ease-in-out;-o-transition: all 0.5s ease-in-out;-ms-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out;}
 .bt_info{ background-color: rgba(224, 151, 145, 0.27) ; color: black; border:solid 1px red!important;}
 .bt_insc{ background-color: rgba(45, 199, 64, 0.5) ; color: black; border:solid 1px green!important;}
 .bt_info:hover{ background-color: rgba(241, 47, 47, 0.78); color: white;}
@@ -99,6 +99,7 @@ html, body{height: auto}
 .submit{text-align: center;margin: 0 auto 50px}
 .submit button{width: 20%}
 .select-box{width: 50%;padding: 10px; background-color: white; border-radius: 3px; margin-bottom: 15px;}
+.select-box:focus{border:none;}
 .title-event{height: 80px}
 /******Espacamento menu com menor resuloção ************/
 @media only screen and (max-width: 1115px){
@@ -118,7 +119,7 @@ html, body{height: auto}
 }
 /****************FIM***********************/
 .tm-head-grid{margin: 0 8%}
-.menu{width: 45px;height: 35px;margin:5px 0 0 80px;padding: 1px 0px 0px 6px;}
+.menu{cursor: pointer;width: 120px;height: 35px;margin:5px 0 0 80px;padding: 1px 0px 0px 6px;}
 .listar-menu{background:black;width:33px;height:4px;margin-top:5px;}
 .h_right>span{margin: 10px 10px 10px -80px ; color: white; font-size: 25px;text-shadow: 2px 2px 2px black ;font-weight: bold;}
 #menu_oculto{display: none; background-color: rgb(95, 95, 95);opacity: 1;position: absolute; width: 100%;}
@@ -126,3 +127,9 @@ html, body{height: auto}
 #menu_oculto>ul>li{display: inline;margin-left: 20px}
 #menu_oculto>ul>li>a{color: white; text-decoration: none; font-size: 21px;}
 #menu_oculto>ul>li>a:hover{clear: both!important;color: yellow;}
+#fancybox{width: 100%; height: 5014px; z-index: 999999998; position: absolute; top: 0px; left: 0px; background-color: rgba(0, 0, 0, 0.89);}
+.boas-vindas{padding: 5px; width:420px; position:relative ; top:200px; height:300px; margin: 0 auto; background-color:#eee;}
+.Three-Dee{font-family: Garamond, serif;line-height: 1em;color: #fff200;font-weight:bold;font-size: 75px;text-shadow:0px 0px 0 rgb(225,212,-30),1px 1px 0 rgb(214,201,-41),2px 2px 0 rgb(202,189,-53),3px 3px 0 rgb(190,177,-65),4px 4px 0 rgb(178,165,-77),5px 5px 0 rgb(167,154,-88),6px 6px 0 rgb(155,142,-100),7px 7px 0 rgb(143,130,-112),8px 8px 0 rgb(132,119,-123),9px 9px 0 rgb(120,107,-135),10px 10px 0 rgb(108,95,-147),11px 11px 0 rgb(96,83,-159),12px 12px 0 rgb(85,72,-170),13px 13px 0 rgb(73,60,-182), 14px 14px 0 rgb(61,48,-194),15px 15px 14px rgba(0,0,0,1),15px 15px 1px rgba(0,0,0,0.5),0px 0px 14px rgba(0,0,0,.2);}
+.fechar{cursor: pointer;background: url(../images/fechar.png)no-repeat;height: 40px;width: 106%;background-size: contain;margin: -28px 0px -15px 0px;background-position: right;}
+.bt_menu>span{transition: all 0.3s linear ;}
+.bt_menu>span{float: right;margin: -21px 15px;font-size: 18px;font-weight: bold;}

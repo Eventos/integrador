@@ -6,9 +6,9 @@ class App
 {
 	function __construct(){
 		spl_autoload_register(array($this, 'autoloader'));	
-		define('SITE_ROOT', '/var/www/projetoIntegrador/');
-		define('URL_BASE', 'http://localhost/projetoIntegrador/');
-		define('FOLDER', '/projetoIntegrador/');
+		define('SITE_ROOT', '/var/www/integrador/');
+		define('URL_BASE', 'http://localhost/integrador');
+		define('FOLDER', '/integrador/');
 		header('Content-Type: text/html; charset=utf-8');
 	}
 
