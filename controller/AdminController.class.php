@@ -4,9 +4,12 @@
 */
 class AdminController extends ControllerAbstract
 {
+	function indexAction($params){
+		$admin = new $params['model'];
+		$admin->isLogged();
+	}
+
 	function testeAction($params){
-		if(!count($params)){
-			$this->render('inserir_eventos');
-		}
+		echo 'teste';
 	}
 }

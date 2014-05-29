@@ -47,22 +47,24 @@ class RouterAbstract
 	}
 
 	private function call($controller, $action, $params){
-		$controller = ucwords($controller).'Controller';
-		if(file_exists(SITE_ROOT.'controller/'.ucwords($controller).'.class.php')){
-			$call = new $controller;	
-			$action .= 'Action';
+		$modelName = ucwords($controller).'Model';
+		$controllerName = ucwords($controller).'Controller';
+
+		if(file_exists(SITE_ROOT.'controller/'.$controllerName.'.class.php')){
+			$call = new $controllerName;	
+			$this->params['model'] = file_exists(SITE_ROOT.'model/'.$modelName.'.class.php') ? new $modelName : '';
+			$actionName = $action.'Action';
 			if(method_exists($call, $action)){
-				$call->$action($this->params);
+				$call->$actionName($this->params);
+			}elseif(method_exists($call, 'indexAction')){
+				$call->indexAction($this->params);
 			}else{
-				$this->errorPage();	
+				App::errorPage("CONTROLLER: $controllerName => ACTION: $actionName");	
 			}
 		}else{
-			$this->errorPage();
+			App::errorPage("CONTROLLER: $controllerName NOT EXISTS");	
 		}
 	}
 
-	private function errorPage(){
-		//RENDERIZAR PAGINA NAO ENCONTRADA
-		die("Ops, página não encontrada");
-	}
+	
 }
