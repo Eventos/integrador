@@ -52,7 +52,6 @@ class RouterAbstract
 
 		if(file_exists(SITE_ROOT.'controller/'.$controllerName.'.class.php')){
 			$call = new $controllerName;
-			$this->params['model'] = file_exists(SITE_ROOT.'model/'.$modelName.'.class.php') ? $modelName : '';
 			$actionName = $action.'Action';
 			if(method_exists($call, $actionName)){
 				$call->$actionName($this->params);
