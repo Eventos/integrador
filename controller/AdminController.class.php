@@ -6,10 +6,11 @@ class AdminController extends ControllerAbstract
 {
 	function indexAction($params){
 		$admin = new $params['model'];
-		$admin->isLogged();
+		echo 'index';
 	}
 
 	function testeAction($params){
+		var_dump($params);
 		echo 'teste';
 	}
 }

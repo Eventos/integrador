@@ -51,10 +51,10 @@ class RouterAbstract
 		$controllerName = ucwords($controller).'Controller';
 
 		if(file_exists(SITE_ROOT.'controller/'.$controllerName.'.class.php')){
-			$call = new $controllerName;	
-			$this->params['model'] = file_exists(SITE_ROOT.'model/'.$modelName.'.class.php') ? new $modelName : '';
+			$call = new $controllerName;
+			$this->params['model'] = file_exists(SITE_ROOT.'model/'.$modelName.'.class.php') ? $modelName : '';
 			$actionName = $action.'Action';
-			if(method_exists($call, $action)){
+			if(method_exists($call, $actionName)){
 				$call->$actionName($this->params);
 			}elseif(method_exists($call, 'indexAction')){
 				$call->indexAction($this->params);
