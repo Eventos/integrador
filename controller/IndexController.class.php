@@ -11,4 +11,11 @@ class IndexController extends ControllerAbstract
 	public function testeAction($params){
 		var_dump($params);
 	}
+	public function loginAction($params){
+		$this->render('login');
+	}
+	public function logarAction($params){
+		$var = $_POST;
+		var_dump($var);
+	}
 }

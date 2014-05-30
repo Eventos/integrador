@@ -55,7 +55,7 @@ img{
 .da-slide .a{
 	text-shadow: 1px 1px black;
 }
-.bt_info, .bt_insc{width: 130px;height: 45px;border: none !important;border-radius: 7px; margin: 0 15px 0 15px;font-weight: bold;-webkit-transition: all 0.5s ease-in-out;-moz-transition: all 0.5s ease-in-out;-o-transition: all 0.5s ease-in-out;-ms-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out;}
+.bt_info, .bt_insc{border: none !important;border-radius: 7px; margin: 0 15px 0 15px;font-weight: bold;-webkit-transition: all 0.5s ease-in-out;-moz-transition: all 0.5s ease-in-out;-o-transition: all 0.5s ease-in-out;-ms-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out;width: 150px;height: 45px}
 .bt_info{ background-color: rgba(224, 151, 145, 0.27) ; color: black; border:solid 1px red!important;}
 .bt_insc{ background-color: rgba(45, 199, 64, 0.5) ; color: black; border:solid 1px green!important;}
 .bt_info:hover{ background-color: rgba(241, 47, 47, 0.78); color: white;}

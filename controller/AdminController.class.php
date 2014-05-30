@@ -4,9 +4,16 @@
 */
 class AdminController extends ControllerAbstract
 {
+	function indexAction($params){
+		$admin = new AdminModel();
+		$admin->isLogged();
+	}
+
 	function testeAction($params){
-		if(!count($params)){
-			$this->render('area_admin');
-		}
+		App::redirect('admin/teste1');
+	}
+
+	function teste1Action($params){
+		echo 'teste1';
 	}
 }

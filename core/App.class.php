@@ -5,11 +5,12 @@
 class App
 {
 	function __construct(){
-		spl_autoload_register(array($this, 'autoloader'));	
-		define('SITE_ROOT', '/var/www/integrador/');
-		define('URL_BASE', 'http://localhost/integrador');
-		define('FOLDER', '/integrador/');
-		header('Content-Type: text/html; charset=utf-8');
+		$this->config();
+		spl_autoload_register(array($this, 'autoloader'));
+	}
+
+	private function config(){
+		require_once('config/config.php');
 	}
 
 	function autoloader($class){
@@ -47,5 +48,20 @@ class App
 
 	static function getUrl(){
 		return URL_BASE;
+	}
+
+	static function errorPage($msg = null){
+		//RENDERIZAR PAGINA NAO ENCONTRADA
+		echo "Ops, página não encontrada<br>";
+		print_r($msg); 
+		exit;
+	}
+
+	static function redirect($url){
+		if(strpos($url, 'http://') === false){
+			$router = new RouterAbstract(FOLDER.$url);
+		}else{
+			header("Location: $url");
+		}
 	}
 }
