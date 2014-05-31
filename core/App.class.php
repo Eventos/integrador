@@ -35,7 +35,7 @@ class App
 		Flash::getMessages();
 	}
 
-	static function renderTemplate($template, $vars){
+	/*static function renderTemplate($template, $vars){
 		if(strpos($template, '.phtml') || strpos($template, '.php')){
 			$file = SITE_ROOT.'view'.$template;
 		}else{
@@ -44,16 +44,14 @@ class App
 		if(file_exists($file)){
 			require_once($file);
 		}
-	}
+	}*/
 
 	static function getUrl(){
 		return URL_BASE;
 	}
 
 	static function errorPage($msg = null){
-		//RENDERIZAR PAGINA NAO ENCONTRADA
-		echo "Ops, página não encontrada<br>";
-		print_r($msg); 
+		require_once(SITE_ROOT.'view/error.phtml');
 		exit;
 	}
 

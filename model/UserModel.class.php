@@ -1,8 +1,8 @@
 <?php
 /**
-* Evento que controla a parte de administração do sistema
+* Evento que controla a parte do Usuario
 */
-class AdminModel extends ModelAbstract
+class UserModel extends ModelAbstract
 {
 	private $name;
 	private $email;

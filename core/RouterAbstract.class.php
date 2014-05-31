@@ -55,7 +55,7 @@ class RouterAbstract
 			$actionName = $action.'Action';
 			if(method_exists($call, $actionName)){
 				$call->$actionName($this->params);
-			}elseif(method_exists($call, 'indexAction')){
+			}elseif(method_exists($call, 'indexAction') && $actionName == 'Action'){
 				$call->indexAction($this->params);
 			}else{
 				App::errorPage("CONTROLLER: $controllerName => ACTION: $actionName");	

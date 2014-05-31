@@ -1,14 +1,14 @@
 <?php
 /**
-* Admin index controller
+* Usuario index controller
 */
-class AdminController extends ControllerAbstract
+class UserController extends ControllerAbstract
 {
 	function indexAction($params){
 		if(count($params) == 0){
 			$admin = new AdminModel();
 			$admin->isLogged();
-			$this->render('admin/area_admin');
+			$this->render('user/area_admin');
 		}else{
 			App::errorPage('Erro');
 		}

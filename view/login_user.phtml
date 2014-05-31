@@ -1,0 +1,50 @@
+<?php
+	include_once 'core/App.class.php';
+?>
+<!Doctype html>
+<html>
+	<header>
+		<meta charset='utf-8'>
+		<title><?php echo 'titulo'?></title>
+		<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
+		<?php
+			Page::addStyleElement('js', 'jquery.min.js');
+			Page::addStyleElement('css', 'bootstrap.min.css');
+			Page::addStyleElement('css', 'custom.css');
+			Page::addStyleElement('css', 'login.css');
+			Page::addStyleElement('js', 'login.js');
+		?>
+		</script>
+	</header>	
+<body id="page">
+
+    <ul class="cb-slideshow">
+        <li><span>Image 01</span></li>
+        <li><span>Image 02</span></li>
+        <li><span>Image 03</span></li>
+        <li><span>Image 04</span></li>
+        <li><span>Image 05</span></li>
+        <li><span>Image 06</span></li>
+    </ul>
+    <div id="glass">
+    	<div id="title">Área do Participante</div>
+    	<form method="POST" id="form" action="../logger/user">
+			<div class="login">
+				<label>Email</label>
+				<div class="input-group">
+					<span class="input-group-addon">@</span>
+      				<input type="email" class="form-control" placeholder="Email" name="email" >
+      			</div>
+				<label>Senha</label>
+				<div class="input-group">
+					<span class="input-group-addon">&nbsp;*&nbsp;</span>
+      				<input type="password" class="form-control" placeholder="Senha" name="password">
+      			</div>
+      			<div class="input-submit">
+      				<input type="submit" class="btn btn-default" value="LOGIN" >
+      			</div>
+			</div>
+		</form>
+    </div>
+</body>
+</html>

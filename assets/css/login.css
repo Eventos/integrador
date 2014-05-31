@@ -56,6 +56,7 @@ p.codrops-demos a.current-demo,p.codrops-demos a.current-demo:hover{	color: #A57
 .cb-slideshow li:nth-child(4) div { -webkit-animation-delay: 18s;    -moz-animation-delay: 18s;    -o-animation-delay: 18s;    -ms-animation-delay: 18s;    animation-delay: 18s;}
 .cb-slideshow li:nth-child(5) div { -webkit-animation-delay: 24s;    -moz-animation-delay: 24s;    -o-animation-delay: 24s;    -ms-animation-delay: 24s;    animation-delay: 24s;}
 .cb-slideshow li:nth-child(6) div { -webkit-animation-delay: 30s;   -moz-animation-delay: 30s; -o-animation-delay: 30s; -ms-animation-delay: 30s;    animation-delay: 30s;}
+/*Animação para chrome com web-kit*/
 @-webkit-keyframes imageAnimation { 
 	0% {
 	    opacity: 0;
@@ -63,19 +64,17 @@ p.codrops-demos a.current-demo,p.codrops-demos a.current-demo:hover{	color: #A57
 	}
 	8% {
 	    opacity: 1;
-	    -webkit-transform: scale(1.05);
 	    -webkit-animation-timing-function: ease-out;
 	}
 	17% {
 	    opacity: 1;
-	    -webkit-transform: scale(1.1) rotate(3deg);
 	}
 	25% {
 	    opacity: 0;
-	    -webkit-transform: scale(1.1) rotate(3deg);
 	}
 	100% { opacity: 0 }
 }
+/*Animação para mozila - firefox*/
 @-moz-keyframes imageAnimation { 
 	0% {
 	    opacity: 0;
@@ -83,19 +82,17 @@ p.codrops-demos a.current-demo,p.codrops-demos a.current-demo:hover{	color: #A57
 	}
 	8% {
 	    opacity: 1;
-	    -moz-transform: scale(1.05);
 	    -moz-animation-timing-function: ease-out;
 	}
 	17% {
 	    opacity: 1;
-	    -moz-transform: scale(1.1) rotate(3deg);
 	}
 	25% {
 	    opacity: 0;
-	    -moz-transform: scale(1.1) rotate(3deg);
 	}
 	100% { opacity: 0 }
 }
+/*Animação para Opera*/
 @-o-keyframes imageAnimation { 
 	0% {
 	    opacity: 0;
@@ -103,19 +100,17 @@ p.codrops-demos a.current-demo,p.codrops-demos a.current-demo:hover{	color: #A57
 	}
 	8% {
 	    opacity: 1;
-	    -o-transform: scale(1.05);
 	    -o-animation-timing-function: ease-out;
 	}
 	17% {
 	    opacity: 1;
-	    -o-transform: scale(1.1) rotate(3deg);
 	}
 	25% {
 	    opacity: 0;
-	    -o-transform: scale(1.1) rotate(3deg);
 	}
 	100% { opacity: 0 }
 }
+/*Animação para */
 @-ms-keyframes imageAnimation { 
 	0% {
 	    opacity: 0;
@@ -123,19 +118,17 @@ p.codrops-demos a.current-demo,p.codrops-demos a.current-demo:hover{	color: #A57
 	}
 	8% {
 	    opacity: 1;
-	    -ms-transform: scale(1.05);
 	    -ms-animation-timing-function: ease-out;
 	}
 	17% {
 	    opacity: 1;
-	    -ms-transform: scale(1.1) rotate(3deg);
 	}
 	25% {
 	    opacity: 0;
-	    -ms-transform: scale(1.1) rotate(3deg);
 	}
 	100% { opacity: 0 }
 }
+/*Animações pradrão css*/
 @keyframes imageAnimation { 
 	0% {
 	    opacity: 0;
@@ -143,16 +136,13 @@ p.codrops-demos a.current-demo,p.codrops-demos a.current-demo:hover{	color: #A57
 	}
 	8% {
 	    opacity: 1;
-	    transform: scale(1.05);
 	    animation-timing-function: ease-out;
 	}
 	17% {
 	    opacity: 1;
-	    transform: scale(1.1) rotate(3deg);
 	}
 	25% {
 	    opacity: 0;
-	    transform: scale(1.1) rotate(3deg);
 	}
 	100% { opacity: 0 }
 }
@@ -165,12 +155,16 @@ p.codrops-demos a.current-demo,p.codrops-demos a.current-demo:hover{	color: #A57
 	.cb-slideshow li div h3 { font-size: 50px }
 	#glass{width: 90% !important}
 }
-#glass {margin: 7% auto;width: 50%;height: 400px;border-radius: 10px;background-color: rgba(155, 149, 0, 0.86);box-shadow: 0 5px 10px rgba(0, 0, 0, 1), inset 0 50px rgba(4, 12, 12, 0.87), inset 0 -15px 30px rgba(240, 232, 36, 1);-moz-transform: translate(-15px, 0px);-webkit-transform: translate(-15px, 0px);-o-transform: translate(-15px, 0px);-ms-transform: translate(-15px, 0px);transform: translate(-15px, 0px);}
+#glass {margin: 7% auto;width: 40%;height: 400px;border-radius: 10px;background-color: rgba(155, 149, 0, 0.39);box-shadow: 0 5px 10px rgba(0, 0, 0, 1), inset 0 50px rgba(4, 12, 12, 0.87), inset 0 -15px 30px rgba(240, 232, 36, 1);-moz-transform: translate(-15px, 0px);-webkit-transform: translate(-15px, 0px);-o-transform: translate(-15px, 0px);-ms-transform: translate(-15px, 0px);transform: translate(-15px, 0px);}
 #title{	text-align: center;	height: 50px;	color: rgb(160, 160, 160);	font: italic bold 25px/50px Georgia, serif;	text-shadow: 1px 1px 2px white;	 }
 div.btn-group.btn-group-justified{	font-family: myfont !important;}
 .btn-default{color: black;	text-shadow: 1px 1px 2px yellow;}
-.login{	width: 60%;	margin: 10% auto; font-family: sans-serif;}
+.login{	width: 65%;	margin: 10% auto; font-family: sans-serif;}
 .login label{color: white}
-input.btn.btn-default{width: 100px; font-weight: bold;text-shadow: 1px 1px 1px #333;}
-
-​
+input.btn.btn-default{margin-top: 20px;width: 100%; font-weight: bold; color: white; text-shadow:1px 1px 1px black;font-size:17px ; background: rgba(60, 231, 28, 0.44); border: outset 2px rgb(42, 143, 23)}
+input.btn.btn-default:hover{border: inset 2px rgb(42, 143, 23); color: black}
+.form-control{background: rgba(73, 73, 38, 0.8);
+color: white!important;
+border-color: rgb(75, 75, 50);}
+.input-submit{width: 100%}
+.input-group-addon{color: white; background: rgba(145, 140, 88, 0.94); border:white;}
