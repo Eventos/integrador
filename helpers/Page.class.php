@@ -26,4 +26,16 @@ class Page
 			}
 		}
 	}
+
+	static function addThinElement($type, $file){
+		$file_url = URL_BASE.'assets/thin/'.$type.'/'.$file;
+		$file = SITE_ROOT.'assets/thin/'.$type.'/'.$file;
+		if(file_exists($file)){
+			if($type == 'js'){
+				echo '<script type="text/javascript" src="'.$file_url.'"></script>';
+			}elseif($type == 'css'){
+				echo '<link href='.$file_url.' rel="stylesheet" type="text/css" media="all" />';
+			}
+		}
+	}
 }

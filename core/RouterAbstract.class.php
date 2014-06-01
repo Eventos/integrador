@@ -44,6 +44,7 @@ class RouterAbstract
 				}
 				break;
 		}
+		$this->call($this->controller, $this->action, $this->params);
 	}
 
 	private function call($controller, $action, $params){
@@ -53,7 +54,8 @@ class RouterAbstract
 		if(file_exists(SITE_ROOT.'controller/'.$controllerName.'.class.php')){
 			$call = new $controllerName;
 			$actionName = $action.'Action';
-			if(method_exists($call, $actionName)){
+
+			if(method_exists($call,$actionName)){
 				$call->$actionName($this->params);
 			}elseif(method_exists($call, 'indexAction') && $actionName == 'Action'){
 				$call->indexAction($this->params);

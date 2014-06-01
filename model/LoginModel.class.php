@@ -19,10 +19,12 @@ class LoginModel extends ModelAbstract{
 			$_COOKIE['email'] = $data['email'];
 			$_COOKIE['name']  = $data['name'];
 
+			Flash::setmessage('success','Bem Vindo'.$_COOKIE['name']);
 			App::redirect('admin/index');
 		}
 		else{
-			App::redirect('index/login');
+			Flash::setmessage('danger','Dados do login Invalidos');
+			App::redirect('login/verify/admin');
 		}
 
 	}
@@ -40,11 +42,12 @@ class LoginModel extends ModelAbstract{
 			session_start();
 			$_COOKIE['email'] = $data['email'];
 			$_COOKIE['name']  = $data['name'];
-
+			Flash::setmessage('success','Bem vindo'.$_COOKIE['name']);
 			App::redirect('admin/index');
 		}
 		else{
-			App::redirect('index/login');
+			Flash::setmessage('danger','Dados do login Invalidos');
+			App::redirect('login/verify/user');
 		}
 	}
 }

@@ -31,8 +31,8 @@ class App
 	}
 
 	static function ready(){
-		Flash::setMessage(null,null);
-		Flash::getMessages();
+		/*Flash::setMessage('success','tudo bem');*/
+		Flash::getMessage();
 	}
 
 	/*static function renderTemplate($template, $vars){

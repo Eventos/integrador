@@ -1,3 +1,55 @@
 <?php
-	echo "Area de login do admin";
+	include_once 'core/App.class.php';
+	App::ready();
+	$URL_BASE = App::getUrl();
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Area Restrita</title>
+	<meta charset='utf-8'>
+	<?
+	Page::addThinElement('css', 'bootstrap.css');
+	Page::addThinElement('css', 'thin-admin.css');
+	Page::addThinElement('css', 'font-awesome.css');
+	Page::addThinElement('css', 'style.css');
+	Page::addStyleElement('css', 'login_admin.css');
+	Page::addStyleElement('js', 'bootstrap.min.js');
+	Page::addThinElement('js', 'jquery.js');
+	?>
+</head>
+<body>
+<h2 class="form-title">Área do Administrador</h2>
+
+<div class="widget">
+	<div class="login-content">
+	   <div class="widget-content" style="padding-bottom:0;">
+	   <form method="POST" action="<?= $URL_BASE.'login/logger/admin' ?>" class="no-margin">
+	      <h3 class="form-title">Login Administrador</h3>
+	      <fieldset>
+	         <div class="form-group no-margin">
+	            <label for="email">Email</label>
+	            <div class="input-group input-group-lg">
+	               <span class="input-group-addon"><i class="icon-user"></i></span>
+	               <input type="email" placeholder="Seu Email" class="form-control input-lg" name="email" id="email">
+	            </div>
+	         </div>
+
+	         <div class="form-group">
+	            <label for="password">Senha</label>
+	            <div class="input-group input-group-lg">
+	               <span class="input-group-addon"><i class="icon-lock"></i></span>
+	               <input type="password" placeholder="Sua Senha" class="form-control input-lg" name="password" id="password">
+	            </div>
+	        </div>
+	     </fieldset>
+
+	     <div class="form-actions">
+			<input class="btn btn-success pull-right" type="submit" value="Logar">
+	        <div class="forgot"><a href="#" class="forgot">Esqueceu sua senha?</a></div>           
+	     </div>          
+      </form>
+   </div>
+</div>
+</body>
+</html>

@@ -11,7 +11,7 @@ class AdminModel extends ModelAbstract
 		if(isset($_COOKIE['name'])){
 			return true;
 		}else{
-			die('você não está logado!');
+			App::redirect(App::getUrl().'index/login/admin');
 		}
 	}
 

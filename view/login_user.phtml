@@ -1,5 +1,9 @@
 <?php
 	include_once 'core/App.class.php';
+	$app = new APP;
+	$app->ready();
+    $URL_BASE = App::getUrl();
+
 ?>
 <!Doctype html>
 <html>
@@ -28,17 +32,17 @@
     </ul>
     <div id="glass">
     	<div id="title">Área do Participante</div>
-    	<form method="POST" id="form" action="../logger/user">
+    	<form method="POST" id="form" action="<?= $URL_BASE.'login/logger/user' ?>">
 			<div class="login">
 				<label>Email</label>
 				<div class="input-group">
 					<span class="input-group-addon">@</span>
-      				<input type="email" class="form-control" placeholder="Email" name="email" >
+      				<input type="email" class="form-control" placeholder="Insira seu Email" name="email" >
       			</div>
 				<label>Senha</label>
 				<div class="input-group">
 					<span class="input-group-addon">&nbsp;*&nbsp;</span>
-      				<input type="password" class="form-control" placeholder="Senha" name="password">
+      				<input type="password" class="form-control" placeholder="Digite sua Senha" name="password">
       			</div>
       			<div class="input-submit">
       				<input type="submit" class="btn btn-default" value="LOGIN" >

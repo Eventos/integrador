@@ -1,0 +1,7 @@
+body {background-image: url(../images/fundo3.jpg);}
+.widget-content{border: 1px solid rgba(148, 97, 32, 0.65);}
+.form-title{text-align: center}
+input.btn.btn-success.pull-right{width: 100%; margin-bottom: 20px;}
+#email,#password{border: inset 1px rgba(0, 0, 0, 0.22);box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.42);}
+span.input-group-addon{border: inset 1px rgba(0, 0, 0, 0.22);box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.42);}
+.btn-success:hover{background-color: rgba(92, 184, 92, 1);}
