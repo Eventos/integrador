@@ -9,7 +9,7 @@
 <html>
 	<header>
 		<meta charset='utf-8'>
-		<title><?php echo 'titulo'?></title>
+		<title>Login Participante</title>
 		<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
 		<?php
 			Page::addStyleElement('js', 'jquery.min.js');
@@ -30,8 +30,9 @@
         <li><span>Image 05</span></li>
         <li><span>Image 06</span></li>
     </ul>
+    <div id="title">Área do Participante</div>
     <div id="glass">
-    	<div id="title">Área do Participante</div>
+    	<div id="title">Sistema de Login</div>
     	<form method="POST" id="form" action="<?= $URL_BASE.'login/logger/user' ?>">
 			<div class="login">
 				<label>Email</label>
@@ -49,6 +50,7 @@
       			</div>
 			</div>
 		</form>
+		<div id="forgot"><a href="#">Esqueceu sua senha?</a></div>
     </div>
 </body>
 </html>
