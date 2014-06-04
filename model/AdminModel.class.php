@@ -8,7 +8,7 @@ class AdminModel extends ModelAbstract
 	private $email;
 
 	function isLogged(){
-		if(isset($_COOKIE['name'])){
+		if(isset($_SESSION['name'])){
 			return true;
 		}else{
 			App::redirect(App::getUrl().'index/login/admin');
@@ -16,8 +16,8 @@ class AdminModel extends ModelAbstract
 	}
 
 	function logout(){
-		unset($_COOKIE['name']);
-		unset($_COOKIE['email']);
+		unset($_SESSION['name']);
+		unset($_SESSION['email']);
 		App::redirect(App::getUrl());
 	}
 }
