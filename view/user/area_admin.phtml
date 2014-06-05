@@ -25,7 +25,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Bem Vindo&nbsp;<?= $_COOKIE['name'] ?></a>
+          <a class="navbar-brand" href="#">Bem Vindo&nbsp;<?= $_SESSION['name'] ?></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -36,7 +36,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
-              <a href="#" class="dropdown-toggle drop-user" data-toggle="dropdown"><?= $_COOKIE['name'] ?>&nbsp;<span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle drop-user" data-toggle="dropdown"><?= $_SESSION['name'] ?>&nbsp;<span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#"><span class="glyphicon glyphicon-plus"></span>&nbsp;Criar nova conta Administrador</a></li>
                 <li class="divider"></li>

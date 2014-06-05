@@ -16,10 +16,10 @@ class LoginModel extends ModelAbstract{
 		}
 		if (count($data) >= 2){
 			session_start();
-			$_COOKIE['email'] = $data['email'];
-			$_COOKIE['name']  = $data['name'];
+			$_SESSION['email'] = $data['email'];
+			$_SESSION['name']  = $data['name'];
 
-			Flash::setmessage('success','Bem Vindo'.$_COOKIE['name']);
+			Flash::setmessage('success','Bem Vindo'.$_SESSION['name']);
 			App::redirect('admin/index');
 		}
 		else{
@@ -40,9 +40,9 @@ class LoginModel extends ModelAbstract{
 		}
 		if (count($data) >= 2){
 			session_start();
-			$_COOKIE['email'] = $data['email'];
-			$_COOKIE['name']  = $data['name'];
-			Flash::setmessage('success','Bem vindo'.$_COOKIE['name']);
+			$_SESSION['email'] = $data['email'];
+			$_SESSION['name']  = $data['name'];
+			Flash::setmessage('success','Bem vindo'.$_SESSION['name']);
 			App::redirect('admin/index');
 		}
 		else{
