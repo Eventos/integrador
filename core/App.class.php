@@ -31,6 +31,7 @@ class App
 	}
 
 	static function ready(){
+		App::start_session();
 		/*Flash::setMessage('success','tudo bem');*/
 		Flash::getMessage();
 	}
@@ -57,9 +58,14 @@ class App
 
 	static function redirect($url){
 		if(strpos($url, 'http://') === false){
-			$router = new RouterAbstract(FOLDER.$url);
+			header('Location: '.URL_BASE.$url);
 		}else{
 			header("Location: $url");
 		}
+	}
+
+	static function start_session(){
+		if(!isset($_SESSION))
+			SESSION_START();
 	}
 }
