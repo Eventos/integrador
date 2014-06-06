@@ -11,7 +11,9 @@ class ControllerAbstract
 	}
 
 	function render($view, $params = null){
-		extract($params);
+		if($params != null){
+			extract($params);
+		}
 		require_once(SITE_ROOT.'view/'.$view.'.phtml');
 	}
 }
