@@ -4,7 +4,7 @@
 */
 class Evento
 {
-	function newHelper(){
+	static function newHelper(){
 		$params = array();
 		$palestrantes = new PalestranteModel();
 		$params['palestrantes'] = $palestrantes->getAllPalestrantes();

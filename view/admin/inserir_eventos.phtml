@@ -13,6 +13,7 @@
       Page::addStyleElement('js', 'bootstrap.min.js');
       Page::addStyleElement('js', 'jquery.min.js');
       Page::addStyleElement('js', 'bootstrap.min.js');
+      Page::addStyleElement('js', 'custom.js');
     ?>
 </head>
 <body>
@@ -81,8 +82,16 @@
                   </div>
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox"> Habilitar Insrições para o Evento?
+                      <input type="checkbox" id="habilitar-inscricoes" value=""> Habilitar Inscrições para o Evento?
                     </label>
+                    <div class="valores" style="display: none;">
+                      De: <input type="date"><br>
+                      Até: <input type="date"><br>
+                      Valor: <input type="money">
+                    </div>
+                    <a href="#" id="adicionar-valor">
+                      <button>Adicionar valor</button>
+                    </a>
                   </div>
                   <div class="form-group">
                     <label>Descrição Sobre o Evento</label><br>
