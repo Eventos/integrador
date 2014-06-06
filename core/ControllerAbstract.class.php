@@ -10,7 +10,8 @@ class ControllerAbstract
 		$this->db = DbAbstract::openConnect();
 	}
 
-	function render($view){
+	function render($view, $params = null){
+		extract($params);
 		require_once(SITE_ROOT.'view/'.$view.'.phtml');
 	}
 }

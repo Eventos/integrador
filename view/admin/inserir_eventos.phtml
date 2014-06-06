@@ -65,7 +65,11 @@
                   </div>
                   <div class="form-group">
                     <label>Palestrante</label>
-                    <input type="text" class="form-control" id="palestrante" placeholder="Informações sobre o Palestrante">
+                    <select name="palestrante">
+                      <?php foreach ($palestrantes as $palestrante) {
+                          echo '<option value="'.$palestrante['id_palestrante'].'">'.$palestrante['nome'].'</option>';
+                      } ?>
+                    </select>
                   </div>
                   <div class="form-inline">
                     <label for="exampleInputFile">Data Do Evento</label>

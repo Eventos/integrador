@@ -18,4 +18,15 @@ class AdminController extends ControllerAbstract
 		$admin = new AdminModel();
 		$admin->logout();
 	}
+
+	function eventosAction($params){
+		if(count($params) == 0){
+			die('Listar eventos');
+		}elseif(isset($params[0]) && $params[0] == 'new' && count($params) == 1){
+			if($params[0] == 'new'){
+				$paramsView = Evento::newHelper();
+				$this->render('admin/inserir_eventos', $paramsView);
+			}
+		}
+	}
 }
