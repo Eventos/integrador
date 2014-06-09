@@ -14,8 +14,7 @@ class ControllerAbstract
 		if($params != null){
 			extract($params);
 		}
-		if(strpos($view, 'admin') !== false){
-			var_dump(SITE_ROOT.'view/admin/head.phtml');
+		if(strpos($view, 'admin') !== false && strpos($view, 'login') === false){
 			require_once(SITE_ROOT.'view/admin/head.phtml');
 			require_once(SITE_ROOT.'view/'.$view.'.phtml');
 			require_once(SITE_ROOT.'view/admin/footer.phtml');

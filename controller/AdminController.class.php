@@ -27,6 +27,9 @@ class AdminController extends ControllerAbstract
 				$paramsView = Evento::newHelper();
 				$this->render('admin/inserir_eventos', $paramsView);
 			}
+		}elseif(isset($params[0]) && $params[0] == 'media' && count($params) == 2
+				&& isset($params[1])){
+			die('a');
 		}
 	}
 }

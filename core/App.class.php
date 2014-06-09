@@ -36,17 +36,6 @@ class App
 		Flash::getMessage();
 	}
 
-	/*static function renderTemplate($template, $vars){
-		if(strpos($template, '.phtml') || strpos($template, '.php')){
-			$file = SITE_ROOT.'view'.$template;
-		}else{
-			$file = SITE_ROOT.'view'.$template.'.phtml';
-		}
-		if(file_exists($file)){
-			require_once($file);
-		}
-	}*/
-
 	static function getUrl(){
 		return URL_BASE;
 	}
