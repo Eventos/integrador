@@ -11,7 +11,6 @@ class AdminModel extends ModelAbstract
 		if(isset($_SESSION['name'])){
 			return true;
 		}else{
-			var_dump($_SESSION); exit;
 			Flash::setMessage('danger', 'Ops, algo incorreto!');
 			App::redirect(App::getUrl().'login/verify/admin');
 		}
