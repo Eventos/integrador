@@ -68,4 +68,8 @@ class App
 		if(!isset($_SESSION))
 			SESSION_START();
 	}
+
+	static function append($view){
+		require_once(SITE_ROOT.'view/'.$view.'.phtml');
+	}
 }

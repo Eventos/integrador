@@ -14,6 +14,13 @@ class ControllerAbstract
 		if($params != null){
 			extract($params);
 		}
-		require_once(SITE_ROOT.'view/'.$view.'.phtml');
+		if(strpos($view, 'admin') !== false){
+			var_dump(SITE_ROOT.'view/admin/head.phtml');
+			require_once(SITE_ROOT.'view/admin/head.phtml');
+			require_once(SITE_ROOT.'view/'.$view.'.phtml');
+			require_once(SITE_ROOT.'view/admin/footer.phtml');
+		}else{
+			require_once(SITE_ROOT.'view/'.$view.'.phtml');
+		}
 	}
 }
