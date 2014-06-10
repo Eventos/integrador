@@ -1,0 +1,20 @@
+<br><br><br><h1>Inserir media no evento <?= $id_evento ?></h1>
+<a href="#" class="foto">Inserir foto</a> &nbsp <a href="#" class="video">Inserir vídeo</a>
+
+<form action="#" name="media" class="media">
+	<input type="hidden" name="id" value="<?= $id_evento ?>">
+</form>
+
+<script>
+	$('.foto').click(function(){
+		i = $('.inputFoto').length;
+		html = '<label>Selecione a foto: </label><input name="inputFoto['+i+']" class="inputFoto" type="file"><br>';
+		$('.media').append(html);
+	});
+
+	$('.video').click(function(){
+		i = $('.inputVideo').length;
+		html = '<label>Url do vídeo: &nbsp</label><input name="inputVideo['+i+']" class="inputVideo" type="text"><br><br>';
+		$('.media').append(html);
+	});
+</script>

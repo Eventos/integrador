@@ -1,0 +1,20 @@
+<br><br><br><h1>Inserir palestrante</h1>
+<form action="<?= App::getUrl() ?>admin/palestrantes/new/post" method="POST">
+<label>Nome: &nbsp</label><input type="text" name="nome"><br><br>
+<label>Data de nascimento: &nbsp</label><input type="date" name="data_nascimento"><br><br>
+<label>Formação acadêmica: &nbsp</label><select name="id_formacao">
+	<?php foreach ($formacoes as $formacao) {
+		echo '<option value="'.$formacao['id_formacao'].'">'.$formacao['nome'].'</option>';
+	} ?>	
+</select><br><br>
+<input type="hidden" name="id_cidade" value="1">
+<label>Descrição: &nbsp</label><input type="text" name="descricao">
+<label>E-mail: &nbsp</label><input type="email" name="email"><br><br>
+<label>Telefone: &nbsp</label><input type="text" name="telefone"><br><br>
+<label>Facebook: &nbsp</label><input type="text" name="facebook"><br><br>
+<label>Twitter: &nbsp</label><input type="text" name="twiter"><br><br>
+<label>Google +: &nbsp</label><input type="text" name="google_plus"><br><br>
+<label>Linkedin: &nbsp</label><input type="text" name="linkedin"><br><br>
+
+<input type="submit" class="btn btn-info"><br><br><br>
+</form>

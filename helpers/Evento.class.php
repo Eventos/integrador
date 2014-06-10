@@ -10,4 +10,9 @@ class Evento
 		$params['palestrantes'] = $palestrantes->getAllPalestrantes();
 		return $params;
 	}
+
+	static function mediaHelper($idEvento = null){
+		$params = array('id_evento' => $idEvento);
+		return $params;
+	}
 }
