@@ -23,8 +23,10 @@ class IndexController extends ControllerAbstract
 		}
 	}
 
-	public function testeAction($params){
-		/*var_dump($params);*/
+	public function newsletterAction($params){
+		if(isset($_POST)){
+			
+		}	
 	}
 	
 }

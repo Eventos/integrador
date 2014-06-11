@@ -27,85 +27,34 @@
 	Page::addStyleElement('js', 'fancybox/jquery.fancybox-1.3.4.pack.js');
 	Page::addStyleElement('js', 'fancybox/jquery.mousewheel-3.0.4.pack.js');
 	Page::addStyleElement('css', 'jquery.fancybox-1.3.4.css');
-
+	Page::addStyleElement('js', 'default.js');
 ?>
-<script type="text/javascript">
-	$(function() {
-	
-		$('#da-slider').cslider({
-			autoplay	: true,
-			bgincrement	: 450
+
+<?php if(!isset($_COOKIE['boas_vindas'])): ?>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('.boas-vindas').show();
+			$('#fancybox').show();
 		});
-	
-	});
-</script>
-<script type="text/javascript">
-	$(document).ready(function() {	
-		var defaults = {
-  			containerID: 'toTop', 
-			containerHoverID: 'toTopHover',
-			scrollSpeed: 1200,
-			easingType: 'linear' 
- 		};
-		$().UItoTop({ easingType: 'easeOutQuart' });
-	});
-</script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("a#example3").fancybox({
-				'transitionIn'	: 'none',
-				'transitionOut'	: 'none'	
-			});
-	});
-</script>
-<script type="text/javascript">
-	$(document).ready(function () {
-		$('#bt_menu').hover(function(){
-			$('.listar-menu').css('-webkit-transition','all 0.3s linear');
-			$('.menu').css('-webkit-transition','all 0.3s linear');
-			$('.listar-menu').css('background','white');
-			$('.bt_menu>span').css('color','white');
-			$('.menu').css('background','black');
-		});
-		$('#bt_menu').mouseleave(function(){
-			$('.listar-menu').css('background','black');
-			$('.bt_menu>span').css('color','black');
-			$('.menu').css('background','none');
-		});
-		$('#bt_menu').click(function(){
-			if($('#menu_oculto').css('display')=='block'){
-				$("#menu_oculto").slideUp(800);
-			}
-			else{
-				$('#menu_oculto').slideDown(800);
-			}
-		});
-		$('.fechar').click(function(){
-			$('.boas-vindas').hide(150);
-			$('#fancybox').hide(700);
-		});
-		$('#close').click(function(){
-			$('.boas-vindas').hide(150);
-			$('#fancybox').hide(700);
-		});
-		
-	});
-</script>
+	</script>
+	<?php setcookie("boas_vindas", 'cadastrado', time()+3600*24*30*12*50); ?>
+<?php endif ?>
+
 </head>
 <body>
 
-<div id="fancybox">
-	<div class="boas-vindas">
+<div id="fancybox" style="display:none;">
+	<div class="boas-vindas" style="display:none;">
 		<div class="fechar"></div>
 		<span class="welcome"></span>
 		<p>Primeira visita!</p><br>
 		<p>Cadastre seu e-mail e nós avisaremos você sobre nossos eventos</p>
-		<form action="index_submit" method="get" accept-charset="utf-8">
+		<form action="index/newsletter/" method="post" accept-charset="utf-8">
 			<label>Nome:</label><br>
-			<input type="text" placeholder="&nbsp;&nbsp;Nome Completo"><br>
+			<input type="text" name="name" placeholder="&nbsp;&nbsp;Nome Completo"><br>
 			<label>Email:</label><br>
-			<input type="email" placeholder="&nbsp;&nbsp;Seu E-mail"><br>
-			<input type="submit" name="submit" value="Enviar">
+			<input type="email" name="email" placeholder="&nbsp;&nbsp;Seu E-mail"><br>
+			<input type="submit" value="Enviar">
 			<input type="button" id="close" name="clear" value="Agora não">
 		</form>		
 	</div>
