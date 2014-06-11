@@ -16,9 +16,13 @@
                     <label>Palestrante</label>
                     <select name="palestrante">
                       <?php foreach ($palestrantes as $palestrante) {
-                          echo '<option value="'.$palestrante['id_palestrante'].'">'.$palestrante['nome'].'</option>';
+                          echo '<option value="'.$palestrante['id_palestrante'].'">'.$palestrante['nome'].'</<option value=""></option>>';
                       } ?>
                     </select>
+                  </div>
+                  <div class="form-group">
+                    <div class="estado"><label>Estado:&nbsp</label><?= Local::getSelectEstados() ?></div>
+                    <div class="cidade"></div>
                   </div>
                   <div class="form-inline">
                     <label for="exampleInputFile">Data Do Evento</label>
@@ -30,8 +34,9 @@
                   </div>
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" id="habilitar-inscricoes"> Habilitar Inscrições para o Evento?
+                      <a href="#" id="add-inscricao" class="btn btn-warning" onclick="addInscricao()">Adicionar período de inscrições</a>
                     </label>
+                    <div id="valores-inscricoes"></div>
                   </div>
                   <div class="form-group">
                     <label>Descrição Sobre o Evento</label><br>
@@ -44,18 +49,6 @@
                   <div class="form-inline">
                     <label>Telefone Contato</label>
                     <input type="text" class="form-control" id="contato-telefone" placeholder="Telefone para Contato">
-                    <label>Estado</label>
-                    <select name="estado" class="form-control">
-                      <option value="">Pr</option>
-                      <option value="">Sc</option>
-                      <option value="">Rs</option>
-                    </select>
-                    <label>Cidade</label>
-                    <select name="cidade" class="form-control">
-                      <option value="">Guarapuava</option>
-                      <option value="">Ponta Grossa</option>
-                      <option value="">Maringa</option>
-                    </select>
                   </div>
                   <div class="form-group"></div>
                   <div class="form-inline">
@@ -75,3 +68,22 @@
   				</div>
   		</div>
 		</div> 
+
+
+
+<script>
+  $(function(){
+    $('.estados').change(function(){
+      var url_ = "<?= App::getUrl() ?>";
+      url_ += 'local/ajax/'+$(this).val();
+      var request = $.ajax({
+        url : url_,
+        type : 'get',
+        success : function(e){
+          var html = '<br><label>Cidade: &nbsp</label>' + e;
+          $('.cidade').html(html);
+        }
+      });
+    });
+  });
+</script>
