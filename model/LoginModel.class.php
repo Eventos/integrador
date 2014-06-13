@@ -36,7 +36,7 @@ class LoginModel extends ModelAbstract{
 			$_SESSION['email'] = $data['email'];
 			$_SESSION['name']  = $data['name'];
 			Flash::setmessage('success','Bem vindo'.$_SESSION['name']);
-			App::redirect('admin/index');
+			App::redirect('user/index');
 		}
 		else{
 			Flash::setmessage('danger','Dados do login Invalidos');

@@ -1,52 +1,105 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset='utf-8'>
-	<title>Area do Administrador</title>
-    <?php
-      Page::addStyleElement('css', 'bootstrap.min.css');
-      Page::addStyleElement('css', 'bootstrap-theme.min.css');
-      Page::addStyleElement('css', 'custom.css');
-      Page::addStyleElement('js', 'bootstrap.min.js');
-      Page::addStyleElement('js', 'jquery.min.js');
-      Page::addStyleElement('js', 'bootstrap.min.js');
-      Page::addStyleElement('js', 'custom.js');
-    ?>
+   <meta charset='utf-8'>
+   <title>Area do Administrador</title>
+   <?php
+   Page::addThinElement('css', 'bootstrap.css');
+   Page::addThinElement('css', 'thin-admin.css');
+   Page::addThinElement('css', 'font-awesome.css');
+   Page::addThinElement('css', 'style.css');
+   Page::addThinElement('css', 'dashboard.css');
+   Page::addThinElement('css', 'tema.css');
+   ?>
+   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <?php
+         Page::addThinElement('js', 'html5shiv.js');
+         Page::addThinElement('js', 'respond.min.js');
+      ?>
+    <![endif]-->
 </head>
-
 <body>
-  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-<!--       <div class="container"> -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Bem Vindo&nbsp;<?= $_SESSION['name'] ?></a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="area_admin.phtml">Home</a></li>
-            <li><a href="<?= App::getUrl() ?>admin/eventos/new">Inserir Eventos</a></li>
-            <li><a href="editar_eventos.phtml">Editar Eventos</a></li>
-            <li><a href="<?= App::getUrl() ?>admin/palestrantes/new">Inserir palestrantes</a></li>
-            <li><a href="blocos.phtml">Blocos estaticos</a></li>
+   <div class="container">
+      <div class="top-navbar header b-b"> 
+         <a data-original-title="Toggle navigation" class="toggle-side-nav pull-left" href="#"><i class="icon-reorder"></i> </a>
+         <a class="navbar-brand name_admin" href="#">Olá&nbsp;<?= $_SESSION['name'] ?></a>
+
+         <ul class="nav navbar-nav navbar-right  hidden-xs">
+            
+            <li class="dropdown user  hidden-xs"> <a data-toggle="dropdown" class="dropdown-toggle" href="#"> <i class="icon-male"></i> <span class="username"><?= $_SESSION['name'] ?></span> <i class="icon-caret-down small"></i> </a>
+             <ul class="dropdown-menu">
+               <li><a href="#"><i class="icon-user"></i> Minha Conta</a></li>
+               <li><a href="#"><i class="icon-calendar"></i> Calendario</a></li>
+               <li><a href="#"><i class="icon-cogs"></i> Configurações</a></li>
+               <li class="divider"></li>
+               <li><a href="#"><i class="icon-signout"></i> Sair</a></li>
+            </ul>
+         </li>
+      </ul>
+   </div>
+</div> 
+
+<div class="wrapper">
+  <div class="left-nav">
+    <div id="side-nav">
+      <ul id="nav">
+        <!-- <li> <a href="#"> <i class="icon-desktop"></i> UI Features <span class="label label-info pull-right">7</span> <i class="arrow icon-angle-left"></i></a>
+          <ul class="sub-menu">
+             <li> <a href="buttons.html"> <i class="icon-angle-right"></i> Buttons </a> </li>
+            <li> <a href="tabs.html"> <i class="icon-angle-right"></i> Tabs</a> </li>
+            <li> <a href="accordions.html"> <i class="icon-angle-right"></i> Accordions </a> </li>
+            <li> <a href="nestable.html"> <i class="icon-angle-right"></i> Nestable List </a> </li>
+            <li> <a href="icons.html"> <i class="icon-angle-right"></i> Icons </a> </li>
+            <li> <a href="grid.html"> <i class="icon-angle-right"></i> Grid </a> </li>
+            <li> <a href="dialogs.html"> <i class="icon-angle-right"></i> Dialogs </a> </li> 
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle drop-user" data-toggle="dropdown"><?= $_SESSION['name'] ?>&nbsp;<span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#"><span class="glyphicon glyphicon-plus"></span>&nbsp;Criar nova conta Administrador</a></li>
-                <li class="divider"></li>
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;Minha Conta</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-cog"></span>&nbsp;Configurações</a></li>
-                <li class="divider"></li>
-                <li><a href="<?= App::getUrl() ?>admin/logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sair</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      <!-- </div> -->
+        </li> -->
+        <li><a href="<?= App::getUrl() ?>admin/index">Home</a></li>
+        <li><a href="<?= App::getUrl() ?>admin/eventos/new">Inserir Eventos</a></li>
+        <li><a href="editar_eventos.phtml">Editar Eventos</a></li>
+        <li><a href="<?= App::getUrl() ?>admin/palestrantes/new">Inserir palestrantes</a></li>
+        <li><a href="blocos.phtml">Blocos estaticos</a></li>
+      </ul>
     </div>
+  </div>
+
+
+
+
+
+ <!--  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+ <div class="container">
+       <div class="navbar-header">
+         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+           <span class="sr-only">Toggle navigation</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" href="#">Bem Vindo&nbsp;<?= $_SESSION['name'] ?></a>
+       </div>
+       <div class="navbar-collapse collapse">
+         <ul class="nav navbar-nav">
+           <li class="active"><a href="area_restrira.phtml">Home</a></li>
+           <li><a href="<?= App::getUrl() ?>admin/eventos/new">Inserir Eventos</a></li>
+           <li><a href="editar_eventos.phtml">Editar Eventos</a></li>
+           <li><a href="<?= App::getUrl() ?>admin/palestrantes/new">Inserir palestrantes</a></li>
+           <li><a href="blocos.phtml">Blocos estaticos</a></li>
+         </ul>
+         <ul class="nav navbar-nav navbar-right">
+             <li class="dropdown">
+             <a href="#" class="dropdown-toggle drop-user" data-toggle="dropdown"><?= $_SESSION['name'] ?>&nbsp;<span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
+             <ul class="dropdown-menu">
+               <li><a href="#"><span class="glyphicon glyphicon-plus"></span>&nbsp;Criar nova conta Administrador</a></li>
+               <li class="divider"></li>
+               <li><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;Minha Conta</a></li>
+               <li><a href="#"><span class="glyphicon glyphicon-cog"></span>&nbsp;Configurações</a></li>
+               <li class="divider"></li>
+               <li><a href="<?= App::getUrl() ?>admin/logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sair</a></li>
+             </ul>
+           </li>
+         </ul>
+       </div>
+     </div>
+  </div> -->

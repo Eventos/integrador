@@ -1,6 +1,5 @@
 <?php
-  include_once 'core/App.class.php';
-  $app = new App();
+  AdminModel::islogged();
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,25 +25,22 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Bem Vindo //*Admin*//</a>
+          <a class="navbar-brand" href="#">Bem Vindo&nbsp;<?= $_SESSION['name'] ?></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="area_restrita.phtml">Home</a></li>
-            <li><a href="<?= getUrl() ?>admin/evento/new">Inserir Eventos</a></li>
-            <li><a href="editar_eventos.phtml">Editar Eventos</a></li>
-            <li><a href="blocos.phtml">Blocos estaticos</a></li>
+            <li><a href="#">Meus Eventos</a></li>
+            <li><a href="#">Meus Pagamentos</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
-              <a href="#" class="dropdown-toggle drop-user" data-toggle="dropdown">//*Admin*//&nbsp;<span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle drop-user" data-toggle="dropdown"><?= $_SESSION['name'] ?>&nbsp;<span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#"><span class="glyphicon glyphicon-plus"></span>&nbsp;Criar nova conta Administrador</a></li>
-                <li class="divider"></li>
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;Minha Conta</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-cog"></span>&nbsp;Configurações</a></li>
                 <li class="divider"></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sair</a></li>
+                <li><a href="<?= App::getUrl() ?>admin/logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sair</a></li>
               </ul>
             </li>
           </ul>
@@ -52,12 +48,6 @@
       <!-- </div> -->
     </div>
     <!-- Fim do menu -->
-    <!-- calendario -->
-    <div class="col-md-12 conteudo">
-        <h1 class="titulo">Blocos Estaticos</h1>
-		<div class="row">
-  			 
-  <div class="footer"><p>© Copyright 2014 &nbsp;&nbsp;<a href="#"><?php Page::addImage('Ponto.png', 'style="width:10%"');?></a></p></div> 
 <script type="text/javascript">
   $(document).ready(function() {
     $(".accordion .accord-header").click(function() {
