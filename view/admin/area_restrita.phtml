@@ -1,61 +1,67 @@
 
-  <div class="page-content">
-    <div class="content container">
-      <div class="row">
-        <div class="col-lg-12">
-          <h2 class="page-title">Dashboard <small>Statistics and more</small></h2>
-        </div>
+<div class="page-content">
+  <div class="content container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="page-title">Home <small>Informações e Destaques</small></h2>
       </div>
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="widget widget-nopad">
-            <div class="widget-header"> <i class="icon-list-alt"></i>
-              <h3>Today's Stats</h3>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="widget">
+          <div class="widget-header"> <i class="icon-bookmark"></i>
+            <h3>Atalhos Importantes</h3>
+          </div>
+          <div class="widget-content">
+            <div class="shortcuts"> 
+              <a class="shortcut" href="javascript:;"><i class="shortcut-icon icon-list-alt"></i><span class="shortcut-label">Blocos Staticos</span> </a>
+              <a class="shortcut" href="javascript:;"><i class="shortcut-icon icon-bookmark"></i><span class="shortcut-label">Eventos</span> </a>
+              <a class="shortcut" href="javascript:;"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Informações</span> </a>
+              <a class="shortcut" href="javascript:;"> <i class="shortcut-icon icon-comment"></i><span class="shortcut-label">Mensagens</span> </a>
+              <a class="shortcut" href="javascript:;"><i class="shortcut-icon icon-user"></i><span class="shortcut-label">Usuarios</span> </a>
+              <a class="shortcut" href="javascript:;"><i class="shortcut-icon icon-facetime-video"></i><span class="shortcut-label">Videos</span> </a>
+              <a class="shortcut" href="javascript:;"><i class="shortcut-icon icon-picture"></i> <span class="shortcut-label">Fotos</span> </a>
+              <a class="shortcut" href="javascript:;"> <i class="shortcut-icon icon-calendar"></i><span class="shortcut-label">Calendario</span> </a> </div>
             </div>
-            <!-- /widget-header -->
-            <div class="widget-content">
-              <div class="widget big-stats-container">
-                <h6 class="bigstats">A fully responsive premium quality admin template built on Twitter Bootstrap by <a target="_blank" href="http://www.riaxe.com/">riaxe.com</a>.  These are some dummy lines to fill the area.</h6>
-                <div class="cf" id="big_stats">
-                  <div class="stat"> <i class="icon-anchor"></i> <span class="value">51</span> </div>
-                  <!-- .stat -->
-                  
-                  <div class="stat"> <i class="icon-thumbs-up-alt"></i> <span class="value">41</span> </div>
-                  <!-- .stat -->
-                  
-                  <div class="stat"> <i class="icon-twitter-sign"></i> <span class="value">91</span> </div>
-                  <!-- .stat -->
-                  
-                  <div class="stat"> <i class="icon-bullhorn"></i> <span class="value">21</span> </div>
-                  <!-- .stat --> 
-                </div>
-                <!-- /widget-content --> 
-                
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="widget-container">
+            <div class="padded"> <a href="#" class="pull-right"><i class="icon-map-marker"></i></a> <span class="h4">McLean, VA</span>
+              <div class="text-center padder m-t"> <span class="h1"><i class="icon-cloud text-muted"></i> 68Â°</span> </div>
+            </div>
+            <div class="widget-footer lt">
+              <div class="row">
+                <div class="col-xs-4"> <small class="text-muted block">Humidity</small> <span>56 %</span> </div>
+                <div class="col-xs-4"> <small class="text-muted block">Precip.</small> <span>0.00 in</span> </div>
+                <div class="col-xs-4"> <small class="text-muted block">Winds</small> <span>7 mp</span> </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-6">
-          <div class="widget">
-            <div class="widget-header"> <i class="icon-bookmark"></i>
-              <h3>Important Shortcuts</h3>
-            </div>
-            <!-- /widget-header -->
-            <div class="widget-content">
-              <div class="shortcuts"> <a class="shortcut" href="javascript:;"><i class="shortcut-icon icon-list-alt"></i><span class="shortcut-label">Apps</span> </a><a class="shortcut" href="javascript:;"><i class="shortcut-icon icon-bookmark"></i><span class="shortcut-label">Fav</span> </a><a class="shortcut" href="javascript:;"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Stats</span> </a><a class="shortcut" href="javascript:;"> <i class="shortcut-icon icon-comment"></i><span class="shortcut-label">Msg</span> </a><a class="shortcut" href="javascript:;"><i class="shortcut-icon icon-user"></i><span class="shortcut-label">Users</span> </a><a class="shortcut" href="javascript:;"><i class="shortcut-icon icon-file"></i><span class="shortcut-label">Notes</span> </a><a class="shortcut" href="javascript:;"><i class="shortcut-icon icon-picture"></i> <span class="shortcut-label">Photos</span> </a><a class="shortcut" href="javascript:;"> <i class="shortcut-icon icon-tag"></i><span class="shortcut-label">Tags</span> </a> </div>
-              <!-- /shortcuts --> 
-            </div>
-            <!-- /widget-content --> 
-          </div>
-        </div>
       </div>
-      <div class="row">
-        <div class="col-lg-6">
+      <script type="text/javascript">
+      var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4) {
+        alert(xhr.responseText);
+    }
+}
+xhr.open('GET', 'http://www.previsaodotempo.org/api.php?city=Rio+de+Janeiro', true);
+xhr.send(null);
+
+$.get('http://www.previsaodotempo.org/api.php?city=Rio+de+Janeiro', function(responseText) {
+    alert(responseText);
+});
+       
+
+</script>
+<div class="row">
+        <!-- <div class="col-lg-6">
           <div class="widget">
             <div class="widget-header"> <i class="icon-file"></i>
               <h3>Content</h3>
             </div>
-            <!-- /widget-header -->
             <div class="widget-content">
               <ul class="messages_layout">
                 <li class="from_user left"> <a class="avatar" href="#"><img src="images/message-avatar.jpg"></a>
@@ -108,51 +114,63 @@
                 </li>
               </ul>
             </div>
-            <!-- /widget-content --> 
           </div>
-        </div>
-        <div class="col-lg-6">
+        </div> -->
+        <div class="col-lg-12">
           <div class="widget widget-table action-table">
             <div class="widget-header"> <i class="icon-th-list"></i>
-              <h3>A Table Example</h3>
+              <h3>Informações Sobre Inscrições</h3>
             </div>
             <!-- /widget-header -->
             <div class="widget-content">
-              
+
               <table class="table table-striped table-bordered">
                 <thead>
                   <tr>
-                    <th> Free Resource </th>
-                    <th> Download</th>
+                    <th> Evento </th>
+                    <th> Vagas </th>
+                    <th> Inscritos </th>
                     <th class="td-actions"> </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td> abc </td>
-                    <td>123 </td>
-                    <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                  <tr>
-                    <td>abc </td>
-                    <td>123 </td>
-                    <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                  <tr>
-                    <td> abc </td>
-                    <td> 123</td>
-                    <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                  <tr>
-                    <td> abc</td>
-                    <td>123 </td>
+                    <td> 123 </td>
+                    <td> 100 </td>
                     <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
                   </tr>
                   <tr>
                     <td> abc </td>
                     <td> 123 </td>
+                    <td> 100 </td>
                     <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
                   </tr>
+                  <tr>
+                    <td> abc </td>
+                    <td> 123 </td>
+                    <td> 100 </td>
+                    <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
+                  </tr>
+                  <tr>
+                    <td> abc </td>
+                    <td> 123 </td>
+                    <td> 100 </td>
+                    <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
+                  </tr>
+                  <tr>
+                    <td> abc </td>
+                    <td> 123 </td>
+                    <td> 100 </td>
+                    <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
+                  </tr>
+                  <tr>
+                    <td> abc </td>
+                    <td> 123 </td>
+                    <td> 100 </td>
+                    <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
+                  </tr>
+                  
                 </tbody>
               </table>
               
@@ -160,25 +178,10 @@
             <!-- /widget-content --> 
           </div>
         </div>
-        <div class="col-lg-6">
-          <div class="widget-container">
-            <div class="padded"> <a href="#" class="pull-right"><i class="icon-map-marker"></i></a> <span class="h4">McLean, VA</span>
-              <div class="text-center padder m-t"> <span class="h1"><i class="icon-cloud text-muted"></i> 68Â°</span> </div>
-            </div>
-            <div class="widget-footer lt">
-              <div class="row">
-                <div class="col-xs-4"> <small class="text-muted block">Humidity</small> <span>56 %</span> </div>
-                <div class="col-xs-4"> <small class="text-muted block">Precip.</small> <span>0.00 in</span> </div>
-                <div class="col-xs-4"> <small class="text-muted block">Winds</small> <span>7 mp</span> </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 </div>
-<div class="bottom-nav footer"> 2013 © Thin Admin by Riaxe Systems.  </div>
 
 </body></html>
 
