@@ -7,10 +7,10 @@
   	  		<div class="container">
   			   	<div class="row">
               <div class="col-xs-12">
-                <form role="form">
+                <form role="form" method="POST" action="<?= App::getUrl() ?>admin/eventos/new/post">
                   <div class="form-group">
                     <label>Local Do Evento</label>
-                    <input type="text" class="form-control" id="local" placeholder="Localidade do Evento">
+                    <input type="text" name="local" class="form-control" id="local" placeholder="Localidade do Evento">
                   </div>
                   <div class="form-group">
                     <label>Palestrante</label>
@@ -26,11 +26,11 @@
                   </div>
                   <div class="form-inline">
                     <label for="exampleInputFile">Data Do Evento</label>
-                    <input type="datetime-local" class="form-control" id="data-hora">
+                    <input type="datetime-local" name="data_evento" class="form-control" id="data-hora">
                     <label for="exampleInputFile">Data Limite das Inscrições</label>
-                    <input type="date" class="form-control" id="data-limite">
+                    <input type="date" class="form-control" id="data-limite" name="data_limite">
                     <label for="exampleInputFile">Vagas</label>
-                    <input type="number" class="form-control" id="vagas" placeholder="Quantidade de vagas">
+                    <input type="number" name="num_vagas" class="form-control" id="vagas" placeholder="Quantidade de vagas">
                   </div>
                   <div class="checkbox">
                     <label>
@@ -40,23 +40,23 @@
                   </div>
                   <div class="form-group">
                     <label>Descrição Sobre o Evento</label><br>
-                    <textarea class="desc-evento" name="Descricao-evento" rows="10" cols="20"></textarea>
+                    <textarea class="desc-evento" name="descricao_evento" rows="10" cols="20"></textarea>
                   </div>
                   <div class="form-group">
                     <label>Email Contato</label>
-                    <input type="email" class="form-control" id="contato-email" placeholder="Email para Contato">
+                    <input type="email" class="form-control" id="contato-email" placeholder="Email para Contato" name="contato_email">
                   </div>
                   <div class="form-inline">
                     <label>Telefone Contato</label>
-                    <input type="text" class="form-control" id="contato-telefone" placeholder="Telefone para Contato">
+                    <input type="text" class="form-control" id="contato-telefone" placeholder="Telefone para Contato" name="telefone_contato">
                   </div>
                   <div class="form-group"></div>
                   <div class="form-inline">
                      <label>Administrador do Evento</label>
-                     <select name="administrador" class="form-control">
-                       <option value="">Admin 1</option>
-                       <option value="">Admin 2</option>
-                       <option value="">Admin 3</option>
+                     <select name="administrador" class="form-control" name="adm_evento">
+                       <option value="1">Admin 1</option>
+                       <option value="2">Admin 2</option>
+                       <option value="3">Admin 3</option>
                     </select>
                   </div>
                   <div class="form-group submit">
