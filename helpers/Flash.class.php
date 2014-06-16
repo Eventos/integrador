@@ -9,7 +9,7 @@ class Flash
 			$_SESSION['messages'] = array();
 			$_SESSION['messages'][0] = '<div class="alert alert-'.$type.'">'.$message.'</div>';
 		}else{
-			$key = count($finalMessage);
+			$key = count($_SESSION['messages']);
 			$_SESSION['messages'][$key] = '<div class="alert alert-'.$type.'">'.$message.'</div>';
 		}
 	}
