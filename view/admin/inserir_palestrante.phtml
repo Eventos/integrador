@@ -1,20 +1,140 @@
-<br><br><br><h1>Inserir palestrante</h1>
-<form action="<?= App::getUrl() ?>admin/palestrantes/new/post" method="POST">
-<label>Nome: &nbsp</label><input type="text" name="nome"><br><br>
-<label>Data de nascimento: &nbsp</label><input type="date" name="data_nascimento"><br><br>
-<label>Formação acadêmica: &nbsp</label><select name="id_formacao">
-	<?php foreach ($formacoes as $formacao) {
-		echo '<option value="'.$formacao['id_formacao'].'">'.$formacao['nome'].'</option>';
-	} ?>	
-</select><br><br>
-<input type="hidden" name="id_cidade" value="1">
-<label>Descrição: &nbsp</label><input type="text" name="descricao">
-<label>E-mail: &nbsp</label><input type="email" name="email"><br><br>
-<label>Telefone: &nbsp</label><input type="text" name="telefone"><br><br>
-<label>Facebook: &nbsp</label><input type="text" name="facebook"><br><br>
-<label>Twitter: &nbsp</label><input type="text" name="twiter"><br><br>
-<label>Google +: &nbsp</label><input type="text" name="google_plus"><br><br>
-<label>Linkedin: &nbsp</label><input type="text" name="linkedin"><br><br>
 
-<input type="submit" class="btn btn-info"><br><br><br>
-</form>
+<div class="page-content">
+	<div class="content container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="page-title">Inserir Palestrante <small>Cadastre aqui os novos palestrantes</small></h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="widget">
+					<div class="widget-header"> <i class="icon-user"></i>
+						<h3>Palestrante</h3>
+					</div>
+					<div class="widget-content">
+						<form action="<?= App::getUrl() ?>admin/palestrantes/new/post" method="POST" class="form-horizontal">
+							<fieldset>
+								<legend class="section">Informações Pessoais</legend>
+								<div class="control-group">
+									<label for="normal-field" class="control-label">Nome</label>
+									<div class="controls form-group">
+										<input type="text" name="nome" placeholder="Digite o nome do palestrante" class="form-control" id="normal-field">
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="hint-field" class="control-label"> Data de nascimento </label>
+									<div class="controls form-group">
+										<input type="date" name="data_nascimento" class="form-control">  
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="hint-field" class="control-label"> Formação </label>
+									<div class="controls form-group">
+										<select name="id_formacao" class="form-control">
+											<?php foreach ($formacoes as $formacao) {
+												echo '<option value="'.$formacao['id_formacao'].'">'.$formacao['nome'].'</option>';
+											} ?>	
+										</select>  
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="hint-field" class="control-label"> Descrição </label>
+									<div class="controls form-group">
+										<textarea class="desc-evento" name="descricao" placeholder="Digite aqui as informações sobre o Palestrante"></textarea>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<legend class="section">Endereço</legend>
+								<div class="control-group">
+									<label for="disabled-input" class="control-label ">Estado</label>
+									<div class="controls form-group">
+										<div class="estado"><?= Local::getSelectEstados() ?></div>
+									</div>
+								</div>
+								<div class="control-group" id="cidade" style="display:none">
+									<label for="hint-field" class="control-label"> Cidade </label>
+									<div class="controls form-group">
+										<div class="cidade"></div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<legend class="section">Contato</legend>
+								<div class="control-group">
+									<label for="hint-field" class="control-label"> Email </label>
+									<div class="controls input-group form-group">
+										<span class="input-group-addon"><i class="icon-envelope"></i></span>
+										<input type="email" name="email" class="form-control" placeholder="Digite o email do palestrante">  
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="hint-field" class="control-label"> Telefone </label>
+									<div class="controls input-group form-group">
+										<span class="input-group-addon"><i class="icon-phone-sign"></i></span>
+										<input type="text" name="telefone" class="form-control" placeholder="Digite o telefone do palestrante">  
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="hint-field" class="control-label"> Facebook </label>
+									<div class="controls input-group form-group">
+										<span class="input-group-addon"><i class="icon-facebook-sign"></i></span>
+										<input type="text" name="facebook" class="form-control" placeholder="Digite endereço eletronico do facebook do palestrante">  
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="hint-field" class="control-label"> Twitter </label>
+									<div class="controls input-group form-group">
+										<span class="input-group-addon"><i class="icon-twitter"></i></span>
+										<input type="text" name="twitter" class="form-control" placeholder="Digite endereço eletronico do Twitter do palestrante">  
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="hint-field" class="control-label"> Google + </label>
+									<div class="controls input-group form-group">
+										<span class="input-group-addon"><i class="icon-google-plus"></i></span>
+										<input type="text" name="google_plus" class="form-control" placeholder="Digite endereço eletronico do google + do palestrante">  
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="hint-field" class="control-label"> Linkedin </label>
+									<div class="controls input-group form-group">
+										<span class="input-group-addon"><i class="icon-linkedin-sign"></i></span>
+										<input type="text" name="linkedin" class="form-control" placeholder="Digite endereço eletronico do linkedin do palestrante">  
+									</div>
+								</div>
+							</fieldset>
+							<div class="form-actions">
+								<div class="btn-actions">
+									<button class="btn-action btn btn-success" type="submit">Inserir Palestrante</button>
+									<button class="btn-action btn btn-default" type="button">Cancelar</button>
+									<button class="btn-action btn btn-primary" type="button">Salvar e Cadastrar Novo</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+	$(function(){
+		$('.estados').change(function(){
+			var url_ = "<?= App::getUrl() ?>";
+			url_ += 'local/ajax/'+$(this).val();
+			var request = $.ajax({
+				url : url_,
+				type : 'get',
+				success : function(e){
+					$('#cidade').show(300);
+					var html = e ;
+					$('.cidade').html(html);
+				}
+			});
+		});
+	});
+</script>

@@ -47,6 +47,9 @@ class AdminController extends ControllerAbstract
 			}
 		}elseif(isset($params[0]) && $params[0] == 'new' && count($params) == 2 && $params[1] == 'post'){
 			$palestrante = new PalestranteModel();
+			if(isset($_POST['estados'])){
+				unset($_POST['estados']);	
+			}
 			$palestrante->newAction($_POST);
 		}
 	}

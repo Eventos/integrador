@@ -1,186 +1,180 @@
-    <!-- Fim do menu -->
-    <div class="page-content">
-    <div class="content container">
-      <div class="row">
-        <div class="col-md-12">
-          <h1 class="page-title">Inserir Eventos <small>Cadastre aqui os novos eventos</small></h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="widget">
-            <div class="widget-header"> <i class="icon-align-left"></i>
-              <h3>Eventos</h3>
-            </div>
-            <div class="widget-content">
-              <form method="post" class="form-horizontal">
-                <fieldset>
-                  <legend class="section">Endereço do Evento</legend>
-                  <div class="control-group">
-                    <label for="normal-field" class="control-label">Local do Evento</label>
-                    <div class="controls form-group">
-                      <input type="text" placeholder="Digite aqui o local do evento" name="local" class="form-control" id="normal-field">
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label for="hint-field" class="control-label"> Estado </label>
-                    <div class="controls form-group">
-                      <div class="estado"><?= Local::getSelectEstados() ?></div>
-                    </div>
-                  </div>
-                  <div class="control-group" id="cidade" style="display:none">
-                    <label for="hint-field" class="control-label"> Cidade </label>
-                    <div class="controls form-group">
-                      <div class="cidade"></div>
-                    </div>
-                  </div>
-                  </fieldset>
-                  <fieldset>
-                  <legend class="section">Informações Sobre o Evento</legend>
-                  <div class="control-group">
-                    <label for="disabled-input" class="control-label ">Data Do Evento</label>
-                    <div class="controls form-group">
-                      <input type="datetime-local" name="data_hora" class="form-control" id="data-hora">
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label for="max-length" class="control-label ">Fim Inscrições</label>
-                    <div class="controls form-group">
-                      <input type="date" class="form-control" name="data_limite" id="data-limite" placeholder="Data Limite Para As Inscriçoes">
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label for="prepended-input" class="control-label">Vagas</label>
-                    <div class="controls form-group">
-                        <input type="number" class="form-control" name="vagas" id="vagas" placeholder="Quantidade de vagas">
-                    </div>
-                  </div>
-                  <div class="date">
-                    <div class="controls form-group">
-                      <a id="add-inscricao" class="btn btn-warning" onclick="inserir_inscricao();">Adicionar período de inscrições</a>
-                    </div>
-                    <div id="valores-inscricoes"></div>
-                  </div>
-                  <div class="control-group">
-                    <label for="password-field" class="control-label">Descrição</label>
-                    <div class="controls form-group">
-                        <textarea class="desc-evento" name="desc_evento"></textarea>
-                    </div>
-                  </div>
-                  </fieldset>
-                  <fieldset>
-                  <legend class="section">Ministrante</legend>
-                  <div class="control-group">
-                    <label for="normal-field" class="control-label">Palestrante</label>
-                    <div class="controls form-group">
-                      <select name="palestrante" class="form-control">
-                        <option> -- Selecione o Palestrante --</option>
-                      <?php foreach ($palestrantes as $palestrante) {
-                          echo '<option value="'.$palestrante['id_palestrante'].'">'.$palestrante['nome'].'</<option value=""></option>>';
-                      } ?>
-                    </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="estado"><label>Estado:&nbsp</label><?= Local::getSelectEstados() ?></div>
-                    <div class="cidade"></div>
-                  </div>
-                  <div class="form-inline">
-                    <label for="exampleInputFile">Data Do Evento</label>
-                    <input type="datetime-local" name="data_evento" class="form-control" id="data-hora">
-                    <label for="exampleInputFile">Data Limite das Inscrições</label>
-                    <input type="date" class="form-control" id="data-limite" name="data_limite">
-                    <label for="exampleInputFile">Vagas</label>
-                    <input type="number" name="num_vagas" class="form-control" id="vagas" placeholder="Quantidade de vagas">
-                  </div>
-                  <div class="checkbox">
-                    <label>
-                      <a href="#" id="add-inscricao" class="btn btn-warning" onclick="addInscricao()">Adicionar período de inscrições</a>
-                    </label>
-                    <div id="valores-inscricoes"></div>
-                  </div>
-                  <div class="form-group">
-                    <label>Descrição Sobre o Evento</label><br>
-                    <textarea class="desc-evento" name="descricao_evento" rows="10" cols="20"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label>Email Contato</label>
-                    <input type="email" class="form-control" id="contato-email" placeholder="Email para Contato" name="contato_email">
-                  </div>
-                  <div class="form-inline">
-                    <label>Telefone Contato</label>
-                    <input type="text" class="form-control" id="contato-telefone" placeholder="Telefone para Contato" name="telefone_contato">
-                  </div>
-                  <div class="form-group"></div>
-                  <div class="form-inline">
-                     <label>Administrador do Evento</label>
-                     <select name="administrador" class="form-control" name="adm_evento">
-                       <option value="1">Admin 1</option>
-                       <option value="2">Admin 2</option>
-                       <option value="3">Admin 3</option>
-                    </select>
-                  </div>
-                   <div class="control-group">
-                    <label for="combined-input" class="control-label">Informações sobre o contato</label>
-                    <div class="controls form-group">
-                      <textarea class="desc-evento" name="desc_contato"></textarea>
-                  </div>
-                </fieldset>
-                <fieldset>
-                <legend class="section">Evento nas redes Sociais</legend>
-                  <div class="control-group">
-                    <label for="combined-input" class="control-label">Facebook</label>
-                    <div class="controls form-group">
-                      <input type="text" class="form-control" name="facebook" placeholder="Insira o endereço eletronico do facebook">
-                  </div>
-                  <div class="control-group">
-                    <label for="combined-input" class="control-label">Twiter</label>
-                    <div class="controls form-group">
-                      <input type="text" class="form-control" name="twiter" placeholder="TInsira o endereço eletronico do Twiter">
-                  </div>
-                  <div class="control-group">
-                    <label for="combined-input" class="control-label">Google +</label>
-                    <div class="controls form-group">
-                      <input type="text" class="form-control" name="google_plus" placeholder="Insira o endereço eletronico do Google +">
-                  </div>
-                </fieldset>
-                <div class="form-actions">
-                  <div class="btn-actions">
-                    <button class="btn-action btn btn-success" type="submit">Inserir Evento</button>
-                    <button class="btn-action btn btn-default" type="button">Cancelar</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-  </div>
-
+<!-- Fim do menu -->
+<div class="page-content">
+	<div class="content container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="page-title">Inserir Eventos <small>Cadastre aqui os novos eventos</small></h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="widget">
+					<div class="widget-header"> <i class="icon-align-left"></i>
+						<h3>Eventos</h3>
+					</div>
+					<div class="widget-content">
+						<form method="post" class="form-horizontal">
+							<fieldset>
+								<legend class="section">Endereço do Evento</legend>
+								<div class="control-group">
+									<label for="normal-field" class="control-label">Local do Evento</label>
+									<div class="controls form-group">
+										<input type="text" placeholder="Digite aqui o local do evento" name="local" class="form-control" id="normal-field">
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="hint-field" class="control-label"> Estado </label>
+									<div class="controls form-group">
+										<div class="estado"><?= Local::getSelectEstados() ?></div>
+									</div>
+								</div>
+								<div class="control-group" id="cidade" style="display:none">
+									<label for="hint-field" class="control-label"> Cidade </label>
+									<div class="controls form-group">
+										<div class="cidade"></div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<legend class="section">Informações Sobre o Evento</legend>
+								<div class="control-group">
+									<label for="disabled-input" class="control-label ">Data Do Evento</label>
+									<div class="controls form-group">
+										<input type="datetime-local" name="data_hora" class="form-control" id="data-hora">
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="max-length" class="control-label ">Fim Inscrições</label>
+									<div class="controls form-group">
+										<input type="date" class="form-control" name="data_limite" id="data-limite" placeholder="Data Limite Para As Inscriçoes">
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="prepended-input" class="control-label">Vagas</label>
+									<div class="controls form-group">
+										<input type="number" class="form-control" name="vagas" id="vagas" placeholder="Quantidade de vagas">
+									</div>
+								</div>
+								<div class="date">
+									<div class="controls form-group">
+										<a id="add-inscricao" class="btn btn-warning" onclick="inserir_inscricao();">Adicionar período de inscrições</a>
+									</div>
+									<div id="valores-inscricoes"></div>
+								</div>
+								<div class="control-group">
+									<label for="password-field" class="control-label">Descrição</label>
+									<div class="controls form-group">
+										<textarea class="desc-evento" name="desc_evento"></textarea>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<legend class="section">Ministrante</legend>
+								<div class="control-group">
+									<label for="normal-field" class="control-label">Palestrante</label>
+									<div class="controls form-group">
+										<select name="palestrante" class="form-control">
+											<option> -- Selecione o Palestrante --</option>
+											<?php foreach ($palestrantes as $palestrante) {
+												echo '<option value="'.$palestrante['id_palestrante'].'">'.$palestrante['nome'].'</<option value=""></option>>';
+											} ?>
+										</select>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<legend class="section">Informações De Contato</legend>
+								<div class="control-group">
+									<label for="appended-input" class="control-label">Email</label>
+									<div class="controls form-group">
+										<input type="email" class="form-control" name="email_contato" id="contato-email" placeholder="Email para Contato">
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="combined-input" class="control-label">Telefone</label>
+									<div class="controls form-group">
+										<input type="text" class="form-control" name="telefone_contato" id="contato-telefone" placeholder="Telefone para Contato">
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="combined-input" class="control-label">Responsável</label>
+									<div class="controls form-group">
+										<select name="administrador" class="form-control">
+											<option value=""><?= $_SESSION['name'] ?></option>
+											<option value="">Admin 2</option>
+											<option value="">Admin 3</option>
+										</select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="combined-input" class="control-label">Informações sobre o contato</label>
+									<div class="controls form-group">
+										<textarea class="desc-evento" name="desc_contato"></textarea>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<legend class="section">Evento nas redes Sociais</legend>
+								<div class="control-group">
+									<label for="combined-input" class="control-label">Facebook</label>
+									<div class="controls input-group form-group">
+										<span class="input-group-addon"><i class="icon-facebook-sign"></i></span>
+										<input type="text" class="form-control" name="facebook" placeholder="Insira o endereço eletronico do facebook" id="combined-input">
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="combined-input" class="control-label">Twitter</label>
+									<div class="controls input-group form-group">
+										<span class="input-group-addon"><i class="icon-twitter"></i></span>
+										<input type="text" class="form-control" name="twitter" placeholder="Insira o endereço eletronico do Twiter">
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="combined-input" class="control-label">Google +</label>
+									<div class="controls input-group form-group">
+										<span class="input-group-addon"><i class="icon-google-plus"></i></span>
+										<input type="text" class="form-control" name="google_plus" placeholder="Insira o endereço eletronico do Google +">
+									</div>
+								</div>
+							</fieldset>
+							<div class="form-actions">
+								<div class="btn-actions">
+									<button class="btn-action btn btn-success" type="submit">Inserir Evento</button>
+									<button class="btn-action btn btn-default" type="button">Cancelar</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <script>
-var i = 0;
-  $(function(){
-    $('.estados').change(function(){
-      var url_ = "<?= App::getUrl() ?>";
-      url_ += 'local/ajax/'+$(this).val();
-      var request = $.ajax({
-        url : url_,
-        type : 'get',
-        success : function(e){
-          $('#cidade').show(300);
-          var html = e ;
-          $('.cidade').html(html);
-        }
-      });
-    });
-  });
-  function inserir_inscricao(){
-    i++;
-    var data_insc = "<div class='data"+i+"'><div class='controls form-group'>Data inicio <input type='date' name='data_ini"+i+"'> Data final <input type='date' name='data_fim"+i+"'> Valor <input type='text' name='valor"+i+"'> <a class='plus btn btn-primary' onclick='inserir_inscricao();'>+</a>&nbsp;<a class='del"+i+" btn btn-danger' onclick='deletar_inscricao("+i+");'>-</a></div></div>";
+	var i = 0;
+	$(function(){
+		$('.estados').change(function(){
+			var url_ = "<?= App::getUrl() ?>";
+			url_ += 'local/ajax/'+$(this).val();
+			var request = $.ajax({
+				url : url_,
+				type : 'get',
+				success : function(e){
+					$('#cidade').show(300);
+					var html = e ;
+					$('.cidade').html(html);
+				}
+			});
+		});
+	});
+	function inserir_inscricao(){
+		i++;
+		var data_insc = "<div class='data"+i+"'><div class='controls form-group'>Data inicio <input type='date' name='data_ini"+i+"'> Data final <input type='date' name='data_fim"+i+"'> Valor <input type='text' name='valor"+i+"'> <a class='plus btn btn-primary' onclick='inserir_inscricao();'>+</a>&nbsp;<a class='del"+i+" btn btn-danger' onclick='deletar_inscricao("+i+");'>-</a></div></div>";
 
-     $('#valores-inscricoes').append(data_insc).hide().fadeIn(200);
-  }
-  function deletar_inscricao(id){
-    $('.data'+id+'').hide(100);
-  }
+		$('#valores-inscricoes').append(data_insc).hide().fadeIn(200);
+	}
+	function deletar_inscricao(id){
+		$('.data'+id+'').hide(100);
+	}
 </script>
