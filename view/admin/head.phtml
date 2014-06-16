@@ -37,7 +37,7 @@
                <li><a href="#"><i class="icon-calendar"></i> Calendario</a></li>
                <li><a href="#"><i class="icon-cogs"></i> Configurações</a></li>
                <li class="divider"></li>
-               <li><a href="#"><i class="icon-signout"></i> Sair</a></li>
+               <li><a href="<?= App::getUrl() ?>admin/logout"><i class="icon-signout"></i> Sair</a></li>
             </ul>
          </li>
       </ul>
@@ -48,17 +48,6 @@
   <div class="left-nav">
     <div id="side-nav">
       <ul id="nav">
-        <!-- <li> <a href="#"> <i class="icon-desktop"></i> UI Features <span class="label label-info pull-right">7</span> <i class="arrow icon-angle-left"></i></a>
-          <ul class="sub-menu">
-             <li> <a href="buttons.html"> <i class="icon-angle-right"></i> Buttons </a> </li>
-            <li> <a href="tabs.html"> <i class="icon-angle-right"></i> Tabs</a> </li>
-            <li> <a href="accordions.html"> <i class="icon-angle-right"></i> Accordions </a> </li>
-            <li> <a href="nestable.html"> <i class="icon-angle-right"></i> Nestable List </a> </li>
-            <li> <a href="icons.html"> <i class="icon-angle-right"></i> Icons </a> </li>
-            <li> <a href="grid.html"> <i class="icon-angle-right"></i> Grid </a> </li>
-            <li> <a href="dialogs.html"> <i class="icon-angle-right"></i> Dialogs </a> </li> 
-          </ul>
-        </li> -->
         <li> <a href="<?= App::getUrl() ?>admin/index"> <i class="icon-desktop"></i> Home</a></li>
         <li> <a href="<?= App::getUrl() ?>admin/eventos/new"> <i class="icon-plus"></i> Inserir Eventos</a></li>
         <li> <a href="editar_eventos.phtml"> <i class="icon-pencil"></i> Editar Eventos</a></li>
@@ -67,43 +56,3 @@
       </ul>
     </div>
   </div>
-
-
-
-
-
- <!--  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
- <div class="container">
-       <div class="navbar-header">
-         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-           <span class="sr-only">Toggle navigation</span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-         </button>
-         <a class="navbar-brand" href="#">Bem Vindo&nbsp;<?= $_SESSION['name'] ?></a>
-       </div>
-       <div class="navbar-collapse collapse">
-         <ul class="nav navbar-nav">
-           <li class="active"><a href="area_restrira.phtml">Home</a></li>
-           <li><a href="<?= App::getUrl() ?>admin/eventos/new">Inserir Eventos</a></li>
-           <li><a href="editar_eventos.phtml">Editar Eventos</a></li>
-           <li><a href="<?= App::getUrl() ?>admin/palestrantes/new">Inserir palestrantes</a></li>
-           <li><a href="blocos.phtml">Blocos estaticos</a></li>
-         </ul>
-         <ul class="nav navbar-nav navbar-right">
-             <li class="dropdown">
-             <a href="#" class="dropdown-toggle drop-user" data-toggle="dropdown"><?= $_SESSION['name'] ?>&nbsp;<span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
-             <ul class="dropdown-menu">
-               <li><a href="#"><span class="glyphicon glyphicon-plus"></span>&nbsp;Criar nova conta Administrador</a></li>
-               <li class="divider"></li>
-               <li><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;Minha Conta</a></li>
-               <li><a href="#"><span class="glyphicon glyphicon-cog"></span>&nbsp;Configurações</a></li>
-               <li class="divider"></li>
-               <li><a href="<?= App::getUrl() ?>admin/logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sair</a></li>
-             </ul>
-           </li>
-         </ul>
-       </div>
-     </div>
-  </div> -->

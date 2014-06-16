@@ -37,6 +37,7 @@ class Local
 		//$data = self::getData();
 		$estados = self::getEstados();
 		$html = '<select name="estados" class="estados form-control">';
+		$html .='<option value="">-- Selecione o Estado -- </option>';
 		foreach ($estados as $estado) {
 			$html .= '<option value="'.$estado['id_estado'].'">'.$estado['nome'].'</option>';
 		}
