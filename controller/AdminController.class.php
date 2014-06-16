@@ -31,6 +31,9 @@ class AdminController extends ControllerAbstract
 				&& isset($params[1])){
 			$paramsView = Evento::mediaHelper($params[1]);
 			$this->render('admin/inserir_media', $paramsView);
+		}elseif(isset($params[0]) && $params[0] == 'new' && count($params) == 2 && isset($params[1]) && $params[1] == 'post'){
+			$evento = new EventoModel();
+			$evento->newAction($_POST);
 		}
 	}
 
