@@ -50,9 +50,18 @@
     <div id="side-nav">
       <ul id="nav">
         <li> <a href="<?= App::getUrl() ?>admin/index"> <i class="icon-desktop"></i> Home</a></li>
-        <li> <a href="<?= App::getUrl() ?>admin/eventos/new"> <i class="icon-plus"></i> Inserir Eventos</a></li>
-        <li> <a href="editar_eventos.phtml"> <i class="icon-pencil"></i> Editar Eventos</a></li>
-        <li> <a href="<?= App::getUrl() ?>admin/palestrantes/new"> <i class="icon-group"></i> Inserir palestrantes</a></li>
+        <li> <a href="#"> <i class="icon-glass"></i> EVENTOS <span class="label label-info pull-right">2</span><i class="arrow icon-angle-down"></i></a>
+        	<ul class="sub-menu">
+        		<li><a href="<?= App::getUrl() ?>admin/eventos/new"><i class="icon-angle-right"></i> Inserir </a></li>
+        		<li><a href="#"><i class="icon-angle-right"></i> Editar / Excluir </a></li>
+        	</ul>
+        </li>
+        <li> <a href="#"> <i class="icon-group"></i> PALESTRANTES <span class="label label-info pull-right">2</span><i class="arrow icon-angle-down"></i></a>
+        <ul class="sub-menu">
+        	<li><a href="<?= App::getUrl() ?>admin/palestrantes/new"><i class="icon-angle-right"></i> Inserir </a></li>
+        	<li><a href="#" ><i class="icon-angle-right"></i> Editar / Excluir</a></li>
+        </ul>
+        </li>
         <li> <a href="blocos.phtml"> <i class="icon-list-alt"></i> Blocos estaticos</a></li>
       </ul>
     </div>

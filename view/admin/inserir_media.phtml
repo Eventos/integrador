@@ -1,20 +1,73 @@
-<br><br><br><h1>Inserir media no evento <?= $id_evento ?></h1>
-<a href="#" class="foto">Inserir foto</a> &nbsp <a href="#" class="video">Inserir vídeo</a>
+<div class="page-content">
+	<div class="content container">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-title">Media Evento <small>Inserir Medias no Evento <?= $id_evento ?></small></h1>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="widget">
+						<div class="widget-header"> <i class="icon-picture"></i>
+							<h3>Inserir Imagens</h3>
+						</div>
+						<div class="widget-content">
+							<button  class="foto btn btn-primary">Inserir Foto <i class="icon-plus"></i></button>
+							<form action="#" name="media">
+								<div class="media-foto" ></div>
+								<input type="hidden" name="id" value="<?= $id_evento ?>">
+								<div class="btn-up-midea">
+									<button type="submit" id="file-foto" class="btn btn-default" style="display:none;">Enviar</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		<div class="row">
+				<div class="col-lg-12">
+					<div class="widget">
+						<div class="widget-header"> <i class="icon-facetime-video"></i>
+							<h3>Inserir Videos</h3>
+						</div>
+						<div class="widget-content">
+							<button class="video btn btn-primary">Inserir Vídeo <i class="icon-plus"></i></button>
+							<form action="#" name="media">
+								<div class="media-video" ></div>
+								<input type="hidden" name="id" value="<?= $id_evento ?>">
+								<div class="btn-up-midea">
+									<button type="submit" id="file-video" class="btn btn-default" style="display:none;" >Enviar</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-<form action="#" name="media" class="media">
-	<input type="hidden" name="id" value="<?= $id_evento ?>">
-</form>
+	
+<br><br>
+
 
 <script>
-	$('.foto').click(function(){
-		i = $('.inputFoto').length;
-		html = '<label>Selecione a foto: </label><input name="inputFoto['+i+']" class="inputFoto" type="file"><br>';
-		$('.media').append(html);
-	});
+		$('.foto').click(function(){
+			i = $('.inputFoto').length;
 
-	$('.video').click(function(){
-		i = $('.inputVideo').length;
-		html = '<label>Url do vídeo: &nbsp</label><input name="inputVideo['+i+']" class="inputVideo" type="text"><br><br>';
-		$('.media').append(html);
-	});
+			html = '<div class="image"><label class="control-label" >Selecione a foto: </label><div class="input-group"><span class="input-group-btn"><span class="btn btn-success btn-file">Prourar... <input type="file" id="file" onchange="pega_valor(this.value);"></span></span><input type="text" name="inputFoto['+i+']" class="form-control" id="replace" readonly=""></div><br><label class="control-label" >Descrição da Foto: </label><textarea class="desc-evento" name="descricao"></textarea></div>';
+
+			$('.media-foto').append(html);
+			$('#file-foto').show();
+		});
+
+		$('.video').click(function(){
+			i = $('.inputVideo').length;
+
+			html = '<div class="videos"><label>Url do vídeo: &nbsp</label><div class="input-group"> <span class="input-group-addon"><i class="icon-film"></i></span><input name="inputVideo['+i+']" class="inputVideo form-control" type="text"></div><label>Descrição do vídeo: &nbsp</label><textarea class="desc-evento" name="descricao" ></textarea><br><br></div>';
+
+			$('.media-video').append(html);
+			$('#file-video').show();
+		});
+		function pega_valor(caminho){
+			$('#replace').val(caminho);
+    	};
 </script>

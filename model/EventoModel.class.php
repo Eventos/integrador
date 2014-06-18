@@ -11,4 +11,7 @@ class EventoModel
 		var_dump($data);
 		exit;
 	}
+	function editAction($data){
+		
+	}
 }
