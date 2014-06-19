@@ -19,26 +19,36 @@ class AdminController extends ControllerAbstract
 		$admin->logout();
 	}
 
+	function subeventosAction($params){
+		if(isset($params[0]) && count($params) == 2 && isset($params[1]) && $params[1] == 'new')
+		{
+			$paramsView = Evento::SubEventoNewHelper();
+			$paramsView['id_evento'] = $params[0];
+			$this->render('admin/inserir_subevento', $paramsView);
+		}elseif(isset($params[0]) && count($params) == 3 && isset($params[1]) && $params[1] == 'new' && $params[2] == 'post')
+		{
+			$subevento = new SubeventoModel();
+			$subevento->newAction($params[0], $_POST);
+		}
+	}
+
 	function eventosAction($params){
 
 		if(count($params) == 0)
 		{
 			die('Listar eventos');
 		}
+
 		elseif(isset($params[0]) && $params[0] == 'new' && count($params) == 1)
 		{
-				$paramsView = Evento::newHelper();
-				$this->render('admin/inserir_eventos', $paramsView);
-
-
+			$paramsView = Evento::newHelper();
+			$this->render('admin/inserir_eventos', $paramsView);
 		}
 		elseif(isset($params[0]) && $params[0] == 'media' && count($params) == 2
 				&& isset($params[1]))
 		{
 			$paramsView = Evento::mediaHelper($params[1]);
 			$this->render('admin/inserir_media', $paramsView);
-
-
 		}
 		elseif(isset($params[0]) && $params[0] == 'media' && count($params) == 3
 				&& isset($params[1]) && $params[2] == 'post')

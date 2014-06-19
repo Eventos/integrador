@@ -11,6 +11,13 @@ class Evento
 		return $params;
 	}
 
+	static function SubEventoNewHelper(){
+		$params = array();
+		$palestrantes = new PalestranteModel();
+		$params['palestrantes'] = $palestrantes->getAllPalestrantes();
+		return $params;
+	}
+
 	static function mediaHelper($idEvento = null){
 		$params = array('id_evento' => $idEvento);
 		return $params;

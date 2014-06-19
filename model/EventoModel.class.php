@@ -4,8 +4,6 @@
 */
 class EventoModel extends ModelAbstract
 {
-	private $palestrante;
-	private $estado;
 
 	function newAction($data){
 		echo '<pre>';
@@ -45,24 +43,29 @@ class EventoModel extends ModelAbstract
 			if(!$query) throw new Exception('Erro na inserção..');
 
 			$valores = $data['valores'];
-			foreach ($valores as $valor) {
-				$query = 'INSERT INTO valor_evento (data_ini, data_fim, valor, id_evento) VALUES (:data_ini, :data_fim, :valor, :id_evento)';
-				$values = array(
-							':data_ini' => $valor['data_ini'],
-							':data_fim' => $valor['data_fim'],
-							':valor' => $valor['valor'],
-							':id_evento' => $id_evento
-						);
-				$prep = $this->db->prepare($query);
-				$query = $prep->execute($values);
-				if(!$query) throw new Exception('Erro na inserção..');
-			}
+			$this->insertValues($valores, $id_evento);
+			
 			Flash::setMessage('info', 'Insira agora fotos e vídeos para seu evento');
 			App::redirect('admin/eventos/media/'.$id_evento);
 			exit;
 		}catch(Exception $e){
 			Flash::setMessage('danger', 'Ops: '.$e->getMessage());
 			App::redirect('admin/index');
+		}
+	}
+
+	private function insertValues($valores, $id_evento){
+		foreach ($valores as $valor) {
+			$query = 'INSERT INTO valor_evento (data_ini, data_fim, valor, id_evento) VALUES (:data_ini, :data_fim, :valor, :id_evento)';
+			$values = array(
+						':data_ini' => $valor['data_ini'],
+						':data_fim' => $valor['data_fim'],
+						':valor' => $valor['valor'],
+						':id_evento' => $id_evento
+					);
+			$prep = $this->db->prepare($query);
+			$query = $prep->execute($values);
+			if(!$query) throw new Exception('Erro na inserção..');
 		}
 	}
 
