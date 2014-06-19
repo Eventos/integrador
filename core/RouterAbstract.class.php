@@ -11,6 +11,9 @@ class RouterAbstract
 
 	function __construct($url)
 	{
+		if($url[strlen($url)-1] == '/'){
+			$url = substr($url, 0, -1);
+		}
 		$params = explode('/', $url) ? explode('/', $url) : null;
 		unset($params[0]); unset($params[1]);
 		
@@ -20,8 +23,6 @@ class RouterAbstract
 			$this->controller = 'index';
 			$this->action = 'index';
 		}
-
-		$this->call($this->controller, $this->action, $this->params);
 	}
 
 	private function calcRoutes($params){
@@ -54,7 +55,6 @@ class RouterAbstract
 		if(file_exists(SITE_ROOT.'controller/'.$controllerName.'.class.php')){
 			$call = new $controllerName;
 			$actionName = $action.'Action';
-
 			if(method_exists($call,$actionName)){
 				$call->$actionName($this->params);
 			}elseif(method_exists($call, 'indexAction') && $actionName == 'Action'){
