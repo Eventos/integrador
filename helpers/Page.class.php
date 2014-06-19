@@ -39,9 +39,9 @@ class Page
 		}
 	}
 
-	static function addCkeditorElement($type, $file){
-		$file_url = URL_BASE.'assets/ckeditor/'.$file;
-		$file = SITE_ROOT.'assets/ckeditor/'.$file;
+	static function addTinymceElement($type, $file){
+		$file_url = URL_BASE.'assets/tinymce/'.$file;
+		$file = SITE_ROOT.'assets/tinymce/'.$file;
 		if(file_exists($file)){
 			if($type == 'js'){
 				echo '<script type="text/javascript" src="'.$file_url.'"></script>';
