@@ -19,7 +19,7 @@ Page::addTinymceElement('js', 'js/tinymce/tinymce.min.js');
 					<div class="col-lg-12">
 						<div class="widget-content">
 
-							<form method="post">
+							<form method="get" action="#">
 								<textarea id="elm1" name="area"></textarea><br>
 								<div class="btn-actions">
 									<input type="submit" value="Salvar" class="btn-action btn btn-success"><br><br>
@@ -36,6 +36,7 @@ Page::addTinymceElement('js', 'js/tinymce/tinymce.min.js');
 	tinymce.init({
 		selector: "textarea#elm1",
 		theme: "modern",
+		language : 'pt_BR',
 		height: 320,
 		plugins: [
 		"advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
