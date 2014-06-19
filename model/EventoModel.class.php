@@ -70,21 +70,66 @@ class EventoModel extends ModelAbstract
 		
 	}
 
-	function insertMedia($id_evento, $data){
+	function insertMedia($id_evento, $data, $files){
 		echo '<pre>';
+		if($data['type'] == 'video'){
+			$this->insertVideo($id_evento, $data);
+		}elseif($data['type'] == 'foto'){
+			$this->insertFoto($id_evento, $data, $files);
+		}
+	}
+
+	private function organizeFiles($files){
+		$dataFiles = array();
+		foreach ($files as $files) {
+			foreach ($files['name'] as $key => $value) {
+				$dataFiles[$key]['name'] = $value;
+			}
+			foreach ($files['tmp_name'] as $key => $value) {
+				$dataFiles[$key]['tmp_name'] = $value;
+			}
+		}
+		return $dataFiles;
+	}
+
+	private function insertFoto($id_evento, $data, $files){
 		try{
-			if($data['type'] == 'video'){
-				foreach ($data['inputVideo'] as $video) {
-					$query = "INSERT INTO foto_video (link, id_evento, descricao) VALUES (:link, :id_evento, :descricao)";
-					$values = array(
-						':link' => $video['url'],
-						':descricao' => $video['descricao'],
-						':id_evento' => $id_evento
-					);
-					$prep = $this->db->prepare($query);
-					$query = $prep->execute($values);
-					if(!$query) throw new Exception('Erro na inserção..');
-				}
+			$dataFiles = $this->organizeFiles($files);
+			foreach ($dataFiles as $key => $file) {
+				$descricao = $data['inputFoto'][$key]['descricao'];
+				$destination = 'uploads/evento'.$id_evento . '-'. $key . '-' . $file['name']['file'];
+				copy($file['tmp_name']['file'], $destination);
+
+				$query = "INSERT INTO foto_video (link, id_evento, descricao) VALUES (:link, :id_evento, :descricao)";
+				$values = array(
+					':link' => $destination,
+					':descricao' => $descricao,
+					':id_evento' => $id_evento
+				);
+				$prep = $this->db->prepare($query);
+				$query = $prep->execute($values);
+				if(!$query) throw new Exception('Erro na inserção..');
+			}
+			Flash::setMessage('success', 'Evento inserido com sucesso!');
+			App::redirect('admin/index');
+		}catch(Exception $e){
+			Flash::setMessage('danger', 'Ops: '.$e->getMessage());
+			App::redirect('admin/index');
+		}	
+	}
+
+	private function insertVideo($id_evento, $data){
+		try{
+			foreach ($data['inputVideo'] as $video) {
+				$query = "INSERT INTO foto_video (link, id_evento, descricao) VALUES (:link, :id_evento, :descricao)";
+				$values = array(
+					':link' => $video['url'],
+					':descricao' => $video['descricao'],
+					':id_evento' => $id_evento
+				);
+				$prep = $this->db->prepare($query);
+				$query = $prep->execute($values);
+				if(!$query) throw new Exception('Erro na inserção..');
 			}
 			Flash::setMessage('success', 'Evento inserido com sucesso!');
 			App::redirect('admin/index');
@@ -92,6 +137,6 @@ class EventoModel extends ModelAbstract
 		}catch(Exception $e){
 			Flash::setMessage('danger', 'Ops: '.$e->getMessage());
 			App::redirect('admin/index');
-		}
+		}	
 	}
 }

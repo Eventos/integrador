@@ -4,7 +4,7 @@
 			<div class="col-lg-12">
 				<h1 class="page-title">Media Evento <small>Inserir Medias no Evento <?= $id_evento ?></small></h1>
 			</div>
-			<form action="<?= App::getUrl() ?>admin/eventos/media/<?= $id_evento ?>/post" name="media" method="POST">
+			<form action="<?= App::getUrl() ?>admin/eventos/media/<?= $id_evento ?>/post" name="media" method="POST" enctype="multipart/form-data">
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="widget">
@@ -56,7 +56,7 @@
 		$('.foto').click(function(){
 			i = $('.inputFoto').length;
 
-			html = '<div class="image"><label class="control-label" >Selecione a foto: </label><div class="input-group"><span class="input-group-btn"><span class="btn btn-success btn-file">Prourar... <input type="file" id="file" onchange="pega_valor(this.value);"></span></span><input type="text" name="inputFoto['+i+']" class="form-control" id="replace" readonly=""></div><br><label class="control-label" >Descrição da Foto: </label><textarea class="desc-evento" name="descricao"></textarea></div>';
+			html = '<div class="image inputFoto"><label class="control-label" >Selecione a foto: </label><div class="input-group"><span class="input-group-btn"><span class="btn btn-success btn-file">Procurar... <input type="file" name="inputFoto['+i+'][file]" id="file" onchange="pega_valor(this.value);"></span></span><input type="text" name="inputFoto['+i+'][img]" class="form-control" id="replace" readonly=""></div><br><label class="control-label" >Descrição da Foto: </label><textarea class="desc-evento" name="inputFoto['+i+'][descricao]"></textarea></div>';
 
 			$('.media-foto').append(html);
 			$('#file-foto').show();

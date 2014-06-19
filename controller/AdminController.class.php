@@ -44,7 +44,7 @@ class AdminController extends ControllerAbstract
 				&& isset($params[1]) && $params[2] == 'post')
 		{
 			$evento = new EventoModel();
-			$evento->insertMedia($params[1], $_POST);
+			$evento->insertMedia($params[1], $_POST, isset($_FILES) ? $_FILES : NULL);
 		}
 		elseif(isset($params[0]) && $params[0] == 'new' && count($params) == 2 && isset($params[1]) && $params[1] == 'post')
 		{
@@ -61,6 +61,7 @@ class AdminController extends ControllerAbstract
 			$this->render('error');
 			exit();
 		}
+		exit;
 }
 	function palestrantesAction($params){
 		if(count($params) == 0){
