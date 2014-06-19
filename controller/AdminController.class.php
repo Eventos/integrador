@@ -20,22 +20,44 @@ class AdminController extends ControllerAbstract
 	}
 
 	function eventosAction($params){
-		if(count($params) == 0){
+
+		if(count($params) == 0)
+		{
 			die('Listar eventos');
-		}elseif(isset($params[0]) && $params[0] == 'new' && count($params) == 1){
+		}
+		elseif(isset($params[0]) && $params[0] == 'new' && count($params) == 1)
+		{
 				$paramsView = Evento::newHelper();
 				$this->render('admin/inserir_eventos', $paramsView);
-		}elseif(isset($params[0]) && $params[0] == 'media' && count($params) == 2
-				&& isset($params[1])){
+
+
+		}
+		elseif(isset($params[0]) && $params[0] == 'media' && count($params) == 2
+				&& isset($params[1]))
+		{
 			$paramsView = Evento::mediaHelper($params[1]);
 			$this->render('admin/inserir_media', $paramsView);
-		}elseif(isset($params[0]) && $params[0] == 'new' && count($params) == 2 && isset($params[1]) && $params[1] == 'post'){
+
+
+		}
+		elseif(isset($params[0]) && $params[0] == 'media' && count($params) == 3
+				&& isset($params[1]) && $params[2] == 'post')
+		{
+			$evento = new EventoModel();
+			$evento->insertMedia($params[1], $_POST);
+		}
+		elseif(isset($params[0]) && $params[0] == 'new' && count($params) == 2 && isset($params[1]) && $params[1] == 'post')
+		{
 			$evento = new EventoModel();
 			$evento->newAction($_POST);
-		}elseif(isset($params[0]) && $params[0] == 'edit'){
+		}
+		elseif(isset($params[0]) && $params[0] == 'edit')
+		{
 			echo 'bla';
 			exit();
-		}else{
+		}
+		else
+		{
 			$this->render('error');
 			exit();
 		}

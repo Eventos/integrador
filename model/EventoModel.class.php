@@ -22,7 +22,7 @@ class EventoModel extends ModelAbstract
 
 			$id_evento = $this->getNextIncrement('evento');
 
-			$query = "INSERT INTO evento (local, descricao_contato, data_hora, data_limite, vagas, aberto, desc_evento, email_contato, telefone_contato, id_cidade, id_administrador, facebook, twitter, google_plus, id_palestrante) VALUES (:local, :descricao_contato, :data_hora, :data_limite, :vagas, :aberto, :desc_evento, :email_contato, :telefone_contato, :id_cidade, :id_administrador, :facebook, :twitter, :google_plus, :palestrante)";
+			$query = "INSERT INTO evento (local, desc_contato, data_hora, data_limite, vagas, aberto, desc_evento, email_contato, telefone_contato, id_cidade, id_administrador, facebook, twitter, google_plus, id_palestrante) VALUES (:local, :descricao_contato, :data_hora, :data_limite, :vagas, :aberto, :desc_evento, :email_contato, :telefone_contato, :id_cidade, :id_administrador, :facebook, :twitter, :google_plus, :palestrante)";
 			$values = array(':local' => $data['local'],
 							':descricao_contato' => $data['desc_contato'],
 							':data_hora' => $data['data_hora'],
@@ -39,9 +39,10 @@ class EventoModel extends ModelAbstract
 							':google_plus' => $data['google_plus'],
 							':palestrante' => $data['palestrante']
 					);
+
 			$prep = $this->db->prepare($query);
-			
 			$query = $prep->execute($values);
+			if(!$query) throw new Exception('Erro na inserção..');
 
 			$valores = $data['valores'];
 			foreach ($valores as $valor) {
@@ -54,15 +55,43 @@ class EventoModel extends ModelAbstract
 						);
 				$prep = $this->db->prepare($query);
 				$query = $prep->execute($values);
+				if(!$query) throw new Exception('Erro na inserção..');
 			}
 			Flash::setMessage('info', 'Insira agora fotos e vídeos para seu evento');
 			App::redirect('admin/eventos/media/'.$id_evento);
+			exit;
 		}catch(Exception $e){
 			Flash::setMessage('danger', 'Ops: '.$e->getMessage());
 			App::redirect('admin/index');
 		}
 	}
+
 	function editAction($data){
 		
+	}
+
+	function insertMedia($id_evento, $data){
+		echo '<pre>';
+		try{
+			if($data['type'] == 'video'){
+				foreach ($data['inputVideo'] as $video) {
+					$query = "INSERT INTO foto_video (link, id_evento, descricao) VALUES (:link, :id_evento, :descricao)";
+					$values = array(
+						':link' => $video['url'],
+						':descricao' => $video['descricao'],
+						':id_evento' => $id_evento
+					);
+					$prep = $this->db->prepare($query);
+					$query = $prep->execute($values);
+					if(!$query) throw new Exception('Erro na inserção..');
+				}
+			}
+			Flash::setMessage('success', 'Evento inserido com sucesso!');
+			App::redirect('admin/index');
+			exit;
+		}catch(Exception $e){
+			Flash::setMessage('danger', 'Ops: '.$e->getMessage());
+			App::redirect('admin/index');
+		}
 	}
 }

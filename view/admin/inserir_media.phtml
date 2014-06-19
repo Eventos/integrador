@@ -4,43 +4,46 @@
 			<div class="col-lg-12">
 				<h1 class="page-title">Media Evento <small>Inserir Medias no Evento <?= $id_evento ?></small></h1>
 			</div>
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="widget">
-						<div class="widget-header"> <i class="icon-picture"></i>
-							<h3>Inserir Imagens</h3>
-						</div>
-						<div class="widget-content">
-							<button  class="foto btn btn-primary">Inserir Foto <i class="icon-plus"></i></button>
-							<form action="#" name="media">
-								<div class="media-foto" ></div>
-								<input type="hidden" name="id" value="<?= $id_evento ?>">
-								<div class="btn-up-midea">
-									<button type="submit" id="file-foto" class="btn btn-default" style="display:none;">Enviar</button>
+			<form action="<?= App::getUrl() ?>admin/eventos/media/<?= $id_evento ?>/post" name="media" method="POST">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="widget">
+								<div class="widget-header"> <i class="icon-picture"></i>
+									<h3>Inserir Imagens</h3>
 								</div>
-							</form>
+								<div class="widget-content">
+									<button  class="foto btn btn-primary">Inserir Foto <i class="icon-plus"></i></button>
+									
+									<div class="media-foto" ></div>
+									<input type="hidden" name="type" value="foto">
+									<div class="btn-up-midea">
+										<button type="submit" id="file-foto" class="btn btn-default" style="display:none;">Enviar</button>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		<div class="row">
-				<div class="col-lg-12">
-					<div class="widget">
-						<div class="widget-header"> <i class="icon-facetime-video"></i>
-							<h3>Inserir Videos</h3>
-						</div>
-						<div class="widget-content">
-							<button class="video btn btn-primary">Inserir Vídeo <i class="icon-plus"></i></button>
-							<form action="#" name="media">
-								<div class="media-video" ></div>
-								<input type="hidden" name="id" value="<?= $id_evento ?>">
-								<div class="btn-up-midea">
-									<button type="submit" id="file-video" class="btn btn-default" style="display:none;" >Enviar</button>
-								</div>
-							</form>
+				</form>
+				<form action="<?= App::getUrl() ?>admin/eventos/media/<?= $id_evento ?>/post" name="media" method="POST">
+					<div class="row">
+					<div class="col-lg-12">
+						<div class="widget">
+							<div class="widget-header"> <i class="icon-facetime-video"></i>
+								<h3>Inserir Videos</h3>
+							</div>
+							<div class="widget-content">
+								<button class="video btn btn-primary">Inserir Vídeo <i class="icon-plus"></i></button>
+								<form action="#" name="media">
+									<div class="media-video" ></div>
+									<input type="hidden" name="type" value="video">
+									<div class="btn-up-midea">
+										<button type="submit" id="file-video" class="btn btn-default" style="display:none;" >Enviar</button>
+									</div>
+								</form>
+							</div>
 						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -57,15 +60,17 @@
 
 			$('.media-foto').append(html);
 			$('#file-foto').show();
+			event.preventDefault();
 		});
 
 		$('.video').click(function(){
 			i = $('.inputVideo').length;
 
-			html = '<div class="videos"><label>Url do vídeo: &nbsp</label><div class="input-group"> <span class="input-group-addon"><i class="icon-film"></i></span><input name="inputVideo['+i+']" class="inputVideo form-control" type="text"></div><label>Descrição do vídeo: &nbsp</label><textarea class="desc-evento" name="descricao" ></textarea><br><br></div>';
+			html = '<div class="videos"><label>Url do vídeo: &nbsp</label><div class="input-group"> <span class="input-group-addon"><i class="icon-film"></i></span><input name="inputVideo['+i+'][url]" class="inputVideo form-control" type="text"></div><label>Descrição do vídeo: &nbsp</label><textarea class="desc-evento" name="inputVideo['+i+'][descricao]" ></textarea><br><br></div>';
 
 			$('.media-video').append(html);
 			$('#file-video').show();
+			event.preventDefault();
 		});
 		function pega_valor(caminho){
 			$('#replace').val(caminho);

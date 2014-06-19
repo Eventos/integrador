@@ -20,5 +20,6 @@ class PalestranteModel extends ModelAbstract
 		$prep->execute($values);
 		Flash::setMessage('success', 'Palestrante inserido com sucesso!');
 		App::redirect('admin/index');
+		exit;
 	}
 }
