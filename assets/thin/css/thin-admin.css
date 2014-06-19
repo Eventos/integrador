@@ -884,23 +884,25 @@ ul.wysihtml5-toolbar div.wysihtml5-colors {
 	width: 50px;
 }
 
+.back-home{text-align: center; font-size: 30px;}
+.back-home a:hover{color: Black;text-shadow: 1px 1px 3px white;}
 .widget-404 {
 	margin: auto;
 	width: 100%;
 	color: #fff;
 }
-
 .widget-404 h1 {
 	color: #FFFFFF;
-	font-size: 140px;
+	font-size: 200px;
 	font-weight: 300;
 	line-height: 140px;
 	margin: 0;
 	text-rendering: optimizelegibility;
 }
-
+.description h3{font-size: 50px}
 .widget-404 p {
 	color: #fff;
+	font-size: 20px;
 }
 
 .widget-404 .description {

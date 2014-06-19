@@ -35,6 +35,9 @@ class AdminController extends ControllerAbstract
 		}elseif(isset($params[0]) && $params[0] == 'edit'){
 			echo 'bla';
 			exit();
+		}else{
+			$this->render('error');
+			exit();
 		}
 }
 	function palestrantesAction($params){
@@ -51,6 +54,26 @@ class AdminController extends ControllerAbstract
 				unset($_POST['estados']);	
 			}
 			$palestrante->newAction($_POST);
+		}else{
+			$this->render('error');
+			exit();
+		}
+	}
+
+	function blocosAction($params){
+		if(count($params) == 0){
+			die('list');
+		}
+		if(count($params) == 1 && $params[0] == 'edit'){
+			die('edit');
+		}
+		if(count($params)==1 && $params[0] == 'new'){
+			$this->render('admin/inserir_bloco');
+			exit();
+		}
+		else{
+			$this->render('error');
+			exit();
 		}
 	}
 }
