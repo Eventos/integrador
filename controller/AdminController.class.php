@@ -84,14 +84,19 @@ class AdminController extends ControllerAbstract
 
 	function blocosAction($params){
 		if(count($params) == 0){
-			die('list');
+			$this->render('admin/listar_blocos');
+			exit;
 		}
-		if(count($params) == 1 && $params[0] == 'edit'){
+		elseif(isset($params) && count($params) == 1 && $params[0] == 'edit'){
 			die('edit');
 		}
-		if(count($params)==1 && $params[0] == 'new'){
+		elseif(isset($params) && count($params)== 1 && $params[0] == 'new'){
 			$this->render('admin/inserir_bloco');
 			exit();
+		}
+		elseif(isset($params) && count($params) == 2 && $params[0] == 'new' && $params[1] == 'post' ) {
+			$block = new BlocosModel();
+			$block->newAction($_POST);
 		}
 		else{
 			$this->render('error');

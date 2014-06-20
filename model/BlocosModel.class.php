@@ -4,15 +4,28 @@
 */
 class BlocosModel extends ModelAbstract
 {
-	function newAction(){
-
+	function newAction($data){
+		$query = 'INSERT INTO blocos_estaticos (id_bloco, html) VALUES (:id_bloco, :html)';
+		$values = array();
+		foreach ($data as $key => $value) {
+			$values[':'.$key] = $value;
+		}
+		$prep = $this->db->prepare($query);
+		$prep->execute($values);
+		Flash::setMessage('success', 'Bloco inserido com sucesso!');
+		App::redirect('admin/index');
+		exit;
 	}
-
+	
 	function listAction(){
 
 	}
 
 	function editAction(){
+
+	}
+
+	function deleteAction(){
 
 	}
 
@@ -22,4 +35,5 @@ class BlocosModel extends ModelAbstract
 		$block = $data[0];
 		return $block;
 	}
+
 }

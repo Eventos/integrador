@@ -14,12 +14,20 @@ class ControllerAbstract
 		if($params != null){
 			extract($params);
 		}
-		if(strpos($view, 'admin') !== false && strpos($view, 'login') === false){
+		if(strpos($view, 'evento') !== false)
+		{
+			require_once(SITE_ROOT.'view/evento/header.phtml');
+			require_once(SITE_ROOT.'view/'.$view.'.phtml');
+			require_once(SITE_ROOT.'view/evento/footer.phtml');
+		}
+		elseif(strpos($view, 'admin') !== false && strpos($view, 'login') === false){
 			require_once(SITE_ROOT.'view/admin/head.phtml');
 			require_once(SITE_ROOT.'view/'.$view.'.phtml');
 			require_once(SITE_ROOT.'view/admin/footer.phtml');
+			
 		}else{
 			require_once(SITE_ROOT.'view/'.$view.'.phtml');
+			
 		}
 	}
 }

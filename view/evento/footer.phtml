@@ -1,0 +1,57 @@
+<div class="contact" id="contact">
+	<div class="wrap">
+  		<h3>CONTATE-NOS</h3>
+  		<p class="a">Envie um e-mail para os organizadores dos eventos da UTFPR.</p>
+		<div class="form">
+		    <div class="form-text">
+                <input type="text" class="textbox" value="Seu nome*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Nome';}">
+				<input type="text" class="textbox" value="Seu E-mail*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail';}">
+				<select name="evento" class="select-box">
+					<option value="">Evento1</option>
+					<option value="">Evento 2</option>
+				</select>
+			</div>
+		    <textarea placeholder="Sua mensagem*"></textarea>
+			<div class="clear"> </div>
+			<input type="submit" value="ENVIAR MENSAGEM">					 
+		</div>
+		</div>
+	</div>
+<div class="bottom-footer">
+	<div class="wrap"> 
+		<div class="bottom-footer-left">
+			<p>&#169; Copyright 2014 Criado por&nbsp;<a href="#">PontoEdu.br</a></p>
+		</div>
+		<div class="bottom-footer-center">
+			<ul class="bottom-social-icons">
+				<li><a class="bottom-twitter" href="#"> </a></li>
+				<li><a class="bottom-facebook" href="#"> </a></li>
+				<li><a class="bottom-pin" href="#"> </a></li>
+				<li><a class="bottom-google" href="#"> </a></li>
+			</ul>
+		</div>			  
+		<div class="clear"> </div>
+	</div>
+</div>
+<?php
+	Page::addStyleElement('js', 'move-top.js');
+	Page::addStyleElement('js', 'easing.js');
+	Page::addThinElement('js', 'jquery.js');
+	Page::addThinElement('js', 'bootstrap.min.js');
+	Page::addThinElement('js', 'smooth-sliding-menu.js');
+	Page::addThinElement('js', 'lightbox-2.6.min.js');
+
+?>
+
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+		});
+	});
+</script>
+<a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+
+</body>
+</html>

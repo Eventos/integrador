@@ -25,7 +25,7 @@ class IndexController extends ControllerAbstract
 
 	public function newsletterAction($params){
 		if(isset($_POST)){
-			
+			die($_POST);
 		}	
 	}
 	

@@ -19,8 +19,14 @@ Page::addTinymceElement('js', 'js/tinymce/tinymce.min.js');
 					<div class="col-lg-12">
 						<div class="widget-content">
 
-							<form method="get" action="#">
-								<textarea id="elm1" name="area"></textarea><br>
+							<form method="POST" action="<?= App::getUrl() ?>admin/blocos/new/post">
+								<div class="control-group">
+									<label for="normal-field" class="control-label">Id do bloco</label>
+									<div class="controls form-group">
+										<input type="text" name="id_bloco" placeholder="Nome pelo qual será referenciado" class="form-control" id="normal-field">
+									</div>
+								</div>
+								<textarea id="elm1" name="html"></textarea><br>
 								<div class="btn-actions">
 									<input type="submit" value="Salvar" class="btn-action btn btn-success"><br><br>
 								</div>

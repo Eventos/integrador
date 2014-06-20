@@ -220,3 +220,13 @@ border-radius: 5px;}
 .btn-up-midea{width: 100%; text-align: center;}
 .foto,.video{margin-bottom: 15px;}
 #file-foto, #file-video{width: 200px; margin-bottom: 20px}
+
+/**IMAGEN CAPA dos EVENTOS*/
+.lider_bg_evento {
+	
+	background-size: 100%;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
