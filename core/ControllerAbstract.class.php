@@ -14,8 +14,7 @@ class ControllerAbstract
 		if($params != null){
 			extract($params);
 		}
-		if(strpos($view, 'evento') !== false)
-		{
+		if(strpos($view, 'evento') !== false && strpos($view , 'admin')){
 			require_once(SITE_ROOT.'view/evento/header.phtml');
 			require_once(SITE_ROOT.'view/'.$view.'.phtml');
 			require_once(SITE_ROOT.'view/evento/footer.phtml');
