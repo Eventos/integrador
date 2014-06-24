@@ -11,10 +11,11 @@ class ControllerAbstract
 	}
 
 	function render($view, $params = null){
+		/*$data = explode('/', $view);*/
 		if($params != null){
 			extract($params);
 		}
-		if(strpos($view, 'evento') !== false && strpos($view , 'admin')){
+		if(strpos($view, 'evento') !== false && strpos($view , 'admin') === false){
 			require_once(SITE_ROOT.'view/evento/header.phtml');
 			require_once(SITE_ROOT.'view/'.$view.'.phtml');
 			require_once(SITE_ROOT.'view/evento/footer.phtml');
