@@ -22,4 +22,9 @@ class Evento
 		$params = array('id_evento' => $idEvento);
 		return $params;
 	}
+
+	static function exists ( $id=null ){  
+		$evento = new EventoModel();  
+	    return $evento->eventoExists($id);
+	}
 }

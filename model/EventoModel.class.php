@@ -21,22 +21,7 @@ class EventoModel extends ModelAbstract
 			$id_evento = $this->getNextIncrement('evento');
 
 			$query = "INSERT INTO evento (local, desc_contato, data_hora, data_limite, vagas, aberto, desc_evento, email_contato, telefone_contato, id_cidade, id_administrador, facebook, twitter, google_plus, id_palestrante) VALUES (:local, :descricao_contato, :data_hora, :data_limite, :vagas, :aberto, :desc_evento, :email_contato, :telefone_contato, :id_cidade, :id_administrador, :facebook, :twitter, :google_plus, :palestrante)";
-			$values = array(':local' => $data['local'],
-							':descricao_contato' => $data['desc_contato'],
-							':data_hora' => $data['data_hora'],
-							':data_limite' => $data['data_limite'],
-							':vagas' => $data['vagas'],
-							':aberto' => $aberto,
-							':desc_evento' => $data['desc_evento'],
-							':email_contato' => $data['email_contato'],
-							':telefone_contato' => $data['telefone_contato'],
-							':id_cidade' => $data['cidade'],
-							':id_administrador' => (int)$id_administrador,
-							':facebook' => $data['facebook'],
-							':twitter' => $data['twitter'],
-							':google_plus' => $data['google_plus'],
-							':palestrante' => $data['palestrante']
-					);
+			$values = array(':local' => $data['local'],':descricao_contato' => $data['desc_contato'],':data_hora' => $data['data_hora'],':data_limite' => $data['data_limite'],':vagas' => $data['vagas'],':aberto' => $aberto,':desc_evento' => $data['desc_evento'],':email_contato' => $data['email_contato'],':telefone_contato' => $data['telefone_contato'],':id_cidade' => $data['cidade'],':id_administrador' => (int)$id_administrador,':facebook' => $data['facebook'],':twitter' => $data['twitter'],':google_plus' => $data['google_plus'],':palestrante' => $data['palestrante']);
 
 			$prep = $this->db->prepare($query);
 			$query = $prep->execute($values);
@@ -141,5 +126,21 @@ class EventoModel extends ModelAbstract
 			Flash::setMessage('danger', 'Ops: '.$e->getMessage());
 			App::redirect('admin/index');
 		}	
+	}
+
+	function eventoExists($id=null){
+		if($id === null){
+			$query = "SELECT id_evento FROM evento WHERE aberto = 1";
+		}
+		else{
+			$query = "SELECT id_evento FROM evento WHERE id_evento = '$id' and aberto = 1 ";
+		}
+
+		$data = $this->db->query($query);
+		$data = iterator_to_array($data);
+
+		if (isset($data[0]) && array_key_exists("id_evento", $data[0] ))
+			return true;
+		return false;
 	}
 }
