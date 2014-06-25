@@ -22,18 +22,23 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td class="hidden-xs-portrait">1</td>
-											<td><img src="images/1.jpg"></td>
-											<td> Palestra de Desenvolvimento Ágil </td>
-											<td class="hidden-xs-portrait"><p> <small> <strong>Tipo:</strong> &nbsp; Desenvolvimento Ágil com Scrum </small> </p>
-												<td class="hidden-xs"> 14/072014 </td>
-												<td class="hidden-xs"> 10/07/2014 </td>
+										<?php $n=0;
+											  $data = Evento::getEvento(null,'info'); 
+									    ?>
+										<?php foreach ($data as $key): ?>
+											<?php $n++; ?>
+											<tr>
+												<td class="hidden-xs-portrait"><?= $n; ?></td> 
+												<td><img src="images/1.jpg"></td>
+												<td> <?= $key['titulo']; ?> </td>
+												<td class="hidden-xs-portrait"><p> <small> <strong>Tipo:</strong> &nbsp; <?= $key['tipo']; ?> </small> </p>
+												<td class="hidden-xs"> <?= $key['data_hora']; ?></td>
+												<td class="hidden-xs"> <?= $key['data_limite']; ?> </td>
 												<td><button class="btn btn-sm btn-primary"> Visualizar </button>
 													<button data-toggle="button" class="btn btn-sm btn-warning"> Inscrever-se </button></td>
-												</tr>
-
-											<?php endif; ?>		
+											</tr>
+										<?php endforeach; ?>
+							<?php endif; ?>		
 
 										</tbody>
 									</table>

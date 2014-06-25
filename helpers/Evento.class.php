@@ -27,4 +27,15 @@ class Evento
 		$evento = new EventoModel();  
 	    return $evento->eventoExists($id);
 	}
+
+	static function getEvento ($id = null, $type){
+		$data = array();
+		$evento = new EventoModel();
+		if($type == 'info')
+			$data = $evento->getList($id);
+		elseif($type == 'all'){
+			$data = $evento->getData($id);
+		}
+		return $data;
+	}
 }

@@ -143,4 +143,32 @@ class EventoModel extends ModelAbstract
 			return true;
 		return false;
 	}
+
+	function getlist($id=null){
+		if($id === null){
+			$query = "SELECT titulo, tipo, data_hora, data_limite FROM evento WHERE aberto = 1";
+		}
+		else{
+			$query = "SELECT titulo, tipo, data_hora, data_limite FROM evento WHERE id_evento = '$id' and aberto = 1 ";
+		}
+
+		$consulta = $this->db->prepare($query);
+		$consulta->execute();
+		$linha = $consulta->fetchAll(PDO::FETCH_ASSOC);
+		return $linha;
+	}
+
+	function getData($id=null){
+		if($id === null){
+			$query = "SELECT * FROM evento WHERE aberto = 1";
+		}
+		else{
+			$query = "SELECT * FROM evento WHERE id_evento = '$id' and aberto = 1 ";
+		}
+
+		$consulta = $this->db->prepare($query);
+		$consulta->execute();
+		$linha = $consulta->fetchAll(PDO::FETCH_ASSOC);
+		return $linha;
+	}
 }
