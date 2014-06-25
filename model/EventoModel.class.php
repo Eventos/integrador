@@ -20,8 +20,8 @@ class EventoModel extends ModelAbstract
 
 			$id_evento = $this->getNextIncrement('evento');
 
-			$query = "INSERT INTO evento (local, desc_contato, data_hora, data_limite, vagas, aberto, desc_evento, email_contato, telefone_contato, id_cidade, id_administrador, facebook, twitter, google_plus, id_palestrante, titulo, tipo) VALUES (:local, :descricao_contato, :data_hora, :data_limite, :vagas, :aberto, :desc_evento, :email_contato, :telefone_contato, :id_cidade, :id_administrador, :facebook, :twitter, :google_plus, :palestrante, :titulo, :tipo)";
-			$values = array(':local' => $data['local'],':descricao_contato' => $data['desc_contato'],':data_hora' => $data['data_hora'],':data_limite' => $data['data_limite'],':vagas' => $data['vagas'],':aberto' => $aberto,':desc_evento' => $data['desc_evento'],':email_contato' => $data['email_contato'],':telefone_contato' => $data['telefone_contato'],':id_cidade' => $data['cidade'],':id_administrador' => (int)$id_administrador,':facebook' => $data['facebook'],':twitter' => $data['twitter'],':google_plus' => $data['google_plus'],':palestrante' => $data['palestrante'], ':titulo' => $data['titulo'], ':tipo' => $data['tipo']);
+			$query = "INSERT INTO evento (local, desc_contato, data_hora, data_limite, vagas, aberto, desc_evento, email_contato, telefone_contato, id_cidade, id_administrador, facebook, twitter, google_plus, id_palestrante, titulo, descricao_resumida) VALUES (:local, :descricao_contato, :data_hora, :data_limite, :vagas, :aberto, :desc_evento, :email_contato, :telefone_contato, :id_cidade, :id_administrador, :facebook, :twitter, :google_plus, :palestrante, :titulo, :descricao_resumida)";
+			$values = array(':local' => $data['local'],':descricao_contato' => $data['desc_contato'],':data_hora' => $data['data_hora'],':data_limite' => $data['data_limite'],':vagas' => $data['vagas'],':aberto' => $aberto,':desc_evento' => $data['desc_evento'],':email_contato' => $data['email_contato'],':telefone_contato' => $data['telefone_contato'],':id_cidade' => $data['cidade'],':id_administrador' => (int)$id_administrador,':facebook' => $data['facebook'],':twitter' => $data['twitter'],':google_plus' => $data['google_plus'],':palestrante' => $data['palestrante'], ':titulo' => $data['titulo'], ':descricao_resumida' => $data['descricao_resumida']);
 
 			$prep = $this->db->prepare($query);
 			$query = $prep->execute($values);
@@ -146,10 +146,10 @@ class EventoModel extends ModelAbstract
 
 	function getlist($id=null){
 		if($id === null){
-			$query = "SELECT titulo, tipo, data_hora, data_limite FROM evento WHERE aberto = 1";
+			$query = "SELECT id_evento, titulo, descricao_resumida, data_hora, data_limite FROM evento WHERE aberto = 1";
 		}
 		else{
-			$query = "SELECT titulo, tipo, data_hora, data_limite FROM evento WHERE id_evento = '$id' and aberto = 1 ";
+			$query = "SELECT titulo, descricao_resumida, data_hora, data_limite FROM evento WHERE id_evento = '$id' and aberto = 1 ";
 		}
 
 		$consulta = $this->db->prepare($query);

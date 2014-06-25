@@ -102,7 +102,7 @@ box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(56, 145, 204, 0.8
 outline: 0 none;}
 .submit{text-align: center;margin: 0 auto 50px}
 .submit button{width: 20%}
-.select-box{width: 50%;padding: 10px; background-color: white; border-radius: 3px; margin-bottom: 15px;}
+.select-box{width: 96%;padding: 10px; background-color: white; border-radius: 3px; margin-bottom: 15px;}
 .select-box:focus{border:none;}
 .title-event{height: 80px}
 /******Espacamento menu com menor resuloção ************/
@@ -230,3 +230,4 @@ border-radius: 5px;}
 	-o-background-size: cover;
 	background-size: cover;
 }
+.contact_index{background: none;}

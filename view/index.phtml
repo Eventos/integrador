@@ -378,8 +378,11 @@ include_once 'core/App.class.php';
 				<input type="text" class="textbox" value="Seu nome*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Nome';}">
 				<input type="text" class="textbox" value="Seu E-mail*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail';}">
 				<select name="evento" class="select-box">
-					<option value="">Evento1</option>
-					<option value="">Evento 2</option>
+					<option class="contact_index" name="">-- Selecione o Evento --</option>
+					<?php $eventos = Evento::getEvento(null,'info'); ?>
+				    <?php foreach ($eventos as $evento): ?>
+						<option class="contact_index" value="<?= $evento['id_evento'] ?>"> <?= $evento['titulo']?> </option>
+					<?php endforeach; ?>
 				</select>
 			</div>
 			<textarea placeholder="Sua mensagem*"></textarea>
