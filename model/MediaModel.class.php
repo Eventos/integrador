@@ -13,4 +13,15 @@ class MediaModel extends ModelAbstract
 			return true;
 		return false;
 	}
+	function getImages($id){
+
+		$query = "SELECT link FROM foto_video WHERE tipo = 'f' and id_evento = :id_evento ";
+		$value = array(':id_evento' => $id);
+		$prep = $this->db->prepare($query);
+		$prep->execute($value);
+		$link = $prep->fetchAll(PDO::FETCH_ASSOC);
+		
+		$html = new MediaController();
+		return $html->getHtmlImage($link);
+	}
 }

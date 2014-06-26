@@ -1,7 +1,5 @@
 /****Alertas com posicao absoluta****/
-.alert{position: absolute;
-bottom: 0;
-width: 100%;}
+.alert{position: fixed;bottom: 0;width: 100%;z-index: 1;}
 /***************** resolução 908 ou menor *****************/
 @media only screen and (max-width: 908px) {
 	

@@ -11,6 +11,7 @@ Options -Indexes
 php_flag display_errors on
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !.*/assets/.*
+RewriteCond %{REQUEST_FILENAME} !.*/uploads/.*
 RewriteRule .* index.php
 
 php_flag session.use_only_cookies on

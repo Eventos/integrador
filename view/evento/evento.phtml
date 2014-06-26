@@ -12,20 +12,11 @@
           <div class="widget">
             <div class="widget-content">
               <div id="examples" class="section examples-section">
-                 <?php if( Media::image_exists($id_evento) ): ?>
-                 	<?php 
-                 		$images = Media::getAllImages($id_evento);
-                 		foreach ($images as $image):
-                 	?>
-		                <div class="col-sm-4 col-md-2">
-		                  <div class="image-row">
-		                    <div class="image-set"> <a href="<?= Page::urlImage('baner-250X200.png'); ?>" data-lightbox="example-set" title="Clique ao lado da imagen para ir para as proximas fotos"><?php Media::addImage('baner-250X200.png', '') ?></a> </div>
-		                  </div>
-		                </div>
-		               <?php endforeach; ?>
-	             <?php else: ?>
+                 <?php if( Media::image_exists($id_evento) ){
+                 	 echo Media::getAllImages($id_evento); 
+                 }else{ ?>
 	             	<h1> Ainda não há Imagens para este Evento </h1>
-	             <?php endif; ?>
+	             <?php } ?>
                 
             </div>
           </div>
