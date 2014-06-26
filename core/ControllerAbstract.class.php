@@ -11,7 +11,7 @@ class ControllerAbstract
 	}
 
 	function render($view, $params = null){
-		/*$data = explode('/', $view);*/
+		
 		if($params != null){
 			extract($params);
 		}

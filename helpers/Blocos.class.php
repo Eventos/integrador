@@ -4,7 +4,7 @@
 */
 class Blocos
 {
-	static function print ($param){
+	static function writer($param){
 		$html = new BlocosModel;
 		$cod = $html->getBlock($param);
 		return $cod[0];

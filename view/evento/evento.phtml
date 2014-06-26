@@ -1,7 +1,9 @@
+<?php $id_evento = (string)$params[0];?>
+
 <div class="services" id="ultimos">
 		<div class="wrap">
 			<h3>Fotos Do Evento </h3>
-			<p>Veja as fotos dos últimos eventos realizados na UTFPR.</p>
+			<p style="text-align:center">Veja as fotos dos últimos eventos realizados na UTFPR.</p>
 			
 			<div class="page-content">
     <div class="content container">
@@ -10,47 +12,21 @@
           <div class="widget">
             <div class="widget-content">
               <div id="examples" class="section examples-section">
-                <div class="col-sm-4 col-md-2">
-                  <div class="image-row">
-                    <div class="image-set"> <a class="example-image-link" href="img/gallery-photo/image-1.jpg" data-lightbox="example-set" title="Click on the right side of the image to move forward."> <img class="example-image" src="img/gallery-photo/thumb-1.jpg" alt="Plants: image 1 0f 4 thumb" width="150" height="150"/></a> </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-md-2">
-                  <div class="image-row">
-                    <div class="image-set"> <a class="example-image-link" href="img/gallery-photo/image-2.jpg" data-lightbox="example-set" title="Click on the right side of the image to move forward."> <img class="example-image" src="img/gallery-photo/thumb-2.jpg" alt="Plants: image 1 0f 4 thumb" width="150" height="150"/></a> </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-md-2">
-                  <div class="image-row">
-                    <div class="image-set"> <a class="example-image-link" href="img/gallery-photo/image-3.jpg" data-lightbox="example-set" title="Click on the right side of the image to move forward."> <img class="example-image" src="img/gallery-photo/thumb-3.jpg" alt="Plants: image 1 0f 4 thumb" width="150" height="150"/></a> </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-md-2">
-                  <div class="image-row">
-                    <div class="image-set"> <a class="example-image-link" href="img/gallery-photo/image-4.jpg" data-lightbox="example-set" title="Click on the right side of the image to move forward."> <img class="example-image" src="img/gallery-photo/thumb-4.jpg" alt="Plants: image 1 0f 4 thumb" width="150" height="150"/></a> </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-md-2">
-                  <div class="image-row">
-                    <div class="image-set"> <a class="example-image-link" href="img/gallery-photo/image-5.jpg" data-lightbox="example-set" title="Click on the right side of the image to move forward."> <img class="example-image" src="img/gallery-photo/thumb-5.jpg" alt="Plants: image 1 0f 4 thumb" width="150" height="150"/></a> </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-md-2">
-                  <div class="image-row">
-                    <div class="image-set"> <a class="example-image-link" href="img/gallery-photo/image-6.jpg" data-lightbox="example-set" title="Click on the right side of the image to move forward."> <img class="example-image" src="img/gallery-photo/thumb-6.jpg" alt="Plants: image 1 0f 4 thumb" width="150" height="150"/></a> </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-md-2">
-                  <div class="image-row">
-                    <div class="image-set"> <a class="example-image-link" href="img/gallery-photo/image-7.jpg" data-lightbox="example-set" title="Click on the right side of the image to move forward."> <img class="example-image" src="img/gallery-photo/thumb-7.jpg" alt="Plants: image 1 0f 4 thumb" width="150" height="150"/></a> </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-md-2">
-                  <div class="image-row">
-                    <div class="image-set"> <a class="example-image-link" href="img/gallery-photo/image-8.jpg" data-lightbox="example-set" title="Click on the right side of the image to move forward."> <img class="example-image" src="img/gallery-photo/thumb-8.jpg" alt="Plants: image 1 0f 4 thumb" width="150" height="150"/></a> </div>
-                  </div>
-                </div>
-              </div>
+                 <?php if( Media::image_exists($id_evento) ): ?>
+                 	<?php 
+                 		$images = Media::getAllImages($id_evento);
+                 		foreach ($images as $image):
+                 	?>
+		                <div class="col-sm-4 col-md-2">
+		                  <div class="image-row">
+		                    <div class="image-set"> <a href="<?= Page::urlImage('baner-250X200.png'); ?>" data-lightbox="example-set" title="Clique ao lado da imagen para ir para as proximas fotos"><?php Media::addImage('baner-250X200.png', '') ?></a> </div>
+		                  </div>
+		                </div>
+		               <?php endforeach; ?>
+	             <?php else: ?>
+	             	<h1> Ainda não há Imagens para este Evento </h1>
+	             <?php endif; ?>
+                
             </div>
           </div>
         </div>

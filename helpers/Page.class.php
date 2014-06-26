@@ -4,6 +4,13 @@
 */
 class Page
 {
+	static function urlImage($file){
+		$file_url = URL_BASE.'assets/images/'.$file;
+		$file = SITE_ROOT.'assets/images/'.$file;
+		if(file_exists($file)){
+			return $file_url;
+		}
+	}
 	//exemplo: ('icons/icone.png', 'title="inserindo um ícone seta"');
 	//insere na página: <img src="URL_BASE/assets/images/icons/icone.png" title="inserindo um icone seta">
 	static function addImage($file, $options = null){

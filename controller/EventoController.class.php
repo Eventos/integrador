@@ -17,7 +17,7 @@ class EventoController extends ControllerAbstract
 	public function viewAction($params){
 
 		if(isset($params) && count($params) == 1){
-			$this->render('evento/evento');
+			$this->render('evento/evento',$params);
 			exit;
 		}else{
 			App::errorPage();
