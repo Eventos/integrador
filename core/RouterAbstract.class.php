@@ -11,6 +11,9 @@ class RouterAbstract
 
 	function __construct($url)
 	{
+		if ($url == '/integrador/') {
+			$url.='index';
+		}
 		if($url[strlen($url)-1] == '/'){
 			$url = substr($url, 0, -1);
 		}
