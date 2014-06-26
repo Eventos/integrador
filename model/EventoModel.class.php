@@ -67,19 +67,6 @@ class EventoModel extends ModelAbstract
 		}
 	}
 
-	private function organizeFiles($files){
-		$dataFiles = array();
-		foreach ($files as $files) {
-			foreach ($files['name'] as $key => $value) {
-				$dataFiles[$key]['name'] = $value;
-			}
-			foreach ($files['tmp_name'] as $key => $value) {
-				$dataFiles[$key]['tmp_name'] = $value;
-			}
-		}
-		return $dataFiles;
-	}
-
 	private function insertFoto($id_evento, $data, $files){
 		try{
 			$dataFiles = $this->organizeFiles($files);
@@ -88,7 +75,7 @@ class EventoModel extends ModelAbstract
 				$destination = 'uploads/evento'.$id_evento . '-'. $key . '-' . $file['name']['file'];
 				copy($file['tmp_name']['file'], $destination);
 
-				$query = "INSERT INTO foto_video (link, id_evento, descricao) VALUES (:link, :id_evento, :descricao)";
+				$query = "INSERT INTO foto_video (link, id_evento, descricao, tipo) VALUES (:link, :id_evento, :descricao, 'f')";
 				$values = array(
 					':link' => $destination,
 					':descricao' => $descricao,
@@ -109,7 +96,7 @@ class EventoModel extends ModelAbstract
 	private function insertVideo($id_evento, $data){
 		try{
 			foreach ($data['inputVideo'] as $video) {
-				$query = "INSERT INTO foto_video (link, id_evento, descricao) VALUES (:link, :id_evento, :descricao)";
+				$query = "INSERT INTO foto_video (link, id_evento, descricao, tipo) VALUES (:link, :id_evento, :descricao, 'v')";
 				$values = array(
 					':link' => $video['url'],
 					':descricao' => $video['descricao'],

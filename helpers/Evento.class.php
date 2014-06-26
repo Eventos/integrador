@@ -18,8 +18,10 @@ class Evento
 		return $params;
 	}
 
-	static function mediaHelper($idEvento = null){
-		$params = array('id_evento' => $idEvento);
+	static function mediaHelper($idEvento = null, $type = 'evento'){
+		$params = array('id_evento' => $idEvento,
+						'type' => $type
+				);
 		return $params;
 	}
 

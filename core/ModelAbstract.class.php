@@ -16,4 +16,17 @@ class ModelAbstract
 		$id_evento = $id_evento['AUTO_INCREMENT'];
 		return $id_evento;
 	}
+
+	protected function organizeFiles($files){
+		$dataFiles = array();
+		foreach ($files as $files) {
+			foreach ($files['name'] as $key => $value) {
+				$dataFiles[$key]['name'] = $value;
+			}
+			foreach ($files['tmp_name'] as $key => $value) {
+				$dataFiles[$key]['tmp_name'] = $value;
+			}
+		}
+		return $dataFiles;
+	}
 }

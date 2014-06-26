@@ -30,6 +30,19 @@ class AdminController extends ControllerAbstract
 			$subevento = new SubeventoModel();
 			$subevento->newAction($params[0], $_POST);
 		}
+		elseif(isset($params[0]) && $params[0] == 'media' && count($params) == 2
+				&& isset($params[1]))
+		{
+			$paramsView = Evento::mediaHelper($params[1], 'subeventos');
+			$this->render('admin/inserir_media', $paramsView);
+		}
+		elseif(isset($params[0]) && $params[0] == 'media' && count($params) == 3
+				&& isset($params[1]) && $params[2] == 'post')
+		{
+			$evento = new SubeventoModel();
+			$evento->insertMedia($params[1], $_POST, isset($_FILES) ? $_FILES : NULL);
+		}
+		exit();
 	}
 
 	function eventosAction($params){
