@@ -14,16 +14,17 @@ class SubeventoModel extends ModelAbstract
 
 			$id_subevento = $this->getNextIncrement('subevento');
 
-			$query = "INSERT INTO subevento (local, descricao, data_hora, vagas, data_limite, id_evento, aberto, id_palestrante) VALUES (:local, :descricao, :data_hora, :vagas, :data_limite, :id_evento, :aberto, :id_palestrante)";
+			$query = "INSERT INTO subevento (local, descricao, data_hora, vagas, data_limite, id_evento, aberto, id_palestrante, titulo) VALUES (:local, :descricao, :data_hora, :vagas, :data_limite, :id_evento, :aberto, :id_palestrante, :titulo)";
 			$values = array(
-					':local' => $data['local'],
-					':descricao' => $data['desc_subevento'],
-					':data_hora' => $data['data_hora'],
-					':vagas' => $data['vagas'],
-					':data_limite' => $data['data_limite'],
-					':id_evento' => $id_evento,
-					':aberto' => $aberto,
-					':id_palestrante' => $data['palestrante']
+					':local'          => $data['local'],
+					':descricao'      => $data['desc_subevento'],
+					':data_hora'      => $data['data_hora'],
+					':vagas'          => $data['vagas'],
+					':data_limite'    => $data['data_limite'],
+					':id_evento'      => $id_evento,
+					':aberto'         => $aberto,
+					':id_palestrante' => $data['palestrante'],
+					':titulo'         => $data['titulo']
 			);
 			$prep = $this->db->prepare($query);
 			$query = $prep->execute($values);
@@ -124,5 +125,49 @@ class SubeventoModel extends ModelAbstract
 		}elseif($data['type'] == 'foto'){
 			$this->insertFoto($id_subevento, $data, $files);
 		}
+	}
+
+	function subeventoExists($id_evento, $id_subevento=null){
+		if($id_subevento === null){
+			$query = "SELECT id_subevento FROM subevento WHERE id_evento = '$id_evento'";
+		}
+		else{
+			$query = "SELECT id_subevento FROM subevento WHERE id_subevento = '$id_subevento' and id_evento = '$id_evento'";
+		}
+
+		$data = $this->db->query($query);
+		$data = iterator_to_array($data);
+
+		if (isset($data[0]) && array_key_exists("id_subevento", $data[0] ))
+			return true;
+		return false;
+	}
+
+	function getlist($ide_evento,$id_subevento=null){
+		if($id_subevento === null){
+			$query = "SELECT id_subevento, titulo, descricao, data_hora FROM subevento WHERE id_evento = '$id_evento'";
+		}
+		else{
+			$query = "SELECT titulo, descricao, data_hora FROM subevento WHERE id_subevento = '$id_subevento' and id_evento = '$id_evento'";
+		}
+
+		$consulta = $this->db->prepare($query);
+		$consulta->execute();
+		$linha = $consulta->fetchAll(PDO::FETCH_ASSOC);
+		return $linha;
+	}
+
+	function getData($id_evento,$id_subevento=null){
+		if($id_subevento === null){
+			$query = "SELECT * FROM subevento WHERE id_evento = '$id_evento'";
+		}
+		else{
+			$query = "SELECT * FROM subevento WHERE id_subevento = '$id_subevento' and id_evento = $id_evento ";
+		}
+
+		$consulta = $this->db->prepare($query);
+		$consulta->execute();
+		$linha = $consulta->fetchAll(PDO::FETCH_ASSOC);
+		return $linha;
 	}
 }

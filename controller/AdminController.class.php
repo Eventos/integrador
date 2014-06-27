@@ -20,7 +20,11 @@ class AdminController extends ControllerAbstract
 	}
 
 	function subeventosAction($params){
-		if(isset($params[0]) && count($params) == 2 && isset($params[1]) && $params[1] == 'new')
+		if(isset($params[0]) && count($params) == 1 && $params[0] == 'list'){
+			$paramsView = Evento::newHelper();
+			$this->render('admin/subeventos_list', $paramsView);
+		}
+		elseif(isset($params[0]) && count($params) == 2 && isset($params[1]) && $params[1] == 'new')
 		{
 			$paramsView = Evento::SubEventoNewHelper();
 			$paramsView['id_evento'] = $params[0];
@@ -56,6 +60,11 @@ class AdminController extends ControllerAbstract
 		{
 			$paramsView = Evento::newHelper();
 			$this->render('admin/inserir_eventos', $paramsView);
+		}
+		elseif(isset($params[0]) && $params[0] == 'list' && count($params) == 1)
+		{
+			$paramsView = Evento::newHelper();
+			$this->render('admin/eventos_list', $paramsView);
 		}
 		elseif(isset($params[0]) && $params[0] == 'media' && count($params) == 2
 				&& isset($params[1]))

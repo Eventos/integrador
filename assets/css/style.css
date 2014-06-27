@@ -129,7 +129,7 @@ body {
 }
 /* services */
 .services {
-	padding: 7% 0;
+	padding: 1% 0;
 }
 .services h3{
 	color: #222222;
@@ -434,7 +434,7 @@ body {
 }
 /* about */
 .about {
-	padding: 7% 0;
+	padding: 1% 0;
 }
 .about h3{
 	color: #222222;
@@ -458,7 +458,7 @@ body {
 	list-style: none;
 	position: relative;
 	width: 60%;
-	margin: 6em auto 13em;
+	margin: 3em auto 3em;
 }
 .about-time-line li{
 	display: inline;
