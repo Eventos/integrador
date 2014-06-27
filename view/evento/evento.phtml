@@ -15,9 +15,9 @@
                  <?php if( Media::image_exists($id_evento) ){
                  	 echo Media::getAllImages($id_evento); 
                  }else{ ?>
-	             	<h1> Ainda não há Imagens para este Evento </h1>
+	             	<h3><p> Ainda não há Imagens para este Evento </p></h3>
 	             <?php } ?>
-                
+				<div class="clear"></div>	
             </div>
           </div>
         </div>
@@ -33,84 +33,11 @@
 	<div class="wrap">
 		<h3>Videos</h3>
 		<p>Veja os videos do evento?</p>
-		<div class="col_1_of_3 span_1_of_3">
-			<video autobuffer autoloop loop controls>
-				<source src="/media/video.oga">
-				<source src="/media/video.m4v">
-				<object type="video/ogg" data="/media/video.oga" width="320" height="240">
-				<param name="src" value="/media/video.oga">
-				<param name="autoplay" value="false">
-				<param name="autoStart" value="0">
-				<p><a href="/media/video.oga">Download this video file.</a></p>
-				</object>
-			</video>
-			<h4><a href="#">Semana acadêmica 2014</a></h4>
-		</div>
-		<div class="col_1_of_3 span_1_of_3">
-			<video autobuffer autoloop loop controls>
-				<source src="/media/video.oga">
-				<source src="/media/video.m4v">
-				<object type="video/ogg" data="/media/video.oga" width="320" height="240">
-				<param name="src" value="/media/video.oga">
-				<param name="autoplay" value="false">
-				<param name="autoStart" value="0">
-				<p><a href="/media/video.oga">Download this video file.</a></p>
-				</object>
-			</video>
-			<h4><a href="#">Semana acadêmica 2014</a></h4>
-		</div>
-		<div class="col_1_of_3 span_1_of_3">
-			<video autobuffer autoloop loop controls>
-				<source src="/media/video.oga">
-				<source src="/media/video.m4v">
-				<object type="video/ogg" data="/media/video.oga" width="320" height="240">
-				<param name="src" value="/media/video.oga">
-				<param name="autoplay" value="false">
-				<param name="autoStart" value="0">
-				<p><a href="/media/video.oga">Download this video file.</a></p>
-				</object>
-			</video>
-			<h4><a href="#">Semana acadêmica 2014</a></h4>
-		</div>
-		<div class="col_1_of_3 span_1_of_3">
-			<video autobuffer autoloop loop controls>
-				<source src="/media/video.oga">
-				<source src="/media/video.m4v">
-				<object type="video/ogg" data="/media/video.oga" width="320" height="240">
-				<param name="src" value="/media/video.oga">
-				<param name="autoplay" value="false">
-				<param name="autoStart" value="0">
-				<p><a href="/media/video.oga">Download this video file.</a></p>
-				</object>
-			</video>
-			<h4><a href="#">Semana acadêmica 2014</a></h4>
-		</div>
-		<div class="col_1_of_3 span_1_of_3">
-			<video autobuffer autoloop loop controls>
-				<source src="/media/video.oga">
-				<source src="/media/video.m4v">
-				<object type="video/ogg" data="/media/video.oga" width="320" height="240">
-				<param name="src" value="/media/video.oga">
-				<param name="autoplay" value="false">
-				<param name="autoStart" value="0">
-				<p><a href="/media/video.oga">Download this video file.</a></p>
-				</object>
-			</video>
-			<h4><a href="#">Semana acadêmica 2014</a></h4>
-		</div>
-		<div class="col_1_of_3 span_1_of_3">
-			<video autobuffer autoloop loop controls>
-				<source src="/media/video.oga">
-				<source src="/media/video.m4v">
-				<object type="video/ogg" data="/media/video.oga" width="320" height="240">
-				<param name="src" value="/media/video.oga">
-				<param name="autoplay" value="false">
-				<param name="autoStart" value="0">
-				<p><a href="/media/video.oga">Download this video file.</a></p>
-				</object>
-			</video>
-			<h4><a href="#">Semana acadêmica 2014</a></h4>
-		</div>	
+		<?php if( Media::Video_exists($id_evento) ){
+             	 echo Media::getAllVideos($id_evento); 
+	          }else{ ?>
+              	<h3><p> Ainda não há Videos para este Evento </p></h3>
+	     <?php } ?>
 		<div class="clear"></div>								  						
 	</div>   		 
 </div>

@@ -20,4 +20,15 @@ class MediaController extends ControllerAbstract
 		}          
 		return $html;	 
 	}
+
+	public function getHtmlVideo($link){
+		$html = '';
+		foreach ($link as $url) {
+			$html.='<div class="col-lg-4" style="margin-bottom:20px">';
+			$html.='<iframe width="100%" height="300px" src="'.$url['link'].'" frameborder="0" allowfullscreen></iframe>';
+			$html.='<h4 style="text-align:center"><a href="#"> Titulo do Video</a></h4>';
+			$html.='</div>';
+		}          
+		return $html;	 
+	}
 }

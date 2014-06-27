@@ -13,4 +13,15 @@ class Media
 		$html = new MediaModel();
 		return $html->getImages($id);
 	}
+
+	static function video_exists($id){
+		 $boo = new MediaModel();
+		 return $boo->video_exists($id);
+	}
+
+	static function getAllVideos($id){
+		$html = new MediaModel();
+		return $html->getVideos($id);
+	}
+
 }
