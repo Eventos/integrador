@@ -395,12 +395,13 @@ CREATE TABLE `subevento` (
   `id_evento` int(11) NOT NULL,
   `aberto` char(1) NOT NULL,
   `id_palestrante` int(11) NOT NULL,
+  `titulo` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id_subevento`),
   KEY `fk_subevento_evento1_idx` (`id_evento`),
   KEY `fk_subevento_palestrante1_idx` (`id_palestrante`),
   CONSTRAINT `fk_subevento_evento1` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_subevento_palestrante1` FOREIGN KEY (`id_palestrante`) REFERENCES `palestrante` (`id_palestrante`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -409,7 +410,7 @@ CREATE TABLE `subevento` (
 
 LOCK TABLES `subevento` WRITE;
 /*!40000 ALTER TABLE `subevento` DISABLE KEYS */;
-INSERT INTO `subevento` VALUES (1,'Bloco - B','Assuntos:gerencia e configuração','2014-06-10 19:00:00',10,'2014-06-05',3,'s',1),(2,'Bloco F','Introdução a zend framework','2014-06-10 18:00:00',20,'2014-06-05',3,'s',1);
+INSERT INTO `subevento` VALUES (1,'Bloco - B','Assuntos:gerencia e configuração','2014-06-10 19:00:00',10,'2014-06-05',3,'s',1,'Mysql - Gerencia e Configuração'),(2,'Bloco F','Introdução a zend framework','2014-06-10 18:00:00',20,'2014-06-05',3,'s',1,'Trabalhando Com zend framework'),(3,'Bloco G Utfpr -Guarapuava','Palestra Desmotivadora ','1991-12-20 12:00:00',10,'1991-12-18',3,'1',1,'Palestra Com André Silveira'),(4,'Auditorio UTFPR','Tecnicas imperdiveis para mysql','2010-10-10 12:00:00',20,'2014-10-08',5,'1',1,'Truques com Mysql');
 /*!40000 ALTER TABLE `subevento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -490,7 +491,7 @@ CREATE TABLE `valor_subevento` (
   PRIMARY KEY (`id_valor_subevento`),
   KEY `fk_valor_subevento_subevento1_idx` (`id_subevento`),
   CONSTRAINT `fk_valor_subevento_subevento1` FOREIGN KEY (`id_subevento`) REFERENCES `subevento` (`id_subevento`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -499,7 +500,7 @@ CREATE TABLE `valor_subevento` (
 
 LOCK TABLES `valor_subevento` WRITE;
 /*!40000 ALTER TABLE `valor_subevento` DISABLE KEYS */;
-INSERT INTO `valor_subevento` VALUES (1,'2014-06-01','2014-06-01',15,1),(2,'2014-06-02','2014-06-05',30,1),(3,'2014-06-01','2014-06-03',30,2),(4,'2014-06-04','2014-06-05',35,2);
+INSERT INTO `valor_subevento` VALUES (1,'2014-06-01','2014-06-01',15,1),(2,'2014-06-02','2014-06-05',30,1),(3,'2014-06-01','2014-06-03',30,2),(4,'2014-06-04','2014-06-05',35,2),(5,'1991-12-10','1991-12-18',35,3),(6,'2010-01-01','2010-10-08',50,4);
 /*!40000 ALTER TABLE `valor_subevento` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -512,4 +513,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-26 22:17:43
+-- Dump completed on 2014-06-26 23:50:16
