@@ -11,9 +11,9 @@ class LoginModel extends ModelAbstract{
 			$data['name'] = $result['nome'];
 		}
 		if (count($data) >= 2){
-			$_SESSION['email'] = $data['email'];
-			$_SESSION['name']  = $data['name'];
-			Flash::setmessage('success','Bem Vindo'.$_SESSION['name']);
+			$_SESSION['adm']['email'] = $data['email'];
+			$_SESSION['adm']['name']  = $data['name'];
+			Flash::setmessage('success','Bem Vindo'.$_SESSION['adm']['name']);
 			App::redirect('admin/index');
 		}
 		else{
@@ -33,9 +33,9 @@ class LoginModel extends ModelAbstract{
 			$data['name'] = $result['nome'];
 		}
 		if (count($data) >= 2){
-			$_SESSION['email'] = $data['email'];
-			$_SESSION['name']  = $data['name'];
-			Flash::setmessage('success','Bem vindo'.$_SESSION['name']);
+			$_SESSION['user']['email'] = $data['email'];
+			$_SESSION['user']['name']  = $data['name'];
+			Flash::setmessage('success','Bem vindo'.$_SESSION['user']['name']);
 			App::redirect('user/index');
 		}
 		else{

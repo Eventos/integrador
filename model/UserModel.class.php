@@ -8,16 +8,17 @@ class UserModel extends ModelAbstract
 	private $email;
 
 	function isLogged(){
-		if(isset($_SESSION['name'])){
+		if(isset($_SESSION['user']['name'])){
 			return true;
 		}else{
-			die('você não está logado!');
+			Flash::setMessage('danger', 'Ops, algo incorreto! Parece que voce não está logado');
+			App::redirect('login/verify/user');
+			return false;
 		}
 	}
 
 	function logout(){
-		unset($_SESSION['name']);
-		unset($_SESSION['email']);
+		unset($_SESSION['user']);
 		App::redirect(App::getUrl());
 	}
 }
