@@ -15,7 +15,7 @@ class UserController extends ControllerAbstract
 	}
 
 	function logoutAction($params){
-		$admin = new AdminModel();
-		$admin->logout();
+		$user = new UserModel();
+		$user->logout();
 	}
 }

@@ -7,8 +7,11 @@ class AdminController extends ControllerAbstract
 	function indexAction($params){
 		if(count($params) == 0){
 			$admin = new AdminModel();
-			$admin->isLogged();
-			$this->render('admin/area_restrita');
+			if($admin->isLogged()){
+				$this->render('admin/area_restrita');
+			}else{
+				$this->render('admin/login_admin');
+			}	
 		}else{
 			App::errorPage('Erro');
 		}

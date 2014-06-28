@@ -12,7 +12,6 @@ class UserModel extends ModelAbstract
 			return true;
 		}else{
 			Flash::setMessage('danger', 'Ops, algo incorreto! Parece que voce não está logado');
-			App::redirect('login/verify/user');
 			return false;
 		}
 	}

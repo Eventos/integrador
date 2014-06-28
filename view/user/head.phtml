@@ -1,0 +1,50 @@
+<?php
+  UserModel::islogged();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>Area do Administrador</title>
+  <?php
+    Page::addStyleElement('css', 'bootstrap.min.css');
+    Page::addStyleElement('css', 'bootstrap-theme.min.css');
+    Page::addStyleElement('css', 'custom.css');
+    Page::addStyleElement('js', 'bootstrap.min.js');
+    Page::addStyleElement('js', 'jquery.min.js');
+    Page::addStyleElement('js', 'bootstrap.min.js');
+  ?>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation" style="position:relative">
+<!--       <div class="container"> -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Bem Vindo&nbsp;<?= $_SESSION['user']['name'] ?></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="area_restrita.phtml">Home</a></li>
+            <li><a href="#">Meus Eventos</a></li>
+            <li><a href="#">Meus Pagamentos</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle drop-user" data-toggle="dropdown"><?= $_SESSION['user']['name'] ?>&nbsp;<span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;Minha Conta</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-cog"></span>&nbsp;Configurações</a></li>
+                <li class="divider"></li>
+                <li><a href="<?= App::getUrl() ?>user/logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sair</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      <!-- </div> -->
+    </div>
+    <!-- Fim do menu -->
