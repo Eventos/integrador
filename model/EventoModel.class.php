@@ -161,10 +161,12 @@ class EventoModel extends ModelAbstract
 
 	function deleteAction($id){
 		try{
-			$query = "DELETE FROM evento WHERE id_evento = $id";
+			$query = "UPDATE evento SET ativo = 'n' WHERE id_evento = $id";
 			$prep = $this->db->prepare($query);
 			$exec = $prep->execute();
-			if(!$exec) die(var_dump($prep->errorInfo())); //throw new Exception('Erro na exclusão..');
+			if(!$exec) throw new Exception('Erro na exclusão..');
+			Flash::setMessage('success', 'Evento excluído com sucesso');
+			App::redirect('admin/index');
 		}catch(Exception $e){
 			Flash::setMessage('danger', 'Ops: '.$e->getMessage());
 			App::redirect('admin/index');

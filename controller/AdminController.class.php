@@ -49,6 +49,11 @@ class AdminController extends ControllerAbstract
 			$evento = new SubeventoModel();
 			$evento->insertMedia($params[1], $_POST, isset($_FILES) ? $_FILES : NULL);
 		}
+		elseif(isset($params[0]) && $params[0] == 'delete' && count($params) == 2 && isset($params[1]))
+		{
+			$evento = new SubeventoModel();
+			$evento->deleteAction($params[1]);
+		}
 		else{
 			App::errorPage();
 		}

@@ -170,4 +170,18 @@ class SubeventoModel extends ModelAbstract
 		$linha = $consulta->fetchAll(PDO::FETCH_ASSOC);
 		return $linha;
 	}
+
+	function deleteAction($id){
+		try{
+			$query = "UPDATE subevento SET ativo = 'n' WHERE id_subevento = $id";
+			$prep = $this->db->prepare($query);
+			$exec = $prep->execute();
+			if(!$exec) throw new Exception('Erro na exclusão..');
+			Flash::setMessage('success', 'Subevento excluído com sucesso');
+			App::redirect('admin/index');
+		}catch(Exception $e){
+			Flash::setMessage('danger', 'Ops: '.$e->getMessage());
+			App::redirect('admin/index');
+		}	
+	}
 }
