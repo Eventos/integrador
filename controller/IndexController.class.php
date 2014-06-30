@@ -16,8 +16,6 @@ class IndexController extends ControllerAbstract
 				App::errorPage('Action para index não encontrada');
 			}
 			
-		}elseif(count($params) == 2){
-
 		}else{
 			App::errorPage();
 		}
