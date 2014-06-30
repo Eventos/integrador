@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.37, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.35, for debian-linux-gnu (i686)
 --
 -- Host: localhost    Database: integrador
 -- ------------------------------------------------------
--- Server version	5.5.37-0ubuntu0.12.04.1
+-- Server version	5.5.35-0ubuntu0.12.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -175,6 +175,7 @@ CREATE TABLE `evento` (
   `id_palestrante` int(11) NOT NULL,
   `titulo` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `descricao_resumida` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ativo` char(1) NOT NULL,
   PRIMARY KEY (`id_evento`),
   KEY `fk_evento_cidade1_idx` (`id_cidade`),
   KEY `fk_evento_table11_idx` (`id_administrador`),
@@ -191,7 +192,7 @@ CREATE TABLE `evento` (
 
 LOCK TABLES `evento` WRITE;
 /*!40000 ALTER TABLE `evento` DISABLE KEYS */;
-INSERT INTO `evento` VALUES (3,'UTFPR - Guarapuava','evento teste','2014-06-10 14:00:00','2014-06-05',30,1,'TEste teste teste','andrefelipesilveira@yahoo.com.br','42 99731170',2222,1,NULL,NULL,NULL,1,'Computação quantica nos tempos atuais','Semana Academica'),(4,'UTFPR - GP','Aluno de tsi','2014-12-30 15:00:00','2014-12-20',20,1,'Evento na area de culinaria','andre@silveira.com','4299731170',6025,1,'gastoutf','gastoutf','gastoutf',1,'palestras em tsi e eng mecanica','Ciclo de Palestras'),(5,'UTFPR - Auditório','André Felipe Silveira - Diplomado em tecnologias em BD -USP','2014-06-18 13:00:00','2014-06-14',80,1,'Palestra sobre novas funcionalidades e novas tecnicas para trabalhar com mysql e sua comparacao com banco de dados no-sql','andre.silveira@agenciadeinterncer.com','4299731170',6025,1,'mysql_bd_secrets.facebook','@mysql_new_secrets','',1,'Mysql dominando novas Tecnicas','Seminario sobre banco de Dados'),(6,'CEDETEG - UNICENTRO','Representante dos interesses dos alunos','2014-07-24 13:00:00','2014-07-20',50,1,'Evento contara com a presença de renomados palestrantes nacionais, grandes nomes em nodejs e mongodb, todos os participantes receberam certificado e uma video aula com o desenvolvimento de uma aplicação completa','andre.silveira@agenciadeinternet.com','(42)99731170',6025,1,'andrefelipe.silveira','@andresilveira','andrefelipesilveira',1,'Cerco de Palestras  - Tecnologia na Atualidade','Aborda:  html5, css3, php, ruby, nodejs e mongo'),(8,'CEDETEG - UNICENTRO','asdasdad','2012-12-30 08:00:00','2010-01-08',20,1,'asda','asdasd@yasdiasedi.cpmb.r','asdasd',5434,1,'asdasd','asdasda','asdasd',1,'aasdas','Aborda:  html5, css3, php, ruby, nodejs e mongo');
+INSERT INTO `evento` VALUES (3,'UTFPR - Guarapuava','evento teste','2014-06-10 14:00:00','2014-06-05',30,1,'TEste teste teste','andrefelipesilveira@yahoo.com.br','42 99731170',2222,1,NULL,NULL,NULL,1,'Computação quantica nos tempos atuais','Semana Academica',''),(4,'UTFPR - GP','Aluno de tsi','2014-12-30 15:00:00','2014-12-20',20,1,'Evento na area de culinaria','andre@silveira.com','4299731170',6025,1,'gastoutf','gastoutf','gastoutf',1,'palestras em tsi e eng mecanica','Ciclo de Palestras',''),(5,'UTFPR - Auditório','André Felipe Silveira - Diplomado em tecnologias em BD -USP','2014-06-18 13:00:00','2014-06-14',80,1,'Palestra sobre novas funcionalidades e novas tecnicas para trabalhar com mysql e sua comparacao com banco de dados no-sql','andre.silveira@agenciadeinterncer.com','4299731170',6025,1,'mysql_bd_secrets.facebook','@mysql_new_secrets','',1,'Mysql dominando novas Tecnicas','Seminario sobre banco de Dados',''),(6,'CEDETEG - UNICENTRO','Representante dos interesses dos alunos','2014-07-24 13:00:00','2014-07-20',50,1,'Evento contara com a presença de renomados palestrantes nacionais, grandes nomes em nodejs e mongodb, todos os participantes receberam certificado e uma video aula com o desenvolvimento de uma aplicação completa','andre.silveira@agenciadeinternet.com','(42)99731170',6025,1,'andrefelipe.silveira','@andresilveira','andrefelipesilveira',1,'Cerco de Palestras  - Tecnologia na Atualidade','Aborda:  html5, css3, php, ruby, nodejs e mongo',''),(8,'CEDETEG - UNICENTRO','asdasdad','2012-12-30 08:00:00','2010-01-08',20,1,'asda','asdasd@yasdiasedi.cpmb.r','asdasd',5434,1,'asdasd','asdasda','asdasd',1,'aasdas','Aborda:  html5, css3, php, ruby, nodejs e mongo','');
 /*!40000 ALTER TABLE `evento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -421,6 +422,7 @@ CREATE TABLE `subevento` (
   `aberto` char(1) NOT NULL,
   `id_palestrante` int(11) NOT NULL,
   `titulo` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ativo` char(1) NOT NULL,
   PRIMARY KEY (`id_subevento`),
   KEY `fk_subevento_evento1_idx` (`id_evento`),
   KEY `fk_subevento_palestrante1_idx` (`id_palestrante`),
@@ -435,7 +437,7 @@ CREATE TABLE `subevento` (
 
 LOCK TABLES `subevento` WRITE;
 /*!40000 ALTER TABLE `subevento` DISABLE KEYS */;
-INSERT INTO `subevento` VALUES (1,'Bloco - B','Assuntos:gerencia e configuração','2014-06-10 19:00:00',10,'2014-06-05',3,'s',1,'Mysql - Gerencia e Configuração'),(2,'Bloco F','Introdução a zend framework','2014-06-10 18:00:00',20,'2014-06-05',3,'s',1,'Trabalhando Com zend framework'),(3,'Bloco G Utfpr -Guarapuava','Palestra Desmotivadora ','1991-12-20 12:00:00',10,'1991-12-18',3,'1',1,'Palestra Com André Silveira'),(4,'Auditorio UTFPR','Tecnicas imperdiveis para mysql','2010-10-10 12:00:00',20,'2014-10-08',5,'1',1,'Truques com Mysql');
+INSERT INTO `subevento` VALUES (1,'Bloco - B','Assuntos:gerencia e configuração','2014-06-10 19:00:00',10,'2014-06-05',3,'s',1,'Mysql - Gerencia e Configuração',''),(2,'Bloco F','Introdução a zend framework','2014-06-10 18:00:00',20,'2014-06-05',3,'s',1,'Trabalhando Com zend framework',''),(3,'Bloco G Utfpr -Guarapuava','Palestra Desmotivadora ','1991-12-20 12:00:00',10,'1991-12-18',3,'1',1,'Palestra Com André Silveira',''),(4,'Auditorio UTFPR','Tecnicas imperdiveis para mysql','2010-10-10 12:00:00',20,'2014-10-08',5,'1',1,'Truques com Mysql','');
 /*!40000 ALTER TABLE `subevento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -540,4 +542,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-30 20:07:45
+-- Dump completed on 2014-06-30 20:25:40
