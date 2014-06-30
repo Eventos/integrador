@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>Pagina de Inscrição</title>
+  <?php
+    Page::addStyleElement('css', 'bootstrap.min.css');
+    Page::addStyleElement('css', 'bootstrap-theme.min.css');
+    Page::addStyleElement('css', 'custom.css');
+    Page::addStyleElement('js', 'bootstrap.min.js');
+    Page::addStyleElement('js', 'jquery.min.js');
+    Page::addStyleElement('js', 'bootstrap.min.js');
+  ?>
+</head>
+<body>
+	<!-- Fim do menu -->
+<div class="page-content">
+	<div class="content container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="page-title">Usuario: <small>Crie seu cadastro para participar dos eventos</small></h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="widget">
+					<div class="widget-header"> <i class="icon-align-left"></i>
+						<h3>Cadastro</h3>
+					</div>
+					<div class="widget-content">
+						<form method="post" class="form-horizontal" action="<?= App::getUrl() ?>user/inscricao/post/">
+							<fieldset>
+								<legend class="section">Informações Pessoais</legend>
+								<div class="control-group">
+									<label for="disabled-input" class="control-label ">Nome Completo</label>
+									<div class="controls form-group">
+										<input type="text" maxlength="50" name="nome" class="form-control" id="nome" placeholder="Insira o titulo do evento">
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="disabled-input" class="control-label ">Data de Nascimento</label>
+									<div class="controls form-group">
+										<input type="date" name="data_nascimento" class="form-control" id="data-nascimento">
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label for="disabled-input" class="control-label ">Email</label>
+									<div class="controls form-group">
+										<input type="email" maxlength="100" name="email" class="form-control" id="email" placeholder="Insira seu endereço de email">
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="max-length" class="control-label ">CPF</label>
+									<div class="controls form-group">
+										<input type="number" maxlength="11" name="cpf" class="form-control" id="cpf" placeholder="Insira o numero do Seu CPF">
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="prepended-input" class="control-label">RG - Identidade</label>
+									<div class="controls form-group">
+										<input type="text" maxlength="15" name="rg" class="form-control" id="rg" placeholder="Insira o numero do seu documento de identidade">
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<legend class="section">Segurança</legend>
+								<div class="control-group">
+									<label for="normal-field" class="control-label">Senha</label>
+									<div class="controls form-group">
+										<input type="password" placeholder="Insira uma senha" name="senha" class="form-control" id="normal-field">
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="normal-field" class="control-label">Confirme sua Senha</label>
+									<div class="controls form-group">
+										<input type="password" placeholder="Digite novamente Senha" id="conf_senha" class="form-control">
+									</div>
+								</div>
+							</fieldset>
+							
+							<fieldset>
+								<legend class="section">Endereço</legend>
+								<div class="control-group">
+									<label for="hint-field" class="control-label"> Estado </label>
+									<div class="controls form-group">
+										<div class="estado"><?= Local::getSelectEstados() ?></div>
+									</div>
+								</div>
+								<div class="control-group" id="cidade" style="display:none;overflow: visible!important;">
+									<label for="hint-field" class="control-label"> Cidade </label>
+									<div class="controls form-group">
+										<div class="cidade"></div>
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="normal-field" class="control-label">Rua / numero :</label>
+									<div class="controls form-group">
+										<input type="text" placeholder="Digite aqui o nome de sua rua e seu numero" name="rua" class="form-control" id="normal-field">
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="normal-field" class="control-label">Bairro :</label>
+									<div class="controls form-group">
+										<input type="text" placeholder="Digite aqui o nome do seu bairro" name="bairro" class="form-control" id="normal-field">
+									</div>
+								</div>
+							</fieldset>
+							
+							<div class="form-actions">
+								<div class="btn-actions">
+									<button class="btn-action btn btn-success" type="submit">Cadastrar</button>
+									<button class="btn-action btn btn-default" type="reset">Limpar</button>
+									<a href="<?= App::getUrl()?>" class="btn-action btn btn-primary">Voltar para a Pagina inicial</a>
+								</div>
+							</div>
+						</form>
+						<br><br>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var i = 0;
+	$(function(){
+		$('.estados').change(function(){
+			var url_ = "<?= App::getUrl() ?>";
+			url_ += 'local/ajax/'+$(this).val();
+			var request = $.ajax({
+				url : url_,
+				type : 'get',
+				success : function(e){
+					$('#cidade').show(300);
+					var html = e ;
+					$('.cidade').html(html);
+				}
+			});
+		});
+	});
+</script>
+
+</body>
+</html>

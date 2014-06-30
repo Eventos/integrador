@@ -229,3 +229,33 @@ border-radius: 5px;}
 	background-size: cover;
 }
 .contact_index{background: none;}
+/*Checkbox inscricao do evento*/
+input[type=checkbox].css-checkbox {
+	display:none;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+	padding-left:55px;
+	height:50px; 
+	display:inline-block;
+	line-height:50px;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	font-size:50px;
+	vertical-align:middle;
+	cursor:pointer;
+
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+	background-position: 0 -50px;
+}
+label.css-label {
+	background-image:url(../images/checkbox.png);
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}

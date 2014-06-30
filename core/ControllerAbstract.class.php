@@ -24,7 +24,7 @@ class ControllerAbstract
 			require_once(SITE_ROOT.'view/'.$view.'.phtml');
 			require_once(SITE_ROOT.'view/admin/footer.phtml');
 			
-		}elseif((strpos($view, 'user') !== false  || strpos($view, 'inscricao')) !== false && strpos($view, 'login') === false){
+		}elseif((strpos($view, 'user') !== false  || strpos($view, 'inscricao')) !== false && strpos($view, 'login') === false && strpos($view, 'user_inscricao') === false){
 			require_once(SITE_ROOT.'view/user/head.phtml');
 			require_once(SITE_ROOT.'view/'.$view.'.phtml');
 			require_once(SITE_ROOT.'view/user/footer.phtml');

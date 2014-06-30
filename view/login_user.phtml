@@ -3,6 +3,10 @@
 	$app = new APP;
 	$app->ready();
     $URL_BASE = App::getUrl();
+    if(UserModel::isLogged()){
+    	App::redirect('user/index');
+    	exit();
+    }
 ?>
 <!Doctype html>
 <html>
@@ -53,7 +57,10 @@
       			</div>
 			</div>
 		</form>
-		<div id="forgot"><a href="#">Esqueceu sua senha?</a></div>
+		<div id="forgot">
+			<a href="<?=App::getUrl()?>user/inscricao" class="btn btn-primary">Inscrever</a><br>
+			<a href="#">Esqueceu sua senha?</a>
+		</div>
     </div>
 </body>
 </html>
