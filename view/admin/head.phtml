@@ -3,7 +3,9 @@
 <head>
 <?php
     header( "Access-Control-Allow-Origin: http://localhost/integrador/" ); 
-    AdminModel::islogged();
+    if(!AdminModel::islogged()){
+       App::redirect(App::getUrl().'login/verify/admin');
+    }
 ?>
    <meta charset='utf-8'>
    <title>Area do Administrador</title>

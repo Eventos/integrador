@@ -7,8 +7,11 @@ class AdminController extends ControllerAbstract
 	function indexAction($params){
 		if(count($params) == 0){
 			$admin = new AdminModel();
-			$admin->isLogged();
-			$this->render('admin/area_restrita');
+			if($admin->isLogged()){
+				$this->render('admin/area_restrita');
+			}else{
+				$this->render('admin/login_admin');
+			}	
 		}else{
 			App::errorPage('Erro');
 		}
@@ -46,6 +49,9 @@ class AdminController extends ControllerAbstract
 			$evento = new SubeventoModel();
 			$evento->insertMedia($params[1], $_POST, isset($_FILES) ? $_FILES : NULL);
 		}
+		else{
+			App::errorPage();
+		}
 		exit();
 	}
 
@@ -53,7 +59,8 @@ class AdminController extends ControllerAbstract
 
 		if(count($params) == 0)
 		{
-			die('Listar eventos');
+			$paramsView = Evento::newHelper();
+			$this->render('admin/eventos_list', $paramsView);
 		}
 
 		elseif(isset($params[0]) && $params[0] == 'new' && count($params) == 1)
@@ -90,8 +97,7 @@ class AdminController extends ControllerAbstract
 		}
 		else
 		{
-			$this->render('error');
-			exit();
+			App::errorPage();
 		}
 		exit;
 }
@@ -110,8 +116,7 @@ class AdminController extends ControllerAbstract
 			}
 			$palestrante->newAction($_POST);
 		}else{
-			$this->render('error');
-			exit();
+			App::errorPage();
 		}
 	}
 
@@ -132,8 +137,7 @@ class AdminController extends ControllerAbstract
 			$block->newAction($_POST);
 		}
 		else{
-			$this->render('error');
-			exit();
+			App::errorPage();
 		}
 	}
 }

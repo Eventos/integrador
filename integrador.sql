@@ -51,7 +51,7 @@ DROP TABLE IF EXISTS `blocos_estaticos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `blocos_estaticos` (
-  `id_bloco` varchar(30) NOT NULL,
+  `id_bloco` varchar(30) NOT NULL DEFAULT '',
   `html` text NOT NULL,
   `id_referencia` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_bloco`),
@@ -238,7 +238,7 @@ CREATE TABLE `foto_video` (
   KEY `fk_foto_video_subevento1_idx` (`id_subevento`),
   CONSTRAINT `fk_foto_video_evento1` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_foto_video_subevento1` FOREIGN KEY (`id_subevento`) REFERENCES `subevento` (`id_subevento`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -247,7 +247,7 @@ CREATE TABLE `foto_video` (
 
 LOCK TABLES `foto_video` WRITE;
 /*!40000 ALTER TABLE `foto_video` DISABLE KEYS */;
-INSERT INTO `foto_video` VALUES (1,'uploads/evento3-0-logo-pontocom.png',3,NULL,'teste','f'),(3,'//www.youtube.com/watch?v=wPWuyMkTe6k',3,NULL,'teste','v'),(4,'//www.youtube.com/embed/fy1N2ioHJsk?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(5,'//www.youtube.com/embed/mpXPF2m3dIs?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(6,'//www.youtube.com/embed/TSZFcZSeIaM?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(7,'//www.youtube.com/embed/ZT16mQKt59Y?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v');
+INSERT INTO `foto_video` VALUES (1,'uploads/evento3-0-logo-pontocom.png',3,NULL,'teste','f'),(3,'//www.youtube.com/watch?v=wPWuyMkTe6k',3,NULL,'teste','v'),(4,'//www.youtube.com/embed/fy1N2ioHJsk?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(5,'//www.youtube.com/embed/mpXPF2m3dIs?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(6,'//www.youtube.com/embed/TSZFcZSeIaM?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(7,'//www.youtube.com/embed/ZT16mQKt59Y?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(8,'uploads/evento3-0-Captura de tela de 2014-06-13 15:33:04.png',3,NULL,'teste','f');
 /*!40000 ALTER TABLE `foto_video` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -311,6 +311,31 @@ LOCK TABLES `inscricao_subevento` WRITE;
 /*!40000 ALTER TABLE `inscricao_subevento` DISABLE KEYS */;
 INSERT INTO `inscricao_subevento` VALUES (1,'2014-06-04',0,1,1),(2,'2014-06-02',NULL,2,2);
 /*!40000 ALTER TABLE `inscricao_subevento` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `newsletter`
+--
+
+DROP TABLE IF EXISTS `newsletter`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `newsletter` (
+  `id_newsletter` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_newsletter`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `newsletter`
+--
+
+LOCK TABLES `newsletter` WRITE;
+/*!40000 ALTER TABLE `newsletter` DISABLE KEYS */;
+INSERT INTO `newsletter` VALUES (6,'andrefelipesilveira@gmail.com','André Felipe Silveira');
+/*!40000 ALTER TABLE `newsletter` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -430,10 +455,12 @@ CREATE TABLE `usuario` (
   `email` varchar(100) NOT NULL,
   `id_cidade` int(11) NOT NULL,
   `senha` varchar(10) NOT NULL,
+  `rua` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bairro` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id_usuario`),
   KEY `fk_usuario_cidade1_idx` (`id_cidade`),
   CONSTRAINT `fk_usuario_cidade1` FOREIGN KEY (`id_cidade`) REFERENCES `cidade` (`id_cidade`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -442,7 +469,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'Teste Usuario','0000000000','2000-03-12','1111111111','teste@teste.com',2222,'123'),(2,'Teste 2','0000000000','1999-01-01','00000000','usuario@teste.com',346,'123');
+INSERT INTO `usuario` VALUES (1,'Teste Usuario','0000000000','2000-03-12','1111111111','teste@teste.com',2222,'123',NULL,NULL),(2,'Teste 2','0000000000','1999-01-01','00000000','usuario@teste.com',346,'123',NULL,NULL),(3,'Andre Felipe Silveira','921298309','1991-12-30','19231983209','andre@silveira.com',6025,'abc123','nelson 81','boqueirao');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -513,4 +540,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-26 23:50:16
+-- Dump completed on 2014-06-30 20:07:45

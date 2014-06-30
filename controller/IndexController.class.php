@@ -16,8 +16,6 @@ class IndexController extends ControllerAbstract
 				App::errorPage('Action para index não encontrada');
 			}
 			
-		}elseif(count($params) == 2){
-
 		}else{
 			App::errorPage();
 		}
@@ -25,7 +23,27 @@ class IndexController extends ControllerAbstract
 
 	public function newsletterAction($params){
 		if(isset($_POST)){
-			die($_POST);
+			extract($_POST);
+
+			if(isset($simple)){
+				$user_simple = new UserModel();
+				if ($user_simple->user_letter($email, $name)){
+					Flash::setMessage('success', 'Obrigado por se cadastrar em nossa newsletter');
+					App::redirect();
+				}
+				else{
+					Flash::setMessage('success', 'Falha ao cadastrar tente novamente mais tarde ou entre em contato conosco!');
+					App::redirect();
+				}
+				exit();
+			}elseif($none == 'Agora não'){
+				App::redirect();
+				exit;
+			}elseif(isset($full)){
+				$data = array('name' => $name, 'email'=> $email); 
+				$this->render('user/user_inscricao',$data);
+				exit;
+			}
 		}	
 	}
 	

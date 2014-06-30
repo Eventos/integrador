@@ -1,1 +1,81 @@
-<h1>Pagina de Inscrição</h1>
+<?php
+$info      = Evento::getEvento($id_evento, 'all');
+$titulo    = $info[0]['titulo'];
+$vagas     = $info[0]['vagas'];
+$descricao = $info[0]['desc_evento'];
+$local     = $info[0]['local'];
+$final     = $info[0]['data_limite']; 
+?>
+<div class="page-content">
+	<div class="content container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="page-title"><small>Você está prestes a se cadastrar no evento -</small><br><?= $titulo?></h1>
+				<b>Descrição:</b>
+				<div class='Descricao' style="border:solid 1px gray">
+					<p><?= $descricao; ?></p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="widget">
+					<div class="widget-header"> <i class="icon-align-left"></i>
+						<h3>Inscrições para esse evento até <b>&nbsp;<?=$final;?></b></h3>
+					</div>
+					<div class="widget-content">
+						<form method="post" class="form-horizontal" action="<?= App::getUrl() ?>admin/eventos/new/post">
+						<?php if (Subevento::exists($id_evento)): ?>
+							<?php $data = Subevento::getSubevento($id_evento, null, 'all');	?>
+							<fieldset>
+								<legend class="section">Seleione os subeventos que deseja se inscrever</legend>
+								<div class="control-group">
+									<table class="table table-striped table-bordered">
+										<thead>
+											<tr>
+												<th> Selecione </th>
+												<th> Titulo </th>
+												<th> Descricao </th>
+												<th> Data Limite das inscricoes </th>
+												<th> Vagas Restantes </th>
+											</tr>
+										</thead>
+										<tbody>
+											<?php foreach ($data as $d): ?>
+											<tr>
+												<td style="text-align:center"> <input type="checkbox" name="subevento" value="<?= $d['id_subevento'] ?>" id="checkbox<?= $d['id_subevento'] ?>" class="css-checkbox">
+													<label for="checkbox<?= $d['id_subevento'] ?>" class="css-label"></label>
+												 </td>
+												<td> <?=$d['titulo'];?> </td>
+												<td> <a href="#">Ver Descrição</a> </td>
+												<td> <?= $d['data_limite']; ?></td>
+												<td> <?= $d['vagas'];?> </td>
+											</tr>
+										<?php endforeach;?>
+										</tbody>
+									</table>
+								</div>
+							</fieldset>
+						<?php endif;?>
+							<fieldset>
+								<legend class="section">Finalizar Inscrição - </legend>
+								<div class="control-group">
+									<div class="controls form-group" style="text-align:center">
+										<input type="submit" class="btn-lg btn-primary" value="Pagamento Seguro">
+									</div>
+								</div>
+								<div class="control-group" id="cidade" style="display:none">
+									<label for="hint-field" class="control-label"> Cidade </label>
+									<div class="controls form-group">
+										<div class="cidade"></div>
+									</div>
+								</div>
+							</fieldset>
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

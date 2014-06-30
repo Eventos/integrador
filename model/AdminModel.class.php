@@ -12,7 +12,6 @@ class AdminModel extends ModelAbstract
 			return true;
 		}else{
 			Flash::setMessage('danger', 'Ops, algo incorreto! Parece que voce não está logado');
-			App::redirect('login/verify/admin');
 			return false;
 		}
 	}

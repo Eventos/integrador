@@ -3,7 +3,10 @@
 	$app = new APP;
 	$app->ready();
     $URL_BASE = App::getUrl();
-
+    if(UserModel::isLogged()){
+    	App::redirect('user/index');
+    	exit();
+    }
 ?>
 <!Doctype html>
 <html>
@@ -33,7 +36,11 @@
     <div id="title">Área do Participante</div>
     <div id="glass">
     	<div id="title">Sistema de Login</div>
-    	<form method="POST" id="form" action="<?= $URL_BASE.'login/logger/user' ?>">
+    	<?php if(isset($type) && $type == 'inscricao'):?>
+    		<form method="POST" id="form" action="<?= $URL_BASE.'login/logger/user/inscricao' ?>">
+    	<?php else: ?>
+    		<form method="POST" id="form" action="<?= $URL_BASE.'login/logger/user' ?>">
+    	<?php endif;?>
 			<div class="login">
 				<label>Email</label>
 				<div class="input-group">
@@ -50,7 +57,10 @@
       			</div>
 			</div>
 		</form>
-		<div id="forgot"><a href="#">Esqueceu sua senha?</a></div>
+		<div id="forgot">
+			<a href="<?=App::getUrl()?>user/inscricao" class="btn btn-primary">Inscrever</a><br>
+			<a href="#">Esqueceu sua senha?</a>
+		</div>
     </div>
 </body>
 </html>

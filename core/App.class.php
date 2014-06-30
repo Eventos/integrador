@@ -41,6 +41,7 @@ class App
 	}
 
 	static function errorPage($msg = null){
+		Flash::setMessage('danger',$msg);
 		require_once(SITE_ROOT.'view/error.phtml');
 		exit;
 	}

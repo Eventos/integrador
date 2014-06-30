@@ -8,8 +8,10 @@ class LoginController extends ControllerAbstract
 		if(count($params) == 1){
 			if ($params[0] == 'admin')
 				$this->render('admin/login_admin');
-			elseif ($params[0] == 'user')
+			elseif ($params[0] == 'user'){
+
 				$this->render('login_user');
+			}
 			else{
 				App::errorPage("Parametro não encontrado");
 			}
@@ -19,7 +21,7 @@ class LoginController extends ControllerAbstract
 	}
 	public function loggerAction($params){
 
-		if(count($params) == 1){
+		if(count($params) <= 2){
 			if (isset($_POST['email']) && isset($_POST['password']))
 			{	
 				$data = $_POST;
@@ -27,7 +29,10 @@ class LoginController extends ControllerAbstract
 				if($data['email'] <> '' && $data['password'] <> '')
 				{	
 					if ($params[0]  == 'user'){
-						$login->logginUser($data['email'],$data['password']);
+						if(isset($params[1]) && $params[1]=='inscricao')
+							$login->logginUser($data['email'],$data['password'],'inscricao');
+						else
+							$login->logginUser($data['email'],$data['password']);
 						exit();
 					}
 					elseif ($params[0] == 'admin' ){
@@ -41,6 +46,8 @@ class LoginController extends ControllerAbstract
 			else
 				Flash::setMessage("danger","Erro ao Solicitar login");
 				App::redirect(App::getUrl().'login/verify/'.$params[0]);
+		}else{
+				App::errorPage();
 		}
 	}
 }
