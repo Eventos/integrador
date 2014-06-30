@@ -42,7 +42,7 @@ class SubeventoModel extends ModelAbstract
 	}
 
 	private function getIdEvento($id_subevento){
-		$query = 'SELECT id_evento FROM subevento WHERE id_subevento = :id_subevento';
+		$query = "SELECT id_evento FROM subevento WHERE id_subevento = :id_subevento and ativo = 's'";
 		$value = array(':id_subevento' => $id_subevento);
 		$prep = $this->db->prepare($query);
 		$prep->execute($value);
@@ -129,10 +129,10 @@ class SubeventoModel extends ModelAbstract
 
 	function subeventoExists($id_evento, $id_subevento=null){
 		if($id_subevento === null){
-			$query = "SELECT id_subevento FROM subevento WHERE id_evento = '$id_evento'";
+			$query = "SELECT id_subevento FROM subevento WHERE id_evento = '$id_evento' and ativo = 's'";
 		}
 		else{
-			$query = "SELECT id_subevento FROM subevento WHERE id_subevento = '$id_subevento' and id_evento = '$id_evento'";
+			$query = "SELECT id_subevento FROM subevento WHERE id_subevento = '$id_subevento' and id_evento = '$id_evento' and ativo = 's'";
 		}
 
 		$data = $this->db->query($query);
@@ -145,10 +145,10 @@ class SubeventoModel extends ModelAbstract
 
 	function getlist($ide_evento,$id_subevento=null){
 		if($id_subevento === null){
-			$query = "SELECT id_subevento, titulo, descricao, data_hora FROM subevento WHERE id_evento = '$id_evento'";
+			$query = "SELECT id_subevento, titulo, descricao, data_hora FROM subevento WHERE id_evento = '$id_evento' and ativo = 's'";
 		}
 		else{
-			$query = "SELECT titulo, descricao, data_hora FROM subevento WHERE id_subevento = '$id_subevento' and id_evento = '$id_evento'";
+			$query = "SELECT titulo, descricao, data_hora FROM subevento WHERE id_subevento = '$id_subevento' and id_evento = '$id_evento' and ativo = 's'";
 		}
 
 		$consulta = $this->db->prepare($query);
@@ -159,10 +159,10 @@ class SubeventoModel extends ModelAbstract
 
 	function getData($id_evento,$id_subevento=null){
 		if($id_subevento === null){
-			$query = "SELECT * FROM subevento WHERE id_evento = '$id_evento'";
+			$query = "SELECT * FROM subevento WHERE id_evento = '$id_evento' and ativo ='s'";
 		}
 		else{
-			$query = "SELECT * FROM subevento WHERE id_subevento = '$id_subevento' and id_evento = $id_evento ";
+			$query = "SELECT * FROM subevento WHERE id_subevento = '$id_subevento' and id_evento = $id_evento and ativo ='s' ";
 		}
 
 		$consulta = $this->db->prepare($query);
