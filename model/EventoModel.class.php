@@ -117,10 +117,10 @@ class EventoModel extends ModelAbstract
 
 	function eventoExists($id=null){
 		if($id === null){
-			$query = "SELECT id_evento FROM evento WHERE aberto = 1";
+			$query = "SELECT id_evento FROM evento WHERE aberto = 1 and ativo = 's'";
 		}
 		else{
-			$query = "SELECT id_evento FROM evento WHERE id_evento = '$id' and aberto = 1 ";
+			$query = "SELECT id_evento FROM evento WHERE id_evento = '$id' and aberto = 1 and ativo='s' ";
 		}
 
 		$data = $this->db->query($query);
@@ -133,10 +133,10 @@ class EventoModel extends ModelAbstract
 
 	function getlist($id=null){
 		if($id === null){
-			$query = "SELECT id_evento, titulo, descricao_resumida, data_hora, data_limite FROM evento WHERE aberto = 1";
+			$query = "SELECT id_evento, titulo, descricao_resumida, data_hora, data_limite FROM evento WHERE aberto = 1 and ativo='s'";
 		}
 		else{
-			$query = "SELECT titulo, descricao_resumida, data_hora, data_limite FROM evento WHERE id_evento = '$id' and aberto = 1 ";
+			$query = "SELECT titulo, descricao_resumida, data_hora, data_limite FROM evento WHERE id_evento = '$id' and aberto = 1 and ativo='s'";
 		}
 
 		$consulta = $this->db->prepare($query);
@@ -147,10 +147,10 @@ class EventoModel extends ModelAbstract
 
 	function getData($id=null){
 		if($id === null){
-			$query = "SELECT * FROM evento WHERE aberto = 1";
+			$query = "SELECT * FROM evento WHERE aberto = 1 and ativo = 's'";
 		}
 		else{
-			$query = "SELECT * FROM evento WHERE id_evento = '$id' and aberto = 1 ";
+			$query = "SELECT * FROM evento WHERE id_evento = '$id' and aberto = 1 and ativo = 's' ";
 		}
 
 		$consulta = $this->db->prepare($query);
