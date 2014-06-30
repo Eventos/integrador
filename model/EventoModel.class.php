@@ -158,4 +158,16 @@ class EventoModel extends ModelAbstract
 		$linha = $consulta->fetchAll(PDO::FETCH_ASSOC);
 		return $linha;
 	}
+
+	function deleteAction($id){
+		try{
+			$query = "DELETE FROM evento WHERE id_evento = $id";
+			$prep = $this->db->prepare($query);
+			$exec = $prep->execute();
+			if(!$exec) die(var_dump($prep->errorInfo())); //throw new Exception('Erro na exclusão..');
+		}catch(Exception $e){
+			Flash::setMessage('danger', 'Ops: '.$e->getMessage());
+			App::redirect('admin/index');
+		}	
+	}
 }

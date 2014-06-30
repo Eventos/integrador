@@ -83,10 +83,10 @@ class AdminController extends ControllerAbstract
 			$evento = new EventoModel();
 			$evento->newAction($_POST);
 		}
-		elseif(isset($params[0]) && $params[0] == 'edit')
+		elseif(isset($params[0]) && $params[0] == 'delete' && count($params) == 2 && isset($params[1]))
 		{
-			echo 'bla';
-			exit();
+			$evento = new EventoModel();
+			$evento->deleteAction($params[1]);
 		}
 		else
 		{
