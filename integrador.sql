@@ -238,7 +238,7 @@ CREATE TABLE `foto_video` (
   KEY `fk_foto_video_subevento1_idx` (`id_subevento`),
   CONSTRAINT `fk_foto_video_evento1` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_foto_video_subevento1` FOREIGN KEY (`id_subevento`) REFERENCES `subevento` (`id_subevento`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -247,7 +247,7 @@ CREATE TABLE `foto_video` (
 
 LOCK TABLES `foto_video` WRITE;
 /*!40000 ALTER TABLE `foto_video` DISABLE KEYS */;
-INSERT INTO `foto_video` VALUES (1,'uploads/evento3-0-logo-pontocom.png',3,NULL,'teste','f'),(3,'//www.youtube.com/watch?v=wPWuyMkTe6k',3,NULL,'teste','v'),(4,'//www.youtube.com/embed/fy1N2ioHJsk?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(5,'//www.youtube.com/embed/mpXPF2m3dIs?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(6,'//www.youtube.com/embed/TSZFcZSeIaM?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(7,'//www.youtube.com/embed/ZT16mQKt59Y?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v');
+INSERT INTO `foto_video` VALUES (1,'uploads/evento3-0-logo-pontocom.png',3,NULL,'teste','f'),(3,'//www.youtube.com/watch?v=wPWuyMkTe6k',3,NULL,'teste','v'),(4,'//www.youtube.com/embed/fy1N2ioHJsk?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(5,'//www.youtube.com/embed/mpXPF2m3dIs?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(6,'//www.youtube.com/embed/TSZFcZSeIaM?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(7,'//www.youtube.com/embed/ZT16mQKt59Y?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(8,'uploads/evento3-0-Captura de tela de 2014-06-13 15:33:04.png',3,NULL,'teste','f');
 /*!40000 ALTER TABLE `foto_video` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -311,6 +311,31 @@ LOCK TABLES `inscricao_subevento` WRITE;
 /*!40000 ALTER TABLE `inscricao_subevento` DISABLE KEYS */;
 INSERT INTO `inscricao_subevento` VALUES (1,'2014-06-04',0,1,1),(2,'2014-06-02',NULL,2,2);
 /*!40000 ALTER TABLE `inscricao_subevento` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `newsletter`
+--
+
+DROP TABLE IF EXISTS `newsletter`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `newsletter` (
+  `id_newsletter` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_newsletter`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `newsletter`
+--
+
+LOCK TABLES `newsletter` WRITE;
+/*!40000 ALTER TABLE `newsletter` DISABLE KEYS */;
+INSERT INTO `newsletter` VALUES (6,'andrefelipesilveira@gmail.com','André Felipe Silveira');
+/*!40000 ALTER TABLE `newsletter` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -515,4 +540,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-30  0:20:31
+-- Dump completed on 2014-06-30 20:07:45

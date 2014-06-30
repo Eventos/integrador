@@ -17,7 +17,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<?php
 	Page::addStyleElement('js', 'jquery.min.js');
-	Page::addStyleElement('css', 'css/slider.css');
+	Page::addStyleElement('css', 'slider.css');
 	Page::addStyleElement('js', 'modernizr.custom.28468.js');
 	Page::addStyleElement('js', 'jquery.cslider.js');
 	Page::addStyleElement('js', 'efeitos.js');
@@ -28,15 +28,14 @@
 	Page::addStyleElement('js', 'default.js');
 	?>
 
-	<?php if(!isset($_COOKIE['boas_vindas'])): ?>
+ 	<?php if(!isset($_COOKIE["boas_vindas"])): ?>
 		<script type="text/javascript">
 			$(document).ready(function () {
 				$('.boas-vindas').show();
 				$('#fancybox').show();
 			});
 		</script>
-		<?php setcookie("boas_vindas", 'cadastrado', time()+3600*24*30*12*50); ?>
-	<?php endif ?>
+	<?php endif; ?>
 
 </head>
 <body>
@@ -98,8 +97,9 @@
 					<input type="text" name="name" placeholder="&nbsp;&nbsp;Nome Completo"><br>
 					<label>Email:</label><br>
 					<input type="email" name="email" placeholder="&nbsp;&nbsp;Seu E-mail"><br>
-					<input type="submit" value="Enviar">
-					<input type="button" id="close" name="clear" value="Agora não">
+					<input type="submit" name="simple" value="Cadastrar">
+					<input type="submit" name="none" value="Agora não">
+					<input type="submit" name="full" value="Cadastro Completo">
 				</form>		
 			</div>
 		</div>

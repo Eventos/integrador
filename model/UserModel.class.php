@@ -34,4 +34,19 @@ class UserModel extends ModelAbstract
 		App::redirect('login/verify/user');
 		exit;
 	}
+
+	function user_letter($name, $email){
+		try{
+			$query = "INSERT INTO newsletter (nome, email) VALUES (:nome, :email)";
+			$values = array(':nome' => $name,':email' => $email);
+
+			$prep = $this->db->prepare($query);
+			$prep->execute($values);
+		}
+		catch(PDOException $erro)
+		{
+			return false;
+		}
+		return true;
+	}
 }
