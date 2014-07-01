@@ -9,7 +9,7 @@ class EventoModel extends ModelAbstract
 		echo '<pre>';
 
 		try{
-			$emailAdm = $_SESSION['email'];
+			$emailAdm = $_SESSION['adm']['email'];
 			$query = $this->db->query("SELECT id_administrador FROM administrador WHERE email = '$emailAdm'");
 			$id_administrador = $query->fetch(PDO::FETCH_ASSOC);
 
@@ -20,7 +20,7 @@ class EventoModel extends ModelAbstract
 
 			$id_evento = $this->getNextIncrement('evento');
 
-			$query = "INSERT INTO evento (local, desc_contato, data_hora, data_limite, vagas, aberto, desc_evento, email_contato, telefone_contato, id_cidade, id_administrador, facebook, twitter, google_plus, id_palestrante, titulo, descricao_resumida) VALUES (:local, :descricao_contato, :data_hora, :data_limite, :vagas, :aberto, :desc_evento, :email_contato, :telefone_contato, :id_cidade, :id_administrador, :facebook, :twitter, :google_plus, :palestrante, :titulo, :descricao_resumida)";
+			$query = "INSERT INTO evento (local, desc_contato, data_hora, data_limite, vagas, aberto, desc_evento, email_contato, telefone_contato, id_cidade, id_administrador, facebook, twitter, google_plus, id_palestrante, titulo, descricao_resumida, ativo) VALUES (:local, :descricao_contato, :data_hora, :data_limite, :vagas, :aberto, :desc_evento, :email_contato, :telefone_contato, :id_cidade, :id_administrador, :facebook, :twitter, :google_plus, :palestrante, :titulo, :descricao_resumida, 's')";
 			$values = array(':local' => $data['local'],':descricao_contato' => $data['desc_contato'],':data_hora' => $data['data_hora'],':data_limite' => $data['data_limite'],':vagas' => $data['vagas'],':aberto' => $aberto,':desc_evento' => $data['desc_evento'],':email_contato' => $data['email_contato'],':telefone_contato' => $data['telefone_contato'],':id_cidade' => $data['cidade'],':id_administrador' => (int)$id_administrador,':facebook' => $data['facebook'],':twitter' => $data['twitter'],':google_plus' => $data['google_plus'],':palestrante' => $data['palestrante'], ':titulo' => $data['titulo'], ':descricao_resumida' => $data['descricao_resumida']);
 
 			$prep = $this->db->prepare($query);

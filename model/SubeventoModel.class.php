@@ -14,7 +14,7 @@ class SubeventoModel extends ModelAbstract
 
 			$id_subevento = $this->getNextIncrement('subevento');
 
-			$query = "INSERT INTO subevento (local, descricao, data_hora, vagas, data_limite, id_evento, aberto, id_palestrante, titulo) VALUES (:local, :descricao, :data_hora, :vagas, :data_limite, :id_evento, :aberto, :id_palestrante, :titulo)";
+			$query = "INSERT INTO subevento (local, descricao, data_hora, vagas, data_limite, id_evento, aberto, id_palestrante, titulo, ativo) VALUES (:local, :descricao, :data_hora, :vagas, :data_limite, :id_evento, :aberto, :id_palestrante, :titulo, 's')";
 			$values = array(
 					':local'          => $data['local'],
 					':descricao'      => $data['desc_subevento'],

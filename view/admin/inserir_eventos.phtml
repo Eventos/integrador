@@ -114,9 +114,7 @@
 									<label for="combined-input" class="control-label">Responsável</label>
 									<div class="controls form-group">
 										<select name="administrador" class="form-control">
-											<option value=""><?= $_SESSION['adm']['name'] ?></option>
-											<option value="">Admin 2</option>
-											<option value="">Admin 3</option>
+											<option value="<?= $adm['id'] ?>"><?= $adm['name'] ?></option>
 										</select>
 									</div>
 								</div>

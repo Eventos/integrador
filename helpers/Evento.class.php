@@ -8,6 +8,8 @@ class Evento
 		$params = array();
 		$palestrantes = new PalestranteModel();
 		$params['palestrantes'] = $palestrantes->getAllPalestrantes();
+		$administrador = new AdminModel;
+		$params['adm'] = $administrador->getAdmSession();
 		return $params;
 	}
 
