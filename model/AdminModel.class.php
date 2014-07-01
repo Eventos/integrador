@@ -17,8 +17,8 @@ class AdminModel extends ModelAbstract
 	}
 
 	function getAdmSession(){
-		$nameAdm = $_SESSION['adm']['name'];
-		$query = $this->db->query("SELECT id_administrador, nome FROM administrador WHERE nome = '$nameAdm'");
+		$emailAdm = $_SESSION['adm']['email'];
+		$query = $this->db->query("SELECT id_administrador, nome FROM administrador WHERE email = '$emailAdm'");
 		$data = iterator_to_array($query);
 		return array('id' => $data[0]['id_administrador'], 'name' => $data[0]['nome']);
 	}
@@ -26,5 +26,38 @@ class AdminModel extends ModelAbstract
 	function logout(){
 		unset($_SESSION['adm']);
 		App::redirect(App::getUrl());
+	}
+
+	function getIdUserEvento($id_evento){
+		$query = $this->db->query("SELECT id_administrador FROM evento WHERE id_evento = '$id_evento'");
+		$id = $query->fetch(PDO::FETCH_NUM);
+		if(isset($id[0])){
+			return $id[0];
+		}
+		return false;
+	}
+	
+	function verifyMsg($email){
+		$query = $this->db->query("SELECT id_administrador FROM administrador WHERE email = '$email'");
+		$id = $query->fetch(PDO::FETCH_NUM);
+		if(isset($id[0])){
+			$query = $this->db->query("SELECT id_contato FROM contato WHERE id_administrador = '$id[0]' and resposta = 'n'");
+			$qnt_msg = count($query->fetchAll(PDO::FETCH_NUM));
+			Flash::setMessage('warning','Você tem '.$qnt_msg.' Mensagens não lidas');
+			return $qnt_msg;
+		}else{
+			return false;
+		}
+	}
+
+	function getMsg($id_admin){
+		try{
+			$query = $this->db->query("SELECT * FROM contato WHERE id_administrador = '$id_admin' and resposta = 'n'");	
+			
+		}catch(Exception $e){
+			return false;
+		}
+		$data = $query->fetchAll(PDO::FETCH_NUM);
+		return $data;
 	}
 }

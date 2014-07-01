@@ -8,6 +8,7 @@ class AdminController extends ControllerAbstract
 		if(count($params) == 0){
 			$admin = new AdminModel();
 			if($admin->isLogged()){
+				$admin->verifyMsg($_SESSION['adm']['email']);
 				$this->render('admin/area_restrita');
 			}else{
 				$this->render('admin/login_admin');

@@ -180,4 +180,17 @@ class EventoModel extends ModelAbstract
 			App::redirect('admin/index');
 		}	
 	}
+
+	function sendMsg($data){
+		try{
+			$query = "INSERT INTO contato (nome, email, mensagem, resposta, id_evento, id_administrador) VALUES (:name, :email, :mensagem, :resposta, :id_evento, :id_administrador)";
+			$values = array(':name'=>$data['name'], ':email'=>$data['email'], ':mensagem'=>$data['message'], ':resposta'=>'n', ':id_evento'=>$data['evento'], ':id_administrador'=>$data['id_admin']);
+			$prep = $this->db->prepare($query);
+			$query = $prep->execute($values);
+			
+		}catch(Exception $e){
+			return false;
+		}
+		return true;	
+	}
 }
