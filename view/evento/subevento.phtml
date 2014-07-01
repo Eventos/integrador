@@ -1,0 +1,52 @@
+<?php 
+$id_evento       = $params[0];
+$id_subevento    = $params[1];
+$array_evento    = Evento::getEvento($id_subevento , 'all');
+$array_subevento = Subevento::getSubevento($id_evento, $id_subevento, 'all');
+
+?>
+<?php foreach ($array_subevento as $subevento): ?>	
+	<div class="h_right">
+		<b><h1><?= $subevento['titulo']?></h1></b>
+	</div>
+	<div class="container fluid">
+		<?php if(Media::image_exists($id_evento,$id_subevento)):?>
+		<div class="row sub_picture">
+				<center><h3>Imagens</h3></center>
+			<?php $img = Media::getAllImages($id_evento,$id_subevento);?> 
+				<?=$img?>
+		</div>
+		<?php endif; ?>
+		<div class="row sub_describle">
+			<center><h3>Descrição</h3></center>
+			<big>Tema:</big><p><?= $subevento['descricao']?></p>
+			<big>Palestrante:</big><p><?= 'Trazer palestrante'?></p>
+			<br>
+			<center>Tabela de Valores</center>
+			<table class="table table-bordered">
+				<caption>Valores das Inscriçoes a cada dia</caption>
+				<thead>
+					<tr>
+						<th>Data inicial</th>
+						<th>Data final</th>
+						<th>Valor</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>__/__/____</td>
+						<td>__/__/____</td>
+						<td>R$:</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<?php if(Media::video_exists($id_evento,$id_subevento)):?>
+			<div class="row sub_video">
+				<center><h3>Videos</h3></center>
+				<?php $videos = Media::getAllVideos($id_evento,$id_subevento);?> 
+					<?=$videos?>
+			</div>
+		<?php endif; ?>
+	</div>
+<?php endforeach; ?>

@@ -19,6 +19,9 @@ class EventoController extends ControllerAbstract
 		if(isset($params) && count($params) == 1){
 			$this->render('evento/evento',$params);
 			exit;
+		}elseif(count($params)==2){
+			$this->render('evento/subevento',$params);
+			exit;
 		}else{
 			App::errorPage();
 		}
