@@ -168,6 +168,15 @@ class SubeventoModel extends ModelAbstract
 		$consulta = $this->db->prepare($query);
 		$consulta->execute();
 		$linha = $consulta->fetchAll(PDO::FETCH_ASSOC);
+
+		$query = "SELECT valor FROM valor_subevento WHERE DATEDIFF(CURDATE(), data_ini) >= 0 AND DATEDIFF(CURDATE(), data_fim) <= 0 AND id_subevento = :id LIMIT 0,1";
+		$value = array(':id' => $id);
+		$db = $this->db->prepare($query);
+		$db->execute($value);
+		$valor = $db->fetchAll(PDO::FETCH_ASSOC);
+		$linha[0]['valor'] = $valor[0]['valor'];
+		die(var_dump($linha));
+
 		return $linha;
 	}
 
