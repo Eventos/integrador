@@ -49,4 +49,13 @@ class UserModel extends ModelAbstract
 		}
 		return true;
 	}
+
+	function getUserByEmail($email){
+		$query = "SELECT * FROM usuario WHERE email = :email";
+		$values = array(':email' => $email);
+		$prep = $this->db->prepare($query);
+		$prep->execute($values);
+		$dataUser = $prep->fetchAll(PDO::FETCH_ASSOC);
+		return $dataUser[0];
+	}
 }

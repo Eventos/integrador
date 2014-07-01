@@ -36,7 +36,10 @@ class App
 		Flash::getMessage();
 	}
 
-	static function getUrl(){
+	static function getUrl($comp=null){
+		if($comp != null){
+			return URL_BASE.$comp;
+		}
 		return URL_BASE;
 	}
 

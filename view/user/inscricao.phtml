@@ -5,6 +5,7 @@ $vagas     = $info[0]['vagas'];
 $descricao = $info[0]['desc_evento'];
 $local     = $info[0]['local'];
 $final     = $info[0]['data_limite']; 
+$valor = $info[0]['valor'];
 ?>
 <div class="page-content">
 	<div class="content container">
@@ -15,6 +16,10 @@ $final     = $info[0]['data_limite'];
 				<div class='Descricao' style="border:solid 1px gray">
 					<p><?= $descricao; ?></p>
 				</div>
+				<b>Valor do evento:</b>
+				<div>
+					<p>R$<?= $valor ?></p>
+				</div>
 			</div>
 		</div>
 		<div class="row">
@@ -24,13 +29,12 @@ $final     = $info[0]['data_limite'];
 						<h3>Inscrições para esse evento até <b>&nbsp;<?=$final;?></b></h3>
 					</div>
 					<div class="widget-content">
-						<form method="post" class="form-horizontal" action="<?= App::getUrl() ?>admin/eventos/new/post">
 						<?php if (Subevento::exists($id_evento)): ?>
 							<?php $data = Subevento::getSubevento($id_evento, null, 'all');	?>
 							<fieldset>
 								<legend class="section">Seleione os subeventos que deseja se inscrever</legend>
 								<div class="control-group">
-									<table class="table table-striped table-bordered">
+									<table class="subeventos table table-striped table-bordered">
 										<thead>
 											<tr>
 												<th> Selecione </th>
@@ -38,10 +42,12 @@ $final     = $info[0]['data_limite'];
 												<th> Descricao </th>
 												<th> Data Limite das inscricoes </th>
 												<th> Vagas Restantes </th>
+												<th> Valor Atual </th>
 											</tr>
 										</thead>
 										<tbody>
 											<?php foreach ($data as $d): ?>
+											<?php $valor_subevento = Subevento::getValueSubeventoById($d['id_subevento']); ?>
 											<tr>
 												<td style="text-align:center"> <input type="checkbox" name="subevento" value="<?= $d['id_subevento'] ?>" id="checkbox<?= $d['id_subevento'] ?>" class="css-checkbox">
 													<label for="checkbox<?= $d['id_subevento'] ?>" class="css-label"></label>
@@ -50,6 +56,7 @@ $final     = $info[0]['data_limite'];
 												<td> <a href="#">Ver Descrição</a> </td>
 												<td> <?= $d['data_limite']; ?></td>
 												<td> <?= $d['vagas'];?> </td>
+												<td class="valor-subevento"> R$<span class="price-subevento"><?= $valor_subevento;?> </span></td>
 											</tr>
 										<?php endforeach;?>
 										</tbody>
@@ -59,23 +66,49 @@ $final     = $info[0]['data_limite'];
 						<?php endif;?>
 							<fieldset>
 								<legend class="section">Finalizar Inscrição - </legend>
-								<div class="control-group">
-									<div class="controls form-group" style="text-align:center">
-										<input type="submit" class="btn-lg btn-primary" value="Pagamento Seguro">
+								<form id="payment" action="<?= App::getUrl('inscricao/payment/') ?>" method="POST">
+									<div class="control-group">
+										<div class="valor-total form-group">
+											<h1>Valor total: R$ <span class="preco-total"><?= $valor ?></span></h1>
+										</div>
+										<input type="hidden" name="total" class="preco-total" value="<?= $valor ?>">
+										<input type="hidden" name="id_evento" value="<?= $id_evento ?>">
+										<div class="controls form-group" style="text-align:center">
+											<input type="submit" class="btn-lg btn-primary" value="Pagamento Seguro">
+										</div>
 									</div>
-								</div>
-								<div class="control-group" id="cidade" style="display:none">
-									<label for="hint-field" class="control-label"> Cidade </label>
-									<div class="controls form-group">
-										<div class="cidade"></div>
+									<div class="control-group" id="cidade" style="display:none">
+										<label for="hint-field" class="control-label"> Cidade </label>
+										<div class="controls form-group">
+											<div class="cidade"></div>
+										</div>
 									</div>
-								</div>
+								</form>
 							</fieldset>
-							
-						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$('input:[name=subevento]').change(function(){
+		var id_subevento = $(this).val();
+		var price_subevento = Number($(this).parent().parent().children('.valor-subevento').children('.price-subevento').html());
+		if($(this).prop('checked')){
+			var i = $('#payment input.subeventos').length;
+			$('#payment').append('<input type="hidden" class="subeventos" name="subevento['+i+']" value="'+id_subevento+'">');
+			
+			price_subevento += Number($('#payment input.preco-total').val());
+
+			$('#payment span.preco-total').html(price_subevento);
+			$('#payment input.preco-total').val(price_subevento);
+		}else{
+			price_subevento = Number($('#payment input.preco-total').val()) - price_subevento;
+			$('#payment span.preco-total').html(price_subevento);
+			$('#payment input.preco-total').val(price_subevento);
+			$('#payment .subeventos[value='+id_subevento+']').remove();
+		}
+	});
+</script>
