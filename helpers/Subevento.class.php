@@ -17,7 +17,7 @@ class Subevento
 		elseif($type == 'all'){
 			$data = $subevento->getData($id_evento, $id_subevento);
 		}
-		var_dump($data); exit;
+		//var_dump($data); exit;
 		return $data;
 	}
 }
