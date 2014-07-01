@@ -35,4 +35,10 @@ class InscricaoController extends ControllerAbstract
 			App::errorPage();
 		}
 	}
+
+	function paymentAction($params){
+		$inscricao = new InscricaoModel();
+		$inscricao->inscricao($_POST);
+		exit;
+	}
 }

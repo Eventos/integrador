@@ -19,4 +19,10 @@ class Subevento
 		}
 		return $data;
 	}
+
+
+	static function getValueSubeventoById($id_subevento){
+		$subevento = new SubeventoModel();
+		return $subevento->getValueSubeventoById($id_subevento);
+	}
 }
