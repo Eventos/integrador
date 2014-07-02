@@ -22,3 +22,7 @@ define('DB_DATABASE', 'integrador');
 define('DB_USER', 'root');
 //SENHA DO BANCO
 define('DB_PASSWORD', '12345');
+
+//DADOS DO PAGSEGURO
+define('EMAIL_PAGSEGURO', 'aranhadias@hotmail.com');
+define('TOKEN_PAGSEGURO', 'A14097F674FB4BC488090D599E9541D8');

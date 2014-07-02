@@ -175,8 +175,9 @@ class SubeventoModel extends ModelAbstract
 			$db = $this->db->prepare($query);
 			$db->execute($value);
 			$valor = $db->fetchAll(PDO::FETCH_ASSOC);
-			var_dump($valor); exit;
-			$linha[0]['valor'] = $valor[0]['valor'];
+			if(isset($valor[0])){
+				$linha[0]['valor'] = $valor[0]['valor'];
+			}
 		}
 
 		return $linha;
@@ -188,8 +189,11 @@ class SubeventoModel extends ModelAbstract
 		$db = $this->db->prepare($query);
 		$db->execute($value);
 		$valor = $db->fetchAll(PDO::FETCH_ASSOC);
-		$data = $valor[0]['valor'];
-		return $data;
+		if(isset($valor[0])){
+			$data = $valor[0]['valor'];
+			return $data;	
+		}
+		return null;
 	}
 
 	function deleteAction($id){

@@ -163,7 +163,9 @@ class EventoModel extends ModelAbstract
 			$db = $this->db->prepare($query);
 			$db->execute($value);
 			$valor = $db->fetchAll(PDO::FETCH_ASSOC);
-			$linha[0]['valor'] = $valor[0]['valor'];
+			if(isset($valor[0])){
+				$linha[0]['valor'] = $valor[0]['valor'];
+			}
 		}
 		
 		return $linha;
@@ -194,5 +196,16 @@ class EventoModel extends ModelAbstract
 			return false;
 		}
 		return true;	
+	}
+
+	function getValueEventoById($id_evento){
+		$query = "SELECT valor FROM valor_evento WHERE DATEDIFF(CURDATE(), data_ini) >= 0 AND DATEDIFF(CURDATE(), data_fim) <= 0 AND id_evento = :id LIMIT 0,1";
+		$value = array(':id' => $id_evento);
+		$db = $this->db->prepare($query);
+		$db->execute($value);
+		$valor = $db->fetchAll(PDO::FETCH_ASSOC);
+		if(isset($valor[0])){
+			return $valor[0]['valor'];
+		}
 	}
 }

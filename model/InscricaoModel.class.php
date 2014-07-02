@@ -16,8 +16,8 @@ class InscricaoModel extends ModelAbstract
 				}
 			}
 
-			Flash::setMessage('success', 'Inscrição feita com sucesso, realize seu pagamento!');
-			App::redirect('inscricao');
+			$pagamento = new PagseguroModel();
+			$pagamento->pagamento($data);
 		}catch(Exception $e){
 			Flash::setMessage('danger', 'Ops: '.$e->getMessage());
 			App::redirect('admin/index');
@@ -31,6 +31,9 @@ class InscricaoModel extends ModelAbstract
 				':id_usuario' => $id_usuario,
 				':id_evento' => $id_evento,
 			);
+
+		$prep = $this->db->prepare($query);
+		$prep->execute($values);
 
 		$prep = $this->db->prepare($query);
 		$prep->execute($values);

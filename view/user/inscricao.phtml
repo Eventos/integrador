@@ -5,7 +5,10 @@ $vagas     = $info[0]['vagas'];
 $descricao = $info[0]['desc_evento'];
 $local     = $info[0]['local'];
 $final     = $info[0]['data_limite']; 
-$valor = $info[0]['valor'];
+$valor = isset($info[0]['valor']) ? $info[0]['valor'] : null;
+if(!($vagas > 0)){
+	$valor = null;
+}
 ?>
 <div class="page-content">
 	<div class="content container">
@@ -18,16 +21,25 @@ $valor = $info[0]['valor'];
 				</div>
 				<b>Valor do evento:</b>
 				<div>
-					<p>R$<?= $valor ?></p>
+					<p><?= $valor ? 'R$'.$valor : 'Inscrições não estão abertas' ?></p>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="widget">
+					
+					<?php if(!($vagas > 0)): ?>
+					<div>
+						<h2>Desculpe, você não pode se cadastrar nesse evento, vagas encerradas!</h2>
+					</div>
+					<?php else: ?>
 					<div class="widget-header"> <i class="icon-align-left"></i>
 						<h3>Inscrições para esse evento até <b>&nbsp;<?=$final;?></b></h3>
+						<h3>Restam <b><?=$vagas;?></b> vagas.</h3>
 					</div>
+					<?php endif; ?>
+					
 					<div class="widget-content">
 						<?php if (Subevento::exists($id_evento)): ?>
 							<?php $data = Subevento::getSubevento($id_evento, null, 'all');	?>
@@ -48,16 +60,29 @@ $valor = $info[0]['valor'];
 										<tbody>
 											<?php foreach ($data as $d): ?>
 											<?php $valor_subevento = Subevento::getValueSubeventoById($d['id_subevento']); ?>
-											<tr>
-												<td style="text-align:center"> <input type="checkbox" name="subevento" value="<?= $d['id_subevento'] ?>" id="checkbox<?= $d['id_subevento'] ?>" class="css-checkbox">
-													<label for="checkbox<?= $d['id_subevento'] ?>" class="css-label"></label>
-												 </td>
-												<td> <?=$d['titulo'];?> </td>
-												<td> <a href="#">Ver Descrição</a> </td>
-												<td> <?= $d['data_limite']; ?></td>
-												<td> <?= $d['vagas'];?> </td>
-												<td class="valor-subevento"> R$<span class="price-subevento"><?= $valor_subevento;?> </span></td>
-											</tr>
+											<?php if($valor_subevento && ($d['vagas'] > 0)): ?>
+												<tr>
+													<td style="text-align:center"> <input type="checkbox" name="subevento" value="<?= $d['id_subevento'] ?>" id="checkbox<?= $d['id_subevento'] ?>" class="css-checkbox">
+														<label for="checkbox<?= $d['id_subevento'] ?>" class="css-label"></label>
+													 </td>
+													<td> <?=$d['titulo'];?> </td>
+													<td> <a href="#">Ver Descrição</a> </td>
+													<td> <?= $d['data_limite']; ?></td>
+													<td> <?= $d['vagas'];?> </td>
+													<td class="valor-subevento"> R$<span class="price-subevento"><?= $valor_subevento;?> </span></td>
+												</tr>
+											<?php else: ?>
+												<tr>
+													<td style="text-align:center"> <input type="checkbox" disabled name="subevento" value="<?= $d['id_subevento'] ?>" id="checkbox<?= $d['id_subevento'] ?>" class="css-checkbox">
+														<label for="checkbox<?= $d['id_subevento'] ?>" class="css-label"></label>
+													 </td>
+													<td> <?=$d['titulo'];?> </td>
+													<td> <a href="#">Ver Descrição</a> </td>
+													<td> <?= $d['data_limite']; ?></td>
+													<td> <?= $d['vagas'] ? $d['vagas'] : 'Vagas esgotadas';?> </td>
+													<td class="valor-subevento"> R$<span class="price-subevento"><?= $valor_subevento;?> </span></td>
+												</tr>
+											<?php endif; ?>
 										<?php endforeach;?>
 										</tbody>
 									</table>
@@ -74,7 +99,7 @@ $valor = $info[0]['valor'];
 										<input type="hidden" name="total" class="preco-total" value="<?= $valor ?>">
 										<input type="hidden" name="id_evento" value="<?= $id_evento ?>">
 										<div class="controls form-group" style="text-align:center">
-											<input type="submit" class="btn-lg btn-primary" value="Pagamento Seguro">
+											<input type="submit" class="btn-lg btn-primary" <?= $valor ? '' : 'disabled' ?> value="Pagamento Seguro">
 										</div>
 									</div>
 									<div class="control-group" id="cidade" style="display:none">
