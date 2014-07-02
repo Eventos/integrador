@@ -1,5 +1,8 @@
 <?php
-  UserModel::islogged();
+  if(!UserModel::islogged()){
+    App::redirect('login/verify/user');
+    exit();
+  }
 ?>
 <!DOCTYPE html>
 <html>

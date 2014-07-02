@@ -43,7 +43,7 @@ class AdminModel extends ModelAbstract
 		if(isset($id[0])){
 			$query = $this->db->query("SELECT id_contato FROM contato WHERE id_administrador = '$id[0]' and resposta = 'n'");
 			$qnt_msg = count($query->fetchAll(PDO::FETCH_NUM));
-			Flash::setMessage('warning','Você tem '.$qnt_msg.' Mensagens não lidas');
+			//Flash::setMessage('warning','Você tem '.$qnt_msg.' Mensagens não lidas');
 			return $qnt_msg;
 		}else{
 			return false;

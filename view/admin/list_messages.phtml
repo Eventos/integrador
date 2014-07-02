@@ -27,7 +27,7 @@
                   <td> <?=$d[2]?> </td>
                   <td> <?=$d[3]?> </td>
                   <td> <?php $evento = Evento::getEvento($d[5],'info');echo $evento[0]['titulo'];?> </td>
-                  <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
+                  <td class="td-actions"><a class="btn btn-small btn-success" href="<?=App::getUrl()?>admin/sendmail/"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
                 </tr>
               <?php endforeach;?>
               </tbody>

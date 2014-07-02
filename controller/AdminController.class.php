@@ -152,4 +152,8 @@ class AdminController extends ControllerAbstract
 			exit();
 		}
 	}
+	function sendmailAction(){
+		$mail = new Email();
+		$mail->sendMail('andrefelipesilveira@gmail.com', 'teste', 'Eventos UTFPR');
+	}
 }
