@@ -29,7 +29,8 @@ CREATE TABLE `administrador` (
   `cpf` varchar(11) NOT NULL,
   `senha` varchar(10) NOT NULL,
   `email` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_administrador`)
+  PRIMARY KEY (`id_administrador`),
+  UNIQUE KEY `Pry_email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -122,6 +123,39 @@ CREATE TABLE `codigo_barras` (
 LOCK TABLES `codigo_barras` WRITE;
 /*!40000 ALTER TABLE `codigo_barras` DISABLE KEYS */;
 /*!40000 ALTER TABLE `codigo_barras` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `contato`
+--
+
+DROP TABLE IF EXISTS `contato`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contato` (
+  `id_contato` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(50) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `mensagem` text,
+  `resposta` char(1) NOT NULL,
+  `id_evento` int(11) DEFAULT NULL,
+  `id_administrador` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_contato`),
+  KEY `fk_evento` (`id_evento`),
+  KEY `fk_admin` (`id_administrador`),
+  CONSTRAINT `fk_admin` FOREIGN KEY (`id_administrador`) REFERENCES `administrador` (`id_administrador`),
+  CONSTRAINT `fk_evento` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contato`
+--
+
+LOCK TABLES `contato` WRITE;
+/*!40000 ALTER TABLE `contato` DISABLE KEYS */;
+INSERT INTO `contato` VALUES (1,'André Felipe Silveira','andrefelipesilveira@yahoo.com.br','Testando envio de mensagens','n',3,1),(2,'Andre Felipe Silveira','andrefelipesilveira@gmail.com','Tem desconto pra negros?','n',3,1);
+/*!40000 ALTER TABLE `contato` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -248,7 +282,7 @@ CREATE TABLE `foto_video` (
 
 LOCK TABLES `foto_video` WRITE;
 /*!40000 ALTER TABLE `foto_video` DISABLE KEYS */;
-INSERT INTO `foto_video` VALUES (1,'uploads/evento3-0-logo-pontocom.png',3,NULL,'teste','f'),(3,'//www.youtube.com/watch?v=wPWuyMkTe6k',3,NULL,'teste','v'),(4,'//www.youtube.com/embed/fy1N2ioHJsk?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(5,'//www.youtube.com/embed/mpXPF2m3dIs?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(6,'//www.youtube.com/embed/TSZFcZSeIaM?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(7,'//www.youtube.com/embed/ZT16mQKt59Y?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(8,'uploads/evento3-0-Captura de tela de 2014-06-13 15:33:04.png',3,NULL,'teste','f');
+INSERT INTO `foto_video` VALUES (1,'uploads/evento3-0-logo-pontocom.png',3,1,'teste','f'),(3,'//www.youtube.com/embed/Txbb4-ghLNQ',3,1,'teste','v'),(4,'//www.youtube.com/embed/fy1N2ioHJsk?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(5,'//www.youtube.com/embed/mpXPF2m3dIs?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(6,'//www.youtube.com/embed/TSZFcZSeIaM?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,1,NULL,'v'),(7,'//www.youtube.com/embed/ZT16mQKt59Y?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,1,NULL,'v'),(8,'uploads/evento3-0-Captura de tela de 2014-06-13 15:33:04.png',3,1,'teste','f');
 /*!40000 ALTER TABLE `foto_video` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -542,4 +576,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-30 20:46:24
+-- Dump completed on 2014-07-01 21:07:46
