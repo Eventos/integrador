@@ -146,4 +146,10 @@ class AdminController extends ControllerAbstract
 			App::errorPage();
 		}
 	}
+	function messageAction($params){
+		if(count($params)==1 && $params[0]== 'list'){
+			$this->render('admin/list_messages');
+			exit();
+		}
+	}
 }
