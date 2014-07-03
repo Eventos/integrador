@@ -69,6 +69,7 @@ class App
 	static function send($to, $subject, $msg){
 		$aux = true;
 		if (is_array($to)){
+			die('varios');
 			foreach ($to as $t) {
 				$aux = mail($t, $subject, $msg)? true : false;		
 				if($aux === false){
@@ -78,7 +79,7 @@ class App
 				}
 			}
 		}else{
-			$aux =  mail($to, $subject, $msg)? true : false; 
+			$aux =  mail($to, $subject, $msg); 
 		}
 		return $aux;
 	}

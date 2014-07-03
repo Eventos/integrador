@@ -5,11 +5,11 @@
 class Email
 {
 	static function sendMail($to, $subject, $message){
-		$state =  App::Send($to,$subject,$messge);
+		$state =  App::Send($to,$subject,$message);
 		if($state){
 			Flash::getMessage('success','Email(s) enviado(s) com Sucesso');
 		}else{
-			Flash::setMessage('danger','Erro ao enviar email(s)');
+			Flash::setMessage('danger','Erro ao enviar email(s)...');
 		}
 		App::redirect('admin/index');
 		exit;
