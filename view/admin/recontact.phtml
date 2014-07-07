@@ -1,0 +1,103 @@
+<?php 
+	if(isset($params[0])){
+		$id_message = $params[0];
+		$info = Admin::getMsg($id_message); 
+      	$data = $info[0];
+      }else{
+      	$data = null;
+	  }
+Page::addTinymceElement('js', 'js/tinymce/tinymce.min.js'); 
+?>
+
+<div class="page-content">
+	<div class="content container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="page-title">Email <small> envie emails para os usuarios</small></h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="widget-header"> <i class="icon-align-left"></i>
+					<h3>Emails</h3>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="widget-content">
+							<form method="POST" action="<?= App::getUrl() ?>admin/sendmail/recontact/html">
+								<div class="control-group">
+									<label for="normal-field" class="control-label">Usuario</label>
+									<div class="controls form-group">
+									<?php if($data !== null):?>
+										<input type="text" name="name" value="<?= $data[1] ?>" placeholder="insira o nome do usuarios" class="form-control" id="normal-field" maxlength="50">
+									<?php else: ?>
+										<input type="text" name="name" placeholder="insira o nome do usuarios" class="form-control" id="normal-field" maxlength="50">
+									<?php endif;?>
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="normal-field" class="control-label">Email</label>
+									<div class="controls form-group">
+										<?php if($data !== null):?>
+											<input type="email" name="email" value="<?= $data[2] ?>" placeholder="insira o email do destinatário" class="form-control" id="normal-field" maxlength="100">
+										<?php else: ?>
+											<input type="email" name="email" placeholder="insira o email do destinatário" class="form-control" id="normal-field" maxlength="100">
+										<?php endif;?>
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="normal-field" class="control-label">Assunto</label>
+									<div class="controls form-group">
+										<?php if($data !== null):?>
+											<input type="text" name="subject" value="<?= $data[1]?>" placeholder="assunto da mensagem" class="form-control" id="normal-field" maxlength="50">
+										<?php else: ?>
+											<input type="text" name="subject" placeholder="assunto da mensagem" class="form-control" id="normal-field" maxlength="50">
+										<?php endif;?>
+									</div>
+								</div>
+								<?php if($data !== null):?>
+									<textarea id="elm1" name="html"><?=$data[3].'<br>----- ----- -----<br>Eventos UTFPR'?></textarea><br>
+								<?php else: ?>
+									<textarea id="elm1" name="html"></textarea><br>
+								<?php endif;?>
+								<div class="btn-actions">
+									<input type="submit" value="Enviar Email" class="btn-action btn btn-primary">
+									<input type="reset" value="Limpar Campos" class="btn-action btn btn-default"><br><br>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	tinymce.init({
+		selector: "textarea#elm1",
+		theme: "modern",
+		language : 'pt_BR',
+		height: 320,
+		plugins: [
+		"advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+		"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+		"save table contextmenu directionality emoticons template paste textcolor"
+		],
+		content_css: "css/content.css",
+		toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons", 
+		style_formats: [
+		{title: 'Bold text', inline: 'b'},
+		{title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+		{title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+		{title: 'Example 1', inline: 'span', classes: 'example1'},
+		{title: 'Example 2', inline: 'span', classes: 'example2'},
+		{title: 'Table styles'},
+		{title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+		]
+	});
+	tinymce.init({
+		selector: "textarea"
+	}); 
+</script>
+

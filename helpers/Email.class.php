@@ -4,8 +4,10 @@
 */
 class Email
 {
-	static function sendMail($to, $subject, $message){
-		$state =  App::Send($to,$subject,$message);
+	static function sendMail($to, $subject, $message, $header=null){
+
+		$state =  App::Send($to,$subject,$message, $header);
+		
 		if($state){
 			Flash::getMessage('success','Email(s) enviado(s) com Sucesso');
 		}else{
