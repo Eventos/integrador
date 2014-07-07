@@ -63,4 +63,10 @@ class AdminModel extends ModelAbstract
 		$data = $query->fetchAll(PDO::FETCH_NUM);
 		return $data;
 	}
+
+	function getAllEmailsAdm(){
+		$query = $this->db->query("SELECT email FROM administrador");
+		$emails = $query->fetchAll(PDO::FETCH_ASSOC);
+		return $emails;
+	}
 }

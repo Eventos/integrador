@@ -65,6 +65,12 @@ class InscricaoModel extends ModelAbstract
 		$prep->execute();
 	}
 
+	private function incrementarVagas($tipo, $id){
+		$query = "UPDATE $tipo SET vagas=vagas+1 WHERE id_$tipo=$id";
+		$prep = $this->db->prepare($query);
+		$prep->execute();
+	}
+
 	private function enviarEmail($url_pag, $user){
 		$html = '<h1>Olá '.$user['nome'].'..</h1>';
 		$html.= 'Obrigado por realizar a inscrição nos nossos eventos.<br><br>';
@@ -81,5 +87,55 @@ class InscricaoModel extends ModelAbstract
 		$sql = $this->db->query("SELECT id_inscricao, id_usuario, data_inscricao, url, id_evento FROM inscricao WHERE pagamento = 0");
 		$inscricoes = $sql->fetchAll(PDO::FETCH_ASSOC);
 		return $inscricoes;
+	}
+
+	function cancelar($id_inscricao){
+		$query = 'SELECT id_subevento FROM inscricao_subevento WHERE id_inscricao = '.$id_inscricao;
+		$prep = $this->db->prepare($query);
+		$prep->execute();
+		$id_subeventos = $prep->fetchAll(PDO::FETCH_ASSOC);
+
+		$query = 'SELECT id_evento FROM inscricao WHERE id_inscricao = '.$id_inscricao;
+		$prep = $this->db->prepare($query);
+		$prep->execute();
+		$id_evento = $prep->fetch(PDO::FETCH_ASSOC);
+		$id_evento = $id_evento['id_evento'];
+
+		foreach ($id_subeventos as $id) {
+			$this->incrementarVagas('subevento', $id['id_subevento']);
+		}
+
+		$query = 'DELETE FROM inscricao_subevento WHERE id_inscricao = '.$id_inscricao;
+		$prep = $this->db->prepare($query);
+		$prep->execute();
+	
+		$query = 'DELETE FROM inscricao WHERE id_inscricao = '.$id_inscricao;
+		$prep = $this->db->prepare($query);
+		$prep->execute();
+
+		$this->incrementarVagas('evento', $id_evento);
+	}
+
+	function confirmarPagamento($id){
+		$query = "UPDATE inscricao SET pagamento=1 WHERE id_inscricao=$id";
+		$prep = $this->db->prepare($query);
+		$prep->execute();
+	}
+
+	function codigoSubeventos($id_inscricao, $id_evento){
+		$query = "SELECT id_inscricao_subevento, id_subevento FROM inscricao_subevento WHERE id_inscricao = $id_inscricao";
+		$prep = $this->db->prepare($query);
+		$prep->execute();
+		$data = $prep->fetchAll(PDO::FETCH_ASSOC);
+
+		$retorno = array();
+		foreach ($data as $item) {
+			$retorno[$item['id_subevento']]['codigo'] = $item['id_inscricao_subevento'];
+			$subevento = new SubeventoModel();
+			$subevento = $subevento->getData($id_evento,$item['id_subevento']);
+			$retorno[$item['id_subevento']]['titulo'] = $subevento[0]['titulo'];
+		}
+		
+		return $retorno;
 	}
 }
