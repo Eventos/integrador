@@ -28,7 +28,7 @@
 	Page::addStyleElement('js', 'default.js');
 	?>
 
- 	<?php if(!isset($_COOKIE["boas_vindas"])): ?>
+	<?php if(!isset($_COOKIE["boas_vindas"])): ?>
 		<script type="text/javascript">
 			$(document).ready(function () {
 				$('.boas-vindas').show();
@@ -138,62 +138,34 @@
 
 	<div class="services" id="ultimos">
 		<div class="wrap">
+	<?php if(Evento::exists(null,'encerrado')): ?>
 			<h3>Últimos eventos</h3>
 			<p>Veja as fotos dos últimos eventos realizados na UTFPR.</p>
-			<div class="col_1_of_3 span_1_of_3">
-				<div class="title-event"><h4><a href="#">Mostra de talentos</a></h4></div>
-				<?php Page::addImage('baner-250X200.png', '') ?>
-				<p>Veja o que rolou na 3ª mostra de talentos da UTFPR.</p>
-				<a href="//www.youtube.com/embed/D3W1nXeFe_Q" target="_black">veja o video</a>
-				<!-- <iframe width="360" height="215" src="//www.youtube.com/embed/D3W1nXeFe_Q" frameborder="0" allowfullscreen></iframe> --> 
-			</div>
-
-			<div class="col_1_of_3 span_1_of_3">
-				<div class="title-event"><h4><a href="#">Semana Academica de TSI</a></h4></div>
-				<?php Page::addImage('baner-250X200.png', '') ?>
-				<p>Veja como foi a segunda semana academica de TSI.</p>
-				<a href="//www.youtube.com/embed/r5XzCZKD8J8" target="_black">veja o video</a>
-				<!-- <iframe width="360" height="215" src="//www.youtube.com/embed/r5XzCZKD8J8" frameborder="0" allowfullscreen></iframe> -->
-			</div>
-
-			<div class="col_1_of_3 span_1_of_3">
-				<div class="title-event"><h4><a href="#">Semana academica de Engenharia Mecanica</a></h4></div>
-				<?php Page::addImage('baner-250X200.png', '') ?>
-				<p>Veja o que rolou na 3ª Semana Mecanica</p>
-				<a href="//www.youtube.com/embed/KlX2FPN5hjM" target="_black">veja o video</a>
-				<!-- <iframe width="360" height="215" src="//www.youtube.com/embed/KlX2FPN5hjM" frameborder="0" allowfullscreen></iframe> -->
-			</div>
-		<!-- 	<div class="col_1_of_3 span_1_of_3">
-				<div class="title-event"><h4><a href="#">Mostra de talentos</a></h4></div>
-				<?php Page::addImage('baner-250X200.png', '') ?>
-				<p>Veja o que rolou na 3ª mostra de talentos da UTFPR.</p>
-				<a href="//www.youtube.com/embed/D3W1nXeFe_Q" target="_black">veja o video</a>
-				<iframe width="360" height="215" src="//www.youtube.com/embed/D3W1nXeFe_Q" frameborder="0" allowfullscreen></iframe> 
-			</div>
-
-			<div class="col_1_of_3 span_1_of_3">
-				<div class="title-event"><h4><a href="#">Semana Academica de TSI</a></h4></div>
-				<?php Page::addImage('baner-250X200.png', '') ?>
-				<p>Veja como foi a segunda semana academica de TSI.</p>
-				<a href="//www.youtube.com/embed/r5XzCZKD8J8" target="_black">veja o video</a>
-				<iframe width="360" height="215" src="//www.youtube.com/embed/r5XzCZKD8J8" frameborder="0" allowfullscreen></iframe>
-			</div>
-
-			<div class="col_1_of_3 span_1_of_3">
-				<div class="title-event"><h4><a href="#">Semana academica de Engenharia Mecanica</a></h4></div>
-				<?php Page::addImage('baner-250X200.png', '') ?>
-				<p>Veja o que rolou na 3ª Semana Mecanica</p>
-				<a href="//www.youtube.com/embed/KlX2FPN5hjM" target="_black">veja o video</a>
-				<iframe width="360" height="215" src="//www.youtube.com/embed/KlX2FPN5hjM" frameborder="0" allowfullscreen></iframe>
-			</div>
-		-->
+				<?php $eventos = Evento::getEvento(null, 'encerrado');
+				$qnt = count($eventos);
+				shuffle($eventos);//sorteia os eventos para a home
+				if($qnt < 6)//se existem menos de 6 eventos apresenta 3 se existe 6 ou mais apresenta 6
+					array_splice($eventos, 3);
+				else
+					array_splice($eventos, 6);
+				foreach ($eventos as $evento):?>
+				<div class="col_1_of_3 span_1_of_3">
+					<div class="title-event"><h4><a href="#"><?= $evento['titulo']; ?></a></h4></div>
+					<?php Page::addImage('baner-250X200.png', '') ?>
+					<p><?= $evento['descricao_resumida']; ?></p>
+					<a href="//www.youtube.com/embed/D3W1nXeFe_Q" target="_black">veja o video</a>
+				</div>
+			<?php endforeach;?>
+		<?php else: ?>
+			<h3>Não Há Eventos Anteriores</h3>
+		<?php endif;?>
 		<div class="clear"></div>
 	</div>
 </div>
 <!-- Proximos Eventos  -->
-<div class="portfolio" id="proximos">
+<div class="portfolio">
 	<div class="wrap">
-		<h3>Próximos eventos</h3>
+		<h3>Inscriçoes Abertas</h3>
 		<p>Vai ficar de fora dos próximos super eventos da UTFPR?</p>
 		<div class="col_1_of_3 span_1_of_3">
 			<div class="view view-fourth">
@@ -210,77 +182,7 @@
 				<button class="bt_insc" type="">Inscrição&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
 			</div>
 		</div>
-		<div class="col_1_of_3 span_1_of_3">
-			<div class="view view-fourth">
-				<?php Page::addImage('mascote_tsi.png', '') ?>
-				<div class="mask">
-					<h2>Semana acadêmica 2014</h2>
-					<p>A melhor semana acadêmica de TI da cidade de Guarapuava!</p>
-
-				</div>
-			</div>
-			<h4><a href="#">Semana acadêmica 2014</a></h4>
-			<div>
-				<button class="bt_info" type="">Informações&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
-				<button class="bt_insc" type="">Inscrição&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
-			</div>
-		</div>
-		<div class="col_1_of_3 span_1_of_3">
-			<div class="view view-fourth">
-				<?php Page::addImage('mascote_tsi.png', '') ?>
-				<div class="mask">
-					<h2>Semana acadêmica 2014</h2>
-					<p>A melhor semana acadêmica de TI da cidade de Guarapuava!</p>
-				</div>
-			</div>
-			<h4><a href="#">Semana acadêmica 2014</a></h4>
-			<div>
-				<button class="bt_info" type="">Informações&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
-				<button class="bt_insc" type="">Inscrição&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
-			</div>
-		</div>
-		<div class="col_1_of_3 span_1_of_3">
-			<div class="view view-fourth">
-				<?php Page::addImage('mascote_tsi.png', '') ?>
-				<div class="mask">
-					<h2>Semana acadêmica 2014</h2>
-					<p>A melhor semana acadêmica de TI da cidade de Guarapuava!</p>
-				</div>
-			</div>
-			<h4><a href="#">Semana acadêmica 2014</a></h4>
-			<div>
-				<button class="bt_info" type="">Informações&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
-				<button class="bt_insc" type="">Inscrição&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
-			</div>
-		</div>
-		<div class="col_1_of_3 span_1_of_3">
-			<div class="view view-fourth">
-				<?php Page::addImage('mascote_tsi.png', '') ?>
-				<div class="mask">
-					<h2>Semana acadêmica 2014</h2>
-					<p>A melhor semana acadêmica de TI da cidade de Guarapuava!</p>
-				</div>
-			</div>
-			<h4><a href="#">Semana acadêmica 2014</a></h4>
-			<div>
-				<button class="bt_info" type="">Informações&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
-				<button class="bt_insc" type="">Inscrição&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
-			</div>
-		</div>
-		<div class="col_1_of_3 span_1_of_3">
-			<div class="view view-fourth">
-				<?php Page::addImage('mascote_tsi.png', '') ?>
-				<div class="mask">
-					<h2>Semana acadêmica 2014</h2>
-					<p>A melhor semana acadêmica de TI da cidade de Guarapuava!</p>
-				</div>
-			</div>
-			<h4><a href="#">Semana acadêmica 2014</a></h4>
-			<div>
-				<button class="bt_info" type="">Informações&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
-				<button class="bt_insc" type="">Inscrição&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
-			</div>
-		</div>
+		
 		<div class="clear"></div>								  						
 	</div>   		 
 </div>
@@ -374,20 +276,20 @@
 		<p class="a">Envie um e-mail para os organizadores dos eventos da UTFPR.</p>
 		<div class="form">
 			<div class="form-text">
-			<form method="Post" action="<?=App::getUrl()?>evento/mensagem">
-				<input type="text" class="textbox" value="Seu nome*" required='required' name="name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Nome';}">
-				<input type="text" class="textbox" value="Seu E-mail*" name="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail';}">
-				<select name="evento" class="select-box">
-					<option class="contact_index" name="">-- Selecione o Evento --</option>
-					<?php $eventos = Evento::getEvento(null,'info'); ?>
-				    <?php foreach ($eventos as $evento): ?>
-						<option class="contact_index" value="<?= $evento['id_evento'] ?>"> <?= $evento['titulo']?> </option>
-					<?php endforeach; ?>
-				</select>
-			</div>
-			<textarea name="mensagem" placeholder="Sua mensagem*">Digite Sua Mensagem</textarea>
-			<div class="clear"> </div>
-			<input type="submit" value="ENVIAR MENSAGEM">
+				<form method="Post" action="<?=App::getUrl()?>evento/mensagem">
+					<input type="text" class="textbox" value="Seu nome*" required='required' name="name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Nome';}">
+					<input type="text" class="textbox" value="Seu E-mail*" name="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail';}">
+					<select name="evento" class="select-box">
+						<option class="contact_index" name="">-- Selecione o Evento --</option>
+						<?php $eventos = Evento::getEvento(null,'info'); ?>
+						<?php foreach ($eventos as $evento): ?>
+							<option class="contact_index" value="<?= $evento['id_evento'] ?>"> <?= $evento['titulo']?> </option>
+						<?php endforeach; ?>
+					</select>
+				</div>
+				<textarea name="mensagem" placeholder="Sua mensagem*">Digite Sua Mensagem</textarea>
+				<div class="clear"> </div>
+				<input type="submit" value="ENVIAR MENSAGEM">
 			</form>					 
 		</div>
 	</div>
