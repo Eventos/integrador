@@ -58,4 +58,13 @@ class UserModel extends ModelAbstract
 		$dataUser = $prep->fetchAll(PDO::FETCH_ASSOC);
 		return $dataUser[0];
 	}
+
+	function getUserById($id){
+		$query = "SELECT * FROM usuario WHERE id_usuario = :id";
+		$values = array(':id' => $id);
+		$prep = $this->db->prepare($query);
+		$prep->execute($values);
+		$dataUser = $prep->fetch(PDO::FETCH_ASSOC);
+		return $dataUser;
+	}
 }

@@ -8,7 +8,9 @@ class InscricaoModel extends ModelAbstract
 		try{
 			$user = new UserModel();
 			$user = $user->getUserByEmail($_SESSION['user']['email']);
-			
+
+			$data['id_inscricao'] = $this->getNextIncrement('inscricao');
+
 			$pagamento = new PagseguroModel();
 			$url_pag = $pagamento->pagamento($data);
 
@@ -18,7 +20,9 @@ class InscricaoModel extends ModelAbstract
 					$this->inscricaoSubevento($id_subevento, $id_inscricao);
 				}
 			}
-			
+
+			$this->enviarEmail($url_pag, $user);
+
 			$this->render('evento/pagseguro', array('url' => $url_pag), true);
 			exit;
 		}catch(Exception $e){
@@ -39,8 +43,6 @@ class InscricaoModel extends ModelAbstract
 		$prep = $this->db->prepare($query);
 		$prep->execute($values);
 
-		$prep = $this->db->prepare($query);
-		$prep->execute($values);
 		$this->decrementarVagas('evento', $id_evento);
 		return $autoIncrement;
 	}
@@ -61,5 +63,23 @@ class InscricaoModel extends ModelAbstract
 		$query = "UPDATE $tipo SET vagas=vagas-1 WHERE id_$tipo=$id";
 		$prep = $this->db->prepare($query);
 		$prep->execute();
+	}
+
+	private function enviarEmail($url_pag, $user){
+		$html = '<h1>Olá '.$user['nome'].'..</h1>';
+		$html.= 'Obrigado por realizar a inscrição nos nossos eventos.<br><br>';
+		$html.= 'Efetue o pagamento através da URL abaixo:<br>';
+		$html.= $url_pag.'<br><br>';
+		$html.= 'O prazo de recebimento do pagamento é de até 3 dias após a realização do mesmo.<br>';
+		$html.= 'Assim que seu pagamento for recebido, enviaremos uma confirmação via e-mail.<br>';
+		$html.= 'E-mail enviado automaticamente, qualquer dúvida estamos disponíveis para resposta.';
+		
+		Email::sendMail($user['email'], 'Você se inscreveu em um evento ..', $html);
+	}
+
+	function getInscricoesNaoPagas(){
+		$sql = $this->db->query("SELECT id_inscricao, id_usuario, data_inscricao, url, id_evento FROM inscricao WHERE pagamento = 0");
+		$inscricoes = $sql->fetchAll(PDO::FETCH_ASSOC);
+		return $inscricoes;
 	}
 }

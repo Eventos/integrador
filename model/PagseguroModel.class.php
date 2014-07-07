@@ -4,6 +4,12 @@
 */
 class PagseguroModel extends ModelAbstract
 {
+	public $credenciais;
+
+	function __construct(){
+		require SITE_ROOT.'model/PagSeguro/PagSeguroLibrary.php';
+		$this->credenciais = new PagSeguroAccountCredentials(EMAIL_PAGSEGURO, TOKEN_PAGSEGURO);
+	}
 
 	function pagamento($data){
 
@@ -20,11 +26,12 @@ class PagseguroModel extends ModelAbstract
 
 	private function executarPagamento($pagamento){
 		try{
-			require SITE_ROOT.'model/PagSeguro/PagSeguroLibrary.php';
 			$pagseguro = new PagSeguroPaymentRequest();
 			$pagseguro->setCurrency("BRL");
 			$pagseguro->setShippingType(3);
-			$pagseguro->setReference(uniqid(true));
+			$transaction_id = $pagamento['transaction_id'];
+			echo $transaction_id;
+			$pagseguro->setReference($transaction_id);
 
 			$user = $_SESSION['user'];
 
@@ -38,10 +45,9 @@ class PagseguroModel extends ModelAbstract
 				}
 			}
 
-			$credenciais = new PagSeguroAccountCredentials(EMAIL_PAGSEGURO, TOKEN_PAGSEGURO);
 
-			$url = $pagseguro->register($credenciais);
-			
+			$url = $pagseguro->register($this->credenciais);
+
 			return $url;
 		} catch (PagSeguroServiceException $e) {
 		    foreach ($e->getErrors() as $key => $error) {  
@@ -57,6 +63,7 @@ class PagseguroModel extends ModelAbstract
 		$evento = new EventoModel();
 		$id_evento = $data['id_evento'];
 		$dataEvento = $evento->getData($id_evento);			
+		$pagamento['transaction_id'] = $data['id_inscricao'];
 		$pagamento['evento']['id'] = $id_evento;
 		$pagamento['evento']['valor'] = $evento->getValueEventoById($id_evento);
 		$pagamento['evento']['titulo'] = 'Evento: '.$dataEvento[0]['titulo'];
@@ -73,6 +80,25 @@ class PagseguroModel extends ModelAbstract
 		}
 
 		return $pagamento;
+	}
+
+	function verificarTransacao($codigo){
+		$url = 'https://ws.pagseguro.uol.com.br/v2/transactions?email='.EMAIL_PAGSEGURO.'&token='.TOKEN_PAGSEGURO.'&reference='.$codigo;
+		$curl = curl_init($url);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);		
+		curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+
+		$transaction = curl_exec($curl);
+		$transaction = iterator_to_array(simplexml_load_string($transaction));
+
+		foreach ($transaction['transactions'] as $t) {
+			$return = array(
+				'codigo' => (string)$t->code,
+				'status' => (string)$t->status
+			);
+			return $return;
+		}
 	}
 
 }

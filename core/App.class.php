@@ -4,13 +4,17 @@
 */
 class App
 {
-	function __construct(){
-		$this->config();
+	function __construct($root=null){
+		$this->config($root);
 		spl_autoload_register(array($this, 'autoloader'));
 	}
 
-	private function config(){
-		require_once('config/config.php');
+	private function config($root=null){
+		if($root){
+			require_once($root.'config/config.php');
+		}else{
+			require_once('config/config.php');
+		}		
 	}
 
 	function autoloader($class){
@@ -32,7 +36,6 @@ class App
 
 	static function ready(){
 		App::start_session();
-		/*Flash::setMessage('success','tudo bem');*/
 		Flash::getMessage();
 	}
 
