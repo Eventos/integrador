@@ -9,10 +9,10 @@ class Admin
 		$id->getIdUserEvento($id_evento);
 	}
 
-	static function getMsg(){
+	static function getMsg($id_contact=null){
 		$msg = new AdminModel();
 		$data = $msg->getAdmSession();
-		return $msg->getMsg($data['id']);
+		return $msg->getMsg($data['id'],$id_contact);
 	}
 
 }

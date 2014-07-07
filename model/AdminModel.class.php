@@ -50,10 +50,13 @@ class AdminModel extends ModelAbstract
 		}
 	}
 
-	function getMsg($id_admin){
+	function getMsg($id_admin,$id_contact=null){
 		try{
-			$query = $this->db->query("SELECT * FROM contato WHERE id_administrador = '$id_admin' and resposta = 'n'");	
-			
+			if($id_contact===null)
+				$query = $this->db->query("SELECT * FROM contato WHERE id_administrador = '$id_admin' and resposta = 'n'");	
+			else
+				$query = $this->db->query("SELECT * FROM contato WHERE id_administrador = '$id_admin' and id_contato = '$id_contact' and resposta = 'n'");	
+
 		}catch(Exception $e){
 			return false;
 		}

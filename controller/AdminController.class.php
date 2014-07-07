@@ -152,8 +152,23 @@ class AdminController extends ControllerAbstract
 			exit();
 		}
 	}
-	function sendmailAction(){
+	
+	function sendmailAction($params){
 		$mail = new Email();
-		$mail->sendMail('andrefelipesilveira@gmail.com', 'teste', 'Eventos UTFPR');
+		if($params[1] == 'html'){
+			$headers = "MIME-Version: 1.0\r\n";
+			$headers.= "Content-type: text/html; charset=iso-8859-1\r\n";
+			$html = '<html><head><meta http-equiv=Content-Type content="text/html; charset=utf-8"></head><body>';
+   			$html.= $_POST['html'];
+   			$html.= '</body></html>';
+		}else
+			$html = $_POST['html'];
+
+		$mail->sendMail($_POST['email'],$_POST['subject'],$html, $headers);
+	}
+
+	function recontactAction($params){
+		$this->render('admin/recontact',$params);
+		exit();
 	}
 }

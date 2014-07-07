@@ -66,12 +66,12 @@ class App
 		require_once(SITE_ROOT.'view/'.$view.'.phtml');
 	}
 
-	static function send($to, $subject, $msg){
+	static function send($to, $subject, $msg, $headers=null){
 		$aux = true;
 		if (is_array($to)){
 			die('varios');
 			foreach ($to as $t) {
-				$aux = mail($t, $subject, $msg)? true : false;		
+				$aux = mail($t, $subject, $msg, $headers)? true : false;		
 				if($aux === false){
 					Flash::setMessage('danger','Erro ao enviar email para'.$t.'!');
 					App::redirect('admin/index');
@@ -79,7 +79,7 @@ class App
 				}
 			}
 		}else{
-			$aux =  mail($to, $subject, $msg); 
+			$aux =  mail($to, $subject, $msg, $headers); 
 		}
 		return $aux;
 	}
