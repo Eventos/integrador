@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.37, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.35, for debian-linux-gnu (i686)
 --
 -- Host: localhost    Database: integrador
 -- ------------------------------------------------------
--- Server version	5.5.37-0ubuntu0.12.04.1
+-- Server version	5.5.35-0ubuntu0.12.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -145,7 +145,7 @@ CREATE TABLE `contato` (
   KEY `fk_admin` (`id_administrador`),
   CONSTRAINT `fk_admin` FOREIGN KEY (`id_administrador`) REFERENCES `administrador` (`id_administrador`),
   CONSTRAINT `fk_evento` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,7 +154,7 @@ CREATE TABLE `contato` (
 
 LOCK TABLES `contato` WRITE;
 /*!40000 ALTER TABLE `contato` DISABLE KEYS */;
-INSERT INTO `contato` VALUES (1,'André Felipe Silveira','andrefelipesilveira@yahoo.com.br','Testando envio de mensagens','n',3,1),(2,'Andre Felipe Silveira','andrefelipesilveira@gmail.com','Tem desconto pra negros?','n',3,1);
+INSERT INTO `contato` VALUES (1,'André Felipe Silveira','andrefelipesilveira@yahoo.com.br','Testando envio de mensagens','n',3,1),(2,'Andre Felipe Silveira','andrefelipesilveira@gmail.com','Tem desconto pra negros?','n',3,1),(3,'erico dias','ericodias1@gmail.com','Esses caras que fizeram o site são foda pa caralho!','n',4,1),(4,'asdasd','asdasd','asdasdDigite Sua Mensagem','n',3,1);
 /*!40000 ALTER TABLE `contato` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -226,7 +226,7 @@ CREATE TABLE `evento` (
 
 LOCK TABLES `evento` WRITE;
 /*!40000 ALTER TABLE `evento` DISABLE KEYS */;
-INSERT INTO `evento` VALUES (3,'UTFPR - Guarapuava','evento teste','2014-06-10 14:00:00','2014-06-05',30,1,'TEste teste teste','andrefelipesilveira@yahoo.com.br','42 99731170',2222,1,NULL,NULL,NULL,1,'Computação quantica nos tempos atuais','Semana Academica','s'),(4,'UTFPR - GP','Aluno de tsi','2014-12-30 15:00:00','2014-12-20',20,1,'Evento na area de culinaria','andre@silveira.com','4299731170',6025,1,'gastoutf','gastoutf','gastoutf',1,'palestras em tsi e eng mecanica','Ciclo de Palestras','s'),(5,'UTFPR - Auditório','André Felipe Silveira - Diplomado em tecnologias em BD -USP','2014-06-18 13:00:00','2014-06-14',80,1,'Palestra sobre novas funcionalidades e novas tecnicas para trabalhar com mysql e sua comparacao com banco de dados no-sql','andre.silveira@agenciadeinterncer.com','4299731170',6025,1,'mysql_bd_secrets.facebook','@mysql_new_secrets','',1,'Mysql dominando novas Tecnicas','Seminario sobre banco de Dados','s'),(6,'CEDETEG - UNICENTRO','Representante dos interesses dos alunos','2014-07-24 13:00:00','2014-07-20',50,1,'Evento contara com a presença de renomados palestrantes nacionais, grandes nomes em nodejs e mongodb, todos os participantes receberam certificado e uma video aula com o desenvolvimento de uma aplicação completa','andre.silveira@agenciadeinternet.com','(42)99731170',6025,1,'andrefelipe.silveira','@andresilveira','andrefelipesilveira',1,'Cerco de Palestras  - Tecnologia na Atualidade','Aborda:  html5, css3, php, ruby, nodejs e mongo','s'),(8,'CEDETEG - UNICENTRO','asdasdad','2012-12-30 08:00:00','2010-01-08',20,1,'asda','asdasd@yasdiasedi.cpmb.r','asdasd',5434,1,'asdasd','asdasda','asdasd',1,'aasdas','Aborda:  html5, css3, php, ruby, nodejs e mongo','s');
+INSERT INTO `evento` VALUES (3,'UTFPR - Guarapuava','evento teste','2014-06-10 14:00:00','2014-06-05',24,1,'TEste teste teste','andrefelipesilveira@yahoo.com.br','42 99731170',2222,1,NULL,NULL,NULL,1,'Computação quantica nos tempos atuais','Semana Academica','s'),(4,'UTFPR - GP','Aluno de tsi','2014-12-30 15:00:00','2014-12-20',20,1,'Evento na area de culinaria','andre@silveira.com','4299731170',6025,1,'gastoutf','gastoutf','gastoutf',1,'palestras em tsi e eng mecanica','Ciclo de Palestras','s'),(5,'UTFPR - Auditório','André Felipe Silveira - Diplomado em tecnologias em BD -USP','2014-06-18 13:00:00','2014-06-14',80,1,'Palestra sobre novas funcionalidades e novas tecnicas para trabalhar com mysql e sua comparacao com banco de dados no-sql','andre.silveira@agenciadeinterncer.com','4299731170',6025,1,'mysql_bd_secrets.facebook','@mysql_new_secrets','',1,'Mysql dominando novas Tecnicas','Seminario sobre banco de Dados','s'),(6,'CEDETEG - UNICENTRO','Representante dos interesses dos alunos','2014-07-24 13:00:00','2014-07-20',50,1,'Evento contara com a presença de renomados palestrantes nacionais, grandes nomes em nodejs e mongodb, todos os participantes receberam certificado e uma video aula com o desenvolvimento de uma aplicação completa','andre.silveira@agenciadeinternet.com','(42)99731170',6025,1,'andrefelipe.silveira','@andresilveira','andrefelipesilveira',1,'Cerco de Palestras  - Tecnologia na Atualidade','Aborda:  html5, css3, php, ruby, nodejs e mongo','s'),(8,'CEDETEG - UNICENTRO','asdasdad','2012-12-30 08:00:00','2010-01-08',20,1,'asda','asdasd@yasdiasedi.cpmb.r','asdasd',5434,1,'asdasd','asdasda','asdasd',1,'aasdas','Aborda:  html5, css3, php, ruby, nodejs e mongo','s');
 /*!40000 ALTER TABLE `evento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -299,12 +299,13 @@ CREATE TABLE `inscricao` (
   `pagamento` tinyint(1) DEFAULT NULL,
   `id_usuario` int(11) NOT NULL,
   `id_evento` int(11) NOT NULL,
+  `url` text,
   PRIMARY KEY (`id_inscricao`),
   KEY `fk_inscricao_usuario_idx` (`id_usuario`),
   KEY `fk_inscricao_evento1_idx` (`id_evento`),
   CONSTRAINT `fk_inscricao_evento1` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_inscricao_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -313,7 +314,7 @@ CREATE TABLE `inscricao` (
 
 LOCK TABLES `inscricao` WRITE;
 /*!40000 ALTER TABLE `inscricao` DISABLE KEYS */;
-INSERT INTO `inscricao` VALUES (1,'2014-06-04',0,1,3),(2,'2014-06-02',0,2,3);
+INSERT INTO `inscricao` VALUES (1,'2014-06-04',0,1,3,NULL),(2,'2014-06-02',0,2,3,NULL),(3,'2014-07-02',0,1,3,NULL),(4,'2014-07-02',0,1,3,NULL),(5,'2014-07-02',0,1,3,NULL),(6,'2014-07-02',0,1,3,NULL),(7,'2014-07-02',0,1,3,NULL),(8,'2014-07-02',0,1,3,NULL),(9,'2014-07-02',0,1,3,NULL),(10,'2014-07-02',0,1,3,NULL),(11,'2014-07-02',0,1,3,NULL),(12,'2014-07-02',0,1,3,NULL),(13,'2014-07-02',0,1,3,NULL),(14,'2014-07-02',0,1,3,NULL),(15,'2014-07-02',0,1,3,NULL),(16,'2014-07-02',0,1,3,NULL),(17,'2014-07-02',0,1,3,NULL),(18,'2014-07-02',0,1,3,NULL),(19,'2014-07-02',0,1,3,NULL),(20,'2014-07-02',0,1,3,NULL),(21,'2014-07-02',0,1,3,NULL),(22,'2014-07-02',0,1,3,NULL),(23,'2014-07-02',0,1,3,NULL),(24,'2014-07-02',0,1,3,NULL),(25,'2014-07-02',0,1,3,NULL),(26,'2014-07-02',0,1,3,NULL),(27,'2014-07-02',0,1,3,NULL),(28,'2014-07-02',0,1,3,NULL),(29,'2014-07-02',0,1,3,NULL),(30,'2014-07-02',0,1,3,NULL),(31,'2014-07-02',0,1,3,NULL),(32,'2014-07-02',0,1,3,NULL),(33,'2014-07-02',0,1,3,NULL),(34,'2014-07-02',0,1,3,NULL),(35,'2014-07-02',0,1,3,NULL),(36,'2014-07-02',0,1,3,NULL),(37,'2014-07-02',0,1,3,NULL),(38,'2014-07-02',0,1,3,NULL),(39,'2014-07-02',0,1,3,NULL),(40,'2014-07-02',0,1,3,NULL),(41,'2014-07-02',0,1,3,NULL),(42,'2014-07-02',0,1,3,NULL),(43,'2014-07-02',0,1,3,NULL),(44,'2014-07-02',0,1,3,NULL),(45,'2014-07-02',0,1,3,NULL),(46,'2014-07-02',0,1,3,NULL),(47,'2014-07-02',0,1,3,NULL),(48,'2014-07-02',0,1,3,NULL),(49,'2014-07-02',0,1,3,NULL),(50,'2014-07-02',0,1,3,NULL),(51,'2014-07-02',0,1,3,NULL),(52,'2014-07-02',0,1,3,NULL),(53,'2014-07-02',0,1,3,NULL),(54,'2014-07-02',0,1,3,NULL),(55,'2014-07-02',0,1,3,NULL),(56,'2014-07-02',0,1,3,NULL),(57,'2014-07-02',0,1,3,NULL),(58,'2014-07-02',0,1,3,NULL),(59,'2014-07-02',0,1,3,NULL),(60,'2014-07-02',0,1,3,NULL),(61,'2014-07-02',0,1,3,NULL),(62,'2014-07-02',0,1,3,NULL),(63,'2014-07-02',0,1,3,NULL),(64,'2014-07-02',0,1,3,NULL),(65,'2014-07-02',0,1,3,NULL),(66,'2014-07-02',0,1,3,NULL),(67,'2014-07-02',0,1,3,NULL),(68,'2014-07-02',0,1,3,NULL),(69,'2014-07-02',0,1,3,NULL),(70,'2014-07-02',0,1,3,NULL),(71,'2014-07-02',0,1,3,NULL),(72,'2014-07-02',0,1,3,NULL),(73,'2014-07-02',0,1,3,NULL),(74,'2014-07-02',0,1,3,NULL),(75,'2014-07-02',0,1,3,NULL),(76,'2014-07-02',0,1,3,NULL),(77,'2014-07-02',0,1,3,NULL),(78,'2014-07-02',0,1,3,NULL),(79,'2014-07-02',0,1,3,NULL),(80,'2014-07-02',0,1,3,NULL),(81,'2014-07-02',0,1,3,NULL),(82,'2014-07-02',0,1,3,NULL),(83,'2014-07-06',0,1,3,NULL),(84,'2014-07-06',0,1,3,NULL),(85,'2014-07-06',0,1,3,NULL),(86,'2014-07-06',0,1,3,NULL),(87,'2014-07-06',0,1,3,NULL),(88,'2014-07-06',0,1,3,NULL),(89,'2014-07-06',0,1,3,NULL),(90,'2014-07-06',0,1,3,NULL),(91,'2014-07-06',0,1,3,NULL),(92,'2014-07-06',0,1,3,NULL),(93,'2014-07-06',0,1,3,NULL),(94,'2014-07-06',0,1,3,NULL),(95,'2014-07-06',0,1,3,NULL),(96,'2014-07-06',0,1,3,NULL),(97,'2014-07-06',0,1,3,NULL),(98,'2014-07-06',0,1,3,NULL),(99,'2014-07-06',0,1,3,NULL),(100,'2014-07-06',0,1,3,NULL);
 /*!40000 ALTER TABLE `inscricao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -335,7 +336,7 @@ CREATE TABLE `inscricao_subevento` (
   KEY `fk_inscricao_subevento_subevento1_idx` (`id_subevento`),
   CONSTRAINT `fk_inscricao_subevento_subevento1` FOREIGN KEY (`id_subevento`) REFERENCES `subevento` (`id_subevento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_table1_inscricao1` FOREIGN KEY (`id_inscricao`) REFERENCES `inscricao` (`id_inscricao`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -344,7 +345,7 @@ CREATE TABLE `inscricao_subevento` (
 
 LOCK TABLES `inscricao_subevento` WRITE;
 /*!40000 ALTER TABLE `inscricao_subevento` DISABLE KEYS */;
-INSERT INTO `inscricao_subevento` VALUES (1,'2014-06-04',0,1,1),(2,'2014-06-02',NULL,2,2);
+INSERT INTO `inscricao_subevento` VALUES (1,'2014-06-04',0,1,1),(2,'2014-06-02',NULL,2,2),(3,'2014-07-02',0,3,3),(4,'2014-07-02',0,3,2),(5,'2014-07-02',0,5,3),(6,'2014-07-02',0,5,2),(7,'2014-07-02',0,7,3),(8,'2014-07-02',0,7,2),(9,'2014-07-02',0,9,3),(10,'2014-07-02',0,9,2),(11,'2014-07-02',0,11,3),(12,'2014-07-02',0,11,2),(13,'2014-07-02',0,13,3),(14,'2014-07-02',0,13,2),(15,'2014-07-02',0,15,3),(16,'2014-07-02',0,15,2),(17,'2014-07-02',0,17,3),(18,'2014-07-02',0,17,2),(19,'2014-07-02',0,19,3),(20,'2014-07-02',0,19,2),(21,'2014-07-02',0,21,3),(22,'2014-07-02',0,21,2),(23,'2014-07-02',0,23,3),(24,'2014-07-02',0,23,2),(25,'2014-07-02',0,25,3),(26,'2014-07-02',0,25,2),(27,'2014-07-02',0,27,3),(28,'2014-07-02',0,27,2),(29,'2014-07-02',0,29,3),(30,'2014-07-02',0,29,2),(31,'2014-07-02',0,31,3),(32,'2014-07-02',0,31,2),(33,'2014-07-02',0,33,3),(34,'2014-07-02',0,33,2),(35,'2014-07-02',0,35,3),(36,'2014-07-02',0,35,2),(37,'2014-07-02',0,37,3),(38,'2014-07-02',0,37,2),(39,'2014-07-02',0,39,3),(40,'2014-07-02',0,39,2),(41,'2014-07-02',0,41,3),(42,'2014-07-02',0,41,2),(43,'2014-07-02',0,43,3),(44,'2014-07-02',0,43,2),(45,'2014-07-02',0,45,3),(46,'2014-07-02',0,45,2),(47,'2014-07-02',0,47,3),(48,'2014-07-02',0,47,2),(49,'2014-07-02',0,49,3),(50,'2014-07-02',0,49,2),(51,'2014-07-02',0,51,3),(52,'2014-07-02',0,51,2),(53,'2014-07-02',0,53,3),(54,'2014-07-02',0,53,2),(55,'2014-07-02',0,55,3),(56,'2014-07-02',0,55,2),(57,'2014-07-02',0,57,3),(58,'2014-07-02',0,57,2),(59,'2014-07-02',0,59,3),(60,'2014-07-02',0,59,2),(61,'2014-07-02',0,61,3),(62,'2014-07-02',0,61,2),(63,'2014-07-02',0,63,3),(64,'2014-07-02',0,63,2),(65,'2014-07-02',0,65,3),(66,'2014-07-02',0,65,2),(67,'2014-07-02',0,67,3),(68,'2014-07-02',0,67,2),(69,'2014-07-02',0,69,3),(70,'2014-07-02',0,69,2),(71,'2014-07-02',0,71,3),(72,'2014-07-02',0,71,2),(73,'2014-07-02',0,73,3),(74,'2014-07-02',0,73,2),(75,'2014-07-02',0,75,3),(76,'2014-07-02',0,75,2),(77,'2014-07-02',0,77,3),(78,'2014-07-02',0,77,2),(79,'2014-07-02',0,79,3),(80,'2014-07-02',0,79,2),(81,'2014-07-02',0,81,3),(82,'2014-07-02',0,81,2),(83,'2014-07-06',0,85,2),(84,'2014-07-06',0,95,2),(85,'2014-07-06',0,95,3),(86,'2014-07-06',0,97,2),(87,'2014-07-06',0,97,3),(88,'2014-07-06',0,99,2),(89,'2014-07-06',0,99,3);
 /*!40000 ALTER TABLE `inscricao_subevento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -471,7 +472,7 @@ CREATE TABLE `subevento` (
 
 LOCK TABLES `subevento` WRITE;
 /*!40000 ALTER TABLE `subevento` DISABLE KEYS */;
-INSERT INTO `subevento` VALUES (1,'Bloco - B','Assuntos:gerencia e configuração','2014-06-10 19:00:00',10,'2014-06-05',3,'s',1,'Mysql - Gerencia e Configuração','s'),(2,'Bloco F','Introdução a zend framework','2014-06-10 18:00:00',20,'2014-06-05',3,'s',1,'Trabalhando Com zend framework','s'),(3,'Bloco G Utfpr -Guarapuava','Palestra Desmotivadora ','1991-12-20 12:00:00',10,'1991-12-18',3,'1',1,'Palestra Com André Silveira','s'),(4,'Auditorio UTFPR','Tecnicas imperdiveis para mysql','2010-10-10 12:00:00',20,'2014-10-08',5,'1',1,'Truques com Mysql','s');
+INSERT INTO `subevento` VALUES (1,'Bloco - B','Assuntos:gerencia e configuração','2014-06-10 19:00:00',10,'2014-06-05',3,'s',1,'Mysql - Gerencia e Configuração','s'),(2,'Bloco F','Introdução a zend framework','2014-06-10 18:00:00',17,'2014-06-05',3,'s',1,'Trabalhando Com zend framework','s'),(3,'Bloco G Utfpr -Guarapuava','Palestra Desmotivadora ','1991-12-20 12:00:00',7,'1991-12-18',3,'1',1,'Palestra Com André Silveira','s'),(4,'Auditorio UTFPR','Tecnicas imperdiveis para mysql','2010-10-10 12:00:00',20,'2014-10-08',5,'1',1,'Truques com Mysql','s');
 /*!40000 ALTER TABLE `subevento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -534,7 +535,7 @@ CREATE TABLE `valor_evento` (
 
 LOCK TABLES `valor_evento` WRITE;
 /*!40000 ALTER TABLE `valor_evento` DISABLE KEYS */;
-INSERT INTO `valor_evento` VALUES (1,'2014-06-01','2014-06-02',20,3),(2,'2014-06-03','2014-06-05',50,3),(3,'2014-10-01','2014-10-30',20,4),(4,'2014-10-31','2014-12-20',30,4),(5,'2014-05-01','2014-06-14',35,5),(6,'2014-06-01','2014-06-05',10,6),(7,'2014-06-06','2014-06-20',15,6),(8,'2014-06-21','2014-07-20',20,6),(9,'2010-10-20','0000-00-00',1230,8);
+INSERT INTO `valor_evento` VALUES (1,'2014-07-01','2014-08-02',20,3),(2,'2014-06-03','2014-06-05',50,3),(3,'2014-10-01','2014-10-30',20,4),(4,'2014-10-31','2014-12-20',30,4),(5,'2014-05-01','2014-06-14',35,5),(6,'2014-06-01','2014-06-05',10,6),(7,'2014-06-06','2014-06-20',15,6),(8,'2014-06-21','2014-07-20',20,6),(9,'2010-10-20','0000-00-00',1230,8);
 /*!40000 ALTER TABLE `valor_evento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -563,7 +564,7 @@ CREATE TABLE `valor_subevento` (
 
 LOCK TABLES `valor_subevento` WRITE;
 /*!40000 ALTER TABLE `valor_subevento` DISABLE KEYS */;
-INSERT INTO `valor_subevento` VALUES (1,'2014-06-01','2014-06-01',15,1),(2,'2014-06-02','2014-06-05',30,1),(3,'2014-06-01','2014-06-03',30,2),(4,'2014-06-04','2014-06-05',35,2),(5,'1991-12-10','1991-12-18',35,3),(6,'2010-01-01','2010-10-08',50,4);
+INSERT INTO `valor_subevento` VALUES (1,'2014-06-01','2014-06-01',15,1),(2,'2014-06-02','2014-08-05',30,1),(3,'2014-06-01','2014-08-03',30,2),(4,'2014-06-04','2014-06-05',35,2),(5,'2014-06-04','2014-08-04',35,3),(6,'2010-01-01','2010-10-08',50,4);
 /*!40000 ALTER TABLE `valor_subevento` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -576,4 +577,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-07-01 21:07:46
+-- Dump completed on 2014-07-06 23:16:26
