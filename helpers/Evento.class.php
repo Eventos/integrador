@@ -27,9 +27,9 @@ class Evento
 		return $params;
 	}
 
-	static function exists ( $id=null ){  
-		$evento = new EventoModel();  
-	    return $evento->eventoExists($id);
+	static function exists ( $id=null, $type=null ){  
+		$evento = new EventoModel();
+	  	return $evento->eventoExists($id, $type);
 	}
 
 	static function getEvento ($id = null, $type){
@@ -39,6 +39,9 @@ class Evento
 			$data = $evento->getList($id);
 		elseif($type == 'all'){
 			$data = $evento->getData($id);
+		}
+		elseif($type == 'encerrado'){
+			$data = $evento->getData($id, 'encerrado');
 		}
 		return $data;
 	}

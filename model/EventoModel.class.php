@@ -115,12 +115,21 @@ class EventoModel extends ModelAbstract
 		}	
 	}
 
-	function eventoExists($id=null){
-		if($id === null){
-			$query = "SELECT id_evento FROM evento WHERE aberto = 1 and ativo = 's'";
-		}
-		else{
-			$query = "SELECT id_evento FROM evento WHERE id_evento = '$id' and aberto = 1 and ativo='s' ";
+	function eventoExists($id=null, $type=null){
+		if($type ==null){
+			if($id === null){
+				$query = "SELECT id_evento FROM evento WHERE aberto = 1 and ativo = 's'";
+			}
+			else{
+				$query = "SELECT id_evento FROM evento WHERE id_evento = '$id' and aberto = 1 and ativo='s' ";
+			}
+		}else{
+			if($id === null){
+				$query = "SELECT id_evento FROM evento WHERE ativo = 'n'";
+			}
+			else{
+				$query = "SELECT id_evento FROM evento WHERE id_evento = '$id' and ativo='n' ";
+			}
 		}
 
 		$data = $this->db->query($query);
@@ -145,12 +154,21 @@ class EventoModel extends ModelAbstract
 		return $linha;
 	}
 
-	function getData($id=null){
-		if($id === null){
-			$query = "SELECT * FROM evento WHERE aberto = 1 and ativo = 's'";
-		}
-		else{
-			$query = "SELECT * FROM evento WHERE id_evento = '$id' and aberto = 1 and ativo = 's' ";
+	function getData($id=null,$type=null){
+		if($type == null){
+			if($id === null){
+				$query = "SELECT * FROM evento WHERE aberto = 1 and ativo = 's'";
+			}
+			else{
+				$query = "SELECT * FROM evento WHERE id_evento = '$id' and aberto = 1 and ativo = 's' ";
+			}
+		}else{
+			if($id === null){
+				$query = "SELECT * FROM evento WHERE ativo = 'n'";
+			}
+			else{
+				$query = "SELECT * FROM evento WHERE id_evento = '$id' and ativo = 'n' ";
+			}
 		}
 
 		$consulta = $this->db->prepare($query);
