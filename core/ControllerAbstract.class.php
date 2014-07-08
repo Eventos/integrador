@@ -10,11 +10,16 @@ class ControllerAbstract
 		$this->db = DbAbstract::openConnect();
 	}
 
-	function render($view, $params = null){
+	function render($view, $params = null, $estructure = null){
 		if($params !== null){
 			extract($params);
 		}
-		if(strpos($view, 'evento') !== false && strpos($view , 'admin') === false){
+		if($estructure !== null){
+			require_once(SITE_ROOT.'view/'.$estructure.'/head.phtml');
+			require_once(SITE_ROOT.'view/'.$view.'.phtml');
+			require_once(SITE_ROOT.'view/'.$estructure.'/footer.phtml');
+		}
+		elseif(strpos($view, 'evento') !== false && strpos($view , 'admin') === false){
 			require_once(SITE_ROOT.'view/evento/header.phtml');
 			require_once(SITE_ROOT.'view/'.$view.'.phtml');
 			require_once(SITE_ROOT.'view/evento/footer.phtml');

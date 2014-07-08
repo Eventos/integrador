@@ -1,0 +1,35 @@
+<h2>Eventos pagos</h2>
+<table border="1" class="table table-hovered eventos-pagos">
+	<tr>
+		<th>Título do evento</th>
+		<th>Inscrições até</th>
+		<th>Data da inscrição</th>
+		<th>Situação do pagamento</th>
+	</tr>
+	<?php foreach ($pagos as $evento): ?>
+	<tr>
+		<td><?= $evento['titulo'] ?></td>
+		<td><?= $evento['data_limite'] ?></td>
+		<td><?= $evento['data_inscricao'] ?></td>
+		<td><?= $evento['pagamento'] == 1 ? 'Pago' : '<a href="'.$evento['url'].'" target="_blank">Pagar com pagseguro</a>' ?></td>
+	</tr>
+	<?php endforeach; ?>
+</table>
+
+<h2>Eventos com pagamento pendente</h2>
+<table border="1" class="table table-hovered eventos-pagos">
+	<tr>
+		<th>Título do evento</th>
+		<th>Inscrições até</th>
+		<th>Data da inscrição</th>
+		<th>Situação do pagamento</th>
+	</tr>
+	<?php foreach ($pendentes as $evento): ?>
+	<tr>
+		<td><?= $evento['titulo'] ?></td>
+		<td><?= $evento['data_limite'] ?></td>
+		<td><?= $evento['data_inscricao'] ?></td>
+		<td><?= $evento['pagamento'] == 1 ? 'Pago' : '<a href="'.$evento['url'].'" target="_blank">Pagar com pagseguro</a>' ?></td>
+	</tr>
+	<?php endforeach; ?>
+</table>
