@@ -120,7 +120,7 @@ class AdminController extends ControllerAbstract
 			if(isset($_POST['estados'])){
 				unset($_POST['estados']);	
 			}
-			$palestrante->newAction($_POST);
+			$palestrante->newAction($_POST, isset($_FILES) ? $_FILES : NULL);
 		}else{
 			App::errorPage();
 		}

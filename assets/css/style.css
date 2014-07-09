@@ -647,8 +647,8 @@ body {
 .facebook{
 	background: url(../images/top-social-icons.png) no-repeat -54px -2px;
 }
-.pin{
-	background: url(../images/top-social-icons.png) no-repeat -104px -2px;
+.google{
+	background: url(../images/top-social-icons.png) no-repeat -152px -2px;
 }
 /*--------social simptip--------*/
 [data-tooltip] {

@@ -72,7 +72,6 @@ class App
 	static function send($to, $subject, $msg, $headers=null){
 		$aux = true;
 		if (is_array($to)){
-			die('varios');
 			foreach ($to as $t) {
 				$aux = mail($t, $subject, $msg, $headers)? true : false;		
 				if($aux === false){

@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -165,73 +164,71 @@
 <!-- Proximos Eventos  -->
 <div class="portfolio">
 	<div class="wrap">
+		<?php if(Evento::exists()): ?>
 		<h3>Inscriçoes Abertas</h3>
 		<p>Vai ficar de fora dos próximos super eventos da UTFPR?</p>
+		<?php $eventos = Evento::getEvento(null, 'all');?>
+		<?php foreach( $eventos as $evento): ?>
 		<div class="col_1_of_3 span_1_of_3">
 			<div class="view view-fourth">
 				<?php Page::addImage('mascote_tsi.png', '') ?>
 				<div class="mask">
-					<h2>Semana acadêmica 2014</h2>
-					<p>A melhor semana acadêmica de TI da cidade de Guarapuava!</p>
+					<h2><?=$evento['titulo']?></h2>
+					<p><?= $evento['desc_evento']?></p>
 
 				</div>
 			</div>
-			<h4><a href="#">Semana acadêmica 2014</a></h4>
+			<h4><a href="<?=App::getUrl()?>evento/view/<?=$evento['id_evento']?>"><?=$evento['titulo']?></a></h4>
 			<div>
 				<button class="bt_info" type="">Informações&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
 				<button class="bt_insc" type="">Inscrição&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
 			</div>
 		</div>
+	<?php endforeach;?>
+	<?php else: ?>
+		<h3>Não há Eventos Com inscrições Abertas</h3>
+	<?php endif; ?>
 		
 		<div class="clear"></div>								  						
 	</div>   		 
 </div>
 <div class="about" id="about">
 	<div class="wrap">
-		<h3>SOBRE O "EVENTOS UTFPR"</h3>
-		<p class="a">O que é o Eventos UTFPR?</p>
+		<?=Blocos::writer('sobre_home');?>
+		<?=Blocos::writer('sobre_sub_home');?>
 		<div class="about-time-line">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+			<?= Blocos::writer('text_info_home'); ?> 
 		</div>
 	</div>    
 </div>
 <div class="team-members">
 	<div class="wrap"> 
+		<?php if(Palestrante::exists()): ?>
 		<div class="tm-head">
-			<h3>Quem criou o "Eventos UTFPR?</h3>
-			<p>Quem você acha que criou este sistema?</p>
+			<?=Blocos::writer('titulo_palestrantes');?>
+			<?=Blocos::writer('sub_palestrante');?>
 		</div>
-		<div class="tm-head-grids">
+		<div class="tm-head-grids ">
+			<?php $palestrantes = Palestrante::getPalestrantes();?>
+			<?php foreach ($palestrantes as $palestrante):?>
 			<div class="tm-head-grid">
-				<?php Page::addImage('erico.jpg', '') ?>
-				<h4>Érico Dias</h4>
-				<h5>Programador</h5>
+			<?= Palestrante::getImagePalestrante($palestrante['id_palestrante']); ?>
+				<h4><?= $palestrante['nome'] ?></h4>
+				<h5><?= $palestrante['descricao'] ?></h5>
 				<ul class="top-social-icons">
-					<li><a class="twitter simptip-position-bottom simptip-movable" data-tooltip="twitter" href="#"> </a></li>
-					<li><a class="facebook simptip-position-bottom simptip-movable" data-tooltip="Facebook" href="#"> </a></li>
-					<li><a class="pin simptip-position-bottom simptip-movable" data-tooltip="pintrest" href="#"> </a></li>
+					<li><a class="twitter simptip-position-bottom simptip-movable" data-tooltip="twitter" href="<?= $palestrante['twitter'] ?>"> </a></li>
+					<li><a class="facebook simptip-position-bottom simptip-movable" data-tooltip="Facebook" href="<?= $palestrante['facebook'] ?>"> </a></li>
+					<li><a class="google simptip-position-bottom simptip-movable" data-tooltip="google plus" href="<?= $palestrante['google_plus'] ?>"> </a></li>
 					<div class="clear"> </div>
 				</ul>
 			</div>
-			<div class="tm-head-grid">
-				<?php Page::addImage('Andre.jpg', '') ?>
-				<h4>André Felipe Silveira</h4>
-				<h5>Programador</h5>
-				<ul class="top-social-icons">
-					<li><a class="twitter simptip-position-bottom simptip-movable" data-tooltip="twitter" href="#"> </a></li>
-					<li><a class="facebook simptip-position-bottom simptip-movable" data-tooltip="Facebook" href="#"> </a></li>
-					<li><a class="pin simptip-position-bottom simptip-movable" data-tooltip="pintrest" href="#"> </a></li>
-					<div class="clear"> </div>
-				</ul>
-			</div>
+		<?php endforeach;?>
 			<div class="clear"> </div>
 		</div>
-		<p class="team-info">Estes alunos criaram o site e o sistema para o Projeto integrador das disciplinas de Projeto e Banco de dados, e Programação para internet 2.</p>
+		<?= Blocos::writer('footer_palestrantes') ?>
+	<?php else: ?>
+		<h3>Não há Palestrantes Cadastrados</h3>
+	<?php endif;?>
 	</div>
 </div>
 <div class="t-clients">

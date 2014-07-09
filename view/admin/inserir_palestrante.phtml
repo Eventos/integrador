@@ -13,7 +13,7 @@
 						<h3>Palestrante</h3>
 					</div>
 					<div class="widget-content">
-						<form action="<?= App::getUrl() ?>admin/palestrantes/new/post" method="POST" class="form-horizontal">
+						<form action="<?= App::getUrl() ?>admin/palestrantes/new/post" method="POST" enctype="multipart/form-data" class="form-horizontal">
 							<fieldset>
 								<legend class="section">Informações Pessoais</legend>
 								<div class="control-group">
@@ -98,10 +98,9 @@
 									</div>
 								</div>
 								<div class="control-group">
-									<label for="hint-field" class="control-label"> Linkedin </label>
+									<label for="hint-field" class="control-label"> Foto: </label>
 									<div class="controls input-group form-group">
-										<span class="input-group-addon"><i class="icon-linkedin-sign"></i></span>
-										<input type="text" name="linkedin" class="form-control" placeholder="Digite endereço eletronico do linkedin do palestrante">  
+										<span class="input-group-btn"><span class="btn btn-success btn-file">Procurar... <input type="file" name="image" id="file" onchange="pega_valor(this.value);"></span></span><input type="text" name="copyImage" class="form-control" id="replace" readonly=""></div> 
 									</div>
 								</div>
 							</fieldset>
@@ -137,4 +136,7 @@
 			});
 		});
 	});
+	function pega_valor(caminho){
+			$('#replace').val(caminho);
+    	};
 </script>

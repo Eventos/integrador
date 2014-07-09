@@ -59,7 +59,7 @@ class EventoModel extends ModelAbstract
 	}
 
 	function insertMedia($id_evento, $data, $files){
-		echo '<pre>';
+
 		if($data['type'] == 'video'){
 			$this->insertVideo($id_evento, $data);
 		}elseif($data['type'] == 'foto'){
