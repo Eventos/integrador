@@ -14,7 +14,7 @@
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th>Nome do Evento</th>
+                  <th>Título do Evento</th>
                   <th>Inscrições até</th>
                   <th>Inscrever-se</th>
                   <th>Ver Subeventos</th>
@@ -26,7 +26,7 @@
                 <tr>
                   <td><?= $evento['titulo']?></td>
                   <td><?= $evento['data_limite']?></td>
-                  <td><a href="<?= App::getUrl()?>inscricao/execute/<?= $evento['id_evento']?>" class="btn btn-primary">Iscrever-se</span></td>
+                  <td><a href="<?= App::getUrl()?>inscricao/execute/<?= $evento['id_evento']?>" class="btn btn-primary">Inscrever-se</span></td>
                   <td><span class="btn btn-success" onclick="esconder('_<?=$evento['id_evento']?>');">Subeventos</span></td>
                 </tr>
                 <?php if(Subevento::exists($evento['id_evento'])): ?>

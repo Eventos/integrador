@@ -1,0 +1,2 @@
+00 00 * * * php -f /var/www/integrador/cron/pagseguro.php >> /var/www/integrador/log/cron_pagamentos.log
+

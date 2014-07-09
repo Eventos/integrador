@@ -8,7 +8,7 @@ class UserController extends ControllerAbstract
 		if(count($params) == 0){
 			$user = new UserModel();
 			$user->isLogged();
-			$this->render('user/area_restrita');
+			App::redirect('user/eventos');
 		}else{
 			App::errorPage('Erro');
 		}
@@ -29,5 +29,10 @@ class UserController extends ControllerAbstract
 	function logoutAction($params){
 		$user = new UserModel();
 		$user->logout();
+	}
+
+	function eventosAction($params){
+		$params = User::listarEventosInscritos();
+		$this->render('user/eventos', $params, 'user');
 	}
 }
