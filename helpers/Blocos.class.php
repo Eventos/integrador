@@ -9,4 +9,9 @@ class Blocos
 		$cod = $html->getBlock($param);
 		return $cod[0];
 	}
+
+	static function listBlocs(){
+		$blocos = new BlocosModel();
+		return $blocos->listAction();
+	}
 }

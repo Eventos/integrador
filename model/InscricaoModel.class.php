@@ -122,6 +122,12 @@ class InscricaoModel extends ModelAbstract
 		return $inscricoes;
 	}
 
+	function getInscritosNoEvento($id){
+		$sql = $this->db->query("SELECT id_usuario FROM inscricao WHERE id_evento = $id");
+		$inscricoes = $sql->fetchAll(PDO::FETCH_ASSOC);
+		return $inscricoes;
+	}
+
 	private function idEventoDaInscricao($id_inscricao){
 		$query = 'SELECT id_evento FROM inscricao WHERE id_inscricao = '.$id_inscricao;
 		$prep = $this->db->prepare($query);

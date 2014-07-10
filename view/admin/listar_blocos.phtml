@@ -19,31 +19,14 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td> abc </td>
-                  <td> 123 </td>
-                  <td> 100 </td>
-                  <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
-                </tr>
-                <tr>
-                  <td> abc </td>
-                  <td> 123 </td>
-                  <td> 100 </td>
-                  <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
-                </tr>
-                <tr>
-                  <td> abc </td>
-                  <td> 123 </td>
-                  <td> 100 </td>
-                  <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
-                </tr>
-                <tr>
-                  <td> abc </td>
-                  <td> 123 </td>
-                  <td> 100 </td>
-                  <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
-                </tr>
-
+                <?php foreach ($blocos as $bloco) : ?>
+                  <tr>
+                    <td> <?= $bloco['id_bloco'] ?></td>
+                    <td><pre> <?= $bloco['html'] ?></pre> </td>
+                    <td> <?= $bloco['id_referencia'] ?> </td>
+                    <td class="td-actions"><a class="btn btn-danger btn-small" href="<?= App::getUrl('admin/blocos/delete/'.$bloco['id_bloco']) ?>"><i class="btn-icon-only icon-remove"> </i></a></td>
+                  </tr>
+                <?php endforeach; ?>
               </tbody>
             </table>
 

@@ -18,15 +18,17 @@ class BlocosModel extends ModelAbstract
 	}
 	
 	function listAction(){
-
+		$query = 'SELECT * FROM blocos_estaticos';
+		$prep = $this->db->prepare($query);
+		$prep->execute();
+		$data = $prep->fetchAll(PDO::FETCH_ASSOC);
+		return $data;
 	}
 
-	function editAction(){
-
-	}
-
-	function deleteAction(){
-
+	function deleteAction($id){
+		$data = $this->db->query("DELETE FROM blocos_estaticos WHERE id_bloco = '$id'");
+		Flash::setMessage('success', 'Bloco deletado com sucesso!');
+		App::redirect('admin/index');
 	}
 
 	function getBlock($param){

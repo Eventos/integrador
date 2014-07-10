@@ -134,11 +134,13 @@ class AdminController extends ControllerAbstract
 
 	function blocosAction($params){
 		if(count($params) == 0){
-			$this->render('admin/listar_blocos');
+			$params['blocos'] = Blocos::listBlocs();
+			$this->render('admin/listar_blocos', $params);
 			exit;
 		}
-		elseif(isset($params) && count($params) == 1 && $params[0] == 'edit'){
-			die('edit');
+		elseif(isset($params) && count($params) == 2 && $params[0] == 'delete'){
+			$bloco = new BlocosModel();
+			$bloco->deleteAction($params[1]);
 		}
 		elseif(isset($params) && count($params)== 1 && $params[0] == 'new'){
 			$this->render('admin/inserir_bloco');
@@ -151,6 +153,7 @@ class AdminController extends ControllerAbstract
 		else{
 			App::errorPage();
 		}
+		exit;
 	}
 	function messageAction($params){
 		if(count($params)==1 && $params[0]== 'list'){
@@ -174,6 +177,9 @@ class AdminController extends ControllerAbstract
 	}
 
 	function recontactAction($params){
+		$eventos = new EventoModel();
+		$eventos_data = $eventos->getData();
+		$params['eventos'] = $eventos_data;
 		$this->render('admin/recontact',$params);
 		exit();
 	}

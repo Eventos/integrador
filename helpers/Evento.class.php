@@ -45,4 +45,17 @@ class Evento
 		}
 		return $data;
 	}
+
+	static function selectEmailInscritos($id){
+		$inscritos = new InscricaoModel();
+		$inscritos = $inscritos->getInscritosNoEvento($id);
+		$emails = '';
+		foreach ($inscritos as $inscrito) {
+			if($emails != '') $emails .= ', ';
+			$user = new UserModel();
+			$user = $user->getUserById($inscrito['id_usuario']);
+			$emails .= $user['email'];
+		}
+		return $emails;
+	}
 }
