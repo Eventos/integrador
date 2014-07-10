@@ -226,7 +226,7 @@ CREATE TABLE `evento` (
 
 LOCK TABLES `evento` WRITE;
 /*!40000 ALTER TABLE `evento` DISABLE KEYS */;
-INSERT INTO `evento` VALUES (3,'UTFPR - Guarapuava','evento teste','2014-06-10 14:00:00','2014-06-05',30,1,'TEste teste teste','andrefelipesilveira@yahoo.com.br','42 99731170',2222,1,NULL,NULL,NULL,1,'Computação quantica nos tempos atuais','Semana Academica','s'),(4,'UTFPR - GP','Aluno de tsi','2014-12-30 15:00:00','2014-12-20',20,1,'Evento na area de culinaria','andre@silveira.com','4299731170',6025,1,'gastoutf','gastoutf','gastoutf',1,'palestras em tsi e eng mecanica','Ciclo de Palestras','s'),(5,'UTFPR - Auditório','André Felipe Silveira - Diplomado em tecnologias em BD -USP','2014-06-18 13:00:00','2014-06-14',80,1,'Palestra sobre novas funcionalidades e novas tecnicas para trabalhar com mysql e sua comparacao com banco de dados no-sql','andre.silveira@agenciadeinterncer.com','4299731170',6025,1,'mysql_bd_secrets.facebook','@mysql_new_secrets','',1,'Mysql dominando novas Tecnicas','Seminario sobre banco de Dados','s'),(6,'CEDETEG - UNICENTRO','Representante dos interesses dos alunos','2014-07-24 13:00:00','2014-07-20',50,1,'Evento contara com a presença de renomados palestrantes nacionais, grandes nomes em nodejs e mongodb, todos os participantes receberam certificado e uma video aula com o desenvolvimento de uma aplicação completa','andre.silveira@agenciadeinternet.com','(42)99731170',6025,1,'andrefelipe.silveira','@andresilveira','andrefelipesilveira',1,'Cerco de Palestras  - Tecnologia na Atualidade','Aborda:  html5, css3, php, ruby, nodejs e mongo','s'),(8,'CEDETEG - UNICENTRO','asdasdad','2012-12-30 08:00:00','2010-01-08',20,1,'asda','asdasd@yasdiasedi.cpmb.r','asdasd',5434,1,'asdasd','asdasda','asdasd',1,'aasdas','Aborda:  html5, css3, php, ruby, nodejs e mongo','s');
+INSERT INTO `evento` VALUES (1,'Centro de Eventos UFPR','Teste de incescao','2014-07-10 00:00:00','2014-07-17',50,1,'teste','teste','teste',332,1,'teste','teste','teste',1,'teste','teste','s'),(3,'UTFPR - Guarapuava','evento teste','2014-06-10 14:00:00','2014-06-05',30,1,'TEste teste teste','andrefelipesilveira@yahoo.com.br','42 99731170',2222,1,NULL,NULL,NULL,1,'Computação quantica nos tempos atuais','Semana Academica','s'),(4,'UTFPR - GP','Aluno de tsi','2014-12-30 15:00:00','2014-12-20',20,1,'Evento na area de culinaria','andre@silveira.com','4299731170',6025,1,'gastoutf','gastoutf','gastoutf',1,'palestras em tsi e eng mecanica','Ciclo de Palestras','s'),(5,'UTFPR - Auditório','André Felipe Silveira - Diplomado em tecnologias em BD -USP','2014-06-18 13:00:00','2014-06-14',80,1,'Palestra sobre novas funcionalidades e novas tecnicas para trabalhar com mysql e sua comparacao com banco de dados no-sql','andre.silveira@agenciadeinterncer.com','4299731170',6025,1,'mysql_bd_secrets.facebook','@mysql_new_secrets','',1,'Mysql dominando novas Tecnicas','Seminario sobre banco de Dados','s'),(6,'CEDETEG - UNICENTRO','Representante dos interesses dos alunos','2014-07-24 13:00:00','2014-07-20',50,1,'Evento contara com a presença de renomados palestrantes nacionais, grandes nomes em nodejs e mongodb, todos os participantes receberam certificado e uma video aula com o desenvolvimento de uma aplicação completa','andre.silveira@agenciadeinternet.com','(42)99731170',6025,1,'andrefelipe.silveira','@andresilveira','andrefelipesilveira',1,'Cerco de Palestras  - Tecnologia na Atualidade','Aborda:  html5, css3, php, ruby, nodejs e mongo','s'),(8,'CEDETEG - UNICENTRO','asdasdad','2012-12-30 08:00:00','2010-01-08',20,1,'asda','asdasd@yasdiasedi.cpmb.r','asdasd',5434,1,'asdasd','asdasda','asdasd',1,'aasdas','Aborda:  html5, css3, php, ruby, nodejs e mongo','s');
 /*!40000 ALTER TABLE `evento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -273,7 +273,7 @@ CREATE TABLE `foto_video` (
   KEY `fk_foto_video_subevento1_idx` (`id_subevento`),
   CONSTRAINT `fk_foto_video_evento1` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_foto_video_subevento1` FOREIGN KEY (`id_subevento`) REFERENCES `subevento` (`id_subevento`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -282,7 +282,7 @@ CREATE TABLE `foto_video` (
 
 LOCK TABLES `foto_video` WRITE;
 /*!40000 ALTER TABLE `foto_video` DISABLE KEYS */;
-INSERT INTO `foto_video` VALUES (1,'uploads/user.png',3,1,'teste','f'),(3,'//www.youtube.com/embed/Txbb4-ghLNQ',3,1,'teste','v'),(4,'//www.youtube.com/embed/fy1N2ioHJsk?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(5,'//www.youtube.com/embed/mpXPF2m3dIs?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(6,'//www.youtube.com/embed/TSZFcZSeIaM?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,1,NULL,'v'),(7,'//www.youtube.com/embed/ZT16mQKt59Y?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,1,NULL,'v'),(8,'uploads/evento3-0-Captura de tela de 2014-06-13 15:33:04.png',3,1,'teste','f');
+INSERT INTO `foto_video` VALUES (1,'uploads/user.png',3,1,'teste','f'),(3,'//www.youtube.com/embed/Txbb4-ghLNQ',3,1,'teste','v'),(4,'//www.youtube.com/embed/fy1N2ioHJsk?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(5,'//www.youtube.com/embed/mpXPF2m3dIs?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(6,'//www.youtube.com/embed/TSZFcZSeIaM?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,1,NULL,'v'),(7,'//www.youtube.com/embed/ZT16mQKt59Y?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,1,NULL,'v'),(8,'uploads/evento3-0-Captura de tela de 2014-06-13 15:33:04.png',3,1,'teste','f'),(20,'uploads/Andre.jpg',1,NULL,'foto palestrante','f'),(21,'uploads/Andre.jpg',1,NULL,'foto palestrante','f'),(22,'uploads/Andre.jpg',1,NULL,'foto palestrante','f'),(23,'uploads/palestra6.jpg',1,NULL,'foto palestrante','f');
 /*!40000 ALTER TABLE `foto_video` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -400,7 +400,7 @@ CREATE TABLE `palestrante` (
   CONSTRAINT `fk_image` FOREIGN KEY (`id_image`) REFERENCES `foto_video` (`id_foto_video`),
   CONSTRAINT `fk_palestrante_cidade1` FOREIGN KEY (`id_cidade`) REFERENCES `cidade` (`id_cidade`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_palestrante_formacao1` FOREIGN KEY (`id_formacao`) REFERENCES `formacao` (`id_formacao`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -409,7 +409,7 @@ CREATE TABLE `palestrante` (
 
 LOCK TABLES `palestrante` WRITE;
 /*!40000 ALTER TABLE `palestrante` DISABLE KEYS */;
-INSERT INTO `palestrante` VALUES (1,'Palestrante teste','1960-01-01',9,'palestrante@teste.com.br',NULL,2222,NULL,NULL,NULL,'palestrante especialista em Bd',1);
+INSERT INTO `palestrante` VALUES (1,'Palestrante teste','1960-01-01',9,'palestrante@teste.com.br',NULL,2222,NULL,NULL,NULL,'palestrante especialista em Bd',1),(2,'Andre Felipe Silveira','1991-12-30',3,'andrefelipesilveira@gmail.com','4299731170',2328,'teste','teste','teste','Testando novo palestrante',22),(3,'Juliana Paes','1985-07-25',4,'juliana@paes.com.br','4299999999',4051,'http://facebook.com/juliana.paes','http://twitter.com/julianapaes','http://plus.google.com/Julianapaes','Doutorado em Ser Gostosa',23);
 /*!40000 ALTER TABLE `palestrante` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -578,4 +578,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-07-09  0:43:30
+-- Dump completed on 2014-07-09 21:58:46
