@@ -16,12 +16,11 @@
             <div class="shortcuts"> 
               <a class="shortcut" href="<?= App::getUrl() ?>admin/blocos"><i class="shortcut-icon icon-list-alt"></i><span class="shortcut-label">Blocos Staticos</span> </a>
               <a class="shortcut" href="<?= App::getUrl() ?>admin/eventos"><i class="shortcut-icon icon-bookmark"></i><span class="shortcut-label">Eventos</span> </a>
-              <a class="shortcut" href="javascript:;"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Informações</span> </a>
               <a class="shortcut" href="<?=App::getUrl()?>admin/message/list"> <i class="shortcut-icon icon-comment"></i><span class="shortcut-label">Mensagens</span> </a>
-              <a class="shortcut" href="javascript:;"><i class="shortcut-icon icon-user"></i><span class="shortcut-label">Usuarios</span> </a>
-              <a class="shortcut" href="javascript:;"><i class="shortcut-icon icon-facetime-video"></i><span class="shortcut-label">Videos</span> </a>
-              <a class="shortcut" href="javascript:;"><i class="shortcut-icon icon-picture"></i> <span class="shortcut-label">Fotos</span> </a>
-              <a class="shortcut" href="javascript:;"> <i class="shortcut-icon icon-calendar"></i><span class="shortcut-label">Calendario</span> </a> </div>
+              <a class="shortcut" href="#"><i class="shortcut-icon icon-user"></i><span class="shortcut-label">Usuarios</span> </a>
+              <a class="shortcut" href="<?=App::getUrl()?>admin/eventos/list"><i class="shortcut-icon icon-facetime-video"></i><span class="shortcut-label">Videos</span> </a>
+              <a class="shortcut" href="<?=App::getUrl()?>admin/eventos/list"><i class="shortcut-icon icon-picture"></i> <span class="shortcut-label">Fotos</span> </a>
+              </div>
             </div>
           </div>
         </div>
@@ -54,50 +53,22 @@ $.get('http://www.previsaodotempo.org/api.php?city=Rio+de+Janeiro', function(res
               <table class="table table-striped table-bordered">
                 <thead>
                   <tr>
-                    <th> Evento </th>
-                    <th> Vagas </th>
-                    <th> Inscritos </th>
-                    <th class="td-actions"> </th>
+                    <th align="center"> <h3>Evento</h3> </th>
+                    <th align="center"> <h3>Vagas</h3> </th>
+                    <th align="center"> <h3>Inscritos</h3> </th>
+                    <!-- <th align="center"> <h3>Remover da Lista</h3> </th> -->
                   </tr>
                 </thead>
+                <?php $eventos = Evento::getEvento(null, 'all');?>
                 <tbody>
+                <?php foreach($eventos as $evento ):?>
                   <tr>
-                    <td> abc </td>
-                    <td> 123 </td>
-                    <td> 100 </td>
-                    <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
+                    <td> <?= $evento['titulo'] ?> </td>
+                    <td align="center"> <?= $evento['vagas'] ?> </td>
+                    <td align="center"> <?= $evento['vagas'] - EventoModel::countRegistered($evento['id_evento']) ?> </td>
+                    <!-- <td class="td-actions"><a class="btn btn-danger btn-large" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td> -->
                   </tr>
-                  <tr>
-                    <td> abc </td>
-                    <td> 123 </td>
-                    <td> 100 </td>
-                    <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                  <tr>
-                    <td> abc </td>
-                    <td> 123 </td>
-                    <td> 100 </td>
-                    <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                  <tr>
-                    <td> abc </td>
-                    <td> 123 </td>
-                    <td> 100 </td>
-                    <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                  <tr>
-                    <td> abc </td>
-                    <td> 123 </td>
-                    <td> 100 </td>
-                    <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                  <tr>
-                    <td> abc </td>
-                    <td> 123 </td>
-                    <td> 100 </td>
-                    <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                  
+                <?php endforeach; ?>  
                 </tbody>
               </table>
               

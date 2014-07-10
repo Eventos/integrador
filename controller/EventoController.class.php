@@ -17,7 +17,12 @@ class EventoController extends ControllerAbstract
 	public function viewAction($params){
 
 		if(isset($params) && count($params) == 1){
-			$this->render('evento/evento',$params);
+			if(Evento::exists($params[0],'encerrado')){
+				Flash::setMessage('danger','O evento procurado não existe ou esta encerrado!');
+				$this->render('evento/listar_eventos');
+			}else{
+				$this->render('evento/evento',$params);
+			}
 			exit;
 		}elseif(count($params)==2){
 			$this->render('evento/subevento',$params);

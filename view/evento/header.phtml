@@ -1,5 +1,6 @@
 <?php
 include_once 'core/App.class.php';
+ App::ready();
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -34,7 +35,9 @@ include_once 'core/App.class.php';
 
 	?>
 
-
+<style>
+	.slider_bg_evento{background: url("<?= App::getUrl()?>assets/images/fundo2.jpg") no-repeat;background-size: 100%}
+</style>
 	<?php if(!isset($_COOKIE['boas_vindas'])): ?>
 		<script type="text/javascript">
 			$(document).ready(function () {
@@ -48,7 +51,6 @@ include_once 'core/App.class.php';
 </head>
 <body>
 	<div class="slider_bg_evento">
-		<?php Page::addImage('palestra3.jpg', 'alt="fundo" width="100%" height="785px" style="position:absolute;z-index:-1;max-width:100%;"');?>
 		<div class="h_right">
 			<div class="menu" id="bt_menu">
 				<div class="bt_menu">

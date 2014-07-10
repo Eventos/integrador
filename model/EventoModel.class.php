@@ -188,7 +188,13 @@ class EventoModel extends ModelAbstract
 		
 		return $linha;
 	}
-
+	function countRegistered($id){
+		$id = 3;
+		$query = $query = "SELECT count(id_inscricao)  FROM inscricao WHERE pagamento = 1 and Id_evento =  '$id'";
+		$data = $this->db->query($query);
+		$data = $data->fetch(PDO::FETCH_NUM);
+		return $data[0];
+	}
 	function deleteAction($id){
 		try{
 			$query = "UPDATE evento SET ativo = 'n' WHERE id_evento = $id";

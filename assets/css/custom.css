@@ -259,3 +259,9 @@ label.css-label {
 	-ms-user-select: none;
 	user-select: none;
 }
+.btn-large{
+	width: 60%;
+}
+.td-actions{
+	width: 15%!important;
+}

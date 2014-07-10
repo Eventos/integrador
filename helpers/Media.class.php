@@ -14,6 +14,11 @@ class Media
 		return $html->getImages($id,$id_sub);
 	}
 
+	static function getImage($id,$id_sub=null){
+		$html = new MediaModel();
+		return $html->getImage($id,$id_sub);
+	}
+
 	static function video_exists($id,$id_sub=null){
 		 $boo = new MediaModel();
 		 return $boo->video_exists($id,$id_sub);
@@ -22,6 +27,11 @@ class Media
 	static function getAllVideos($id,$id_sub=null){
 		$html = new MediaModel();
 		return $html->getVideos($id,$id_sub);
+	}
+
+	static function getUrlVideo($id,$id_sub=null){
+		$url = new MediaModel();
+		return $url->getUrlVideo($id,$id_sub);
 	}
 
 }

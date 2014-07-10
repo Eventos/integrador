@@ -9,9 +9,9 @@
 }
 
 .shortcuts .shortcut {
-	width: 22.50%;
+	width: 25%;
 	display: inline-block;
-	padding: 12px 0;
+	padding: 25px 0;
 	margin: 0 .9% 1em;
 	vertical-align: top;
 	text-decoration: none;

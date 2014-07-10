@@ -21,7 +21,7 @@
 	text-align:center;
 }
 .da-slide{
-	position: initial;
+	position: absolute;
 	width: 100%;
 	height: 100%;
 	top: 0px;

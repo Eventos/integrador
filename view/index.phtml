@@ -149,11 +149,12 @@
 				else
 					array_splice($eventos, 6);
 				foreach ($eventos as $evento):?>
+
 				<div class="col_1_of_3 span_1_of_3">
 					<div class="title-event"><h4><a href="#"><?= $evento['titulo']; ?></a></h4></div>
-					<?php Page::addImage('baner-250X200.png', '') ?>
+					<?= Media::getImage($evento['id_evento']); ?>
 					<p><?= $evento['descricao_resumida']; ?></p>
-					<a href="//www.youtube.com/embed/D3W1nXeFe_Q" target="_black">veja o video</a>
+					<a href="<?= Media::getUrlVideo($evento['id_evento'])?>" target="_black">veja o video</a>
 				</div>
 			<?php endforeach;?>
 		<?php else: ?>

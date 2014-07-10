@@ -71,6 +71,7 @@ class App
 
 	static function send($to, $subject, $msg, $headers=null){
 		$aux = true;
+		$subject = htmlentities($subject, ENT_QUOTES,'UTF-8');
 		if (is_array($to)){
 			foreach ($to as $t) {
 				$aux = mail($t, $subject, $msg, $headers)? true : false;		
