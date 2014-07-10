@@ -1,0 +1,41 @@
+<div class="page-content">
+  <div class="content container">
+  <div class="row">
+      <div class="col-md-12">
+        <h1 class="page-title">Palestrante <small>veja os palestrantes cadastrados</small></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="widget widget-table action-table">
+          <!-- /widget-header -->
+          <div class="widget-content">
+          <?php if(Palestrante::exists()): ?>
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th> Id </th>
+                  <th> Nome </th>
+                  <th> Excluir </th>
+                </tr>
+              </thead>
+              <tbody>
+              <?php foreach ($palestrantes as $palestrante):?>
+                <tr>
+                  <td><?= $palestrante['id_palestrante']?></td>
+                  <td><?= $palestrante['nome']?></td>
+                  <td class="td-actions"><a class="btn btn-danger" href="<?= App::getUrl() ?>admin/palestrantes/delete/<?= $palestrante['id_palestrante'] ?>"><i class="btn-icon-only icon-trash"> </i></a></td>
+                </tr>
+              <?php endforeach; ?>
+              </tbody>
+            </table>
+          <?php else:?>
+            <h3 style="text-align:center"><p>Não há palestrantes Cadastrados...</p></h3>
+          <?php endif;?>
+          </div>
+          <!-- /widget-content --> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -61,15 +61,7 @@
         </li>
       <?php endif;?>
         <!--Mensagens-->
-        <li class="dropdown user  hidden-xs"> <a data-toggle="dropdown" class="dropdown-toggle" href="#"> <i class="icon-male"></i> <span class="username"><?= $_SESSION['adm']['name'] ?></span> <i class="icon-caret-down small"></i> </a>
-         <ul class="dropdown-menu">
-           <li><a href="#"><i class="icon-user"></i> Minha Conta</a></li>
-           <li><a href="#"><i class="icon-calendar"></i> Calendario</a></li>
-           <li><a href="#"><i class="icon-cogs"></i> Configurações</a></li>
-           <li class="divider"></li>
-           <li><a href="<?= App::getUrl() ?>admin/logout"><i class="icon-signout"></i> Sair</a></li>
-         </ul>
-       </li>
+        <li class="dropdown user  hidden-xs"> <a data-toggle="dropdown" class="dropdown-toggle" href="#"> <i class="icon-male"></i> <span class="username"><?= $_SESSION['adm']['name'] ?></span>
      </ul>
    </div>
  </div> 
@@ -79,31 +71,31 @@
     <div id="side-nav">
       <ul id="nav">
         <li> <a href="<?= App::getUrl() ?>admin/index"> <i class="icon-desktop"></i> Home</a></li>
-        <li> <a href="#"> <i class="icon-glass"></i> EVENTOS <span class="label label-info pull-right">2</span><i class="arrow icon-angle-up"></i></a>
+        <li> <a href="#"> <i class="icon-glass"></i> EVENTOS </a>
         	<ul class="sub-menu">
         		<li><a href="<?= App::getUrl() ?>admin/eventos/new"><i class="icon-angle-right"></i> Inserir </a></li>
-        		<li><a href="<?= App::getUrl() ?>admin/eventos/list"><i class="icon-angle-right"></i> Editar / Excluir </a></li>
+        		<li><a href="<?= App::getUrl() ?>admin/eventos/list"><i class="icon-angle-right"></i> Excluir </a></li>
         	</ul>
         </li>
-        <li> <a href="#"> <i class="icon-pushpin"></i> SUBEVENTOS <span class="label label-info pull-right">2</span><i class="arrow icon-angle-up"></i></a>
+        <li> <a href="#"> <i class="icon-pushpin"></i> SUBEVENTOS </a>
           <ul class="sub-menu">
             <li><a href="<?= App::getUrl() ?>admin/eventos/list"><i class="icon-angle-right"></i> Inserir </a></li>
-            <li><a href="<?= App::getUrl() ?>admin/subeventos/list"><i class="icon-angle-right"></i> Editar / Excluir </a></li>
+            <li><a href="<?= App::getUrl() ?>admin/subeventos/list"><i class="icon-angle-right"></i> Excluir </a></li>
           </ul>
         </li>
-        <li> <a href="#"> <i class="icon-group"></i> PALESTRANTES <span class="label label-info pull-right">2</span><i class="arrow icon-angle-up"></i></a>
+        <li> <a href="#"> <i class="icon-group"></i> PALESTRANTES </a>
           <ul class="sub-menu">
            <li><a href="<?= App::getUrl() ?>admin/palestrantes/new"><i class="icon-angle-right"></i> Inserir </a></li>
-           <li><a href="#" ><i class="icon-angle-right"></i> Editar / Excluir</a></li>
+           <li><a href="<?= App::getUrl() ?>admin/palestrantes" ><i class="icon-angle-right"></i> Excluir</a></li>
          </ul>
        </li>
-       <li> <a href="#"> <i class="icon-list-alt"></i> Blocos estaticos <span class="label label-info pull-right">2</span><i class="arrow icon-angle-up"></i></a>
+       <li> <a href="#"> <i class="icon-list-alt"></i> Blocos estaticos </a>
         <ul class="sub-menu">
           <li><a href="<?= App::getUrl() ?>admin/blocos/new"><i class="icon-angle-right"></i> Inserir </a></li>
-          <li><a href="<?= App::getUrl() ?>admin/blocos/edit" ><i class="icon-angle-right"></i> Editar / Excluir</a></li>
+          <li><a href="<?= App::getUrl() ?>admin/blocos/edit" ><i class="icon-angle-right"></i> Excluir</a></li>
         </ul>
       </li>
-      <li> <a href="#"> <i class="icon-list-alt"></i> Email <span class="label label-info pull-right">2</span><i class="arrow icon-angle-up"></i></a>
+      <li> <a href="#"> <i class="icon-list-alt"></i> Email </a>
         <ul class="sub-menu">
           <li><a href="<?= App::getUrl() ?>admin/message/list"><i class="icon-angle-right"></i> listar Email </a></li>
           <li><a href="<?= App::getUrl() ?>admin/recontact" ><i class="icon-angle-right"></i> Enviar Email</a></li>
