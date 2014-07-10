@@ -1,3 +1,6 @@
+<?php
+Page::addTinymceElement('js', 'js/tinymce/tinymce.min.js'); 
+?>
 <div class="page-content">
   <div class="content container">
     <div class="row">
@@ -8,49 +11,82 @@
           </div>
           <!-- /widget-header -->
           <div class="widget-content">
-
+          <?php if(Blocos::exists()):?>
             <table class="table table-striped table-bordered">
               <thead>
                 <tr>
                   <th> Id Do Bloco </th>
                   <th> Trecho HTML </th>
                   <th> Referencia </th>
-                  <th class="td-actions">Editar/Excluir</th>
+                  <th>Editar</th>
                 </tr>
               </thead>
               <tbody>
+              <?php $blocos = Blocos::getData();?>
+              <?php foreach($blocos as $bloco): ?>
                 <tr>
-                  <td> abc </td>
-                  <td> 123 </td>
-                  <td> 100 </td>
-                  <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
+                  <td> <?=$bloco['id_bloco'];?> </td>
+                  <td id="info<?=$bloco['id_bloco']?>"> <?=$bloco['html'];?> </td>
+                  <td id="edit<?=$bloco['id_bloco']?>" style="display:none">
+                  <form method="POST" action="<?=App::getUrl()?>admin/blocos/update/<?=$bloco['id_bloco']?>">
+                    <textarea name="html" id="text_edit<?=$bloco['id_bloco']?>"><?=$bloco['html'];?></textarea><br>
+                    <p style="text-align:center"><input type="submit" class="btn btn-success" value="Salvar Edição">&nbsp;&nbsp;<button onclick="close_editor('<?=$bloco['id_bloco']?>')" class="btn btn-danger">Cancelar Edição</button></p>
+                  </form>
+                  </td>
+                  <td> <?=$bloco['referencia'];?> </td>
+                  <td align="center">
+                    <a class="btn btn-primary" onclick="open_editor('<?=$bloco["id_bloco"]?>')" id="btn_edit<?=$bloco['id_bloco']?>" >&nbsp;&nbsp;<i class="btn-icon-only icon-pencil"> </i>&nbsp;&nbsp;</a>
+                  </td>
                 </tr>
-                <tr>
-                  <td> abc </td>
-                  <td> 123 </td>
-                  <td> 100 </td>
-                  <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
-                </tr>
-                <tr>
-                  <td> abc </td>
-                  <td> 123 </td>
-                  <td> 100 </td>
-                  <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
-                </tr>
-                <tr>
-                  <td> abc </td>
-                  <td> 123 </td>
-                  <td> 100 </td>
-                  <td class="td-actions"><a class="btn btn-small btn-success" href="javascript:;"><i class="btn-icon-only icon-ok"> </i></a><a class="btn btn-danger btn-small" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td>
-                </tr>
-
+                <?php endforeach;?>
               </tbody>
             </table>
-
+          <?php else: ?>
+            <h3>Não Existem Boclos criados</h3>
+          <?php endif;?>
           </div>
-          <!-- /widget-content --> 
         </div>
       </div>
     </div>
   </div>
 </div>
+<script>
+  function open_editor(id){
+    $('#info'+id).hide();
+    $('#edit'+id).show();
+    $('#btn_edit'+id).attr("disabled", "disabled");
+  }
+  function close_editor(id){
+    $('#info'+id).show();
+    $('#edit'+id).hide();
+    $('#btn_edit'+id).removeAttr("disabled");
+  }
+</script>
+<script type="text/javascript">
+  tinymce.init({
+    selector: "textarea",
+    theme: "modern",
+    language : 'pt_BR',
+    height: 320,
+    plugins: [
+    "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+    "save table contextmenu directionality emoticons template paste textcolor"
+    ],
+    content_css: "css/content.css",
+    toolbar: "insertfile undo redo | styleselect | sizeselect | fontselect |  fontsizeselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor", 
+    style_formats: [
+    {title: 'Bold text', inline: 'b'},
+    {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+    {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+    {title: 'Example 1', inline: 'span', classes: 'example1'},
+    {title: 'Titulo de Sessao', inline:'h1'},
+    {title: 'Example 2', inline: 'span', classes: 'example2'},
+    {title: 'Table styles'},
+    {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+    ]
+  });
+  tinymce.init({
+    selector: "textarea"
+  }); 
+</script>

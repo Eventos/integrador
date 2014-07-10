@@ -72,7 +72,7 @@ img{
 .wrap{width: 95%;height: 100%}
 
 /******Admin*********/
-html, body{height: auto}
+html, body{height: 100%}
 .navbar-right{margin-right: 15px!important;}
 .navbar .navbar-default .navbar-fixed-top{position: fixed;}
 .conteudo{ width:100%; height:auto; min-height:100%;padding-top: 70px}
@@ -264,4 +264,8 @@ label.css-label {
 }
 .td-actions{
 	width: 15%!important;
+}
+.lefth-nav{
+	position: relative;
+	height: 100%;
 }

@@ -148,6 +148,16 @@ class AdminController extends ControllerAbstract
 			$block = new BlocosModel();
 			$block->newAction($_POST);
 		}
+		elseif(count($params) == 2 && $params[0] == 'update') {
+			$update = new BlocosModel();
+			if($update->editAction($params[1],$_POST)){
+				Flash::setMessage('success','Bloco Editado Com Sucesso!');
+			}else{
+				Flash::setMessage('danger','Erro ao Editar Bloco!');
+			}
+			App::redirect('admin/blocos');
+			exit;
+		}
 		else{
 			App::errorPage();
 		}
