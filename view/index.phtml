@@ -55,10 +55,12 @@
 					<li class="nav-item"></span><a href="#home">Home</a></li>
 					<li class="nav-item"><a href="#services" class="scroll">Últimos Eventos</a></li>
 					<li class="nav-item"><a href="#portfolio" class="scroll">Proximos Eventos</a></li>
+					<li class="nav-item"><a href="#palestrantes" class="scroll">Palestrantes</a></li>
+					<li class="nav-item"><a href="#info" class="scroll">Informações</a></li>
 					<li class="nav-item"><a href="#about" class="scroll">Sobre</a></li>
 					<li class="nav-item"><a href="#contact"  class="scroll">Contato</a></li>
-					<li class="nav-item"><a href="login/verify/user">Área do Participante</a></li>
-					<li class="nav-item"><a href="login/verify/adm">Área do Administrador</a></li>
+					<li class="nav-item"><a href="login/verify/user">Login</a></li>
+					<li class="nav-item"><a href="login/verify/adm">Admin</a></li>
 				</ul>
 			</nav>
 			<?php
@@ -69,10 +71,12 @@
 			<ul>		
 				<li><a href="#home"><span class="glyphicon glyphicon-collapse-down"></span>&nbsp;Home</a></li>
 				<li><a href="#ultimos" class="scroll"><span class="glyphicon glyphicon-collapse-down"></span>&nbsp;Últimos Eventos</a></li>
-				<li><a href="#proximos" class="scroll"><span class="glyphicon glyphicon-collapse-down"></span>&nbsp;Próximos Eventos</a></li>
+				<li><a href="#portfolio" class="scroll"><span class="glyphicon glyphicon-collapse-down"></span>&nbsp;Próximos Eventos</a></li>
+				<li><a href="#palestrantes" class="scroll"><span class="glyphicon glyphicon-collapse-down"></span>&nbsp;Palestrantes</a></li>
+				<li><a href="#info" class="scroll"><span class="glyphicon glyphicon-collapse-down"></span>&nbsp;Informações</a></li>
 				<li><a href="#contact" class="scroll"><span class="glyphicon glyphicon-collapse-down"></span>&nbsp;Contato</a></li>
-				<li><a href="login/verify/user"><span class="glyphicon glyphicon-user"></span>	&nbsp;Área do Participante</a></li>
-				<li><a href="login/verify/admin"><span class="glyphicon glyphicon-user"></span>	&nbsp;Área do Administrador</a></li>
+				<li><a href="login/verify/user"><span class="glyphicon glyphicon-user"></span>	&nbsp;Login</a></li>
+				<li><a href="login/verify/admin"><span class="glyphicon glyphicon-user"></span>	&nbsp;Admin</a></li>
 			</ul>
 		</div>
 		<div class="wrap">
@@ -162,7 +166,7 @@
 	</div>
 </div>
 <!-- Proximos Eventos  -->
-<div class="portfolio">
+<div class="portfolio" id="portfolio">
 	<div class="wrap">
 		<?php if(Evento::exists()): ?>
 		<h3>Inscriçoes Abertas</h3>
@@ -170,6 +174,9 @@
 		<?php $eventos = Evento::getEvento(null, 'all');?>
 		<?php foreach( $eventos as $evento): ?>
 		<div class="col_1_of_3 span_1_of_3">
+			<div class="title_new_event" style="height:55px;overflow:hidden; margin-bottom:5px">
+			<h4><a href="<?=App::getUrl()?>evento/view/<?=$evento['id_evento']?>"><?=$evento['titulo']?></a></h4>
+			</div>
 			<div class="view view-fourth">
 				<?php Page::addImage('mascote_tsi.png', '') ?>
 				<div class="mask">
@@ -178,7 +185,6 @@
 
 				</div>
 			</div>
-			<h4><a href="<?=App::getUrl()?>evento/view/<?=$evento['id_evento']?>"><?=$evento['titulo']?></a></h4>
 			<div>
 				<button class="bt_info" type="">Informações&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
 				<button class="bt_insc" type="">Inscrição&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
@@ -192,7 +198,7 @@
 		<div class="clear"></div>								  						
 	</div>   		 
 </div>
-<div class="about" id="about">
+<div class="about" id="info">
 	<div class="wrap">
 		<?=Blocos::writer('sobre_home');?>
 		<?=Blocos::writer('sobre_sub_home');?>
@@ -201,7 +207,7 @@
 		</div>
 	</div>    
 </div>
-<div class="team-members">
+<div class="team-members" id="palestrantes">
 	<div class="wrap"> 
 		<?php if(Palestrante::exists()): ?>
 		<div class="tm-head">
@@ -209,16 +215,25 @@
 			<?=Blocos::writer('sub_palestrante');?>
 		</div>
 		<div class="tm-head-grids ">
-			<?php $palestrantes = Palestrante::getPalestrantes();?>
+			<?php $palestrantes = Palestrante::getPalestrantes();
+				shuffle ($palestrantes);
+				array_splice($palestrantes, 3);
+			?>
 			<?php foreach ($palestrantes as $palestrante):?>
 			<div class="tm-head-grid">
 			<?= Palestrante::getImagePalestrante($palestrante['id_palestrante']); ?>
 				<h4><?= $palestrante['nome'] ?></h4>
 				<h5><?= $palestrante['descricao'] ?></h5>
 				<ul class="top-social-icons">
+					<?php if(!$palestrante['twitter'] == null): ?>
 					<li><a class="twitter simptip-position-bottom simptip-movable" data-tooltip="twitter" href="<?= $palestrante['twitter'] ?>"> </a></li>
+					<?php endif; ?>
+					<?php if(!$palestrante['facebook'] == null): ?>
 					<li><a class="facebook simptip-position-bottom simptip-movable" data-tooltip="Facebook" href="<?= $palestrante['facebook'] ?>"> </a></li>
+					<?php endif; ?>
+					<?php if(!$palestrante['google_plus'] == null): ?>
 					<li><a class="google simptip-position-bottom simptip-movable" data-tooltip="google plus" href="<?= $palestrante['google_plus'] ?>"> </a></li>
+				<?php endif; ?>
 					<div class="clear"> </div>
 				</ul>
 			</div>
@@ -231,7 +246,7 @@
 	<?php endif;?>
 	</div>
 </div>
-<div class="t-clients">
+<div class="portfolio"t-clients">
 	<div class="wrap"> 				
 		<div class="nbs-flexisel-container">
 			<div class="nbs-flexisel-inner">

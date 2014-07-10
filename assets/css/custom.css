@@ -55,12 +55,12 @@ img{
 .da-slide .a{
 	text-shadow: 1px 1px black;
 }
-.bt_info, .bt_insc{border: none !important;border-radius: 7px; margin: 0 15px 0 15px;font-weight: bold;-webkit-transition: all 0.5s ease-in-out;-moz-transition: all 0.5s ease-in-out;-o-transition: all 0.5s ease-in-out;-ms-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out;width: 150px;height: 45px}
-.bt_info{ background-color: rgba(224, 151, 145, 0.27) ; color: black; border:solid 1px red!important;}
-.bt_insc{ background-color: rgba(45, 199, 64, 0.5) ; color: black; border:solid 1px green!important;}
-.bt_info:hover{ background-color: rgba(241, 47, 47, 0.78); color: white;}
-.bt_insc:hover{ background-color: rgba(66, 170, 66, 0.88); color: white;}
-.bt_info:hover, .bt_insc:hover{
+.bt_info, .bt_insc{border: none !important;border-radius: 7px; margin: 0 15px 0 15px;font-weight: bold;-webkit-transition: all 0.5s ease-in-out;-moz-transition: all 0.5s ease-in-out;-o-transition: all 0.5s ease-in-out;-ms-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out;width: 140px;height: 40px}
+.bt_info:hover{ background-color: rgba(224, 151, 145, 0.27) ; color: black; border:solid 1px red!important;box-shadow:none}
+.bt_insc:hover{ background-color: rgba(45, 199, 64, 0.5) ; color: black; border:solid 1px green!important;box-shadow:none}
+.bt_info{ background-color: rgba(201, 18, 18, 0.89); color: white;box-shadow: 1px 1px 1px black}
+.bt_insc{ background-color: rgba(66, 170, 66, 0.88); color: white;box-shadow: 1px 1px 1px black}
+.bt_info, .bt_insc{
 	cursor: pointer;
 }
 
@@ -120,14 +120,14 @@ outline: 0 none;}
 	}
 }
 /****************FIM***********************/
-.tm-head-grid{margin: 0 8%}
+.tm-head-grid{margin: 0 6%}
 .menu{cursor: pointer;width: 120px;height: 35px;margin:5px 0 0 80px;padding: 1px 0px 0px 6px;}
 .listar-menu{background:black;width:33px;height:4px;margin-top:5px;}
 .h_right>span{margin: 10px 10px 10px -80px ; color: white; font-size: 25px;text-shadow: 2px 2px 2px black ;font-weight: bold;}
 #menu_oculto{box-shadow: 2px 2px 3px black; ;display: none; background-color: rgb(95, 95, 95);opacity: 1;position: absolute; width: 100%;}
 #menu_oculto>ul{padding:50px;}
 #menu_oculto>ul>li{display: inline;margin-left: 20px}
-#menu_oculto>ul>li>a{color: white; text-decoration: none; font-size: 21px;}
+#menu_oculto>ul>li>a{color: white; text-decoration: none; font-size: 18px;}
 #menu_oculto>ul>li>a:hover{clear: both!important;color: yellow;}
 #fancybox{width: 100%; height: 5014px; z-index: 999999998; position: absolute; top: 0px; left: 0px; background-color: rgba(0, 0, 0, 0.89);}
 .boas-vindas{border-radius: 7px;border: outset 2px yellow;box-shadow: inset 1px -1px 13px 11px black;padding: 25px; width:420px; position:relative ; top:200px; height:300px; margin: 0 auto; background-color:#eee;}

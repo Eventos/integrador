@@ -22,6 +22,7 @@ class PalestranteModel extends ModelAbstract
 			);
 			$prep = $this->db->prepare($query);
 			$prep->execute($values);
+			if(!$query) throw new Exception('Erro na inserção..'.mysql_error());
 		}catch(Exception $e){
 			Flash::setMessage('danger', 'Erro ao inserir palestrante - '.$e);
 			return false;
@@ -45,8 +46,9 @@ class PalestranteModel extends ModelAbstract
 		}else{
 			$destination = 1;
 		}
-		$data['copyImage'] = $destination;
-		$query = 'INSERT INTO palestrante (nome, data_nascimento, id_formacao, email, telefone, id_cidade, facebook, twitter, google_plus, descricao, id_image ) VALUES (:nome, :data_nascimento, :id_formacao, :email, :telefone, :id_cidade, :facebook, :twitter, :google_plus, :descricao, :copyImage)';
+		unset($data['copyImage']);
+		$data['id_image'] = $destination;
+		$query = 'INSERT INTO palestrante (nome, data_nascimento, id_formacao, email, telefone, id_cidade, facebook, twitter, google_plus, descricao, id_image ) VALUES (:nome, :data_nascimento, :id_formacao, :email, :telefone, :cidade, :facebook, :twitter, :google_plus, :descricao, :id_image)';
 		$values = array();
 		foreach ($data as $key => $value) {
 			$values[':'.$key] = $value;
