@@ -5,7 +5,7 @@
 class PalestranteModel extends ModelAbstract
 {
 	function getAllPalestrantes(){
-		$palestrante = $this->db->query('SELECT id_palestrante, nome FROM palestrante');
+		$palestrante = $this->db->query('SELECT id_palestrante, nome FROM palestrante WHERE ativo = "s"');
 		$data = iterator_to_array($palestrante);
 		return $data;
 	}
@@ -55,14 +55,14 @@ class PalestranteModel extends ModelAbstract
 		}
 
 		$prep = $this->db->prepare($query);
-		$prep->execute($values);
+		$query = $prep->execute($values);
 		Flash::setMessage('success', 'Palestrante inserido com sucesso!');
 		App::redirect('admin/index');
 		exit;
 	}
 
 	function exists(){
-		$query = "SELECT id_palestrante FROM palestrante";
+		$query = "SELECT id_palestrante FROM palestrante WHERE ativo = 's'";
 	
 		$data = $this->db->query($query);
 		$data = iterator_to_array($data);
@@ -73,7 +73,7 @@ class PalestranteModel extends ModelAbstract
 	}
 
 	function getData(){
-		$query = "SELECT * FROM palestrante";
+		$query = "SELECT * FROM palestrante WHERE ativo = 's'";
 		$db = $this->db->prepare($query);
 		$db->execute();
 		$data = $db->fetchAll(PDO::FETCH_ASSOC);
@@ -105,5 +105,14 @@ class PalestranteModel extends ModelAbstract
 		}
 		$html = $image->getImageHtml($path);
 		return $html;
+	}
+
+	function delete($id){
+		$query = "UPDATE palestrante SET ativo='n' WHERE id_palestrante = $id";
+		$prep = $this->db->prepare($query);
+		$query = $prep->execute();
+		if(!$query) throw new exception(var_dump($prep->errorInfo()));
+		Flash::setMessage('success', 'Palestrante excluído com sucesso.');
+		App::redirect('admin/index');
 	}
 }

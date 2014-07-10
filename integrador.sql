@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.37, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.35, for debian-linux-gnu (i686)
 --
 -- Host: localhost    Database: integrador
 -- ------------------------------------------------------
--- Server version	5.5.37-0ubuntu0.12.04.1
+-- Server version	5.5.35-0ubuntu0.12.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -273,7 +273,7 @@ CREATE TABLE `foto_video` (
   KEY `fk_foto_video_subevento1_idx` (`id_subevento`),
   CONSTRAINT `fk_foto_video_evento1` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_foto_video_subevento1` FOREIGN KEY (`id_subevento`) REFERENCES `subevento` (`id_subevento`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -282,7 +282,7 @@ CREATE TABLE `foto_video` (
 
 LOCK TABLES `foto_video` WRITE;
 /*!40000 ALTER TABLE `foto_video` DISABLE KEYS */;
-INSERT INTO `foto_video` VALUES (1,'uploads/user.png',3,1,'teste','f'),(3,'//www.youtube.com/embed/Txbb4-ghLNQ',3,1,'teste','v'),(4,'//www.youtube.com/embed/fy1N2ioHJsk?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(5,'//www.youtube.com/embed/mpXPF2m3dIs?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(6,'//www.youtube.com/embed/TSZFcZSeIaM?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,1,NULL,'v'),(7,'//www.youtube.com/embed/ZT16mQKt59Y?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,1,NULL,'v'),(8,'uploads/evento3-0-Captura de tela de 2014-06-13 15:33:04.png',3,1,'teste','f'),(20,'uploads/Andre.jpg',1,NULL,'foto palestrante','f'),(21,'uploads/Andre.jpg',1,NULL,'foto palestrante','f'),(22,'uploads/Andre.jpg',1,NULL,'foto palestrante','f'),(23,'uploads/palestra6.jpg',1,NULL,'foto palestrante','f');
+INSERT INTO `foto_video` VALUES (1,'uploads/user.png',3,1,'teste','f'),(3,'//www.youtube.com/embed/Txbb4-ghLNQ',3,1,'teste','v'),(4,'//www.youtube.com/embed/fy1N2ioHJsk?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(5,'//www.youtube.com/embed/mpXPF2m3dIs?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(6,'//www.youtube.com/embed/TSZFcZSeIaM?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,1,NULL,'v'),(7,'//www.youtube.com/embed/ZT16mQKt59Y?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,1,NULL,'v'),(8,'uploads/evento3-0-Captura de tela de 2014-06-13 15:33:04.png',3,1,'teste','f'),(20,'uploads/Andre.jpg',1,NULL,'foto palestrante','f'),(21,'uploads/Andre.jpg',1,NULL,'foto palestrante','f'),(22,'uploads/Andre.jpg',1,NULL,'foto palestrante','f'),(23,'uploads/palestra6.jpg',1,NULL,'foto palestrante','f'),(24,'uploads/bandeiras brasil 4.jpg',1,NULL,'foto palestrante','f'),(25,'uploads/bandeiras brasil 4.jpg',1,NULL,'foto palestrante','f');
 /*!40000 ALTER TABLE `foto_video` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -393,6 +393,7 @@ CREATE TABLE `palestrante` (
   `google_plus` varchar(50) DEFAULT NULL,
   `descricao` text NOT NULL,
   `id_image` int(11) NOT NULL,
+  `ativo` char(1) NOT NULL DEFAULT 's',
   PRIMARY KEY (`id_palestrante`),
   KEY `fk_palestrante_formacao1_idx` (`id_formacao`),
   KEY `fk_palestrante_cidade1_idx` (`id_cidade`),
@@ -400,7 +401,7 @@ CREATE TABLE `palestrante` (
   CONSTRAINT `fk_image` FOREIGN KEY (`id_image`) REFERENCES `foto_video` (`id_foto_video`),
   CONSTRAINT `fk_palestrante_cidade1` FOREIGN KEY (`id_cidade`) REFERENCES `cidade` (`id_cidade`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_palestrante_formacao1` FOREIGN KEY (`id_formacao`) REFERENCES `formacao` (`id_formacao`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -409,7 +410,7 @@ CREATE TABLE `palestrante` (
 
 LOCK TABLES `palestrante` WRITE;
 /*!40000 ALTER TABLE `palestrante` DISABLE KEYS */;
-INSERT INTO `palestrante` VALUES (1,'Palestrante teste','1960-01-01',9,'palestrante@teste.com.br',NULL,2222,NULL,NULL,NULL,'palestrante especialista em Bd',1),(2,'Andre Felipe Silveira','1991-12-30',3,'andrefelipesilveira@gmail.com','4299731170',2328,'teste','teste','teste','Testando novo palestrante',22),(3,'Juliana Paes','1985-07-25',4,'juliana@paes.com.br','4299999999',4051,'http://facebook.com/juliana.paes','http://twitter.com/julianapaes','http://plus.google.com/Julianapaes','Doutorado em Ser Gostosa',23);
+INSERT INTO `palestrante` VALUES (1,'Palestrante teste','1960-01-01',9,'palestrante@teste.com.br',NULL,2222,NULL,NULL,NULL,'palestrante especialista em Bd',1,'n'),(2,'Andre Felipe Silveira','1991-12-30',3,'andrefelipesilveira@gmail.com','4299731170',2328,'teste','teste','teste','Testando novo palestrante',22,'s'),(3,'Juliana Paes','1985-07-25',4,'juliana@paes.com.br','4299999999',4051,'http://facebook.com/juliana.paes','http://twitter.com/julianapaes','http://plus.google.com/Julianapaes','Doutorado em Ser Gostosa',23,'s'),(4,'ahsdui','1011-01-01',1,'123@123.com','123',188,'123','123','123','asdd',24,'s'),(5,'Érico Dias','1993-01-03',1,'ericodias1@gmail.com','42 99862680',7599,'ericodias10','ericodias','ericodias1','Moca focasso, palestra muito',25,'s');
 /*!40000 ALTER TABLE `palestrante` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -578,4 +579,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-07-09 21:58:46
+-- Dump completed on 2014-07-09 22:45:08
