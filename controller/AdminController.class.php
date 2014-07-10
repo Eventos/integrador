@@ -138,7 +138,8 @@ class AdminController extends ControllerAbstract
 			exit;
 		}
 		elseif(isset($params) && count($params) == 1 && $params[0] == 'edit'){
-			die('edit');
+			$this->render('admin/listar_blocos');
+			exit;
 		}
 		elseif(isset($params) && count($params)== 1 && $params[0] == 'new'){
 			$this->render('admin/inserir_bloco');
