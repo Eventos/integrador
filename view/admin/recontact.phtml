@@ -71,6 +71,47 @@ Page::addTinymceElement('js', 'js/tinymce/tinymce.min.js');
 				</div>
 			</div>
 		</div>
+		<div class="row">
+			<h1>Enviar mensagem para escritos em um evento</h1>
+			<select name="eventos" id="eventos">
+				<?php foreach ($eventos as $evento) {
+					echo '<option value='.$evento['id_evento'].'>'.$evento['titulo'].'</option>';
+				} ?>
+			</select>
+			<div class="widget-content box-email-eventos">
+				<form method="POST" action="<?= App::getUrl() ?>admin/sendmail/recontact/html">
+					<div class="control-group">
+						<label for="normal-field" class="control-label">Email</label>
+						<div class="controls form-group">
+							<?php if($data !== null):?>
+								<input type="text" name="email" value="<?= $data[2] ?>" placeholder="insira o email do destinatário" class="form-control email-evento" id="normal-field" maxlength="100">
+							<?php else: ?>
+								<input type="text" name="email" placeholder="insira o email do destinatário" class="form-control email-evento" id="normal-field" maxlength="100">
+							<?php endif;?>
+						</div>
+					</div>
+					<div class="control-group">
+						<label for="normal-field" class="control-label">Assunto</label>
+						<div class="controls form-group">
+							<?php if($data !== null):?>
+								<input type="text" name="subject" value="<?= $data[1]?>" placeholder="assunto da mensagem" class="form-control" id="normal-field" maxlength="50">
+							<?php else: ?>
+								<input type="text" name="subject" placeholder="assunto da mensagem" class="form-control" id="normal-field" maxlength="50">
+							<?php endif;?>
+						</div>
+					</div>
+					<?php if($data !== null):?>
+						<textarea id="elm1" name="html"><?=$data[3].'<br>----- ----- -----<br>Eventos UTFPR'?></textarea><br>
+					<?php else: ?>
+						<textarea id="elm1" name="html"></textarea><br>
+					<?php endif;?>
+					<div class="btn-actions">
+						<input type="submit" value="Enviar Email" class="btn-action btn btn-primary">
+						<input type="reset" value="Limpar Campos" class="btn-action btn btn-default"><br><br>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
 </div>
 <script type="text/javascript">
@@ -101,3 +142,21 @@ Page::addTinymceElement('js', 'js/tinymce/tinymce.min.js');
 	}); 
 </script>
 
+<script>
+	$(function(){
+		$('.box-email-eventos').hide();
+		$('#eventos').change(function(){
+			var url_ = "<?= App::getUrl() ?>";
+			url_ += 'evento/selectInscritos/'+$(this).val();
+			var request = $.ajax({
+				url : url_,
+				type : 'get',
+				success : function(e){
+					$('.box-email-eventos').show(300);
+					var html = e ;
+					$('.email-evento').val(html);
+				}
+			});
+		});
+	});
+</script>

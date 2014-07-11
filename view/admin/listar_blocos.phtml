@@ -30,7 +30,7 @@ Page::addTinymceElement('js', 'js/tinymce/tinymce.min.js');
                   <td id="edit<?=$bloco['id_bloco']?>" style="display:none">
                   <form method="POST" action="<?=App::getUrl()?>admin/blocos/update/<?=$bloco['id_bloco']?>">
                     <textarea name="html" id="text_edit<?=$bloco['id_bloco']?>"><?=$bloco['html'];?></textarea><br>
-                    <p style="text-align:center"><input type="submit" class="btn btn-success" value="Salvar Edição">&nbsp;&nbsp;<button onclick="close_editor('<?=$bloco['id_bloco']?>')" class="btn btn-danger">Cancelar Edição</button></p>
+                    <p style="text-align:center"><input type="submit" class="btn btn-success" value="Salvar Edição">&nbsp;&nbsp;<input type="reset" onclick="close_editor('<?=$bloco['id_bloco']?>')" class="btn btn-danger" value="Cancelar Edição"></p>
                   </form>
                   </td>
                   <td> <?=$bloco['referencia'];?> </td>

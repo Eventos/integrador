@@ -51,5 +51,14 @@ class EventoController extends ControllerAbstract
 		}
 
 	}
+
+	public function selectInscritosAction($params){
+		if(count($params) == 1){
+			echo Evento::selectEmailInscritos($params[0]);
+		}else{
+			App::errorPage();
+		}
+
+	}
 	
 }

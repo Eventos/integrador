@@ -40,10 +40,6 @@ class BlocosModel extends ModelAbstract
 			return false;
 		}	
 	}
-
-	
-
-
 	function getBlock($param){
 		$data = $this->db->query("SELECT html FROM blocos_estaticos WHERE id_bloco = '$param'");
 		$data = iterator_to_array($data);
