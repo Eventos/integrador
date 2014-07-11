@@ -134,7 +134,6 @@ class AdminController extends ControllerAbstract
 
 	function blocosAction($params){
 		if(count($params) == 0){
-			$params['blocos'] = Blocos::listBlocs();
 			$this->render('admin/listar_blocos', $params);
 			exit;
 		}
