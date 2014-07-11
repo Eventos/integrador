@@ -27,14 +27,14 @@
 	Page::addStyleElement('js', 'default.js');
 	?>
 
-	<?php if(!isset($_COOKIE["boas_vindas"])): ?>
+	<?php if(!isset($_COOKIE['boas_vindas']) ||$_COOKIE["boas_vindas"] == '0'): ?>
 		<script type="text/javascript">
 			$(document).ready(function () {
 				$('.boas-vindas').show();
 				$('#fancybox').show();
 			});
 		</script>
-		<?php setcookie('boas_vindas','testando', time()+3600*24) ?>
+		<?php App::cookie('1'); ?>
 	<?php endif; ?>
 </head>
 <body>
@@ -58,6 +58,7 @@
 					<li class="nav-item"><a href="#info" class="scroll">Informações</a></li>
 					<li class="nav-item"><a href="#about" class="scroll">Sobre</a></li>
 					<li class="nav-item"><a href="#contact"  class="scroll">Contato</a></li>
+					<li class="nav-item"><a href="user/inscricao" >Cadastro de Usuario</a></li>
 					<li class="nav-item"><a href="login/verify/user">Login</a></li>
 					<li class="nav-item"><a href="login/verify/adm">Admin</a></li>
 				</ul>
@@ -74,6 +75,7 @@
 				<li><a href="#palestrantes" class="scroll"><span class="glyphicon glyphicon-collapse-down"></span>&nbsp;Palestrantes</a></li>
 				<li><a href="#info" class="scroll"><span class="glyphicon glyphicon-collapse-down"></span>&nbsp;Informações</a></li>
 				<li><a href="#contact" class="scroll"><span class="glyphicon glyphicon-collapse-down"></span>&nbsp;Contato</a></li>
+				<li><a href="user/inscricao" ><span class="glyphicon glyphicon-collapse-down"></span>&nbsp;Cadastro</a></li>
 				<li><a href="login/verify/user"><span class="glyphicon glyphicon-user"></span>	&nbsp;Login</a></li>
 				<li><a href="login/verify/admin"><span class="glyphicon glyphicon-user"></span>	&nbsp;Admin</a></li>
 			</ul>
@@ -90,7 +92,7 @@
 					<div class="da-slide">
 						<p>O melhor sistema de eventos!</p>
 						<h2>Eventos UTFPR</h2>
-						<p class="a"><a href="#">Quer ter este sistema no seu site?</a></p>
+						<p class="a"><a href="#info">Saber mais?</a></p>
 					</div>
 					<div class="da-slide">
 						<p>Veja fotos dos</p>
@@ -107,11 +109,6 @@
 						<h2>CONTRATE-NOS</h2>
 						<p class="a"><a href="#">Saber mais</a></p>
 					</div>
-
-					<nav class="da-arrows">
-						<span class="da-arrows-prev"></span>
-						<span class="da-arrows-next"></span>
-					</nav>
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -128,7 +125,7 @@
 					<label>Email:</label><br>
 					<input type="email" name="email" placeholder="&nbsp;&nbsp;Seu E-mail"><br>
 					<input type="submit" name="simple" value="Cadastrar">
-					<input type="submit" name="none" value="Agora não">
+					<input type="submit" name="none" value="Não Obrigado">
 					<input type="submit" name="full" value="Cadastro Completo">
 				</form>		
 			</div>

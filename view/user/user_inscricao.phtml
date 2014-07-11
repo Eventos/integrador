@@ -34,7 +34,11 @@
 								<div class="control-group">
 									<label for="disabled-input" class="control-label ">Nome Completo</label>
 									<div class="controls form-group">
+										<?php if(isset($name)):?>
+										<input type="text" maxlength="50" value="<?=$name?>" name="nome" class="form-control" id="nome" placeholder="Insira o titulo do evento">
+									<?php else:?>
 										<input type="text" maxlength="50" name="nome" class="form-control" id="nome" placeholder="Insira o titulo do evento">
+									<?php endif;?>
 									</div>
 								</div>
 								<div class="control-group">
@@ -47,7 +51,11 @@
 								<div class="control-group">
 									<label for="disabled-input" class="control-label ">Email</label>
 									<div class="controls form-group">
+										<?php if(isset($email)): ?>
+										<input type="email" maxlength="100" name="email" value="<?=$email;?>" class="form-control" id="email" placeholder="Insira seu endereço de email">
+									<?php else:?>
 										<input type="email" maxlength="100" name="email" class="form-control" id="email" placeholder="Insira seu endereço de email">
+									<?php endif;?>
 									</div>
 								</div>
 								<div class="control-group">

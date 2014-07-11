@@ -26,6 +26,7 @@ class IndexController extends ControllerAbstract
 			extract($_POST);
 
 			if(isset($simple)){
+				App::cookie('1');
 				$user_simple = new UserModel();
 				if ($user_simple->user_letter($email, $name)){
 					Flash::setMessage('success', 'Obrigado por se cadastrar em nossa newsletter');
@@ -36,10 +37,11 @@ class IndexController extends ControllerAbstract
 					App::redirect();
 				}
 				exit();
-			}elseif($none == 'Agora não'){
+			}elseif(isset($none)){
+				App::cookie('1');
 				App::redirect();
-				exit;
 			}elseif(isset($full)){
+				App::cookie('1');
 				$data = array('name' => $name, 'email'=> $email); 
 				$this->render('user/user_inscricao',$data);
 				exit;

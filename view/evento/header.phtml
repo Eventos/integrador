@@ -38,14 +38,14 @@ include_once 'core/App.class.php';
 <style>
 	.slider_bg_evento{background: url("<?= App::getUrl()?>assets/images/fundo2.jpg") no-repeat;background-size: 100%}
 </style>
-	<?php if(!isset($_COOKIE['boas_vindas'])): ?>
+	<?php if($_COOKIE['boas_vindas'] == '0' ): ?>
 		<script type="text/javascript">
 			$(document).ready(function () {
 				$('.boas-vindas').show();
 				$('#fancybox').show();
 			});
+			<?php App::cookie('1'); ?>
 		</script>
-		<?php setcookie("boas_vindas", 'cadastrado', time()+3600*24*30*12*50); ?>
 	<?php endif ?>
 
 </head>

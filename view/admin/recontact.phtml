@@ -101,9 +101,9 @@ Page::addTinymceElement('js', 'js/tinymce/tinymce.min.js');
 						</div>
 					</div>
 					<?php if($data !== null):?>
-						<textarea id="elm1" name="html"><?=$data[3].'<br>----- ----- -----<br>Eventos UTFPR'?></textarea><br>
+						<textarea  name="html"><?=$data[3].'<br>----- ----- -----<br>Eventos UTFPR'?></textarea><br>
 					<?php else: ?>
-						<textarea id="elm1" name="html"></textarea><br>
+						<textarea  name="html"></textarea><br>
 					<?php endif;?>
 					<div class="btn-actions">
 						<input type="submit" value="Enviar Email" class="btn-action btn btn-primary">
@@ -116,7 +116,7 @@ Page::addTinymceElement('js', 'js/tinymce/tinymce.min.js');
 </div>
 <script type="text/javascript">
 	tinymce.init({
-		selector: "textarea#elm1",
+		selector: "textarea",
 		theme: "modern",
 		language : 'pt_BR',
 		height: 320,
