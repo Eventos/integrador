@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.35, for debian-linux-gnu (i686)
+-- MySQL dump 10.13  Distrib 5.5.37, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: integrador
 -- ------------------------------------------------------
--- Server version	5.5.35-0ubuntu0.12.04.2
+-- Server version	5.5.37-0ubuntu0.12.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -360,7 +360,7 @@ CREATE TABLE `newsletter` (
   `nome` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_newsletter`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -369,7 +369,6 @@ CREATE TABLE `newsletter` (
 
 LOCK TABLES `newsletter` WRITE;
 /*!40000 ALTER TABLE `newsletter` DISABLE KEYS */;
-INSERT INTO `newsletter` VALUES (6,'andrefelipesilveira@gmail.com','André Felipe Silveira');
 /*!40000 ALTER TABLE `newsletter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -499,7 +498,7 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`id_usuario`),
   KEY `fk_usuario_cidade1_idx` (`id_cidade`),
   CONSTRAINT `fk_usuario_cidade1` FOREIGN KEY (`id_cidade`) REFERENCES `cidade` (`id_cidade`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -508,7 +507,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'Teste Usuario','0000000000','2000-03-12','1111111111','teste@teste.com',2222,'123',NULL,NULL),(2,'Teste 2','0000000000','1999-01-01','00000000','usuario@teste.com',346,'123',NULL,NULL),(3,'Andre Felipe Silveira','921298309','1991-12-30','19231983209','andre@silveira.com',6025,'abc123','nelson 81','boqueirao');
+INSERT INTO `usuario` VALUES (1,'Teste Usuario','0000000000','2000-03-12','1111111111','teste@teste.com',2222,'123',NULL,NULL),(2,'Teste 2','0000000000','1999-01-01','00000000','usuario@teste.com',346,'123',NULL,NULL),(3,'Andre Felipe Silveira','921298309','1991-12-30','19231983209','andre@silveira.com',6025,'abc123','nelson 81','boqueirao'),(4,'André Felipe Silveira','06417010100','0000-00-00','2309u8390890','andrefelipesilveira@gmail.com',5674,'asdas','asdasd','asdas');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -579,4 +578,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-07-09 22:45:08
+-- Dump completed on 2014-07-11 19:51:28
