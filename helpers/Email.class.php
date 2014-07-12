@@ -10,10 +10,10 @@ class Email
 		
 		if($state){
 			Flash::getMessage('success','Email(s) enviado(s) com Sucesso');
+			return true;
 		}else{
 			Flash::setMessage('danger','Erro ao enviar email(s)...');
+			return false;
 		}
-		App::redirect('admin/index');
-		exit;
 	}
 }

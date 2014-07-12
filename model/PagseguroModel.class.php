@@ -30,7 +30,6 @@ class PagseguroModel extends ModelAbstract
 			$pagseguro->setCurrency("BRL");
 			$pagseguro->setShippingType(3);
 			$transaction_id = $pagamento['transaction_id'];
-			echo $transaction_id;
 			$pagseguro->setReference($transaction_id);
 
 			$user = $_SESSION['user'];
