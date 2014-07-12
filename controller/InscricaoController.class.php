@@ -26,8 +26,8 @@ class InscricaoController extends ControllerAbstract
 				$this->render('user/inscricao',$paramsview);
 			}
 			else{
-
-				$this->render('login_user');
+				$type = Array('inscricao'=>'execute','id_inscricao'=>$params[0]);
+				$this->render('login_user',$type);
 			}
 		}elseif(count($params)==2){
 			

@@ -7,6 +7,7 @@
     	App::redirect('user/index');
     	exit();
     }
+
 ?>
 <!Doctype html>
 <html>
@@ -38,7 +39,9 @@
     	<div id="title">Sistema de Login</div>
     	<?php if(isset($type) && $type == 'inscricao'):?>
     		<form method="POST" id="form" action="<?= $URL_BASE.'login/logger/user/inscricao' ?>">
-    	<?php else: ?>
+    	<?php elseif(isset($inscricao) && $inscricao == 'execute'): ?>
+    		<form method="POST" id="form" action="<?= $URL_BASE.'login/logger/user/execute/'.$id_inscricao ?>">
+    	<?php else:?>
     		<form method="POST" id="form" action="<?= $URL_BASE.'login/logger/user' ?>">
     	<?php endif;?>
 			<div class="login">

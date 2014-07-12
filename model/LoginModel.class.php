@@ -23,7 +23,7 @@ class LoginModel extends ModelAbstract{
 
 	}
 
-	function logginUser($email , $password, $inscricao = null){
+	function logginUser($email , $password, $type = null, $id=null){
 
 		$query = $this->db->query("SELECT email , senha, nome FROM usuario WHERE email= '$email' AND senha= '$password' ");
 		$data = array();
@@ -36,16 +36,20 @@ class LoginModel extends ModelAbstract{
 			$_SESSION['user']['email'] = $data['email'];
 			$_SESSION['user']['name']  = $data['name'];
 			Flash::setmessage('success','Bem vindo'.$_SESSION['user']['name']);
-			if($inscricao == null)
-				App::redirect('user/index');
-			else
+			if($type == 'inscricao')
 				App::redirect('inscricao');
+			elseif($type == 'execute')
+				App::redirect('inscricao/execute/'.$id);
+			else
+				App::redirect('user/index');
 
 		}
 		else{
 			Flash::setmessage('danger','Dados do login Invalidos');
-			if($inscricao == null)
+			if($type == 'inscricao')
 				App::redirect('login/verify/user');
+			elseif($type == 'execute')
+				App::redirect();
 			else
 				App::redirect('inscricao');
 

@@ -140,8 +140,8 @@
 				<p>Veja as fotos dos últimos eventos realizados na UTFPR.</p>
 				<?php $eventos = Evento::getEvento(null, 'encerrado');
 				$qnt = count($eventos);
-				shuffle($eventos);//sorteia os eventos para a home
-				if($qnt < 6)//se existem menos de 6 eventos apresenta 3 se existe 6 ou mais apresenta 6
+				shuffle($eventos);
+				if($qnt < 6)
 				array_splice($eventos, 3);
 				else
 					array_splice($eventos, 6);
@@ -180,8 +180,8 @@
 						</div>
 					</div>
 					<div>
-						<button class="bt_info" type="">Informações&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
-						<button class="bt_insc" type="">Inscrição&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
+						<button class="bt_info" onclick="window.location.href='<?=App::getUrl()?>evento/view/<?=$evento['id_evento']?>';">Veja&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+						<button class="bt_insc" onclick="window.location.href='<?=App::getUrl()?>inscricao/execute/<?=$evento['id_evento']?>';">Inscrição&nbsp;<span class="glyphicon glyphicon-ok"></span></button>
 					</div>
 				</div>
 			<?php endforeach;?>
