@@ -143,7 +143,7 @@ class SubeventoModel extends ModelAbstract
 		return false;
 	}
 
-	function getlist($ide_evento,$id_subevento=null){
+	function getlist($id_evento,$id_subevento=null){
 		if($id_subevento === null){
 			$query = "SELECT id_subevento, titulo, descricao, data_hora FROM subevento WHERE id_evento = '$id_evento' and ativo = 's'";
 		}
