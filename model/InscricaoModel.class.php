@@ -20,7 +20,7 @@ class InscricaoModel extends ModelAbstract
 			}else{
 				$pagamento = new PagseguroModel();
 				$url_pag = $pagamento->pagamento($data);
-				//$this->enviarEmail($url_pag, $user);
+				$this->enviarEmail($url_pag, $user);
 			}
 			$id_inscricao = $this->inscricaoEvento($user['id_usuario'], $data['id_evento'], $url_pag);
 			if(isset($data['subevento'])){
