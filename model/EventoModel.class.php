@@ -18,6 +18,8 @@ class EventoModel extends ModelAbstract
 			$aberto = $query->fetch(PDO::FETCH_ASSOC);
 			$aberto = $aberto >= 0 ? 1 : 0;
 
+			if(strlen($data['palestrante']) > 10) $data['palestrante'] = null;
+
 			$id_evento = $this->getNextIncrement('evento');
 
 			$query = "INSERT INTO evento (local, desc_contato, data_hora, data_limite, vagas, aberto, desc_evento, email_contato, telefone_contato, id_cidade, id_administrador, facebook, twitter, google_plus, id_palestrante, titulo, descricao_resumida, ativo) VALUES (:local, :descricao_contato, :data_hora, :data_limite, :vagas, :aberto, :desc_evento, :email_contato, :telefone_contato, :id_cidade, :id_administrador, :facebook, :twitter, :google_plus, :palestrante, :titulo, :descricao_resumida, 's')";

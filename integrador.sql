@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.37, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.35, for debian-linux-gnu (i686)
 --
 -- Host: localhost    Database: integrador
 -- ------------------------------------------------------
--- Server version	5.5.37-0ubuntu0.12.04.1
+-- Server version	5.5.35-0ubuntu0.12.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -100,32 +100,6 @@ INSERT INTO `cidade` VALUES (1,1,'AC','Acrelandia'),(2,1,'AC','Assis Brasil'),(3
 UNLOCK TABLES;
 
 --
--- Table structure for table `codigo_barras`
---
-
-DROP TABLE IF EXISTS `codigo_barras`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `codigo_barras` (
-  `idcodigo_barras` int(11) NOT NULL AUTO_INCREMENT,
-  `codigo` varchar(30) NOT NULL,
-  `id_inscricao` int(11) NOT NULL,
-  PRIMARY KEY (`idcodigo_barras`,`codigo`),
-  KEY `fk_codigo_barras_inscricao1_idx` (`id_inscricao`),
-  CONSTRAINT `fk_codigo_barras_inscricao1` FOREIGN KEY (`id_inscricao`) REFERENCES `inscricao` (`id_inscricao`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `codigo_barras`
---
-
-LOCK TABLES `codigo_barras` WRITE;
-/*!40000 ALTER TABLE `codigo_barras` DISABLE KEYS */;
-/*!40000 ALTER TABLE `codigo_barras` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `contato`
 --
 
@@ -154,7 +128,6 @@ CREATE TABLE `contato` (
 
 LOCK TABLES `contato` WRITE;
 /*!40000 ALTER TABLE `contato` DISABLE KEYS */;
-INSERT INTO `contato` VALUES (1,'André Felipe Silveira','andrefelipesilveira@yahoo.com.br','Testando envio de mensagens','n',3,1),(2,'Andre Felipe Silveira','andrefelipesilveira@gmail.com','Tem desconto pra negros?','n',3,1);
 /*!40000 ALTER TABLE `contato` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,7 +179,7 @@ CREATE TABLE `evento` (
   `facebook` varchar(50) DEFAULT NULL,
   `twitter` varchar(50) DEFAULT NULL,
   `google_plus` varchar(50) DEFAULT NULL,
-  `id_palestrante` int(11) NOT NULL,
+  `id_palestrante` int(11) DEFAULT NULL,
   `titulo` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `descricao_resumida` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `ativo` char(1) NOT NULL,
@@ -217,7 +190,7 @@ CREATE TABLE `evento` (
   CONSTRAINT `fk_evento_cidade1` FOREIGN KEY (`id_cidade`) REFERENCES `cidade` (`id_cidade`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_evento_palestrante1` FOREIGN KEY (`id_palestrante`) REFERENCES `palestrante` (`id_palestrante`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_evento_table11` FOREIGN KEY (`id_administrador`) REFERENCES `administrador` (`id_administrador`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -226,7 +199,7 @@ CREATE TABLE `evento` (
 
 LOCK TABLES `evento` WRITE;
 /*!40000 ALTER TABLE `evento` DISABLE KEYS */;
-INSERT INTO `evento` VALUES (1,'Centro de Eventos UFPR','Teste de incescao','2014-07-10 00:00:00','2014-07-17',50,1,'teste','teste','teste',332,1,'teste','teste','teste',1,'teste','teste','s'),(3,'UTFPR - Guarapuava','evento teste','2014-06-10 14:00:00','2014-06-05',30,1,'TEste teste teste','andrefelipesilveira@yahoo.com.br','42 99731170',2222,1,NULL,NULL,NULL,1,'Computação quantica nos tempos atuais','Semana Academica','s'),(4,'UTFPR - GP','Aluno de tsi','2014-12-30 15:00:00','2014-12-20',20,1,'Evento na area de culinaria','andre@silveira.com','4299731170',6025,1,'gastoutf','gastoutf','gastoutf',1,'palestras em tsi e eng mecanica','Ciclo de Palestras','s'),(5,'UTFPR - Auditório','André Felipe Silveira - Diplomado em tecnologias em BD -USP','2014-06-18 13:00:00','2014-06-14',80,1,'Palestra sobre novas funcionalidades e novas tecnicas para trabalhar com mysql e sua comparacao com banco de dados no-sql','andre.silveira@agenciadeinterncer.com','4299731170',6025,1,'mysql_bd_secrets.facebook','@mysql_new_secrets','',1,'Mysql dominando novas Tecnicas','Seminario sobre banco de Dados','s'),(6,'CEDETEG - UNICENTRO','Representante dos interesses dos alunos','2014-07-24 13:00:00','2014-07-20',50,1,'Evento contara com a presença de renomados palestrantes nacionais, grandes nomes em nodejs e mongodb, todos os participantes receberam certificado e uma video aula com o desenvolvimento de uma aplicação completa','andre.silveira@agenciadeinternet.com','(42)99731170',6025,1,'andrefelipe.silveira','@andresilveira','andrefelipesilveira',1,'Cerco de Palestras  - Tecnologia na Atualidade','Aborda:  html5, css3, php, ruby, nodejs e mongo','s'),(8,'CEDETEG - UNICENTRO','asdasdad','2012-12-30 08:00:00','2010-01-08',20,1,'asda','asdasd@yasdiasedi.cpmb.r','asdasd',5434,1,'asdasd','asdasda','asdasd',1,'aasdas','Aborda:  html5, css3, php, ruby, nodejs e mongo','s');
+INSERT INTO `evento` VALUES (15,'Oceania Convention Center','Contato para maiores informações sobre o evento.','2014-08-13 10:00:00','2014-08-12',50,1,'O The Developers Conference reúne as melhores palestras sobre TI do Brasil!','tdc@thedevelopersconference.com.br','(11) 0000 0000',8213,1,'http://www.facebook.com/tdc','http://www.twitter.com/tdc','http://plus.google.com/tdc',NULL,'The Developers Conference','A maior conferência de TI do Brasil!','s'),(16,'UTFPR','Mande um e-mail para maiores informações.','2014-07-07 14:00:00','2014-07-06',50,1,'A semana acadêmica do curso de Tecnologia de Sistemas para Internet.','semanaacademica@utfpr.edu.br','(42) 3035 0000',6025,1,'http://www.facebook.com/semanaacademicautfpr','http://www.twitter.com/semanaacademicautfpr','http://plus.google.com/semanaacademicautfpr',NULL,'Semana acadêmia de TSI','A melhor semana acadêmica da UTFPR!','s'),(17,'Teatro Guaíra','Mande um e-mail para maiores informações.','2014-08-01 19:00:00','2014-07-31',50,1,'Palestra com o criador da maior rede social do mundo.','eventos@eventosutfpr.com.br','(11) 0000 0000',6025,1,'http://www.facebook.com/eventosutfpr','http://www.twitter.com/eventosutfpr','http://plus.google.com/eventosutfpr',13,'Empreendimento em TI','Palestra com o criador do Facebook.','s');
 /*!40000 ALTER TABLE `evento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,7 +237,7 @@ DROP TABLE IF EXISTS `foto_video`;
 CREATE TABLE `foto_video` (
   `id_foto_video` int(11) NOT NULL AUTO_INCREMENT,
   `link` varchar(200) NOT NULL,
-  `id_evento` int(11) NOT NULL,
+  `id_evento` int(11) DEFAULT NULL,
   `id_subevento` int(11) DEFAULT NULL,
   `descricao` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
   `tipo` char(1) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -273,7 +246,7 @@ CREATE TABLE `foto_video` (
   KEY `fk_foto_video_subevento1_idx` (`id_subevento`),
   CONSTRAINT `fk_foto_video_evento1` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_foto_video_subevento1` FOREIGN KEY (`id_subevento`) REFERENCES `subevento` (`id_subevento`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -282,7 +255,7 @@ CREATE TABLE `foto_video` (
 
 LOCK TABLES `foto_video` WRITE;
 /*!40000 ALTER TABLE `foto_video` DISABLE KEYS */;
-INSERT INTO `foto_video` VALUES (1,'uploads/user.png',3,1,'teste','f'),(3,'//www.youtube.com/embed/Txbb4-ghLNQ',3,1,'teste','v'),(4,'//www.youtube.com/embed/fy1N2ioHJsk?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(5,'//www.youtube.com/embed/mpXPF2m3dIs?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,NULL,NULL,'v'),(6,'//www.youtube.com/embed/TSZFcZSeIaM?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,1,NULL,'v'),(7,'//www.youtube.com/embed/ZT16mQKt59Y?list=UUTFRS2ASeWoQSwzBkx2dPIg',3,1,NULL,'v'),(8,'uploads/evento3-0-Captura de tela de 2014-06-13 15:33:04.png',3,1,'teste','f'),(20,'uploads/Andre.jpg',1,NULL,'foto palestrante','f'),(21,'uploads/Andre.jpg',1,NULL,'foto palestrante','f'),(22,'uploads/Andre.jpg',1,NULL,'foto palestrante','f'),(23,'uploads/palestra6.jpg',1,NULL,'foto palestrante','f'),(24,'uploads/bandeiras brasil 4.jpg',1,NULL,'foto palestrante','f'),(25,'uploads/bandeiras brasil 4.jpg',1,NULL,'foto palestrante','f');
+INSERT INTO `foto_video` VALUES (35,'uploads/mark.jpg',NULL,NULL,'foto palestrante','f'),(36,'uploads/mark.jpg',NULL,NULL,'foto palestrante','f'),(37,'uploads/Dts_news_bill_gates_wikipedia.JPG',NULL,NULL,'foto palestrante','f'),(38,'uploads/download.jpg',NULL,NULL,'foto palestrante','f'),(42,'uploads/evento15-0-tdc2012.jpeg',15,NULL,'Logotipo TDC.','f'),(43,'uploads/evento15-1-tdc.jpg',15,NULL,'TDC.','f'),(44,'uploads/evento15-2-td.jpg',15,NULL,'TDC','f'),(46,'https://www.youtube.com/watch?v=bwA1DcETgTw',15,NULL,'Vídeo de um palestrante do TDC.','v'),(47,'uploads/evento16-0-utfpr.jpg',16,NULL,'Logotipo da UTFPR.','f'),(48,'uploads/evento16-1-utfpr2.jpg',16,NULL,'Estrutura da UTFPR Guarapuava.','f'),(49,'uploads/evento16-2-utfpr3.jpg',16,NULL,'Estrutura da UTFPR Guarapuava.','f'),(50,'https://www.youtube.com/watch?v=BDBCnzW5uRQ',16,NULL,'Vídeo da semana acadêmica da UTFPR.','v'),(51,'https://www.youtube.com/watch?v=eStNcJ7S7No',17,NULL,'Palestra sobre empreendedorismo.','v'),(52,'uploads/evento17-0-ev1.jpg',17,NULL,'Logotipo do evento.','f'),(53,'uploads/evento17-1-ev2.jpg',17,NULL,'Logotipo do evento.','f'),(54,'uploads/evento17-2-ev3.jpg',17,NULL,'Logotipo do evento.','f'),(59,'https://www.youtube.com/watch?v=VQ5y45cPQzA',15,5,'Bill Gates dá conselho aos jovens.','v'),(60,'uploads/subevento5-0-Dts_news_bill_gates_wikipedia.JPG',15,5,'','f'),(61,'uploads/subevento6-0-download.jpg',16,6,'Palestrante: o criador do instagram.','f'),(62,'https://www.youtube.com/watch?v=_7IiIJyRbaM',16,6,'Mike Krieger, fala sobre como criar um produto inovador.','v');
 /*!40000 ALTER TABLE `foto_video` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -313,7 +286,6 @@ CREATE TABLE `inscricao` (
 
 LOCK TABLES `inscricao` WRITE;
 /*!40000 ALTER TABLE `inscricao` DISABLE KEYS */;
-INSERT INTO `inscricao` VALUES (1,'2014-06-04',0,1,3),(2,'2014-06-02',0,2,3);
 /*!40000 ALTER TABLE `inscricao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -344,7 +316,6 @@ CREATE TABLE `inscricao_subevento` (
 
 LOCK TABLES `inscricao_subevento` WRITE;
 /*!40000 ALTER TABLE `inscricao_subevento` DISABLE KEYS */;
-INSERT INTO `inscricao_subevento` VALUES (1,'2014-06-04',0,1,1),(2,'2014-06-02',NULL,2,2);
 /*!40000 ALTER TABLE `inscricao_subevento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -400,7 +371,7 @@ CREATE TABLE `palestrante` (
   CONSTRAINT `fk_image` FOREIGN KEY (`id_image`) REFERENCES `foto_video` (`id_foto_video`),
   CONSTRAINT `fk_palestrante_cidade1` FOREIGN KEY (`id_cidade`) REFERENCES `cidade` (`id_cidade`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_palestrante_formacao1` FOREIGN KEY (`id_formacao`) REFERENCES `formacao` (`id_formacao`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -409,7 +380,7 @@ CREATE TABLE `palestrante` (
 
 LOCK TABLES `palestrante` WRITE;
 /*!40000 ALTER TABLE `palestrante` DISABLE KEYS */;
-INSERT INTO `palestrante` VALUES (1,'Palestrante teste','1960-01-01',9,'palestrante@teste.com.br',NULL,2222,NULL,NULL,NULL,'palestrante especialista em Bd',1,'n'),(2,'Andre Felipe Silveira','1991-12-30',3,'andrefelipesilveira@gmail.com','4299731170',2328,'teste','teste','teste','Testando novo palestrante',22,'s'),(3,'Juliana Paes','1985-07-25',4,'juliana@paes.com.br','4299999999',4051,'http://facebook.com/juliana.paes','http://twitter.com/julianapaes','http://plus.google.com/Julianapaes','Doutorado em Ser Gostosa',23,'s'),(4,'ahsdui','1011-01-01',1,'123@123.com','123',188,'123','123','123','asdd',24,'s'),(5,'Érico Dias','1993-01-03',1,'ericodias1@gmail.com','42 99862680',7599,'ericodias10','ericodias','ericodias1','Moca focasso, palestra muito',25,'s');
+INSERT INTO `palestrante` VALUES (13,'Mark Zuckerberg','1990-01-01',10,'mark@facebook.com','(11) 0000 00',6861,'http://www.facebook.com/mark','http://www.twitter.com/mark','http://plus.google.com/mark','Mark Zuckerberg criou o Facebook, a maior rede social do mundo.',36,'s'),(14,'Bill Gates','1990-01-01',10,'bill@hotmail.com','(11) 0000 00',9422,'http://www.facebook.com/bilgates','http://www.twitter.com/billgates','http://plus.google.com/billgates','Bill Gates é o dono da Microsoft, uma das maiores empresas de software do mundo.',37,'s'),(15,'Mike Krieger','1990-01-01',9,'mike@instagram.com','(11) 0000 00',7777,'http://www.facebook.com/mikekrieger','http://www.twitter.com/mikekrieger','http://plus.google.com/mikekrieger','Mike Krieger é brasileiro e criador do Instagram, a maior rede social de fotos atualmente.',38,'s');
 /*!40000 ALTER TABLE `palestrante` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -436,7 +407,6 @@ CREATE TABLE `referencia` (
 
 LOCK TABLES `referencia` WRITE;
 /*!40000 ALTER TABLE `referencia` DISABLE KEYS */;
-INSERT INTO `referencia` VALUES (1,'titulo da pagina',3),(2,'titulo da aba do navegador',3);
 /*!40000 ALTER TABLE `referencia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -464,7 +434,7 @@ CREATE TABLE `subevento` (
   KEY `fk_subevento_palestrante1_idx` (`id_palestrante`),
   CONSTRAINT `fk_subevento_evento1` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_subevento_palestrante1` FOREIGN KEY (`id_palestrante`) REFERENCES `palestrante` (`id_palestrante`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -473,7 +443,7 @@ CREATE TABLE `subevento` (
 
 LOCK TABLES `subevento` WRITE;
 /*!40000 ALTER TABLE `subevento` DISABLE KEYS */;
-INSERT INTO `subevento` VALUES (1,'Bloco - B','Assuntos:gerencia e configuração','2014-06-10 19:00:00',10,'2014-06-05',3,'s',1,'Mysql - Gerencia e Configuração','s'),(2,'Bloco F','Introdução a zend framework','2014-06-10 18:00:00',20,'2014-06-05',3,'s',1,'Trabalhando Com zend framework','s'),(3,'Bloco G Utfpr -Guarapuava','Palestra Desmotivadora ','1991-12-20 12:00:00',10,'1991-12-18',3,'1',1,'Palestra Com André Silveira','s'),(4,'Auditorio UTFPR','Tecnicas imperdiveis para mysql','2010-10-10 12:00:00',20,'2014-10-08',5,'1',1,'Truques com Mysql','s');
+INSERT INTO `subevento` VALUES (5,'Sala 3','Palestra com Bill Gates, dando dicas de como ter sucesso em um empreendimento de TI.','2014-08-13 10:00:00',20,'2014-08-12',15,'1',14,'Microsoft: sucesso total!','s'),(6,'Bloco F','O criador do Instagram irá falar sobre as redes sociais.','2014-07-08 14:00:00',20,'2014-07-06',16,'1',15,'Redes sociais nos dias atuais','s');
 /*!40000 ALTER TABLE `subevento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -507,7 +477,6 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'Teste Usuario','0000000000','2000-03-12','1111111111','teste@teste.com',2222,'123',NULL,NULL),(2,'Teste 2','0000000000','1999-01-01','00000000','usuario@teste.com',346,'123',NULL,NULL),(3,'Andre Felipe Silveira','921298309','1991-12-30','19231983209','andre@silveira.com',6025,'abc123','nelson 81','boqueirao'),(4,'André Felipe Silveira','06417010100','0000-00-00','2309u8390890','andrefelipesilveira@gmail.com',5674,'asdas','asdasd','asdas');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -527,7 +496,7 @@ CREATE TABLE `valor_evento` (
   PRIMARY KEY (`id_valor`),
   KEY `fk_valor_evento1_idx` (`id_evento`),
   CONSTRAINT `fk_valor_evento1` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='evento_id_evento';
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='evento_id_evento';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -536,7 +505,7 @@ CREATE TABLE `valor_evento` (
 
 LOCK TABLES `valor_evento` WRITE;
 /*!40000 ALTER TABLE `valor_evento` DISABLE KEYS */;
-INSERT INTO `valor_evento` VALUES (1,'2014-06-01','2014-06-02',20,3),(2,'2014-06-03','2014-06-05',50,3),(3,'2014-10-01','2014-10-30',20,4),(4,'2014-10-31','2014-12-20',30,4),(5,'2014-05-01','2014-06-14',35,5),(6,'2014-06-01','2014-06-05',10,6),(7,'2014-06-06','2014-06-20',15,6),(8,'2014-06-21','2014-07-20',20,6),(9,'2010-10-20','0000-00-00',1230,8);
+INSERT INTO `valor_evento` VALUES (10,'2014-07-13','2014-07-30',30,15),(11,'2014-07-31','2014-08-12',40,15),(12,'2014-05-07','2014-06-06',30,16),(13,'2014-06-07','2014-07-06',40,16),(14,'2014-07-01','2014-07-15',20,17),(15,'2014-07-16','2014-07-31',30,17);
 /*!40000 ALTER TABLE `valor_evento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -556,7 +525,7 @@ CREATE TABLE `valor_subevento` (
   PRIMARY KEY (`id_valor_subevento`),
   KEY `fk_valor_subevento_subevento1_idx` (`id_subevento`),
   CONSTRAINT `fk_valor_subevento_subevento1` FOREIGN KEY (`id_subevento`) REFERENCES `subevento` (`id_subevento`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -565,7 +534,7 @@ CREATE TABLE `valor_subevento` (
 
 LOCK TABLES `valor_subevento` WRITE;
 /*!40000 ALTER TABLE `valor_subevento` DISABLE KEYS */;
-INSERT INTO `valor_subevento` VALUES (1,'2014-06-01','2014-06-01',15,1),(2,'2014-06-02','2014-06-05',30,1),(3,'2014-06-01','2014-06-03',30,2),(4,'2014-06-04','2014-06-05',35,2),(5,'1991-12-10','1991-12-18',35,3),(6,'2010-01-01','2010-10-08',50,4);
+INSERT INTO `valor_subevento` VALUES (7,'2014-07-13','2014-07-30',10,5),(8,'2014-07-31','2014-08-12',15,5),(9,'2014-05-07','2014-06-06',10,6),(10,'2014-06-07','2014-07-06',20,6);
 /*!40000 ALTER TABLE `valor_subevento` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -578,4 +547,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-07-11 19:57:27
+-- Dump completed on 2014-07-13 20:04:50

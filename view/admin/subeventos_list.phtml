@@ -22,7 +22,7 @@
                 <tr>
                   <th> Nome </th>
                   <th> Data&nbsp;do&nbsp;Subevento </th>
-                  <th> Editar</th>
+                  <th> Inserir media</th>
                   <th> Excluir</th>
                 </tr>
               </thead>
@@ -32,8 +32,8 @@
                 <tr>
                   <td><?= $subevento['titulo'] ?></td>
                   <td><?= $subevento['data_hora'] ?></td>
-                  <td class="td-actions"><a class="btn btn-primary" href="javascript:;"><i class="btn-icon-only icon-pencil"> </i></a></td>
-                  <td class="td-actions"><a class="btn btn-danger" href="javascript:;"><i class="btn-icon-only icon-trash"> </i></a></td>
+                  <td class="td-actions"><a class="btn btn-primary" href="<?= App::getUrl('admin/subeventos/media/'.$subevento['id_subevento']) ?>"><i class="btn-icon-only icon-pencil"> </i></a></td>
+                  <td class="td-actions"><a class="btn btn-danger" href="<?= App::getUrl('admin/subeventos/delete/'.$subevento['id_subevento']) ?>"><i class="btn-icon-only icon-trash"> </i></a></td>
                 </tr>
               <?php endforeach; ?>
               </tbody>

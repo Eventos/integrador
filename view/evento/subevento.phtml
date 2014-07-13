@@ -3,7 +3,6 @@ $id_evento       = $params[0];
 $id_subevento    = $params[1];
 $array_evento    = Evento::getEvento($id_subevento , 'all');
 $array_subevento = Subevento::getSubevento($id_evento, $id_subevento, 'all');
-
 ?>
 <?php foreach ($array_subevento as $subevento): ?>	
 	<div class="h_right">

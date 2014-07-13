@@ -17,7 +17,7 @@
 				}else{ ?>
 				<h3> Ainda não há Imagens para este Evento</h3>
 				<?php } ?>
-				<p>Veja os Detalhes na <a href="<?= App::getUrl()?>evento/view/3/<?=$s['id_subevento']?>">Pagina do Evento</a></p>
+				<p>Veja os Detalhes na <a href="<?= App::getUrl()?>evento/view/<?= $s['id_evento'] ?>/<?=$s['id_subevento']?>">Pagina do Sub-evento</a></p>
 			</div>
 		<?php endforeach;?>
 	</div>

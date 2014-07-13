@@ -15,7 +15,7 @@ class PalestranteModel extends ModelAbstract
 			$query = "INSERT INTO foto_video (link, id_evento, id_subevento, descricao, tipo) Values (:caminho, :evento, :subevento, :descricao, :tipo )";
 			$values = Array(
 				':caminho' => $caminho,
-				':evento' => 1,
+				':evento' => null,
 				':subevento' => null,
 				':descricao' => 'foto palestrante',
 				':tipo' => 'f'
