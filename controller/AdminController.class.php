@@ -192,4 +192,29 @@ class AdminController extends ControllerAbstract
 		$this->render('admin/recontact',$params);
 		exit();
 	}
+	function insertAction($params){
+		if(isset($params[0]) && $params[0] == 'post'){
+			if($_POST['senha'] !== $_POST['senha2'] ){
+				Flash::setMessage('danger','As Senhas não conferem');
+				App::redirect('admin/new');
+				exit;
+			}
+			$data = $_POST;
+			$admin = new AdminModel();
+			$status = $admin->newAdmin($data);
+		}
+		if($status){
+			Flash::setMessage('success','Admin cadastrado com sucesso!');
+		}else{
+			Flash::setMessage('danger','Erro ao cadastrar admin.');
+		}
+		App::redirect('admin/new');
+		
+		exit();
+	}
+	
+	function newAction($params){
+		$this->render('admin/newAdmin');
+		exit;
+	}
 }

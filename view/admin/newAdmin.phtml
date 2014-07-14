@@ -1,0 +1,68 @@
+
+<div class="page-content">
+	<div class="content container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="page-title">Inserir Administrador <small>Cadastre aqui os novos Administradores</small></h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="widget">
+					<div class="widget-header"> <i class="icon-user"></i>
+						<h3>Administrador</h3>
+					</div>
+					<div class="widget-content">
+						<form action="<?= App::getUrl() ?>admin/insert/post" method="POST" enctype="multipart/form-data" class="form-horizontal">
+							<fieldset>
+								<legend class="section">Dados</legend>
+								<div class="control-group">
+									<label for="normal-field" class="control-label">Nome</label>
+									<div class="controls form-group">
+										<input type="text" name="nome" placeholder="Digite o nome do Administrador" class="form-control" id="normal-field">
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="hint-field" class="control-label"> Data de nascimento </label>
+									<div class="controls form-group">
+										<input type="date" name="data_nascimento" class="form-control">  
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="hint-field" class="control-label"> CPF </label>
+									<div class="controls form-group">
+										<input type="text" name="cpf" placeholder="Digite o cpf do Administrador" class="form-control" id="normal-field">
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="hint-field" class="control-label"> Senha </label>
+									<div class="controls form-group">
+										<input type="password" name="senha" placeholder="Digite uma senha para Administrador" class="form-control" id="normal-field">
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="hint-field" class="control-label"> Confirme a Senha </label>
+									<div class="controls form-group">
+										<input type="password" name="senha2" placeholder="Confirme a senha anterior" class="form-control" id="normal-field">
+									</div>
+								</div>
+								<div class="control-group">
+									<label for="disabled-input" class="control-label ">Email</label>
+									<div class="controls form-group">
+										<input type="email" name="email" placeholder="Digite o email do Administrador" class="form-control" id="normal-field">
+									</div>
+								</div>
+							</fieldset>
+							<div class="form-actions">
+								<div class="btn-actions">
+									<button class="btn-action btn btn-success" type="submit">Inserir Administrador</button>
+									<button class="btn-action btn btn-default" onclick="window.location.href='<?=App::getUrl()?>admin';" type="button">Cancelar</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

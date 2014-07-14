@@ -69,4 +69,25 @@ class AdminModel extends ModelAbstract
 		$emails = $query->fetchAll(PDO::FETCH_ASSOC);
 		return $emails;
 	}
+
+	function newAdmin($data){
+		try{
+			$query = 'INSERT INTO administrador (nome, data_nascimento, cpf, senha, email) VALUES (:nome, :data_nascimento, :cpf, :senha, :email)';
+			$values = array(
+						':nome' => $data['nome'],
+						':data_nascimento' => $data['data_nascimento'],
+						':cpf' => $data['cpf'],
+						':senha' => $data['senha'],
+						':email' => $data['email']
+					);
+			$prep = $this->db->prepare($query);
+			$query = $prep->execute($values);
+			if(!$query) throw new PDOException ($Exception);
+		}catch(PDOException $e){
+			Flash::setMessage('danger', $e->getMessage( ).$e->getCode( ) );
+			App::redirect('admin/index');
+			exit;
+		}
+		return true;
+	}
 }
