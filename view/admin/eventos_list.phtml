@@ -20,6 +20,7 @@
                   <th> Tiulo </th>
                   <th> Descrição </th>
                   <th> Data&nbsp;do&nbsp;Evento </th>
+                  <th> Número de inscritos </th>
                   <th> Inserir&nbsp;Subevento </th>
                   <th> Inserir media</th>
                   <th> Excluir</th>
@@ -32,6 +33,7 @@
                   <td><?= $evento['titulo']?></td>
                   <td><?= $evento['descricao_resumida']?></td>
                   <td><?= $evento['data_hora']?></td>
+                  <td><?= EventoModel::countRegistered($evento['id_evento']) ?></td>
                   <td class="td-actions"><a class="btn btn-success" href="<?= App::getUrl() ?>admin/subeventos/<?= $evento['id_evento'] ?>/new"><i class="btn-icon-only icon-plus"> </i></a></td>
                   <td class="td-actions"><a class="btn btn-primary" href="<?= App::getUrl() ?>admin/eventos/media/<?= $evento['id_evento'] ?>"><i class="btn-icon-only icon-pencil"> </i></a></td>
                   <td class="td-actions"><a class="btn btn-danger" href="<?= App::getUrl() ?>admin/eventos/delete/<?= $evento['id_evento'] ?>"><i class="btn-icon-only icon-trash"> </i></a></td>

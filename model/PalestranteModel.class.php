@@ -72,8 +72,12 @@ class PalestranteModel extends ModelAbstract
 		return false;
 	}
 
-	function getData(){
-		$query = "SELECT * FROM palestrante WHERE ativo = 's'";
+	function getData($id=null){
+		if($id){
+			$query = "SELECT * FROM palestrante WHERE ativo = 's' and id_palestrante = $id";
+		}else{
+			$query = "SELECT * FROM palestrante WHERE ativo = 's'";
+		}
 		$db = $this->db->prepare($query);
 		$db->execute();
 		$data = $db->fetchAll(PDO::FETCH_ASSOC);

@@ -5,6 +5,8 @@ $array_evento    = Evento::getEvento($id_subevento , 'all');
 $array_subevento = Subevento::getSubevento($id_evento, $id_subevento, 'all');
 ?>
 <?php foreach ($array_subevento as $subevento): ?>	
+	<?php $valores = Subevento::getAllValues($subevento['id_subevento']);
+		  $palestrante = Palestrante::getPalestrante($subevento['id_palestrante']); ?>
 	<div class="h_right">
 		<b><h1><?= $subevento['titulo']?></h1></b>
 	</div>
@@ -18,8 +20,8 @@ $array_subevento = Subevento::getSubevento($id_evento, $id_subevento, 'all');
 		<?php endif; ?>
 		<div class="row sub_describle">
 			<center><h3>Descrição</h3></center>
-			<big>Tema:</big><p><?= $subevento['descricao']?></p>
-			<big>Palestrante:</big><p><?= 'Trazer palestrante'?></p>
+			<big>Tema:</big><p><?= $subevento['descricao'] ?></p>
+			<big>Palestrante:</big><p><?= $palestrante['nome'] ?></p>
 			<br>
 			<center>Tabela de Valores</center>
 			<table class="table table-bordered">
@@ -32,11 +34,13 @@ $array_subevento = Subevento::getSubevento($id_evento, $id_subevento, 'all');
 					</tr>
 				</thead>
 				<tbody>
+					<?php foreach ($valores as $valor): ?>
 					<tr>
-						<td>__/__/____</td>
-						<td>__/__/____</td>
-						<td>R$:</td>
+						<td><?= $valor['data_ini'] ?></td>
+						<td><?= $valor['data_fim'] ?></td>
+						<td>R$ <?= $valor['valor'] ?></td>
 					</tr>
+					<?php endforeach; ?>
 				</tbody>
 			</table>
 		</div>

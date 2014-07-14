@@ -20,6 +20,13 @@ class Palestrante
 		$palestrantes = new PalestranteModel();
 		return $palestrantes->getData();
 	}
+
+	static function getPalestrante($id){
+		$palestrantes = new PalestranteModel();
+		$palestrante = $palestrantes->getData($id);
+		return $palestrante[0];
+	}
+
 	static function getImagePalestrante($id){
 		$html = new PalestranteModel();
 		return $html->getImage($id);
