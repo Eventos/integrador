@@ -20,6 +20,10 @@ class Subevento
 		return $data;
 	}
 
+	static function getAllValues($id_subevento){
+		$subevento = new SubeventoModel();
+		return $subevento->getAllValues($id_subevento);
+	}
 
 	static function getValueSubeventoById($id_subevento){
 		$subevento = new SubeventoModel();

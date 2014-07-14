@@ -65,10 +65,10 @@ class MediaModel extends ModelAbstract
 	}
 	function getVideos($id, $id_sub=null){
 		if($id_sub == null){
-			$query = "SELECT link FROM foto_video WHERE tipo = 'v' and id_evento = :id_evento ";
+			$query = "SELECT link, descricao FROM foto_video WHERE tipo = 'v' and id_evento = :id_evento ";
 			$value = array(':id_evento' => $id);
 		}else{
-			$query = "SELECT link FROM foto_video WHERE tipo = 'v' and id_evento = :id_evento and id_subevento = :id_sub ";
+			$query = "SELECT link, descricao FROM foto_video WHERE tipo = 'v' and id_evento = :id_evento and id_subevento = :id_sub ";
 			$value = array(':id_evento' => $id, ':id_sub' => $id_sub);
 		}
 		$prep = $this->db->prepare($query);

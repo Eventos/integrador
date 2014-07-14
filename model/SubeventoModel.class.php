@@ -143,6 +143,14 @@ class SubeventoModel extends ModelAbstract
 		return false;
 	}
 
+	function countRegistered($id){
+		//$query = "SELECT count(id_inscricao)  FROM inscricao WHERE pagamento = 1 and id_evento =  '$id'";
+		$query = "SELECT count(id_inscricao) FROM inscricao_subevento WHERE id_subevento =  '$id'";
+		$data = $this->db->query($query);
+		$data = $data->fetch(PDO::FETCH_NUM);
+		return $data[0];
+	}
+
 	function getlist($id_evento,$id_subevento=null){
 		if($id_subevento === null){
 			$query = "SELECT id_subevento, titulo, descricao, data_hora FROM subevento WHERE id_evento = '$id_evento' and ativo = 's'";
@@ -194,6 +202,15 @@ class SubeventoModel extends ModelAbstract
 			return $data;	
 		}
 		return null;
+	}
+
+	function getAllValues($id_subevento){
+		$query = "SELECT * FROM valor_subevento WHERE id_subevento = :id";
+		$value = array(':id' => $id_subevento);
+		$db = $this->db->prepare($query);
+		$db->execute($value);
+		$valor = $db->fetchAll(PDO::FETCH_ASSOC);
+		return $valor;
 	}
 
 	function deleteAction($id){

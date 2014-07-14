@@ -18,6 +18,8 @@ class EventoModel extends ModelAbstract
 			$aberto = $query->fetch(PDO::FETCH_ASSOC);
 			$aberto = $aberto >= 0 ? 1 : 0;
 
+			if(strlen($data['palestrante']) > 10) $data['palestrante'] = null;
+
 			$id_evento = $this->getNextIncrement('evento');
 
 			$query = "INSERT INTO evento (local, desc_contato, data_hora, data_limite, vagas, aberto, desc_evento, email_contato, telefone_contato, id_cidade, id_administrador, facebook, twitter, google_plus, id_palestrante, titulo, descricao_resumida, ativo) VALUES (:local, :descricao_contato, :data_hora, :data_limite, :vagas, :aberto, :desc_evento, :email_contato, :telefone_contato, :id_cidade, :id_administrador, :facebook, :twitter, :google_plus, :palestrante, :titulo, :descricao_resumida, 's')";
@@ -118,17 +120,17 @@ class EventoModel extends ModelAbstract
 	function eventoExists($id=null, $type=null){
 		if($type ==null){
 			if($id === null){
-				$query = "SELECT id_evento FROM evento WHERE aberto = 1 and ativo = 's'";
+				$query = "SELECT id_evento FROM evento WHERE aberto = 1 and (ativo = 's' AND DATEDIFF(CURDATE(), data_hora) <= 0)";
 			}
 			else{
-				$query = "SELECT id_evento FROM evento WHERE id_evento = '$id' and aberto = 1 and ativo='s' ";
+				$query = "SELECT id_evento FROM evento WHERE id_evento = '$id' and aberto = 1 and (ativo = 's' AND DATEDIFF(CURDATE(), data_hora) <= 0)";
 			}
 		}else{
 			if($id === null){
-				$query = "SELECT id_evento FROM evento WHERE ativo = 'n'";
+				$query = "SELECT id_evento FROM evento WHERE ativo = 'n' OR DATEDIFF(CURDATE(), data_hora) > 0";
 			}
 			else{
-				$query = "SELECT id_evento FROM evento WHERE id_evento = '$id' and ativo='n' ";
+				$query = "SELECT id_evento FROM evento WHERE id_evento = '$id' and (ativo='n' OR DATEDIFF(CURDATE(), data_hora) > 0)";
 			}
 		}
 
@@ -157,17 +159,17 @@ class EventoModel extends ModelAbstract
 	function getData($id=null,$type=null){
 		if($type == null){
 			if($id === null){
-				$query = "SELECT * FROM evento WHERE aberto = 1 and ativo = 's'";
+				$query = "SELECT * FROM evento WHERE aberto = 1 and (ativo = 's' AND DATEDIFF(CURDATE(), data_hora) <= 0)";
 			}
 			else{
-				$query = "SELECT * FROM evento WHERE id_evento = '$id' and aberto = 1 and ativo = 's' ";
+				$query = "SELECT * FROM evento WHERE id_evento = '$id' and aberto = 1 and (ativo = 's' AND DATEDIFF(CURDATE(), data_hora) <= 0)";
 			}
 		}else{
 			if($id === null){
-				$query = "SELECT * FROM evento WHERE ativo = 'n'";
+				$query = "SELECT * FROM evento WHERE ativo = 'n' OR DATEDIFF(CURDATE(), data_hora) > 0";
 			}
 			else{
-				$query = "SELECT * FROM evento WHERE id_evento = '$id' and ativo = 'n' ";
+				$query = "SELECT * FROM evento WHERE id_evento = '$id' and (ativo = 'n' OR DATEDIFF(CURDATE(), data_hora) > 0)";
 			}
 		}
 
@@ -188,13 +190,15 @@ class EventoModel extends ModelAbstract
 		
 		return $linha;
 	}
+	
 	function countRegistered($id){
-		$id = 3;
-		$query = $query = "SELECT count(id_inscricao)  FROM inscricao WHERE pagamento = 1 and Id_evento =  '$id'";
+		//$query = "SELECT count(id_inscricao)  FROM inscricao WHERE pagamento = 1 and id_evento =  '$id'";
+		$query = "SELECT count(id_inscricao) FROM inscricao WHERE id_evento =  '$id'";
 		$data = $this->db->query($query);
 		$data = $data->fetch(PDO::FETCH_NUM);
 		return $data[0];
 	}
+
 	function deleteAction($id){
 		try{
 			$query = "UPDATE evento SET ativo = 'n' WHERE id_evento = $id";

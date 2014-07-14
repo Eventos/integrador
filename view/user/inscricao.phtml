@@ -66,7 +66,7 @@ if(!($vagas > 0)){
 														<label for="checkbox<?= $d['id_subevento'] ?>" class="css-label"></label>
 													 </td>
 													<td> <?=$d['titulo'];?> </td>
-													<td> <a href="#">Ver Descrição</a> </td>
+													<td> <?= $d['descricao'] ?> </td>
 													<td> <?= $d['data_limite']; ?></td>
 													<td> <?= $d['vagas'];?> </td>
 													<td class="valor-subevento"> R$<span class="price-subevento"><?= $valor_subevento;?> </span></td>

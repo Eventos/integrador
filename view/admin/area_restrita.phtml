@@ -49,7 +49,7 @@
                   <tr>
                     <td> <?= $evento['titulo'] ?> </td>
                     <td align="center"> <?= $evento['vagas'] ?> </td>
-                    <td align="center"> <?= $evento['vagas'] - EventoModel::countRegistered($evento['id_evento']) ?> </td>
+                    <td align="center"> <?= EventoModel::countRegistered($evento['id_evento']) ?> </td>
                     <!-- <td class="td-actions"><a class="btn btn-danger btn-large" href="javascript:;"><i class="btn-icon-only icon-remove"> </i></a></td> -->
                   </tr>
                 <?php endforeach; ?>  

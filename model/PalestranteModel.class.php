@@ -15,7 +15,7 @@ class PalestranteModel extends ModelAbstract
 			$query = "INSERT INTO foto_video (link, id_evento, id_subevento, descricao, tipo) Values (:caminho, :evento, :subevento, :descricao, :tipo )";
 			$values = Array(
 				':caminho' => $caminho,
-				':evento' => 1,
+				':evento' => null,
 				':subevento' => null,
 				':descricao' => 'foto palestrante',
 				':tipo' => 'f'
@@ -72,8 +72,12 @@ class PalestranteModel extends ModelAbstract
 		return false;
 	}
 
-	function getData(){
-		$query = "SELECT * FROM palestrante WHERE ativo = 's'";
+	function getData($id=null){
+		if($id){
+			$query = "SELECT * FROM palestrante WHERE ativo = 's' and id_palestrante = $id";
+		}else{
+			$query = "SELECT * FROM palestrante WHERE ativo = 's'";
+		}
 		$db = $this->db->prepare($query);
 		$db->execute();
 		$data = $db->fetchAll(PDO::FETCH_ASSOC);

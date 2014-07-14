@@ -70,6 +70,7 @@ class App
 		if(!isset($_COOKIE["boas_vindas"])){
 			setcookie('boas_vindas','0', $time);
 		}else{
+			unset($_COOKIE['boas_vindas']);
 			setcookie('boas_vindas',$valor, $time);
 		}
 	}
