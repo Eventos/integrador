@@ -175,6 +175,7 @@ class AdminController extends ControllerAbstract
 		$mail = new Email();
 		if($params[1] == 'html'){
 			$headers = "MIME-Version: 1.0\r\n";
+			$headers.= "From: eventosutfpr@yahoo.com";
 			$headers.= "Content-type: text/html; charset=iso-8859-1\r\n";
 			$html = '<html><head><meta http-equiv=Content-Type content="text/html; charset=utf-8"></head><body>';
    			$html.= $_POST['html'];
@@ -182,7 +183,8 @@ class AdminController extends ControllerAbstract
 		}else
 			$html = $_POST['html'];
 
-		$mail->sendMail($_POST['email'],$_POST['subject'],$html, $headers);
+		$status = $mail->sendMail($_POST['email'],$_POST['subject'],$html, $headers);
+		App::redirect('admin/');
 	}
 
 	function recontactAction($params){

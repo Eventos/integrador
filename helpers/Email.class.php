@@ -9,7 +9,7 @@ class Email
 		$state =  App::Send($to,$subject,$message, $header);
 		
 		if($state){
-			Flash::getMessage('success','Email(s) enviado(s) com Sucesso');
+			Flash::setMessage('success','Email(s) enviado(s) com Sucesso');
 			return true;
 		}else{
 			Flash::setMessage('danger','Erro ao enviar email(s)...');
