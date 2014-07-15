@@ -24,5 +24,5 @@ define('DB_USER', 'root');
 define('DB_PASSWORD', '12345');
 
 //DADOS DO PAGSEGURO
-define('EMAIL_PAGSEGURO', 'aranhadias@hotmail.com');
-define('TOKEN_PAGSEGURO', 'A14097F674FB4BC488090D599E9541D8');
+define('EMAIL_PAGSEGURO', 'andrefelipesilveira@yahoo.com.br');
+define('TOKEN_PAGSEGURO', '12D4AF854AAD4080AE3C6838386E988B');

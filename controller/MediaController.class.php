@@ -18,9 +18,20 @@ class MediaController extends ControllerAbstract
 			if(file_exists($src)){
 		        $html.='<div class="image-row">';
 		        $html.='<div class="image-set">';
-		        $html.='<a href="'.$src_url.'" data-lightbox="example-set" title="Evento">';
-		        $html.=' <img class="example-image" src="'.$src_url.'" alt="Evento" width="150" height="150"/>';
+		        $html.='<a id="single_image" href="'.$src_url.'" title="Evento">';
+		        $html.=' <img src="'.$src_url.'" alt="Evento" width="150" height="150"/>';
 		        $html.='</a></div></div>';
+
+		        /*
+                $html.="<div class='widget-content'>";
+                $html.="<div id='examples' class='section examples-section'>";
+		        $html.="<div class='col-sm-4 col-md-2'>";
+		        $html.="<div class='image-row'>";
+		        $html.='<div class="image-set">';
+		        $html.="<a class='example-image-link' href='".$src_url."' data-lightbox='example-set' title='Clique no lado da imagem para avançar.'>";
+		        $html.="<img class='example-image' src='".$src_url."' alt='evento' width='150' height='150'/>";
+		        $html.='</a></div></div></div></div></div>';*/
+		        
 			}	        
 		}         
 		return $html;	 

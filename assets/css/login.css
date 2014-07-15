@@ -159,4 +159,10 @@ input.btn.btn-default:hover{border: inset 2px rgb(42, 143, 23);background-color:
 .form-control::-moz-placeholder {color: #fff;}
 .form.control:-ms-input-control -placeholder {color: #fff;}
 #forgot{bottom: 0;width: 100%;margin: -100px auto;text-align: center;height: 153px;background: rgba(54, 54, 9, 0.49);border-radius: 0px 0px 10px 10px;padding-top: 23%;}
-#forgot>a{color:white;}
+#forgot>a{color:white;color: white;
+width: 65%;
+height: 40px;
+font-weight: bolder;
+font-size: 16px;
+background: rgba(0, 184, 255, 0.57);
+text-shadow: 2px 1px 1px black;}
