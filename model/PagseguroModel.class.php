@@ -34,7 +34,7 @@ class PagseguroModel extends ModelAbstract
 
 			$user = $_SESSION['user'];
 
-			$nome = preg_replace( '/[`^~\'"]/', null, iconv( 'UTF-8', 'ASCII//TRANSLIT', $user['name']));
+			$nome = strtr($user['name'], "áàãâéêíóôõúüçÁÀÃÂÉÊÍÓÔÕÚÜÇ", "aaaaeeiooouucAAAAEEIOOOUUC");
 
 			$pagseguro->setSender($nome, $user['email'], '', '');
 
