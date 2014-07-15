@@ -12,7 +12,7 @@
 									<thead>
 										<tr>
 											<th class="hidden-xs-portrait">#</th>
-											<th>Miniatura</th>
+											<!-- <th>Miniatura</th> -->
 											<th>Nome do Evento</th>
 											<th class="hidden-xs-portrait">Informação</th>
 											<th class="hidden-xs">Data do Evento</th>
@@ -28,13 +28,15 @@
 											<?php $n++; ?>
 											<tr>
 												<td class="hidden-xs-portrait"><?= $n; ?></td> 
-												<td><img src="images/1.jpg"></td>
+												<!-- <td><img src="images/1.jpg"></td> -->
 												<td class="hidden-xs-portrait"><p> <small> <?= $key['titulo']; ?> </small> </p></td>										
 												<td> <?= $key['descricao_resumida']; ?> </td>
 												<td class="hidden-xs"> <?= $key['data_hora']; ?></td>
 												<td class="hidden-xs"> <?= $key['data_limite']; ?> </td>
-												<td><button class="btn btn-sm btn-primary" style="margin-bottom:5px"> Visualizar </button>
-													<button data-toggle="button" class="btn btn-sm btn-warning" style="margin-bottom:5px"> Inscrever-se </button></td>
+												<td>
+													<a class="btn btn-sm btn-primary" href="view/<?=$key['id_evento']?>" style="margin-bottom:5px"> Visualizar </a>
+													<a class="btn btn-sm btn-warning" href="<?=App::getUrl()?>inscricao/execute/<?=$key['id_evento']?>" style="margin-bottom:5px"> Inscrever-se </a>
+												</td>
 											</tr>
 										<?php endforeach; ?>
 							<?php endif; ?>		

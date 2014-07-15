@@ -21,6 +21,11 @@
  Page::addStyleElement('css', 'custom.css');
  Page::addStyleElement('js', 'jquery.min.js');
  ?>
+ <script>
+  setTimeout(function(){
+     $('.alert').remove();
+},3000);
+ </script>
  <!-- para internet explorer -->
 <!--[if lt IE 9]>
       <?php

@@ -40,20 +40,23 @@ class PagseguroModel extends ModelAbstract
 
 			if(isset($pagamento['subevento'])){
 				foreach ($pagamento['subevento'] as $id => $item) {
-					$pagseguro->addItem($id, $item['titulo'], 1, (float)$item['valor'], 0);
+					$pagseguro->addItem($id, $item['titulo'], 1, (float)$item['valor']);
 				}
 			}
-
-
+			/*var_dump($pagseguro, $this->credenciais);*/
 			$url = $pagseguro->register($this->credenciais);
-
 			return $url;
+
 		} catch (PagSeguroServiceException $e) {
 		    foreach ($e->getErrors() as $key => $error) {  
 		        echo $error->getCode().' - '; // imprime o código do erro  
 		        echo $error->getMessage().'<br>'; // imprime a mensagem do erro  
 		    }  
+		} catch (Exception $erro){
+			var_dump($erro);
 		}
+
+
 	}
 
 	private function montarArray($data){
