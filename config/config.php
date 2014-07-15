@@ -3,7 +3,7 @@
 define('SITE_ROOT', '/var/www/integrador/');
 
 //DEFINA A URL BASE DO SEU PROJETO
-define('URL_BASE', 'http://localhost/integrador/');
+define('URL_BASE', 'http://104.131.245.188/integrador/');
 
 //DEFINE O NOME DA PASTA DO SEU PROJETO PARA USO DO FRAMEWORK
 define('FOLDER', '/integrador/');
