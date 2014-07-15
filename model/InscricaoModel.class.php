@@ -84,8 +84,8 @@ class InscricaoModel extends ModelAbstract
 	private function enviarEmail($url_pag, $user){
 		$html = '<h1>Olá '.$user['nome'].'..</h1>';
 		$html.= 'Obrigado por realizar a inscrição nos nossos eventos.<br><br>';
-		$html.= 'Efetue o pagamento através da URL abaixo:<br>';
-		$html.= $url_pag.'<br><br>';
+		$html.= 'Efetue o pagamento através do link abaixo:<br>';
+		$html.= '<a href="'.$url_pag.'"target="_blank">Pagar Minha Inscrição</a><br>';
 		$html.= 'O prazo de recebimento do pagamento é de até 3 dias após a realização do mesmo.<br>';
 		$html.= 'Assim que seu pagamento for recebido, enviaremos uma confirmação via e-mail.<br>';
 		$html.= 'E-mail enviado automaticamente, qualquer dúvida estamos disponíveis para resposta.';

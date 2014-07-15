@@ -29,6 +29,7 @@ class IndexController extends ControllerAbstract
 				App::cookie('1');
 				$user_simple = new UserModel();
 				if ($user_simple->user_letter($email, $name)){
+					Email::newsletter($email,$name,null);
 					Flash::setMessage('success', 'Obrigado por se cadastrar em nossa newsletter');
 					App::redirect();
 				}

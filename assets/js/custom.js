@@ -14,3 +14,6 @@ function removeInscricao(){
 	$('.valor').last().remove();
 	event.preventDefault();
 }
+setTimeout(function(){
+     $('.alert').fadeToggle('slow');
+},1500);

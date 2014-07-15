@@ -79,7 +79,17 @@ class App
 		require_once(SITE_ROOT.'view/'.$view.'.phtml');
 	}
 
-	static function send($to, $subject, $msg, $headers=null){
+	static function getHeaders(){
+		$header = "MIME-Version: 1.0\n"; 
+		$header .= "Content-type: text/html; charset=iso-8859-1\n"; 
+		$header .= "From: eventosutfpr@yahoo.com\n";
+		return $header;
+	}
+
+	static function send($to, $subject, $msg, $headers=true){
+		if($headers == true){
+			$headers = self::getHeaders();
+		}
 		$aux = true;
 		$subject = htmlentities($subject, ENT_QUOTES,'UTF-8');
 		if (is_array($to)){

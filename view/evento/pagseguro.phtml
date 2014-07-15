@@ -1,2 +1,29 @@
-<?php 
-echo '<a href="'.$url.'" target="_blank">Ir para o PagSeguro</a>';
+<?php
+include_once 'core/App.class.php';
+ App::ready();
+?>
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Eventos - UTFPR - Pagamentos</title>
+
+	<?php
+	Page::addStyleElement('css', 'bootstrap.min.css');
+	Page::addStyleElement('css', 'slider.css');
+	Page::addStyleElement('css', 'style.css');
+	Page::addStyleElement('css', 'custom.css');
+	Page::addStyleElement('js', 'custom.js');
+	?>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+<body>
+	<p align="center"><?=Page::addImage('carregando.gif');?></p>
+	<br><br>
+	<p align="center"><a href="<?= $url; ?>" class="btn btn-success">Pagar Agora</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?= App::getUrl(); ?>" class="btn btn-primary">Voltar Para EVENTOS UTFPR</a></p>
+
+</body>
+</html>
