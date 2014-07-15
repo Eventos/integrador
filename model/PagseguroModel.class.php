@@ -34,7 +34,9 @@ class PagseguroModel extends ModelAbstract
 
 			$user = $_SESSION['user'];
 
-			$pagseguro->setSender($user['name'], $user['email'], '', '');
+			$nome = preg_replace( '/[`^~\'"]/', null, iconv( 'UTF-8', 'ASCII//TRANSLIT', $user['name']));
+
+			$pagseguro->setSender($nome, $user['email'], '', '');
 
 			$pagseguro->addItem($pagamento['evento']['id'], $pagamento['evento']['titulo'], 1, (float)$pagamento['evento']['valor'], 0);
 
