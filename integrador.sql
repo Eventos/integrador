@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.35, for debian-linux-gnu (i686)
+-- MySQL dump 10.13  Distrib 5.5.37, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: integrador
 -- ------------------------------------------------------
--- Server version	5.5.35-0ubuntu0.12.04.2
+-- Server version	5.5.37-0ubuntu0.12.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -199,7 +199,7 @@ CREATE TABLE `evento` (
 
 LOCK TABLES `evento` WRITE;
 /*!40000 ALTER TABLE `evento` DISABLE KEYS */;
-INSERT INTO `evento` VALUES (15,'Oceania Convention Center','Contato para maiores informações sobre o evento.','2014-08-13 10:00:00','2014-08-12',49,1,'O The Developers Conference reúne as melhores palestras sobre TI do Brasil!','tdc@thedevelopersconference.com.br','(11) 0000 0000',8213,1,'http://www.facebook.com/tdc','http://www.twitter.com/tdc','http://plus.google.com/tdc',NULL,'The Developers Conference','A maior conferência de TI do Brasil!','s'),(16,'UTFPR','Mande um e-mail para maiores informações.','2014-07-07 14:00:00','2014-07-06',50,1,'A semana acadêmica do curso de Tecnologia de Sistemas para Internet.','semanaacademica@utfpr.edu.br','(42) 3035 0000',6025,1,'http://www.facebook.com/semanaacademicautfpr','http://www.twitter.com/semanaacademicautfpr','http://plus.google.com/semanaacademicautfpr',NULL,'Semana acadêmia de TSI','A melhor semana acadêmica da UTFPR!','s'),(17,'Teatro Guaíra','Mande um e-mail para maiores informações.','2014-08-01 19:00:00','2014-07-31',50,1,'Palestra com o criador da maior rede social do mundo.','eventos@eventosutfpr.com.br','(11) 0000 0000',6025,1,'http://www.facebook.com/eventosutfpr','http://www.twitter.com/eventosutfpr','http://plus.google.com/eventosutfpr',13,'Empreendimento em TI','Palestra com o criador do Facebook.','s');
+INSERT INTO `evento` VALUES (15,'Oceania Convention Center','Contato para maiores informações sobre o evento.','2014-08-13 10:00:00','2014-08-12',48,1,'O The Developers Conference reúne as melhores palestras sobre TI do Brasil!','tdc@thedevelopersconference.com.br','(11) 0000 0000',8213,1,'http://www.facebook.com/tdc','http://www.twitter.com/tdc','http://plus.google.com/tdc',NULL,'The Developers Conference','A maior conferência de TI do Brasil!','s'),(16,'UTFPR','Mande um e-mail para maiores informações.','2014-07-07 14:00:00','2014-07-06',50,1,'A semana acadêmica do curso de Tecnologia de Sistemas para Internet.','semanaacademica@utfpr.edu.br','(42) 3035 0000',6025,1,'http://www.facebook.com/semanaacademicautfpr','http://www.twitter.com/semanaacademicautfpr','http://plus.google.com/semanaacademicautfpr',NULL,'Semana acadêmia de TSI','A melhor semana acadêmica da UTFPR!','s'),(17,'Teatro Guaíra','Mande um e-mail para maiores informações.','2014-08-01 19:00:00','2014-07-31',50,1,'Palestra com o criador da maior rede social do mundo.','eventos@eventosutfpr.com.br','(11) 0000 0000',6025,1,'http://www.facebook.com/eventosutfpr','http://www.twitter.com/eventosutfpr','http://plus.google.com/eventosutfpr',13,'Empreendimento em TI','Palestra com o criador do Facebook.','s');
 /*!40000 ALTER TABLE `evento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,7 +278,7 @@ CREATE TABLE `inscricao` (
   KEY `fk_inscricao_evento1_idx` (`id_evento`),
   CONSTRAINT `fk_inscricao_evento1` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_inscricao_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -287,7 +287,7 @@ CREATE TABLE `inscricao` (
 
 LOCK TABLES `inscricao` WRITE;
 /*!40000 ALTER TABLE `inscricao` DISABLE KEYS */;
-INSERT INTO `inscricao` VALUES (6,'2014-07-13',0,5,15,'https://pagseguro.uol.com.br/v2/checkout/payment.html?code=9A1808304E4EBED884B1CF93B7EF9C6E');
+INSERT INTO `inscricao` VALUES (6,'2014-07-13',0,5,15,'https://pagseguro.uol.com.br/v2/checkout/payment.html?code=9A1808304E4EBED884B1CF93B7EF9C6E'),(7,'2014-07-14',0,5,15,'https://pagseguro.uol.com.br/v2/checkout/payment.html?code=1E932C1920206091146B2FAEA7739DC2');
 /*!40000 ALTER TABLE `inscricao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -309,7 +309,7 @@ CREATE TABLE `inscricao_subevento` (
   KEY `fk_inscricao_subevento_subevento1_idx` (`id_subevento`),
   CONSTRAINT `fk_inscricao_subevento_subevento1` FOREIGN KEY (`id_subevento`) REFERENCES `subevento` (`id_subevento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_table1_inscricao1` FOREIGN KEY (`id_inscricao`) REFERENCES `inscricao` (`id_inscricao`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -318,7 +318,7 @@ CREATE TABLE `inscricao_subevento` (
 
 LOCK TABLES `inscricao_subevento` WRITE;
 /*!40000 ALTER TABLE `inscricao_subevento` DISABLE KEYS */;
-INSERT INTO `inscricao_subevento` VALUES (5,'2014-07-13',0,6,5);
+INSERT INTO `inscricao_subevento` VALUES (5,'2014-07-13',0,6,5),(6,'2014-07-14',0,7,5);
 /*!40000 ALTER TABLE `inscricao_subevento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -446,7 +446,7 @@ CREATE TABLE `subevento` (
 
 LOCK TABLES `subevento` WRITE;
 /*!40000 ALTER TABLE `subevento` DISABLE KEYS */;
-INSERT INTO `subevento` VALUES (5,'Sala 3','Palestra com Bill Gates, dando dicas de como ter sucesso em um empreendimento de TI.','2014-08-13 10:00:00',19,'2014-08-12',15,'1',14,'Microsoft: sucesso total!','s'),(6,'Bloco F','O criador do Instagram irá falar sobre as redes sociais.','2014-07-08 14:00:00',20,'2014-07-06',16,'1',15,'Redes sociais nos dias atuais','s');
+INSERT INTO `subevento` VALUES (5,'Sala 3','Palestra com Bill Gates, dando dicas de como ter sucesso em um empreendimento de TI.','2014-08-13 10:00:00',18,'2014-08-12',15,'1',14,'Microsoft: sucesso total!','s'),(6,'Bloco F','O criador do Instagram irá falar sobre as redes sociais.','2014-07-08 14:00:00',20,'2014-07-06',16,'1',15,'Redes sociais nos dias atuais','s');
 /*!40000 ALTER TABLE `subevento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -551,4 +551,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-07-13 21:12:26
+-- Dump completed on 2014-07-14 21:06:58
