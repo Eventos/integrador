@@ -10,6 +10,9 @@ if(!($vagas > 0)){
 	$valor = null;
 }
 ?>
+<style type="text/css">
+	.row{background: white!important}
+</style>
 <div class="page-content">
 	<div class="content container">
 		<div class="row">
@@ -84,6 +87,9 @@ if(!($vagas > 0)){
 												</tr>
 											<?php endif; ?>
 										<?php endforeach;?>
+										<tr>
+											<td colspan="6" align="center"></td>
+										</tr>
 										</tbody>
 									</table>
 								</div>
@@ -94,6 +100,7 @@ if(!($vagas > 0)){
 								<form id="payment" action="<?= App::getUrl('inscricao/payment/') ?>" method="POST">
 									<div class="control-group">
 										<div class="valor-total form-group">
+										
 											<h1>Valor total: R$ <span class="preco-total"><?= $valor ?></span></h1>
 										</div>
 										<input type="hidden" name="total" class="preco-total" value="<?= $valor ?>">

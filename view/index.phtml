@@ -15,19 +15,46 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<?php
-	Page::addStyleElement('js', 'jquery.min.js');
-	Page::addStyleElement('css', 'slider.css');
-	Page::addStyleElement('js', 'modernizr.custom.28468.js');
-	Page::addStyleElement('js', 'jquery.cslider.js');
-	Page::addStyleElement('js', 'efeitos.js');
-	Page::addStyleElement('js', 'fancybox/jquery.fancybox-1.3.4.js');
-	Page::addStyleElement('js', 'fancybox/jquery.fancybox-1.3.4.pack.js');
-	Page::addStyleElement('js', 'fancybox/jquery.mousewheel-3.0.4.pack.js');
-	Page::addStyleElement('css', 'jquery.fancybox-1.3.4.css');
-	Page::addStyleElement('js', 'fancybox/jquery.easing-1.3.pack.js');
-	Page::addStyleElement('js', 'default.js');
+	 Page::addStyleElement('js', 'jquery.min.js');
+	 Page::addStyleElement('css', 'slider.css');
+	 Page::addStyleElement('js', 'modernizr.custom.28468.js');
+	 Page::addStyleElement('js', 'jquery.cslider.js');
+	 Page::addStyleElement('js', 'efeitos.js');
+	 Page::addStyleElement('js', 'default.js');
 	 Page::addStyleElement('js', 'custom.js');
+
+	 Page::addStyleElement('js','lib/jquery-1.10.1.min.js');
+	 Page::addStyleElement('js','lib/jquery.mousewheel-3.0.6.pack.js');
+	 Page::addStyleElement('js','../css/source/jquery.fancybox.js');
+	 Page::addStyleElement('css','source/jquery.fancybox.css');
+	 Page::addStyleElement('css','source/helpers/jquery.fancybox-buttons.css');
+	 Page::addStyleElement('js','../css/source/helpers/jquery.fancybox-buttons.js');
+	 Page::addStyleElement('css','source/helpers/jquery.fancybox-thumbs.css');
+	 Page::addStyleElement('js','../css/source/helpers/jquery.fancybox-thumbs.js');
+	 Page::addStyleElement('js','../css/source/helpers/jquery.fancybox-media.js');
 	?>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			$('.fancybox').fancybox();
+			$(".fancybox-effects-d").fancybox({
+				padding: 0,
+				openEffect : 'elastic',
+				openSpeed  : 150,
+				closeEffect : 'elastic',
+				closeSpeed  : 150,
+				closeClick : true,
+				helpers : {
+					overlay : null
+				}
+			});
+		});
+	</script>
+	<style type="text/css">
+		.fancybox-custom .fancybox-skin {
+			box-shadow: 0 0 50px #222;
+		}
+	</style>
 
 	<?php if(!isset($_COOKIE['boas_vindas']) ||$_COOKIE["boas_vindas"] == '0'): ?>
 		<script type="text/javascript">
@@ -129,7 +156,7 @@
 
 				<div class="col_1_of_3 span_1_of_3">
 					<div class="title-event"><h4><a href="#"><?= $evento['titulo']; ?></a></h4></div>
-					<?= Media::getImage($evento['id_evento']); ?>
+					<?= Media::getImageNormal($evento['id_evento']); ?>
 					<p><?= $evento['descricao_resumida']; ?></p>
 					<a href="<?= Media::getUrlVideo($evento['id_evento'])?>" target="_black">veja o video</a>
 				</div>
@@ -152,8 +179,9 @@
 					<div class="title_new_event" style="height:55px;overflow:hidden; margin-bottom:5px">
 						<h4><a href="<?=App::getUrl()?>evento/view/<?=$evento['id_evento']?>"><?=$evento['titulo']?></a></h4>
 					</div>
+					<?php $foto = Media::getImageUrl($evento['id_evento']);?>
 					<div class="view view-fourth">
-						<?= Media::getImage($evento['id_evento']);?>
+						<img src="<?= $foto['link']?>" />
 						<div class="mask">
 							<h2><?=$evento['titulo']?></h2>
 							<p><?= $evento['desc_evento']?></p>

@@ -13,7 +13,7 @@
 			<div class="col_1_of_3 span_1_of_3">
 				<div class="title-event"><h4><a href="#"><?= $s['titulo']; ?></a></h4></div>
 				<?php if( Media::image_exists($id_evento, $s['id_subevento']) ){
-					echo Media::getImage($id_evento,$s['id_subevento']); 
+					echo Media::getImageNormal($id_evento,$s['id_subevento']); 
 				}else{ ?>
 				<h3> Ainda não há Imagens para este Evento</h3>
 				<?php } ?>
@@ -28,7 +28,7 @@
 <div class="h_right">
 	<div class="wrap">
 		<h3>Fotos Do Evento </h3>
-		<p style="text-align:center">Veja as fotos dos últimos eventos realizados na UTFPR.</p>
+		<p align="center">Veja as fotos dos últimos eventos realizados na UTFPR.</p>
 	</div>
 </div>
 <div class="page-content">

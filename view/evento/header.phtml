@@ -20,23 +20,48 @@ include_once 'core/App.class.php';
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<?php
-	Page::addStyleElement('js', 'jquery.min.js');
-	Page::addStyleElement('css', 'css/slider.css');
-	Page::addStyleElement('js', 'modernizr.custom.28468.js');
-	Page::addStyleElement('js', 'jquery.cslider.js');
-	Page::addStyleElement('js', 'efeitos.js');
-	Page::addStyleElement('js', 'fancybox/jquery.fancybox-1.3.4.js');
-	Page::addStyleElement('js', 'fancybox/jquery.fancybox-1.3.4.pack.js');
-	Page::addStyleElement('js', 'fancybox/jquery.mousewheel-3.0.4.pack.js');
-	Page::addStyleElement('css', 'jquery.fancybox-1.3.4.css');
-	Page::addStyleElement('js', 'fancybox/jquery.easing-1.3.pack.js');
-	Page::addStyleElement('js', 'default.js');
+		Page::addStyleElement('js', 'jquery.min.js');
+		Page::addStyleElement('js', 'modernizr.custom.28468.js');
+		Page::addStyleElement('js', 'jquery.cslider.js');
+		Page::addStyleElement('js', 'efeitos.js');
+		Page::addStyleElement('js', 'default.js');
+		 Page::addThinElement('css', 'screen.css');
+		 Page::addThinElement('css', 'lightbox.css');
 
-	 Page::addThinElement('css', 'screen.css');
-	 Page::addThinElement('css', 'lightbox.css');
-
+		Page::addStyleElement('js','lib/jquery-1.10.1.min.js');
+		Page::addStyleElement('js','lib/jquery.mousewheel-3.0.6.pack.js');
+		Page::addStyleElement('js','../css/source/jquery.fancybox.js');
+		Page::addStyleElement('css','source/jquery.fancybox.css');
+		Page::addStyleElement('css','source/helpers/jquery.fancybox-buttons.css');
+		Page::addStyleElement('js','../css/source/helpers/jquery.fancybox-buttons.js');
+		Page::addStyleElement('css','source/helpers/jquery.fancybox-thumbs.css');
+		Page::addStyleElement('js','../css/source/helpers/jquery.fancybox-thumbs.js');
+		Page::addStyleElement('js','../css/source/helpers/jquery.fancybox-media.js');
 	?>
 
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			$('.fancybox').fancybox();
+			$(".fancybox-effects-d").fancybox({
+				padding: 0,
+				openEffect : 'elastic',
+				openSpeed  : 150,
+				closeEffect : 'elastic',
+				closeSpeed  : 150,
+				closeClick : true,
+				helpers : {
+					overlay : null
+				}
+			});
+		});
+	</script>
+	<style type="text/css">
+		.fancybox-custom .fancybox-skin {
+			box-shadow: 0 0 50px #222;
+		}
+	</style>
 <style>
 	.slider_bg_evento{background: url("<?= App::getUrl()?>assets/images/fundo2.jpg") no-repeat;background-size: 100%}
 </style>

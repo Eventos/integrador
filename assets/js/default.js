@@ -1,9 +1,3 @@
-$(function() {
-	$('#da-slider').cslider({
-		autoplay	: true,
-		bgincrement	: 450
-	});
-});
 /*8888888888888888888888888888888888888888888*/
 $(document).ready(function() {	
 	var defaults = {

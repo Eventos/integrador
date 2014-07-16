@@ -19,6 +19,16 @@ class Media
 		return $html->getImage($id,$id_sub);
 	}
 
+	static function getImageNormal($id,$id_sub=null){
+		$html = new MediaModel();
+		return $html->getImageNormal($id,$id_sub);
+	}
+
+	static function getImageUrl($id,$id_sub=null){
+		$html = new MediaModel();
+		return $html->getImageUrl($id,$id_sub);
+	}
+
 	static function video_exists($id,$id_sub=null){
 		 $boo = new MediaModel();
 		 return $boo->video_exists($id,$id_sub);

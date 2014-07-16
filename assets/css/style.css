@@ -206,7 +206,7 @@ body {
 /* portfolio */
 .portfolio {
 	padding: 2% 0% 2% 6%;
-	background:#F7F7F7;
+	background:#DBDBDB;	
 }
 .portfolio h3{
 	color: #222222;
@@ -568,7 +568,7 @@ body {
 /*---team-members--*/
 .team-members{
 	padding: 7% 0;
-	background: #F9F9F9;
+	background: #DBDBDB;
 }
 .tm-head{
 	text-align:center;

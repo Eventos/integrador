@@ -1,5 +1,7 @@
-<h2>Eventos pagos</h2>
-<table border="1" class="table table-hovered eventos-pagos">
+<div class="container container-fluid">
+<h1>Eventos pagos</h1>
+<div class="noBackground">
+<table border="1" class="table table-hover eventos-pagos">
 	<tr>
 		<th>Título do evento</th>
 		<th>Inscrições até</th>
@@ -15,9 +17,10 @@
 	</tr>
 	<?php endforeach; ?>
 </table>
-
-<h2>Eventos com pagamento pendente</h2>
-<table border="1" class="table table-hovered eventos-pagos">
+</div>
+<h1>Eventos com pagamento pendente</h1>
+<div class="noBackground">
+<table border="1" class="table table-hover eventos-pagos">
 	<tr>
 		<th>Título do evento</th>
 		<th>Inscrições até</th>
@@ -27,9 +30,11 @@
 	<?php foreach ($pendentes as $evento): ?>
 	<tr>
 		<td><?= $evento['titulo'] ?></td>
-		<td><?= $evento['data_limite'] ?></td>
-		<td><?= $evento['data_inscricao'] ?></td>
-		<td><?= $evento['pagamento'] == 1 ? 'Pago' : '<a href="'.$evento['url'].'" target="_blank">Pagar com pagseguro</a>' ?></td>
+		<td align="center"><?= $evento['data_limite'] ?></td>
+		<td align="center"><?= $evento['data_inscricao'] ?></td>
+		<td align="center"><?= $evento['pagamento'] == 1 ? 'Pago' : '<a class="btn btn-primary" href="'.$evento['url'].'" target="_blank">Pagar com pagseguro</a>' ?></td>
 	</tr>
 	<?php endforeach; ?>
 </table>
+</div>
+</div>
