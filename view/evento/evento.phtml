@@ -69,21 +69,18 @@
 <div class="clear"></div>								  						
 </div>   		 
 </div>
+<?php if(Blocos::existsReferencia($id_evento)):?> 
 <div class="about" id="about">
 	<div class="wrap">
-		<h3>SOBRE O EVENTOS</h3>
+		<h3>INFORMAÇOES SOBRE O EVENTO</h3>
 		<p class="a">sobre o que é este evento?</p>
 		<div class="about-time-line">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+		<?php $id_block = Blocos::getReferencia($id_evento);?>
+		<?= Blocos:: writer($id_block);?>
 		</div>
 	</div>    
 </div>
-
+<?php endif; ?>
 <div class="t-clients">
 	<div class="wrap"> 				
 		<div class="nbs-flexisel-container">

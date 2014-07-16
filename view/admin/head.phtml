@@ -51,7 +51,7 @@
             <span class="badge"><?=AdminModel::verifyMsg($_SESSION['adm']['email'])?></span> 
           </a>
           <ul class="dropdown-menu extended notification">
-            <li class="title">
+            <li class="title" style="margin-top:0px!important">
               <p>Voce Tem <?=AdminModel::verifyMsg($_SESSION['adm']['email'])?> nova(s) menssagen(s)</p>
             </li>
             <?php foreach ($data as $d):?>
@@ -108,7 +108,7 @@
        <li> <a href="#"> <i class="icon-list-alt"></i> Blocos estaticos<i class="arrow icon-angle-up"></i></a>
         <ul class="sub-menu">
           <li><a href="<?= App::getUrl() ?>admin/blocos/new"><i class="icon-angle-right"></i> Inserir </a></li>
-          <li><a href="<?= App::getUrl() ?>admin/blocos" ><i class="icon-angle-right"></i> Excluir</a></li>
+          <li><a href="<?= App::getUrl() ?>admin/blocos" ><i class="icon-angle-right"></i> Editar</a></li>
         </ul>
       </li>
       <li> <a href="#"> <i class="icon-list-alt"></i> Email<i class="arrow icon-angle-up"></i></a>

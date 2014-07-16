@@ -60,4 +60,25 @@ class BlocosModel extends ModelAbstract
 		return true;
 	}
 
+	function getIdReferencia($id){
+		$result = $this->db->query("SELECT id_referencia FROM referencia WHERE id_evento = '$id'");
+		$data = $result->fetch();
+		return $data['id_referencia'];
+	}
+
+	function existsReferencia($id){
+		$result = $this->db->query("SELECT id_referencia FROM referencia WHERE id_evento = '$id'");
+		$data = $result->fetch();
+		if(!$data || empty($data['id_referencia'])){
+			return false;
+		}
+		return true;
+	}
+
+	function getReferencia($id){
+		$data = $this->db->query("SELECT id_bloco FROM blocos_estaticos WHERE id_referencia = '$id'");
+		$id = $data->fetch();
+		return $id['id_bloco'];
+	}
+
 }
