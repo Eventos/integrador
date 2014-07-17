@@ -1,0 +1,30 @@
+<div class="slider_bg_evento">
+	<div class="h_right">
+		<div class="menu" id="bt_menu">
+			<div class="bt_menu">
+				<p class="listar-menu"></p>
+				<p class="listar-menu"></p>
+				<p class="listar-menu"></p>
+				<span>Menu</span>
+			</div>
+		</div>
+		<span><!--<?php echo 'pagina' ?>-->Listar Eventos</span>
+		<nav class="nav">
+			<ul class="nav-list">
+				<li class="nav-item"></span><a href="<?= App::getUrl() ?>">Home</a></li>
+				<li class="nav-item"><a href="<?= App::getUrl() ?>login/verify/user">Área do Participante</a></li>
+				<li class="nav-item"><a href="<?= App::getUrl() ?>login/verify/adm">Área do Administrador</a></li>
+			</ul>
+		</nav>
+		<?php
+		Page::addStyleElement('js', 'responsive.menu.js');
+		?>
+	</div>
+	<div id="menu_oculto">
+		<ul>		
+			<li><a href="<?= App::getUrl() ?>"><span class="glyphicon glyphicon-collapse-down"></span>&nbsp;Home</a></li>
+			<li><a href="<?= App::getUrl() ?>login/verify/user"><span class="glyphicon glyphicon-user"></span>	&nbsp;Área do Participante</a></li>
+			<li><a href="<?= App::getUrl() ?>login/verify/admin"><span class="glyphicon glyphicon-user"></span>	&nbsp;Área do Administrador</a></li>
+		</ul>
+	</div>
+</div>

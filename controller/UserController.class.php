@@ -24,7 +24,6 @@ class UserController extends ControllerAbstract
 		}else{
 			App::errorPage('Erro');
 		}
-		App::cookie('sempre');
 	}
 
 	function logoutAction($params){

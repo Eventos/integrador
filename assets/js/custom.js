@@ -16,4 +16,4 @@ function removeInscricao(){
 }
 setTimeout(function(){
      $('.alert').fadeToggle('slow');
-},1500);
+},3000);

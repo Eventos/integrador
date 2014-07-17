@@ -40,15 +40,21 @@ $(document).ready(function () {
 	$('.fechar').click(function(){
 		$('.boas-vindas').hide(150);
 		$('#fancybox').hide(700);
+		document.cookie="boas_vindas=newsletter; expires=Thu, 18 Dec 2300 12:00:00 GMT";
 	});
 	$('#close').click(function(){
 		$('.boas-vindas').hide(150);
 		$('#fancybox').hide(700);
+		document.cookie="boas_vindas=newsletter; expires=Thu, 18 Dec 2300 12:00:00 GMT";
 	});
 	$(document).bind('click', function(e){ 
   		if (!$(e.target).parents('#fancybox').length){
       		$('.boas-vindas').hide(150);
 			$('#fancybox').hide(700);
+			document.cookie="boas_vindas=newsletter; expires=Thu, 18 Dec 2300 12:00:00 GMT";
         }
 	}); 
 });
+function setCookie(){
+	document.cookie="boas_vindas=newsletter; expires=Thu, 18 Dec 2300 12:00:00 GMT";
+};

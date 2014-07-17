@@ -3,23 +3,47 @@
 <head>
 	<meta charset='utf-8'>
 	<title>Pagina de Inscrição</title>
-  <?php
-    Page::addStyleElement('css', 'bootstrap.min.css');
-    Page::addStyleElement('css', 'bootstrap-theme.min.css');
-    Page::addStyleElement('css', 'custom.css');
-    Page::addStyleElement('js', 'bootstrap.min.js');
-    Page::addStyleElement('js', 'jquery.min.js');
-    Page::addStyleElement('js', 'bootstrap.min.js');
-    Page::addStyleElement('js', 'custom.js');
-  ?>
+	<?php
+		Page::addStyleElement('css', 'bootstrap.css');
+		Page::addStyleElement('css', 'custom.css');
+		Page::addStyleElement('css', 'style.css');
+		Page::addStyleElement('js', 'jquery.min.js');
+		Page::addStyleElement('js', 'bootstrap.min.js');
+		Page::addStyleElement('js', 'custom.js');
+
+		Page::addStyleElement('js', 'default.js');
+		Page::addStyleElement('js','../css/source/jquery.fancybox.js');
+		Page::addStyleElement('js', 'move-top.js');
+		Page::addStyleElement('js', 'easing.js');
+  	?>
+<style type="text/css">
+	body{background: dimgrey;}
+</style>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+  <style type="text/css">
+	option {background: white;	color: black;}
+	.noBackground{border-radius: 12px;padding: 50px 50px 0 50px; margin-bottom: 30px;}
+	.sel_legnd{ font-size: 25px;font-weight: bold;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.39);text-transform: uppercase;border-bottom: solid 1px rgb(185, 178, 9);margin-bottom: 15px;}
+	.control-group{padding:0 50px}
+	.page-title{color: white;font-size: 42px;text-transform: capitalize;font-weight: bold;}
+	h3{font-size: 40px;text-decoration: underline;text-align: center;font-weight: bold;text-shadow: 1px 1px 6px black;color: white;text-transform: uppercase;}
+	.page-title small{text-shadow:1px 1px 1px white;}
+  </style>
 </head>
 <body>
+<?php App::getMenu('evento');?>
 	<!-- Fim do menu -->
 <div class="page-content">
 	<div class="content container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1 class="page-title">Usuario: <small>Crie seu cadastro para participar dos eventos</small></h1>
+				<h1 class="page-title">Usuario <small>Crie seu cadastro para participar dos eventos</small></h1>
 			</div>
 		</div>
 		<div class="row">
@@ -28,24 +52,24 @@
 					<div class="widget-header"> <i class="icon-align-left"></i>
 						<h3>Cadastro</h3>
 					</div>
-					<div class="widget-content">
-						<form method="post" class="form-horizontal" action="<?= App::getUrl() ?>user/inscricao/post/">
+					<div class="widget-content noBackground">
+						<form method="post" class="form-horizontal" onsubmit="verifyPassword();" action="<?= App::getUrl() ?>user/inscricao/post/">
 							<fieldset>
-								<legend class="section">Informações Pessoais</legend>
+								<legend class="sel_legnd">Informações Pessoais</legend>
 								<div class="control-group">
 									<label for="disabled-input" class="control-label ">Nome Completo</label>
 									<div class="controls form-group">
 										<?php if(isset($name)):?>
-										<input type="text" maxlength="50" value="<?=$name?>" name="nome" class="form-control" id="nome" placeholder="Insira o titulo do evento">
+										<input required type="text" maxlength="50" value="<?=$name?>" name="nome" class="form-control" id="nome" placeholder="Insira o titulo do evento">
 									<?php else:?>
-										<input type="text" maxlength="50" name="nome" class="form-control" id="nome" placeholder="Insira o titulo do evento">
+										<input type="text" required maxlength="50" name="nome" class="form-control" id="nome" placeholder="Insira o titulo do evento">
 									<?php endif;?>
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="disabled-input" class="control-label ">Data de Nascimento</label>
 									<div class="controls form-group">
-										<input type="date" name="data_nascimento" class="form-control" id="data-nascimento">
+										<input type="date" required pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" min="1930-01-01" max="2014-07-18" name="data_nascimento" class="form-control" id="data-nascimento">
 									</div>
 								</div>
 
@@ -53,46 +77,46 @@
 									<label for="disabled-input" class="control-label ">Email</label>
 									<div class="controls form-group">
 										<?php if(isset($email)): ?>
-										<input type="email" maxlength="100" name="email" value="<?=$email;?>" class="form-control" id="email" placeholder="Insira seu endereço de email">
+										<input type="email" required maxlength="100" name="email" value="<?=$email;?>" class="form-control" id="email" placeholder="Insira seu endereço de email">
 									<?php else:?>
-										<input type="email" maxlength="100" name="email" class="form-control" id="email" placeholder="Insira seu endereço de email">
+										<input type="email" required maxlength="100" name="email" class="form-control" id="email" placeholder="Insira seu endereço de email">
 									<?php endif;?>
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="max-length" class="control-label ">CPF</label>
 									<div class="controls form-group">
-										<input type="number" maxlength="11" name="cpf" class="form-control" id="cpf" placeholder="Insira o numero do Seu CPF">
+										<input type="number" required pattern="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/" maxlength="11" name="cpf" class="form-control" id="cpf" placeholder="Insira o numero do Seu CPF">
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="prepended-input" class="control-label">RG - Identidade</label>
 									<div class="controls form-group">
-										<input type="text" maxlength="15" name="rg" class="form-control" id="rg" placeholder="Insira o numero do seu documento de identidade">
+										<input type="text" required maxlength="15" name="rg" class="form-control" id="rg" placeholder="Insira o numero do seu documento de identidade">
 									</div>
 								</div>
 							</fieldset>
 							<fieldset>
-								<legend class="section">Segurança</legend>
+								<legend class="sel_legnd">Segurança</legend>
 								<div class="control-group">
 									<label for="normal-field" class="control-label">Senha</label>
 									<div class="controls form-group">
-										<input type="password" placeholder="Insira uma senha" name="senha" class="form-control" id="normal-field">
+										<input type="password" required placeholder="Insira uma senha" name="senha" class="form-control" id="senha">
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="normal-field" class="control-label">Confirme sua Senha</label>
 									<div class="controls form-group">
-										<input type="password" placeholder="Digite novamente Senha" id="conf_senha" class="form-control">
+										<input type="password" name="senha2" required placeholder="Digite novamente Senha" id="conf_senha" class="form-control">
 									</div>
 								</div>
 							</fieldset>
 							
 							<fieldset>
-								<legend class="section">Endereço</legend>
+								<legend class="sel_legnd">Endereço</legend>
 								<div class="control-group">
 									<label for="hint-field" class="control-label"> Estado </label>
-									<div class="controls form-group">
+									<div class="controls required form-group">
 										<div class="estado"><?= Local::getSelectEstados(); ?></div>
 									</div>
 								</div>
@@ -105,13 +129,13 @@
 								<div class="control-group">
 									<label for="normal-field" class="control-label">Rua / numero :</label>
 									<div class="controls form-group">
-										<input type="text" placeholder="Digite aqui o nome de sua rua e seu numero" name="rua" class="form-control" id="normal-field">
+										<input type="text" required placeholder="Digite aqui o nome de sua rua e seu numero" name="rua" class="form-control" id="normal-field">
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="normal-field" class="control-label">Bairro :</label>
 									<div class="controls form-group">
-										<input type="text" placeholder="Digite aqui o nome do seu bairro" name="bairro" class="form-control" id="normal-field">
+										<input type="text" required placeholder="Digite aqui o nome do seu bairro" name="bairro" class="form-control" id="normal-field">
 									</div>
 								</div>
 							</fieldset>
@@ -120,7 +144,7 @@
 								<div class="btn-actions">
 									<button class="btn-action btn btn-success" type="submit">Cadastrar</button>
 									<button class="btn-action btn btn-default" type="reset">Limpar</button>
-									<a href="<?= App::getUrl()?>" class="btn-action btn btn-primary">Voltar para a Pagina inicial</a>
+									<a href="<?= App::getUrl()?>" class="btn-action btn btn-primary">Voltar para a Home</a>
 								</div>
 							</div>
 						</form>
@@ -148,7 +172,14 @@
 			});
 		});
 	});
+	function verifyPassword(){
+		pass1 = $('#senha').val();
+		pass2 = $('#conf_senha').val();
+		if(pass1 != pass2){
+			event.preventDefault();
+			alert('Atenção: A confirmação da senha  nao coincide com a senha');
+		} 
+	}
 </script>
-
 </body>
 </html>

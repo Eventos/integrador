@@ -56,14 +56,13 @@
 		}
 	</style>
 
-	<?php if(!isset($_COOKIE['boas_vindas']) ||$_COOKIE["boas_vindas"] == '0'): ?>
+	<?php if(!isset($_COOKIE['boas_vindas'])): ?>
 		<script type="text/javascript">
 			$(document).ready(function () {
 				$('.boas-vindas').show();
 				$('#fancybox').show();
 			});
 		</script>
-		<?php App::cookie('1'); ?>
 	<?php endif; ?>
 </head>
 <body>
@@ -128,12 +127,13 @@
 				<p>Cadastre seu e-mail e nós avisaremos você sobre nossos eventos</p>
 				<form action="index/newsletter/" method="post" accept-charset="utf-8">
 					<label>Nome:</label><br>
-					<input type="text" name="name" placeholder="&nbsp;&nbsp;Nome Completo"><br>
+					<input type="text" required name="name" placeholder="&nbsp;&nbsp;Nome Completo"><br>
 					<label>Email:</label><br>
-					<input type="email" name="email" placeholder="&nbsp;&nbsp;Seu E-mail"><br>
-					<input type="submit" name="simple" value="Cadastrar">
-					<input type="submit" name="none" value="Agora Não">
-					<input type="submit" name="full" value="Cadastro Completo">
+					<input type="email" required name="email" placeholder="&nbsp;&nbsp;Seu E-mail"><br>
+					<p align="center" style="margin-top:10px">
+					<input type="submit" class="btn btn-warning" onclick="setCookie();" name="simple" value="Cadastrar">
+					<input type="submit" class="btn btn-success" onclick="setCookie();" name="full" value="Cadastro Completo">
+					</p>
 				</form>		
 			</div>
 		</div>	
@@ -291,9 +291,9 @@
 		<div class="form">
 			<div class="form-text">
 				<form method="Post" action="<?=App::getUrl()?>evento/mensagem">
-					<input type="text" class="textbox" value="Seu nome*" required='required' name="name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Nome';}">
-					<input type="text" class="textbox" value="Seu E-mail*" name="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail';}">
-					<select name="evento" class="select-box">
+					<input type="text" required name="name" placeholder="Seu nome">
+					<input type="text" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" placeholder="Seu Email">
+					<select name="evento" required class="select-box">
 						<option class="contact_index" name="">-- Selecione o Evento --</option>
 						<?php $eventos = Evento::getEvento(null,'info'); ?>
 						<?php foreach ($eventos as $evento): ?>

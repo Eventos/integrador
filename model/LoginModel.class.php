@@ -13,7 +13,7 @@ class LoginModel extends ModelAbstract{
 		if (count($data) >= 2){
 			$_SESSION['adm']['email'] = $data['email'];
 			$_SESSION['adm']['name']  = $data['name'];
-			Flash::setmessage('success','Bem Vindo'.$_SESSION['adm']['name']);
+			Flash::setmessage('success','Bem Vindo '.$_SESSION['adm']['name']);
 			App::redirect('admin/index');
 		}
 		else{

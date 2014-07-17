@@ -22,11 +22,11 @@ class IndexController extends ControllerAbstract
 	}
 
 	public function newsletterAction($params){
+
 		if(isset($_POST)){
 			extract($_POST);
 
 			if(isset($simple)){
-				App::cookie('1');
 				$user_simple = new UserModel();
 				if ($user_simple->user_letter($email, $name)){
 					Email::newsletter($email,$name,null);
@@ -34,15 +34,11 @@ class IndexController extends ControllerAbstract
 					App::redirect();
 				}
 				else{
-					Flash::setMessage('success', 'Falha ao cadastrar tente novamente mais tarde ou entre em contato conosco!');
+					Flash::setMessage('danger', 'Falha ao cadastrar tente novamente mais tarde ou entre em contato conosco!');
 					App::redirect();
 				}
 				exit();
-			}elseif(isset($none)){
-				App::cookie('1');
-				App::redirect();
 			}elseif(isset($full)){
-				App::cookie('1');
 				$data = array('name' => $name, 'email'=> $email); 
 				$this->render('user/user_inscricao',$data);
 				exit;

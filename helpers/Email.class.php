@@ -20,9 +20,9 @@ class Email
 	static function newsletter($email,$name,$message){
 		if($message == null){
 			$block = new Blocos();
-			$message = $block->writer('novo_cadastro'); 
+			$message = $block->writer('novo_cadastro');
+			$message = str_replace('{{name}}', $name, $message); 
 		}
 		App::send($email, 'Bem Vindo ao Eventos UTFPR', $message, true);
-		App::cookie(1);
 	}
 }

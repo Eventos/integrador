@@ -65,16 +65,6 @@ include_once 'core/App.class.php';
 <style>
 	.slider_bg_evento{background: url("<?= App::getUrl()?>assets/images/fundo2.jpg") no-repeat;background-size: 100%}
 </style>
-	<?php if($_COOKIE['boas_vindas'] == '0' ): ?>
-		<script type="text/javascript">
-			$(document).ready(function () {
-				$('.boas-vindas').show();
-				$('#fancybox').show();
-			});
-			<?php App::cookie('1'); ?>
-		</script>
-	<?php endif ?>
-
 </head>
 <body>
 	<div class="slider_bg_evento">

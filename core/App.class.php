@@ -65,16 +65,6 @@ class App
 			SESSION_START();
 	}
 
-	static function cookie($valor){
-		$time = time()+3600*24*30*12*5;
-		if(!isset($_COOKIE["boas_vindas"])){
-			setcookie('boas_vindas','0', $time);
-		}else{
-			unset($_COOKIE['boas_vindas']);
-			setcookie('boas_vindas',$valor, $time);
-		}
-	}
-
 	static function append($view){
 		require_once(SITE_ROOT.'view/'.$view.'.phtml');
 	}
@@ -105,5 +95,14 @@ class App
 			$aux =  mail($to, $subject, $msg, $headers); 
 		}
 		return $aux;
+	}
+	function getMenu($type){
+		if($type == 'evento'){
+			require_once(SITE_ROOT.'view/user/menu.phtml');
+		}elseif($type == 'admin'){
+			//require_once(SITE_ROOT.'view/admin/menu.phtml');
+		}elseif($type == 'user'){
+			//require_once(SITE_ROOT.'view/user/head.phtml');
+		}
 	}
 }
