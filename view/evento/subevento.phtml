@@ -7,24 +7,27 @@ $array_subevento = Subevento::getSubevento($id_evento, $id_subevento, 'all');
 <?php foreach ($array_subevento as $subevento): ?>	
 	<?php $valores = Subevento::getAllValues($subevento['id_subevento']);
 		  $palestrante = Palestrante::getPalestrante($subevento['id_palestrante']); ?>
-	<div class="h_right">
-		<b><h1><?= $subevento['titulo']?></h1></b>
-	</div>
+	<div class="tm-head">
+		<h3><?= $subevento['titulo']?></h3>
 	<div class="container fluid">
 		<?php if(Media::image_exists($id_evento,$id_subevento)):?>
-		<div class="row sub_picture">
-				<center><h3>Imagens</h3></center>
+				<p>Imagens</p>
 			<?php $img = Media::getAllImages($id_evento,$id_subevento);?> 
 				<?=$img?>
-		</div>
 		<?php endif; ?>
-		<div class="row sub_describle">
-			<center><h3>Descrição</h3></center>
-			<big>Tema:</big><p><?= $subevento['descricao'] ?></p>
-			<big>Palestrante:</big><p><?= $palestrante['nome'] ?></p>
-			<br>
-			<center>Tabela de Valores</center>
-			<table class="table table-bordered">
+	</div>
+	<style type="text/css">
+		table>caption{font-size: 30px;font-weight: bold;text-shadow: 2px 2px 1px white;}
+		table>thead>tr>th{text-align: center;font-size: 20px;font-weight: bold;}
+	</style>
+		<div class="row sub_describle" style="background:#D8D8D8">
+			<div class="tm-head">
+			<h3>Descrição</h3>
+			<p><big>Tema:</big> <?= $subevento['descricao'] ?><br>
+			<big>Palestrante:</big> <?= $palestrante['nome'] ?></p>
+			<br><br>
+			<div class="container fluid">
+			<table class="table table-hover noBackground" style="margin-bottom:50px">
 				<caption>Valores das Inscriçoes a cada dia</caption>
 				<thead>
 					<tr>
@@ -38,17 +41,23 @@ $array_subevento = Subevento::getSubevento($id_evento, $id_subevento, 'all');
 					<tr>
 						<td><?= $valor['data_ini'] ?></td>
 						<td><?= $valor['data_fim'] ?></td>
-						<td>R$ <?= $valor['valor'] ?></td>
+						<td>R$ <?php echo number_format($valor['valor'],2) ?></td>
 					</tr>
 					<?php endforeach; ?>
 				</tbody>
 			</table>
+			</div>
 		</div>
 		<?php if(Media::video_exists($id_evento,$id_subevento)):?>
-			<div class="row sub_video">
-				<center><h3>Videos</h3></center>
+			<div class="row sub_video" style="background:white;">
+			<div class="container fluid">
+				<div class="tm-head">
+					<h3>Videos</h3>
+					<p>Veja como será esse evento</p>
+				</div>
 				<?php $videos = Media::getAllVideos($id_evento,$id_subevento);?> 
 					<?=$videos?>
+			</div>
 			</div>
 		<?php endif; ?>
 	</div>
