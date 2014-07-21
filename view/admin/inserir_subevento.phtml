@@ -19,19 +19,19 @@
 								<div class="control-group">
 									<label for="disabled-input" class="control-label ">Titulo Do Sub-evento</label>
 									<div class="controls form-group">
-										<input type="text" maxlength="50" name="titulo" class="form-control" id="titulo">
+										<input required="required" type="text" maxlength="50" name="titulo" class="form-control" id="titulo">
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="disabled-input" class="control-label ">Data Do sub-evento</label>
 									<div class="controls form-group">
-										<input type="datetime-local" name="data_hora" class="form-control" id="data-hora">
+										<input required="required" type="datetime-local" name="data_hora" class="form-control" id="data-hora">
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="disabled-input" class="control-label ">Local do sub-evento</label>
 									<div class="controls form-group">
-										<input type="text" name="local" class="form-control" id="local">
+										<input required="required" type="text" name="local" class="form-control" id="local">
 									</div>
 								</div>
 								<div class="control-group">
@@ -43,13 +43,13 @@
 								<div class="control-group">
 									<label for="max-length" class="control-label ">Fim Inscrições</label>
 									<div class="controls form-group">
-										<input type="date" class="form-control" name="data_limite" id="data-limite" placeholder="Data Limite Para As Inscriçoes">
+										<input required="required" type="date" class="form-control" name="data_limite" id="data-limite" placeholder="Data Limite Para As Inscriçoes">
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="prepended-input" class="control-label">Vagas</label>
 									<div class="controls form-group">
-										<input type="number" class="form-control" name="vagas" id="vagas" placeholder="Quantidade de vagas">
+										<input required="required" type="number" class="form-control" name="vagas" id="vagas" placeholder="Quantidade de vagas">
 									</div>
 								</div>
 								<div class="date">
@@ -106,7 +106,7 @@
 	});
 	function inserir_inscricao(){
 		i++;
-		var data_insc = "<div class='data"+i+"'><div class='controls form-group'>Data inicio <input type='date' name='valores["+i+"][data_ini]'> Data final <input type='date' name='valores["+i+"][data_fim]'> Valor <input type='text' name='valores["+i+"][valor]'> <a class='plus btn btn-primary' onclick='inserir_inscricao();'>+</a>&nbsp;<a class='del"+i+" btn btn-danger' onclick='deletar_inscricao("+i+");'>-</a></div></div>";
+		var data_insc = "<div class='data"+i+"'><div class='controls form-group'>Data inicio <input required='required' type='date' name='valores["+i+"][data_ini]'> Data final <input required='required' type='date' name='valores["+i+"][data_fim]'> Valor <input type='text' name='valores["+i+"][valor]'> <a class='plus btn btn-primary' onclick='inserir_inscricao();'>+</a>&nbsp;<a class='del"+i+" btn btn-danger' onclick='deletar_inscricao("+i+");'>-</a></div></div>";
 
 		$('#valores-inscricoes').append(data_insc).hide().fadeIn(200);
 	}

@@ -19,13 +19,13 @@
 								<div class="control-group">
 									<label for="normal-field" class="control-label">Nome</label>
 									<div class="controls form-group">
-										<input type="text" name="nome" placeholder="Digite o nome do palestrante" class="form-control" id="normal-field">
+										<input required="required" type="text" name="nome" placeholder="Digite o nome do palestrante" class="form-control" id="normal-field">
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="hint-field" class="control-label"> Data de nascimento </label>
 									<div class="controls form-group">
-										<input type="date" name="data_nascimento" class="form-control">  
+										<input required="required" type="date" name="data_nascimento" class="form-control">  
 									</div>
 								</div>
 								<div class="control-group">
@@ -66,41 +66,41 @@
 									<label for="hint-field" class="control-label"> Email </label>
 									<div class="controls input-group form-group">
 										<span class="input-group-addon"><i class="icon-envelope"></i></span>
-										<input type="email" name="email" class="form-control" placeholder="Digite o email do palestrante">  
+										<input required="required" type="email" name="email" class="form-control" placeholder="Digite o email do palestrante">  
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="hint-field" class="control-label"> Telefone </label>
 									<div class="controls input-group form-group">
 										<span class="input-group-addon"><i class="icon-phone-sign"></i></span>
-										<input type="text" name="telefone" class="form-control" placeholder="Digite o telefone do palestrante">  
+										<input required="required" type="text" name="telefone" class="form-control" placeholder="Digite o telefone do palestrante">  
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="hint-field" class="control-label"> Facebook </label>
 									<div class="controls input-group form-group">
 										<span class="input-group-addon"><i class="icon-facebook-sign"></i></span>
-										<input type="text" name="facebook" class="form-control" placeholder="Digite endereço eletronico do facebook do palestrante">  
+										<input required="required" type="text" name="facebook" class="form-control" placeholder="Digite endereço eletronico do facebook do palestrante">  
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="hint-field" class="control-label"> Twitter </label>
 									<div class="controls input-group form-group">
 										<span class="input-group-addon"><i class="icon-twitter"></i></span>
-										<input type="text" name="twitter" class="form-control" placeholder="Digite endereço eletronico do Twitter do palestrante">  
+										<input required="required" type="text" name="twitter" class="form-control" placeholder="Digite endereço eletronico do Twitter do palestrante">  
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="hint-field" class="control-label"> Google + </label>
 									<div class="controls input-group form-group">
 										<span class="input-group-addon"><i class="icon-google-plus"></i></span>
-										<input type="text" name="google_plus" class="form-control" placeholder="Digite endereço eletronico do google + do palestrante">  
+										<input required="required" type="text" name="google_plus" class="form-control" placeholder="Digite endereço eletronico do google + do palestrante">  
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="hint-field" class="control-label"> Foto: </label>
 									<div class="controls input-group form-group">
-										<span class="input-group-btn"><span class="btn btn-success btn-file">Procurar... <input type="file" name="image" id="file" onchange="pega_valor(this.value);"></span></span><input type="text" name="copyImage" class="form-control" id="replace" readonly=""></div> 
+										<span class="input-group-btn"><span class="btn btn-success btn-file">Procurar... <input required="required" type="file" name="image" id="file" onchange="pega_valor(this.value);"></span></span><input required="required" type="text" name="copyImage" class="form-control" id="replace" readonly=""></div> 
 									</div>
 								</div>
 							</fieldset>

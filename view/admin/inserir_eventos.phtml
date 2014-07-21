@@ -19,7 +19,7 @@
 								<div class="control-group">
 									<label for="normal-field" class="control-label">Local do Evento</label>
 									<div class="controls form-group">
-										<input type="text" placeholder="Digite aqui o local do evento" name="local" class="form-control" id="normal-field">
+										<input type="text" required="required" placeholder="Digite aqui o local do evento" name="local" class="form-control" id="normal-field">
 									</div>
 								</div>
 								<div class="control-group">
@@ -41,32 +41,32 @@
 								<div class="control-group">
 									<label for="disabled-input" class="control-label ">Titulo</label>
 									<div class="controls form-group">
-										<input type="text" maxlength="50" name="titulo" class="form-control" id="titulo" placeholder="Insira o titulo do evento">
+										<input type="text" required="required" maxlength="50" name="titulo" class="form-control" id="titulo" placeholder="Insira o titulo do evento">
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="disabled-input" class="control-label ">Descricao Resumida</label>
 									<div class="controls form-group">
-										<input type="text" maxlength="50" name="descricao_resumida" class="form-control" id="descricao_resumida" placeholder="Insira uma descrição resumida para o evento">
+										<input type="text" required="required" maxlength="50" name="descricao_resumida" class="form-control" id="descricao_resumida" placeholder="Insira uma descrição resumida para o evento">
 									</div>
 								</div>
 
 								<div class="control-group">
 									<label for="disabled-input" class="control-label ">Data Do Evento</label>
 									<div class="controls form-group">
-										<input type="datetime-local" name="data_hora" class="form-control" id="data-hora">
+										<input type="datetime-local" required="required" max="2014-12-12" min="1930-01-01" name="data_hora" class="form-control" id="data-hora">
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="max-length" class="control-label ">Fim Inscrições</label>
 									<div class="controls form-group">
-										<input type="date" class="form-control" name="data_limite" id="data-limite" placeholder="Data Limite Para As Inscriçoes">
+										<input type="date" class="form-control" required="required" name="data_limite" id="data-limite" placeholder="Data Limite Para As Inscriçoes">
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="prepended-input" class="control-label">Vagas</label>
 									<div class="controls form-group">
-										<input type="number" class="form-control" name="vagas" id="vagas" placeholder="Quantidade de vagas">
+										<input type="number" class="form-control" required="required" name="vagas" id="vagas" placeholder="Quantidade de vagas">
 									</div>
 								</div>
 								<div class="date">
@@ -101,13 +101,13 @@
 								<div class="control-group">
 									<label for="appended-input" class="control-label">Email</label>
 									<div class="controls form-group">
-										<input type="email" class="form-control" name="email_contato" id="contato-email" placeholder="Email para Contato">
+										<input type="email" class="form-control" required="required" name="email_contato" id="contato-email" placeholder="Email para Contato">
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="combined-input" class="control-label">Telefone</label>
 									<div class="controls form-group">
-										<input type="text" class="form-control" name="telefone_contato" id="contato-telefone" placeholder="Telefone para Contato">
+										<input type="text" class="form-control" required="required" name="telefone_contato" id="contato-telefone" placeholder="Telefone para Contato">
 									</div>
 								</div>
 								<div class="control-group">
@@ -131,21 +131,21 @@
 									<label for="combined-input" class="control-label">Facebook</label>
 									<div class="controls input-group form-group">
 										<span class="input-group-addon"><i class="icon-facebook-sign"></i></span>
-										<input type="text" class="form-control" name="facebook" placeholder="Insira o endereço eletronico do facebook" id="combined-input">
+										<input type="text" class="form-control" required="required" name="facebook" placeholder="Insira o endereço eletronico do facebook" id="combined-input">
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="combined-input" class="control-label">Twitter</label>
 									<div class="controls input-group form-group">
 										<span class="input-group-addon"><i class="icon-twitter"></i></span>
-										<input type="text" class="form-control" name="twitter" placeholder="Insira o endereço eletronico do Twiter">
+										<input type="text" class="form-control" required="required" name="twitter" placeholder="Insira o endereço eletronico do Twiter">
 									</div>
 								</div>
 								<div class="control-group">
 									<label for="combined-input" class="control-label">Google +</label>
 									<div class="controls input-group form-group">
 										<span class="input-group-addon"><i class="icon-google-plus"></i></span>
-										<input type="text" class="form-control" name="google_plus" placeholder="Insira o endereço eletronico do Google +">
+										<input type="text" class="form-control" required="required" name="google_plus" placeholder="Insira o endereço eletronico do Google +">
 									</div>
 								</div>
 							</fieldset>
