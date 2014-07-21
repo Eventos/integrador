@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Eventos - UTFPR - Campus Guarapuava</title>
+
+	<?php
+	Page::addStyleElement('css', 'bootstrap.min.css');
+	Page::addStyleElement('css', 'slider.css');
+	Page::addStyleElement('css', 'style.css');
+	Page::addStyleElement('css', 'custom.css');
+	?>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<?php
+	Page::addStyleElement('js', 'jquery.min.js');
+	Page::addStyleElement('css', 'slider.css');
+	Page::addStyleElement('js', 'modernizr.custom.28468.js');
+	Page::addStyleElement('js', 'jquery.cslider.js');
+	Page::addStyleElement('js', 'efeitos.js');
+	Page::addStyleElement('js', 'default.js');
+	Page::addStyleElement('js', 'custom.js');
+
+	Page::addStyleElement('js','lib/jquery-1.10.1.min.js');
+	Page::addStyleElement('js','lib/jquery.mousewheel-3.0.6.pack.js');
+	Page::addStyleElement('js','../css/source/jquery.fancybox.js');
+	Page::addStyleElement('css','source/jquery.fancybox.css');
+	Page::addStyleElement('css','source/helpers/jquery.fancybox-buttons.css');
+	Page::addStyleElement('js','../css/source/helpers/jquery.fancybox-buttons.js');
+	Page::addStyleElement('css','source/helpers/jquery.fancybox-thumbs.css');
+	Page::addStyleElement('js','../css/source/helpers/jquery.fancybox-thumbs.js');
+	Page::addStyleElement('js','../css/source/helpers/jquery.fancybox-media.js');
+	?>
+
+</head>
+<body>
+	<div class="slider_bg">
+		<div class="h_right">
+			<div class="menu" id="bt_menu">
+				<div class="bt_menu">
+					<p class="listar-menu"></p>
+					<p class="listar-menu"></p>
+					<p class="listar-menu"></p>
+					<span>Menu</span>
+				</div>
+			</div>
+			<span><!--<?php echo 'pagina' ?>-->AJUDA</span>
+			<nav class="nav">
+				<ul class="nav-list">
+					<li class="nav-item"></span><a href="#home">Home</a></li>
+					<li class="nav-item"><a href="login/verify/user">Login</a></li>
+					<li class="nav-item"><a href="login/verify/admin">Admin</a></li>
+				</ul>
+			</nav>
+			<?php
+			Page::addStyleElement('js', 'responsive.menu.js');
+			?>
+		</div>
+		<div id="menu_oculto">
+			<ul>		
+				<li><a href="#home"><span class="glyphicon glyphicon-collapse-down"></span>&nbsp;Home</a></li>
+				<li><a href="login/verify/user"><span class="glyphicon glyphicon-user"></span>	&nbsp;Login</a></li>
+				<li><a href="login/verify/admin"><span class="glyphicon glyphicon-user"></span>	&nbsp;Admin</a></li>
+			</ul>
+		</div>
+		<div class="wrap">
+			<div class="header">
+				<div class="fundo-logo">
+					<div class="logo">
+						<a href="index.html"><?php Page::addImage('logo.png', '');?></a>
+					</div>
+				</div>
+				<div class="title"><h2>Eventos UTFPR</h2></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+<div class="services" id="ultimos">
+	<div class="wrap">
+		<table class="table-hover table">
+			<caption><h3>Mapa do Site</h3><p style="text-align:center">Conheça todos nossos caminhos</p></caption>
+
+			<thead>
+				<tr>
+					<th>Pagina</th>
+					<th>Descrição</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Home ou Pagina Inicial</td>
+					<td>Nesta pagina se encontram todas as informações sobre os eventos em abertos e fechados, videos, fotos. Também é possivel conhecer os palestrantes que iram se apresentar ou que ja se apresentaram.<br>Existe mais a baixo um mapa mostrando em que região se encontra a UTFPR.<br>Ao fim da pagina existe um formulario onde o usuario pode entrar em contato com o administrador do evento.</td>
+				</tr>
+				<tr>
+					<td>Eventos</td>
+					<td>Aqui você pode encontrar a listagem completa de todos os eventos do nosso site, abertos e fechados, com links direto para inscrição ou para a prorpia pagina do envento onde podera ser visto por inteiro</td>
+				</tr>
+				<tr>
+					<td>Eventos/view/1 .. ?</td>
+					<td>Esta é a pagina do evento em si, nela contem todas as informações do evento, se ele contem subevento, o seu valor, suas fotos e videos</td>
+				</tr>
+				<tr>
+					<td>Eventos/view/?/1 .. ?</td>
+					<td>Esta é a pagina do subevento, é uma pagina semelhante a de enventos contem as mesmas informações mas para os subeventos</td>
+				</tr>
+				<tr>
+					<td>Cadastro</td>
+					<td>Nesta pagina é possivel um visitante qualquer criar uma conta no site e passar a ter acesso a inscrição e novidades sobre eventos</td>
+				</tr>
+				<tr>
+					<td>User</td>
+					<td>Esta é uma area restrita para usuaios cadastrados, lá eles tem acesso ainformações sobre os eventos inscritos, pagamentos e novas incrições</td>
+				</tr>
+				<tr>
+					<td>Admin</td>
+					<td>Esta é uma area restrita aos administradores do EVENTOS UTFPR lá é feita toda a parte de criação e manutenção dos eventos e contato com os usuarios</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="contact" id="contact">
+	<div class="wrap">
+		<h3>CONTATE-NOS</h3>
+		<p class="a">Envie um e-mail para os organizadores dos eventos da UTFPR.</p>
+		<div class="form">
+			<div class="form-text">
+				<form method="Post" action="<?=App::getUrl()?>evento/mensagem">
+					<input type="text" required name="name" placeholder="Seu nome">
+					<input type="text" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" placeholder="Seu Email">
+					<select name="evento" required class="select-box">
+						<option class="contact_index" name="">-- Selecione o Evento --</option>
+						<?php $eventos = Evento::getEvento(null,'info'); ?>
+						<?php foreach ($eventos as $evento): ?>
+							<option class="contact_index" value="<?= $evento['id_evento'] ?>"> <?= $evento['titulo']?> </option>
+						<?php endforeach; ?>
+					</select>
+				</div>
+				<textarea name="mensagem" placeholder="Sua mensagem*">Digite Sua Mensagem</textarea>
+				<div class="clear"> </div>
+				<input type="submit" value="ENVIAR MENSAGEM">
+			</form>					 
+		</div>
+	</div>
+</div>
+<div class="bottom-footer">
+	<div class="wrap"> 
+		<div class="bottom-footer-left">
+			<p>&#169; Copyright 2014 Criado por&nbsp;<a href="#">PontoEdu.br</a></p>
+		</div>
+		<div class="bottom-footer-center">
+			<ul class="bottom-social-icons">
+				<li><a class="bottom-twitter" href="//www.twitter.com/pontoedu"> </a></li>
+				<li><a class="bottom-facebook" href="//www.facebook.com/pontoedu"> </a></li>
+				<li><a class="bottom-pin" href="//www.pinterest.com/pontoedu"> </a></li>
+				<li><a class="bottom-google" href="//plus.google.com/pontoedu"> </a></li>
+			</ul>
+		</div>			  
+		<div class="clear"> </div>
+	</div>
+</div>
+
+
+
+		<?php
+		Page::addStyleElement('js', 'move-top.js');
+		Page::addStyleElement('js', 'easing.js');
+		?>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+				});
+			});
+		</script>
+		<a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+
+
+	</body>
+	</html>

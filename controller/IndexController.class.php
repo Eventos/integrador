@@ -21,6 +21,10 @@ class IndexController extends ControllerAbstract
 		}
 	}
 
+	public function helpAction($params){
+		$this->render('help');
+	}
+
 	public function newsletterAction($params){
 
 		if(isset($_POST)){
