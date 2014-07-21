@@ -1,12 +1,12 @@
 <?php $id_evento = (string)$params[0];?>
 
 <?php if(Subevento::exists($id_evento)):?>
-	<div class="h_right">
+<div>
 		<div class="wrap">
+		<div class="tm-head">
 			<h3>Subeventos Em Aberto</h3>
 			<p>Confira aqui os últimos subeventos da UTFPR.</p>
 		</div>
-	</div>
 	<div class="row" style="margin:0 auto">
 		<?php $sub = Subevento::getSubevento($id_evento, null , 'all') ?>
 		<?php foreach ($sub as $s): ?>
@@ -22,15 +22,18 @@
 		<?php endforeach;?>
 	</div>
 
+</div>
+</div>
 <?php endif;?>
-
-
-<div class="h_right">
-	<div class="wrap">
+<div style="padding: 2% 0% 2% 6%;
+background: #DBDBDB;">
+<div class="wrap">
+<div class="tm-head">
 		<h3>Fotos Do Evento </h3>
 		<p align="center">Veja as fotos dos últimos eventos realizados na UTFPR.</p>
-	</div>
-</div>
+		</div>
+
+
 <div class="page-content">
 	<div class="content container">
 		<div class="row">
@@ -54,13 +57,13 @@
 	<div class="clear"></div>
 </div>
 </div>
-
-<div class="h_right">
-	<div class="wrap">
+</div>
+<div style="padding: 2% 0% 2% 6%;">
+<div class="wrap">
+<div class="tm-head">
 		<h3>Videos</h3>
 		<p>Veja os videos do evento?</p>
 	</div>
-</div>
 <?php if( Media::Video_exists($id_evento) ){
 	echo Media::getAllVideos($id_evento); 
 }else{ ?>
@@ -70,7 +73,7 @@
 </div>   		 
 </div>
 <?php if(Blocos::existsReferencia($id_evento)):?> 
-<div class="about" id="about">
+<div class="about" id="about" style="background: #DBDBDB;">
 	<div class="wrap">
 		<h3>INFORMAÇOES SOBRE O EVENTO</h3>
 		<p class="a">sobre o que é este evento?</p>

@@ -1,6 +1,15 @@
+<?php
+ $today = date('Y-m-d');
+?>
+<style type="text/css">
+	.caution{color:red;text-shadow:1px 1px 1px black;}
+</style>
 <div class="container container-fluid">
 <h1>Eventos pagos</h1>
 <div class="noBackground">
+<?php if(empty($pagos)): ?>
+	<h1 class="caution">Não há Eventos Pagos</h1>
+<?php else: ?>
 <table border="1" class="table table-hover eventos-pagos">
 	<tr>
 		<th>Título do evento</th>
@@ -17,6 +26,7 @@
 	</tr>
 	<?php endforeach; ?>
 </table>
+<?php endif; ?>
 </div>
 <h1>Eventos com pagamento pendente</h1>
 <div class="noBackground">
@@ -32,7 +42,11 @@
 		<td><?= $evento['titulo'] ?></td>
 		<td align="center"><?= $evento['data_limite'] ?></td>
 		<td align="center"><?= $evento['data_inscricao'] ?></td>
+		<?php if ($today > $evento['data_limite']):?>
+			<td align="center" style="color:red;font-weight:bolder">Inscrições encerradas</td>
+		<?php else:?>
 		<td align="center"><?= $evento['pagamento'] == 1 ? 'Pago' : '<a class="btn btn-primary" href="'.$evento['url'].'" target="_blank">Pagar com pagseguro</a>' ?></td>
+	<?php endif;?>
 	</tr>
 	<?php endforeach; ?>
 </table>

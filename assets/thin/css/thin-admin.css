@@ -818,13 +818,11 @@ input[type="search"], input.search {
 }
 
 .form-actions {
-	background-color: rgba(134, 119, 86, 1);
 	clear: both;
 	margin-left: -16px;
 	margin-right: -16px;
 	height: 100px;
 	position: relative;
-	bottom: -15px;
 }
 
 .forgot {

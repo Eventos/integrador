@@ -1,17 +1,23 @@
 <?php
 $info      = Evento::getEvento($id_evento, 'all');
+
 $titulo    = $info[0]['titulo'];
 $vagas     = $info[0]['vagas'];
 $descricao = $info[0]['desc_evento'];
 $local     = $info[0]['local'];
 $final     = $info[0]['data_limite']; 
 $valor = isset($info[0]['valor']) ? $info[0]['valor'] : null;
+/*$today = date("Y-m-d");*/
+if($final == null){
+	App::redirect('user');
+}
 if(!($vagas > 0)){
 	$valor = null;
 }
 ?>
 <style type="text/css">
 	.row{background: white!important}
+	.caution{clear: both;color: red!important; text-shadow: 1px 1px 1px black;}
 </style>
 <div class="page-content">
 	<div class="content container">
@@ -34,7 +40,7 @@ if(!($vagas > 0)){
 					
 					<?php if(!($vagas > 0)): ?>
 					<div>
-						<h2>Desculpe, você não pode se cadastrar nesse evento, vagas encerradas!</h2>
+						<h2 class="caution">Desculpe, você não pode se cadastrar nesse evento, inscrições encerradas!</h2>
 					</div>
 					<?php else: ?>
 					<div class="widget-header"> <i class="icon-align-left"></i>

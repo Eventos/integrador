@@ -115,7 +115,7 @@ class PalestranteModel extends ModelAbstract
 		$query = "UPDATE palestrante SET ativo='n' WHERE id_palestrante = $id";
 		$prep = $this->db->prepare($query);
 		$query = $prep->execute();
-		if(!$query) throw new exception(var_dump($prep->errorInfo()));
+		if(!$query) throw new exception( var_dump($prep->errorInfo()));
 		Flash::setMessage('success', 'Palestrante excluído com sucesso.');
 		App::redirect('admin/index');
 	}

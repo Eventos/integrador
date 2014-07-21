@@ -33,9 +33,9 @@ class PagseguroModel extends ModelAbstract
 			$pagseguro->setReference($transaction_id);
 
 			$user = $_SESSION['user'];
-
+			echo $nome;
 			$nome = strtr($user['name'], "áàãâéêíóôõúüçÁÀÃÂÉÊÍÓÔÕÚÜÇ", "aaaaeeiooouucAAAAEEIOOOUUC");
-
+			die($nome);
 			$pagseguro->setSender($nome, $user['email'], '', '');
 
 			$pagseguro->addItem($pagamento['evento']['id'], $pagamento['evento']['titulo'], 1, (float)$pagamento['evento']['valor'], 0);
@@ -45,7 +45,6 @@ class PagseguroModel extends ModelAbstract
 					$pagseguro->addItem($id, $item['titulo'], 1, (float)$item['valor']);
 				}
 			}
-			/*var_dump($pagseguro, $this->credenciais);*/
 			$url = $pagseguro->register($this->credenciais);
 			return $url;
 

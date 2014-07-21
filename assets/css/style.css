@@ -568,7 +568,7 @@ body {
 /*--//about-time-line--*/
 /*---team-members--*/
 .team-members{
-	padding: 7% 0;
+	padding: 2% 0;
 	background: #DBDBDB;
 }
 .tm-head{
@@ -589,7 +589,7 @@ body {
 	line-height: 1.5em;
 	font-style: italic;
 	text-align: center;
-	margin-bottom: 6%;
+	margin-bottom: 2%;
 }
 .tm-head-grid img{
 	border-radius: 30em;
