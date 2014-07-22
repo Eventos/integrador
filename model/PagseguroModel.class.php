@@ -41,7 +41,9 @@ class PagseguroModel extends ModelAbstract
 
 			if(isset($pagamento['subevento'])){
 				foreach ($pagamento['subevento'] as $id => $item) {
-					$pagseguro->addItem($id, $item['titulo'], 1, (float)$item['valor']);
+					if($valor = $item['valor'] > 0){
+						$pagseguro->addItem($id, $item['titulo'], 1, (float)$valor);
+					}
 				}
 			}
 			$url = $pagseguro->register($this->credenciais);
