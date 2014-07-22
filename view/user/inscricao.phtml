@@ -6,7 +6,7 @@ $vagas     = $info[0]['vagas'];
 $descricao = $info[0]['desc_evento'];
 $local     = $info[0]['local'];
 $final     = $info[0]['data_limite']; 
-$valor = isset($info[0]['valor']) ? $info[0]['valor'] : null;
+$valor = $info[0]['valor'] == 0 ? $info[0]['valor'] : null;
 }else{
 /*$today = date("Y-m-d");*/
 	Flash::setMessage('danger','As inscrições para este evento já estão encerradas!');
@@ -31,7 +31,7 @@ if(!($vagas > 0)){
 				</div>
 				<b>Valor do evento:</b>
 				<div>
-					<p><?= $valor ? 'R$'.$valor : 'Inscrições não estão abertas' ?></p>
+					<p><?= $valor == 0 ? 'R$'.$valor : 'Inscrições não estão abertas' ?></p>
 				</div>
 			</div>
 		</div>
@@ -113,7 +113,7 @@ if(!($vagas > 0)){
 										<input type="hidden" name="total" class="preco-total" value="<?= $valor ?>">
 										<input type="hidden" name="id_evento" value="<?= $id_evento ?>">
 										<div class="controls form-group" style="text-align:center">
-											<input type="submit" class="btn-lg btn-primary" <?= $valor ? '' : 'disabled' ?> value="Pagamento Seguro">
+											<input type="submit" class="btn-lg btn-primary" <?= $valor == 0 ? '' : 'disabled' ?> value="Confirmar inscrição">
 										</div>
 									</div>
 									<div class="control-group" id="cidade" style="display:none">

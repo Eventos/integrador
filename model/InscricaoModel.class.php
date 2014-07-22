@@ -30,7 +30,7 @@ class InscricaoModel extends ModelAbstract
 			}
 			if($data['total'] == 0){
 				Flash::setMessage('success', 'Inscrição feita com sucesso!');
-				App::redirect('user/index');
+				App::redirect('user/eventos');
 			}else{
 				$this->render('evento/pagseguro', array('url' => $url_pag), true);
 			}
